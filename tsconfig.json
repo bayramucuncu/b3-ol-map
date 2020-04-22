@@ -17,7 +17,21 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "b3-map": [
+        "dist/b3-map"
+      ],
+      "b3-map/*": [
+        "dist/b3-map/*"
+      ],
+      "b3-ol-map": [
+        "dist/b3-ol-map"
+      ],
+      "b3-ol-map/*": [
+        "dist/b3-ol-map/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

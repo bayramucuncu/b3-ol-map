@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'b3-ol-map'`, () => {
+  it(`should have as title 'b3-ol-map-app'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('b3-ol-map');
+    expect(app.title).toEqual('b3-ol-map-app');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('b3-ol-map app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('b3-ol-map-map app is running!');
   });
 });

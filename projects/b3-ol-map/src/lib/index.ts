@@ -1,0 +1,1 @@
+export * from './b3-ol-map.component';
