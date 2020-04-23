@@ -1,5 +1,6 @@
 
 <ng-container *ngFor="let item of interactions">
+    <b3-drag-pan *ngIf="item.name === 'dragpan'"></b3-drag-pan>
     <b3-mouse-wheel-zoom *ngIf="item.name === 'mousewheelzoom'" 
         [duration]="item.settings.duration"
         [timeout]="item.settings.timeout" 

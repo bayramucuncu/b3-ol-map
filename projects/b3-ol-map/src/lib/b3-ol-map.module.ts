@@ -11,6 +11,7 @@ import { ViewComponent } from './view/view.component';
 import { InteractionContainerComponent } from './interactions/interaction-container/interaction-container.component';
 import { CommonModule } from '@angular/common';
 import { PinchZoomComponent } from './interactions/pinch-zoom/pinch-zoom.component';
+import { DragPanComponent } from './interactions/drag-pan/drag-pan.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PinchZoomComponent } from './interactions/pinch-zoom/pinch-zoom.compone
     ViewComponent, 
     InteractionContainerComponent,
     MouseWheelZoomComponent,
-    PinchZoomComponent
+    PinchZoomComponent,
+    DragPanComponent
   ],
   imports: [
     RouterModule,
@@ -40,7 +42,8 @@ import { PinchZoomComponent } from './interactions/pinch-zoom/pinch-zoom.compone
     ViewComponent,
     InteractionContainerComponent,
     MouseWheelZoomComponent,
-    PinchZoomComponent
+    PinchZoomComponent,
+    DragPanComponent
   ]
 })
 export class B3OlMapModule { }

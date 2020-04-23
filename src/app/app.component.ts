@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
       view: { zoom: 14, center: [4364549.537769296, 5001346.4204131], projection: "EPSG:3857", minZoom: 0, maxZoom: 26 },
       interactions: [
         { name: "mousewheelzoom", title: "Mouse wheel interaction", settings: { duration: 250, timeout: 80, useAnchor: true, constrainResolution: false } },
-        { name: "pinchzoom", title: "Pich zoom", settings: { duration: 250 } }
+        { name: "pinchzoom", title: "Pich zoom", settings: { duration: 250 } },
+        { name: "dragpan", title: "Drag pan" }
       ]
     }  
   }
