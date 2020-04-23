@@ -18,6 +18,7 @@ export class InteractionContainerComponent implements OnInit {
 
     //ToDo: if(!this.interactions) this.interactions = [{},{},{},{}]
 console.log(this.interactions)
+console.log(defaultInteractions().getArray())
     this.interactions = this.interactions || [];
   }
 
