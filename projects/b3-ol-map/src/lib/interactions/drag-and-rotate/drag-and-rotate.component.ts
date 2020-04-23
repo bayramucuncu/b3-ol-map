@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { BaseInteractionComponent } from '../base-interaction-component';
 import { MapComponent } from '../../b3-ol-map.component';
 import { DragRotate } from 'ol/interaction';
+import { shiftKeyOnly } from 'ol/events/condition'
 
 @Component({
   selector: 'b3-drag-and-rotate',
@@ -18,7 +19,8 @@ export class DragAndRotateComponent extends BaseInteractionComponent implements 
 
   ngOnInit() {
     this.interaction = new DragRotate({
-        duration: this.duration || 400
+        duration: this.duration || 250,
+        condition: shiftKeyOnly
     });
 
     super.ngOnInit();

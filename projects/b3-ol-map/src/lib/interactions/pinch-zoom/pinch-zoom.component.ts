@@ -10,7 +10,7 @@ import { MapComponent } from '../../b3-ol-map.component';
 })
 export class PinchZoomComponent extends BaseInteractionComponent implements OnInit {
   
-  @Input() duration: number = 400;
+  @Input() duration: number;
   
   constructor(mapComponent: MapComponent) {
       super(mapComponent);
@@ -18,7 +18,7 @@ export class PinchZoomComponent extends BaseInteractionComponent implements OnIn
 
   ngOnInit() {
     this.interaction = new PinchZoom({
-        duration: this.duration
+        duration: this.duration || 400
     });
 
     super.ngOnInit();

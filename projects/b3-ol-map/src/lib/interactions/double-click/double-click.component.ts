@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { BaseInteractionComponent } from '../base-interaction-component';
-import { MapComponent } from '../../b3-ol-map.component';
 import { DoubleClickZoom } from 'ol/interaction';
+import { MapComponent } from '../../b3-ol-map.component';
 
 @Component({
   selector: 'b3-double-click',
@@ -10,8 +10,8 @@ import { DoubleClickZoom } from 'ol/interaction';
 })
 export class DoubleClickComponent extends BaseInteractionComponent implements OnInit, OnDestroy {
   
-  @Input() duration: number = 250;
-  @Input() delta: number = 1;
+  @Input() duration: number;
+  @Input() delta: number;
   
   constructor(private mapComponent: MapComponent) {
       super(mapComponent);
@@ -19,8 +19,8 @@ export class DoubleClickComponent extends BaseInteractionComponent implements On
 
   ngOnInit() {
     this.interaction = new DoubleClickZoom({
-        duration: this.duration,
-        delta: this.delta
+        duration: this.duration || 250,
+        delta: this.delta || 1
     });
 
     super.ngOnInit(); 
