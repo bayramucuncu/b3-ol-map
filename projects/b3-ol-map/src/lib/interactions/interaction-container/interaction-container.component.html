@@ -11,6 +11,11 @@
     <b3-double-click *ngIf="item.name === 'doubleclickzoom'" 
         [duration]="item.settings.duration"
         [delta]="item.settings.delta"></b3-double-click>
+    <b3-drag-zoom *ngIf="item.name === 'dragzoom'" 
+        [className]="item.settings.className"
+        [duration]="item.settings.duration"
+        [minArea]="item.settings.minArea"
+        [out]="item.settings.out"></b3-drag-zoom>
     <b3-mouse-wheel-zoom *ngIf="item.name === 'mousewheelzoom'" 
         [duration]="item.settings.duration"
         [timeout]="item.settings.timeout" 

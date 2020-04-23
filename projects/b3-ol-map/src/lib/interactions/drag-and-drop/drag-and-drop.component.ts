@@ -31,7 +31,7 @@ export class DragAndDropComponent extends BaseInteractionComponent implements On
           "TopoJSON": TopoJSON
       };
 
-      let formats = this.formatConstructors.map(item => formatMap[item]);
+      let formats = this.formatConstructors ? this.formatConstructors.map(item => formatMap[item]) : [GeoJSON, KML];
 
       this.interaction = new DragAndDrop({
           projection: this.projection,

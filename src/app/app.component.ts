@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
         { name: "dragpan", title: "Drag pan" },
         { name: "draganddrop", title: "Drag and drop", settings: { formatConstructors: [ "KML", "GeoJSON", "TopoJSON", "GPX"], projection: null, target: null } },
         { name: "dragandrotate", title: "Drag and rotate", settings: { duration: 250 } },
+        { name: "dragzoom", title: "Drag zoom", settings: { className: "'ol-dragbox", minArea: 64, duration: 200, out: false } },
         { name: "doubleclickzoom", title: "Double click", settings: { duration: 250, delta: 1 } },
         { name: "keyboardpan", title: "Keyboard pan", settings: { duration: 100, pixelDelta: 128 } },
         { name: "keyboardzoom", title: "Keyboard zoom", settings: { duration: 100, delta: 1 } },

@@ -18,6 +18,7 @@ import { DragAndRotateComponent } from './interactions/drag-and-rotate/drag-and-
 import { PinchRotateComponent } from './interactions/pinch-rotate/pinch-rotate.component';
 import { KeyboardPanComponent } from './interactions/keyboard-pan/keyboard-pan.component';
 import { KeyboardZoomComponent } from './interactions/keyboard-zoom/keyboard-zoom.component';
+import { DragZoomComponent } from './interactions/drag-zoom/drag-zoom.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { KeyboardZoomComponent } from './interactions/keyboard-zoom/keyboard-zoo
     DragAndRotateComponent,
     PinchRotateComponent,
     KeyboardPanComponent,
-    KeyboardZoomComponent
+    KeyboardZoomComponent,
+    DragZoomComponent
   ],
   imports: [
     RouterModule,

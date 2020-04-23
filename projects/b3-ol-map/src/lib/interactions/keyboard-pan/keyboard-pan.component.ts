@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { BaseInteractionComponent } from '../base-interaction-component';
 import { MapComponent } from '../../b3-ol-map.component';
 import { KeyboardPan } from 'ol/interaction';
-import { noModifierKeys, targetNotEditable } from 'ol/events/condition'
+import { noModifierKeys, targetNotEditable  } from 'ol/events/condition';
 
 @Component({
   selector: 'b3-keyboard-pan',
