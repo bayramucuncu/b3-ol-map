@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
       interactions: [
         { name: "dragpan", title: "Drag pan" },
         { name: "draganddrop", title: "Drag and drop", settings: { formatConstructors: [ "KML", "GeoJSON", "TopoJSON", "GPX"], projection: null, target: null } },
+        { name: "doubleclickzoom", title: "Double click", settings: { duration: 250, delta: 1 } },
         { name: "pinchzoom", title: "Pich zoom", settings: { duration: 250 } },
         { name: "mousewheelzoom", title: "Mouse wheel interaction", settings: { duration: 250, timeout: 80, useAnchor: true, constrainResolution: false } }
       ]

@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { PinchZoomComponent } from './interactions/pinch-zoom/pinch-zoom.component';
 import { DragPanComponent } from './interactions/drag-pan/drag-pan.component';
 import { DragAndDropComponent } from './interactions/drag-and-drop/drag-and-drop.component';
+import { DoubleClickComponent } from './interactions/double-click/double-click.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { DragAndDropComponent } from './interactions/drag-and-drop/drag-and-drop
     MouseWheelZoomComponent,
     PinchZoomComponent,
     DragPanComponent,
-    DragAndDropComponent
+    DragAndDropComponent,
+    DoubleClickComponent
   ],
   imports: [
     RouterModule,
@@ -46,7 +48,8 @@ import { DragAndDropComponent } from './interactions/drag-and-drop/drag-and-drop
     MouseWheelZoomComponent,
     PinchZoomComponent,
     DragPanComponent,
-    DragAndDropComponent
+    DragAndDropComponent,
+    DoubleClickComponent
   ]
 })
 export class B3OlMapModule { }

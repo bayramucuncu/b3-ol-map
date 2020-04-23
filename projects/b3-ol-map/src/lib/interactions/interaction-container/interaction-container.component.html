@@ -6,6 +6,9 @@
         [projection]="item.settings.projection"
         [target]="item.settings.target"
         (outDragAndDrop)="onDragAndDrop($event)"></b3-drag-and-drop>
+    <b3-double-click *ngIf="item.name === 'doubleclickzoom'" 
+        [duration]="item.settings.duration"
+        [delta]="item.settings.delta"></b3-double-click>
     <b3-mouse-wheel-zoom *ngIf="item.name === 'mousewheelzoom'" 
         [duration]="item.settings.duration"
         [timeout]="item.settings.timeout" 
