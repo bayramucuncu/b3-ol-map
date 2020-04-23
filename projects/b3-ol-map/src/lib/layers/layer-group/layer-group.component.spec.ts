@@ -1,6 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LayerGroupComponent } from './layer-group.component';
+import { MapComponent } from '../../b3-ol-map.component';
+import { ElementRef } from '@angular/core';
+
+export class MockElementRef extends ElementRef {
+  constructor() { super(null); }
+  element: { nativeElement: { firstElementChild: {} } };
+}
+
+export class MockMap {
+  map: any = {
+    getLayers() {
+      return [];
+    }
+  }
+}
 
 describe('LayerGroupComponent', () => {
   let component: LayerGroupComponent;
@@ -8,7 +23,17 @@ describe('LayerGroupComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LayerGroupComponent ]
+      declarations: [ LayerGroupComponent, MapComponent ],
+      providers: [ 
+        {
+          provide: MapComponent,
+          useClass: MockMap
+        }, 
+        {
+          provide: ElementRef, 
+          useClass: MockElementRef
+        }
+       ]
     })
     .compileComponents();
   }));

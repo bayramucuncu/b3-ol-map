@@ -14,11 +14,11 @@ import { ViewComponent } from './view/view.component';
   declarations: [
     MapComponent, 
     LayerTileComponent, 
-    MouseWheelZoomComponent, 
     LayerVectorComponent, 
     LayerImageComponent, 
     LayerHeatmapComponent, 
     LayerGroupComponent, 
+    MouseWheelZoomComponent, 
     ViewComponent
   ],
   imports: [
@@ -27,11 +27,11 @@ import { ViewComponent } from './view/view.component';
   exports: [
     MapComponent, 
     LayerTileComponent, 
-    MouseWheelZoomComponent, 
     LayerVectorComponent, 
     LayerImageComponent, 
     LayerHeatmapComponent, 
     LayerGroupComponent, 
+    MouseWheelZoomComponent, 
     ViewComponent
   ]
 })

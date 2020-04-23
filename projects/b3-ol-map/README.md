@@ -1,24 +1,23 @@
-# B3OlMap
+# b3-ol-map
+Openlayers based Angular library.
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.14.
+## Basic usage
 
-## Code scaffolding
+`app.component.ts
 
-Run `ng generate component component-name --project b3-ol-map` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project b3-ol-map`.
-> Note: Don't forget to add `--project b3-ol-map` or else it will be added to the default project in your `angular.json` file. 
+export class AppComponent {
+  title = 'b3-ol-map';
 
-## Build
+  public map: any = {
+    settings: { width: "100vw", height: "100vh" },
+    view: { zoom: 14, center: [4364549.537769296, 5001346.4204131], projection: "EPSG:3857", minZoom: 0, maxZoom: 26 }
+  }
+}`
 
-Run `ng build b3-ol-map` to build the project. The build artifacts will be stored in the `dist/` directory.
+app.component.html
 
-## Publishing
-
-After building your library with `ng build b3-ol-map`, go to the dist folder `cd dist/b3-ol-map` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test b3-ol-map` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+`<div style="width: 100vw; height: 100vh;">
+    <b3-ol-map [width]="map.settings.width" [height]="map.settings.height">
+        <b3-view [zoom]="map.view.zoom" [center]="map.view.center" [projection]="map.view.projection" [minZoom] ="map.view.minZoom" [maxZoom] ="map.view.maxZoom" ></b3-view>
+    </b3-ol-map>
+</div>`

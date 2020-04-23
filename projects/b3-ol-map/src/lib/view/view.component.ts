@@ -13,9 +13,9 @@ export class ViewComponent implements OnInit, OnChanges, OnDestroy {
 
   public instance: View;
 
-  private _zoom: number = 14;
-  private _center: Coordinate = [4364549.537769296, 5001346.4204131];
-  private _projection: string = 'EPSG:3857';
+  private _zoom: number;
+  private _center: Coordinate;
+  private _projection: string;
   private _extent: Extent;
   private _maxZoom: number;
   private _minZoom: number;
