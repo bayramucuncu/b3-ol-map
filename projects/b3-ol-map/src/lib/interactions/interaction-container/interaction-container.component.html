@@ -18,4 +18,7 @@
         [maxDelta]="item.settings.maxDelta"></b3-mouse-wheel-zoom>
     <b3-pinch-zoom *ngIf="item.name === 'pinchzoom'" 
         [duration]="item.settings.duration"></b3-pinch-zoom>
+    <b3-pinch-rotate *ngIf="item.name === 'pinchrotate'" 
+        [duration]="item.settings.duration"
+        [threshold]="item.settings.threshold"></b3-pinch-rotate>
 </ng-container>
