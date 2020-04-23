@@ -17,6 +17,7 @@ import { DoubleClickComponent } from './interactions/double-click/double-click.c
 import { DragAndRotateComponent } from './interactions/drag-and-rotate/drag-and-rotate.component';
 import { PinchRotateComponent } from './interactions/pinch-rotate/pinch-rotate.component';
 import { KeyboardPanComponent } from './interactions/keyboard-pan/keyboard-pan.component';
+import { KeyboardZoomComponent } from './interactions/keyboard-zoom/keyboard-zoom.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { KeyboardPanComponent } from './interactions/keyboard-pan/keyboard-pan.c
     DoubleClickComponent,
     DragAndRotateComponent,
     PinchRotateComponent,
-    KeyboardPanComponent
+    KeyboardPanComponent,
+    KeyboardZoomComponent
   ],
   imports: [
     RouterModule,
@@ -56,7 +58,10 @@ import { KeyboardPanComponent } from './interactions/keyboard-pan/keyboard-pan.c
     DragPanComponent,
     DragAndDropComponent,
     DoubleClickComponent,
-    DragAndRotateComponent
+    DragAndRotateComponent,
+    PinchRotateComponent,
+    KeyboardPanComponent,
+    KeyboardZoomComponent
   ]
 })
 export class B3OlMapModule { }
