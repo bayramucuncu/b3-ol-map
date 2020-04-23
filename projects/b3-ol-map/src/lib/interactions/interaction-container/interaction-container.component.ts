@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {defaults as defaultInteractions, PinchZoom} from 'ol/interaction';
 
 @Component({
   selector: 'b3-interaction-container',
@@ -12,7 +13,7 @@ export class InteractionContainerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.interactions = this.interactions || [];console.log(this.interactions)
+    this.interactions = this.interactions || [];
   }
 
 }

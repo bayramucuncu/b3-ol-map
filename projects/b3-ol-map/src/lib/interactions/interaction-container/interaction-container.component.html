@@ -5,4 +5,6 @@
         [timeout]="item.settings.timeout" 
         [useAnchor]="item.settings.useAnchor" 
         [maxDelta]="item.settings.maxDelta"></b3-mouse-wheel-zoom>
+    <b3-pinch-zoom *ngIf="item.name === 'pinchzoom'" 
+        [duration]="item.settings.duration"></b3-pinch-zoom>
 </ng-container>

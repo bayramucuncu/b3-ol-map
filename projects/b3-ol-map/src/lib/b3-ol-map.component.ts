@@ -43,7 +43,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
 
     this.map = new Map({
       //controls: this.controls,
-      //interactions: this.interactions,
+      interactions: this.interactions,
       layers: [
         new Tile({
           source: new OSM()

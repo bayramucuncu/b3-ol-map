@@ -10,6 +10,7 @@ import { LayerGroupComponent } from './layers/layer-group/layer-group.component'
 import { ViewComponent } from './view/view.component';
 import { InteractionContainerComponent } from './interactions/interaction-container/interaction-container.component';
 import { CommonModule } from '@angular/common';
+import { PinchZoomComponent } from './interactions/pinch-zoom/pinch-zoom.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { CommonModule } from '@angular/common';
     LayerGroupComponent, 
     ViewComponent, 
     InteractionContainerComponent,
-    MouseWheelZoomComponent
+    MouseWheelZoomComponent,
+    PinchZoomComponent
   ],
   imports: [
     RouterModule,
@@ -37,7 +39,8 @@ import { CommonModule } from '@angular/common';
     LayerGroupComponent, 
     ViewComponent,
     InteractionContainerComponent,
-    MouseWheelZoomComponent
+    MouseWheelZoomComponent,
+    PinchZoomComponent
   ]
 })
 export class B3OlMapModule { }
