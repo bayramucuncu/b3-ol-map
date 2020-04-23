@@ -16,6 +16,7 @@ import { DragAndDropComponent } from './interactions/drag-and-drop/drag-and-drop
 import { DoubleClickComponent } from './interactions/double-click/double-click.component';
 import { DragAndRotateComponent } from './interactions/drag-and-rotate/drag-and-rotate.component';
 import { PinchRotateComponent } from './interactions/pinch-rotate/pinch-rotate.component';
+import { KeyboardPanComponent } from './interactions/keyboard-pan/keyboard-pan.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { PinchRotateComponent } from './interactions/pinch-rotate/pinch-rotate.c
     DragAndDropComponent,
     DoubleClickComponent,
     DragAndRotateComponent,
-    PinchRotateComponent
+    PinchRotateComponent,
+    KeyboardPanComponent
   ],
   imports: [
     RouterModule,

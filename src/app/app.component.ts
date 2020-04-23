@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
         { name: "draganddrop", title: "Drag and drop", settings: { formatConstructors: [ "KML", "GeoJSON", "TopoJSON", "GPX"], projection: null, target: null } },
         { name: "dragandrotate", title: "Drag and rotate", settings: { duration: 250 } },
         { name: "doubleclickzoom", title: "Double click", settings: { duration: 250, delta: 1 } },
+        { name: "keyboardpan", title: "Keyboard pan", settings: { duration: 100, pixelDelta: 128 } },
         { name: "pinchzoom", title: "Pich zoom", settings: { duration: 250 } },
         { name: "pinchrotate", title: "Pich rotate", settings: { duration: 250, threshold: 0.3 } },
         { name: "mousewheelzoom", title: "Mouse wheel interaction", settings: { duration: 250, timeout: 80, useAnchor: true, constrainResolution: false } }

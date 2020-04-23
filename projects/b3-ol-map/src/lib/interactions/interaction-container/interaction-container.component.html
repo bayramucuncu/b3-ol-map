@@ -16,6 +16,9 @@
         [timeout]="item.settings.timeout" 
         [useAnchor]="item.settings.useAnchor" 
         [maxDelta]="item.settings.maxDelta"></b3-mouse-wheel-zoom>
+    <b3-keyboard-pan *ngIf="item.name === 'keyboardpan'" 
+        [duration]="item.settings.duration"
+        [pixelDelta]="item.settings.pixelDelta"></b3-keyboard-pan>
     <b3-pinch-zoom *ngIf="item.name === 'pinchzoom'" 
         [duration]="item.settings.duration"></b3-pinch-zoom>
     <b3-pinch-rotate *ngIf="item.name === 'pinchrotate'" 
