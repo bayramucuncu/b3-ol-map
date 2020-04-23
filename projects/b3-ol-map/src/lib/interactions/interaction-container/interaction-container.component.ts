@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {defaults as defaultInteractions, PinchZoom} from 'ol/interaction';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { defaults as defaultInteractions } from 'ol/interaction';
 
 @Component({
   selector: 'b3-interaction-container',
@@ -10,10 +10,19 @@ export class InteractionContainerComponent implements OnInit {
 
   @Input() interactions: any[] = [];
 
+  @Output() outDragAndDrop = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit() {
+
+    //ToDo: if(!this.interactions) this.interactions = [{},{},{},{}]
+console.log(this.interactions)
     this.interactions = this.interactions || [];
+  }
+
+  onDragAndDrop($event: any): void {
+    this.outDragAndDrop.emit($event);
   }
 
 }

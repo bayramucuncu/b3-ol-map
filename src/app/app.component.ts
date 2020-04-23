@@ -16,9 +16,10 @@ export class AppComponent implements OnInit {
       settings: { width: "100vw", height: "100vh" },
       view: { zoom: 14, center: [4364549.537769296, 5001346.4204131], projection: "EPSG:3857", minZoom: 0, maxZoom: 26 },
       interactions: [
-        { name: "mousewheelzoom", title: "Mouse wheel interaction", settings: { duration: 250, timeout: 80, useAnchor: true, constrainResolution: false } },
+        { name: "dragpan", title: "Drag pan" },
+        { name: "draganddrop", title: "Drag and drop", settings: { formatConstructors: [ "KML", "GeoJSON", "TopoJSON", "GPX"], projection: null, target: null } },
         { name: "pinchzoom", title: "Pich zoom", settings: { duration: 250 } },
-        { name: "dragpan", title: "Drag pan" }
+        { name: "mousewheelzoom", title: "Mouse wheel interaction", settings: { duration: 250, timeout: 80, useAnchor: true, constrainResolution: false } }
       ]
     }  
   }
@@ -38,4 +39,7 @@ export class AppComponent implements OnInit {
     return Math.floor(Math.random() * (max - min) ) + min;
   }
 
+  onDragAndDrop(e){
+console.log(e)
+  }
 }
