@@ -1,0 +1,8 @@
+
+<ng-container *ngFor="let item of interactions">
+    <b3-mouse-wheel-zoom *ngIf="item.name === 'mousewheelzoom'" 
+        [duration]="item.settings.duration"
+        [timeout]="item.settings.timeout" 
+        [useAnchor]="item.settings.useAnchor" 
+        [maxDelta]="item.settings.maxDelta"></b3-mouse-wheel-zoom>
+</ng-container>

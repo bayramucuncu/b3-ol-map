@@ -8,6 +8,8 @@ import { LayerImageComponent } from './layers/layer-image/layer-image.component'
 import { LayerHeatmapComponent } from './layers/layer-heatmap/layer-heatmap.component';
 import { LayerGroupComponent } from './layers/layer-group/layer-group.component';
 import { ViewComponent } from './view/view.component';
+import { InteractionContainerComponent } from './interactions/interaction-container/interaction-container.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -18,11 +20,13 @@ import { ViewComponent } from './view/view.component';
     LayerImageComponent, 
     LayerHeatmapComponent, 
     LayerGroupComponent, 
-    MouseWheelZoomComponent, 
-    ViewComponent
+    ViewComponent, 
+    InteractionContainerComponent,
+    MouseWheelZoomComponent
   ],
   imports: [
-    RouterModule
+    RouterModule,
+    CommonModule
   ],
   exports: [
     MapComponent, 
@@ -31,8 +35,9 @@ import { ViewComponent } from './view/view.component';
     LayerImageComponent, 
     LayerHeatmapComponent, 
     LayerGroupComponent, 
-    MouseWheelZoomComponent, 
-    ViewComponent
+    ViewComponent,
+    InteractionContainerComponent,
+    MouseWheelZoomComponent
   ]
 })
 export class B3OlMapModule { }

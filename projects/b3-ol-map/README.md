@@ -3,9 +3,17 @@ Openlayers based Angular library.
 
 ## Basic usage
 
-`app.component.ts
+If you does not set any options, the map will apply default settings.
 
-export class AppComponent {
+`<b3-ol-map >
+    <b3-view ></b3-view>
+</b3-ol-map>`
+
+You can set map options like following:
+
+app.component.ts
+
+`export class AppComponent {
   title = 'b3-ol-map';
 
   public map: any = {

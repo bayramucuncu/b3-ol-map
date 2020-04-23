@@ -1,5 +1,6 @@
 <div style="width: 100vw; height: 100vh;">
     <b3-ol-map [width]="map.settings.width" [height]="map.settings.height">
         <b3-view [zoom]="map.view.zoom" [center]="map.view.center" [projection]="map.view.projection" [minZoom] ="map.view.minZoom" [maxZoom] ="map.view.maxZoom" ></b3-view>
+        <b3-interaction-container [interactions]="map.interactions"></b3-interaction-container>
     </b3-ol-map>
 </div>

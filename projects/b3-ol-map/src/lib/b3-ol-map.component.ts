@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewInit, SimpleChanges, HostListener } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewInit, SimpleChanges, HostListener, OnChanges } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Map, MapBrowserEvent, View } from 'ol';
 import { Control } from 'ol/control';
@@ -14,7 +14,7 @@ import Select from 'ol/interaction/Select.js';
   selector: 'b3-ol-map',
   template: `<div class="map" [style.width]="width" [style.height]="height"></div><ng-content></ng-content>`
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, AfterViewInit, OnChanges {
 
   map: Map;
 
@@ -40,15 +40,7 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.queryParams.subscribe(params=> {
-      if(params["lon"] && params["lat"]){
-        let coordinates = [parseFloat(params["lon"]),parseFloat(params["lat"])];
-        let destinationProj = this.map.getView().getProjection().getCode();
-        let sourceProj = "EPSG:4326";
-        this.map.getView().setCenter(transform(coordinates, sourceProj, destinationProj));
-      }
-    })
-   
+
     this.map = new Map({
       //controls: this.controls,
       //interactions: this.interactions,
@@ -67,12 +59,30 @@ export class MapComponent implements OnInit {
 
     this.map.on('click', (event: MapBrowserEvent) => this.outClick.emit(event));
     this.map.on('moveend', (event: MapBrowserEvent) => this.outMoveend.emit(event));
+
+    this.routeControl();
   }
 
-  ngAfterViewInit(): void {
+  ngAfterViewInit(): void { 
     this.map.updateSize();
   }
   
+  @HostListener('window:resize')
+  onWindowResize() {
+    this.map.updateSize();
+  }
+
+  private routeControl(): void{
+    this.activatedRoute.queryParams.subscribe(params => {
+      if(params["lon"] && params["lat"]){
+        let coordinates = [parseFloat(params["lon"]),parseFloat(params["lat"])];
+        let destinationProj = this.map.getView().getProjection().getCode();
+        let sourceProj = "EPSG:4326";
+        this.map.getView().setCenter(transform(coordinates, sourceProj, destinationProj));
+      }
+    })
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     let properties: { [index: string]: any } = {};
 
@@ -87,11 +97,6 @@ export class MapComponent implements OnInit {
     }
 
     this.map.setProperties(properties, false);
-  }
-
-  @HostListener('window:resize')
-  onWindowResize() {
-    this.map.updateSize();
   }
 
   ngOnDestroy() {
