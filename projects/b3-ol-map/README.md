@@ -29,3 +29,14 @@ app.component.html
         <b3-view [zoom]="map.view.zoom" [center]="map.view.center" [projection]="map.view.projection" [minZoom] ="map.view.minZoom" [maxZoom] ="map.view.maxZoom" ></b3-view>
     </b3-ol-map>
 </div>`
+
+
+## default interactions
+If you do not set the interactions, default interactions are 
+- DragPan, 
+- DoubleClickZoom
+- PinchZoom
+- PinchRotate
+- MouseWheelZoom
+
+
