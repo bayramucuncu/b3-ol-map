@@ -15,5 +15,17 @@
           [zIndex]="item.layerSettings && item.layerSettings.zIndex"
           (outLayerCreate)="onLayerCreated($event)">
         <b3-source-osm *ngIf="item.sourceSettings.type === 'osm'"></b3-source-osm>
+        <b3-source-tile-wms *ngIf="item.sourceSettings.type === 'tilewms'"
+          [url]="item.sourceSettings.url"
+          [urls]="item.sourceSettings.urls"
+          [params]="item.sourceSettings.params"
+          [cacheSize]="item.sourceSettings.cacheSize"
+          [crossOrigin]="item.sourceSettings.crossOrigin"
+          [gutter]="item.sourceSettings.gutter"
+          [hidpi]="item.sourceSettings.hidpi"
+          [projection]="item.sourceSettings.projection"
+          [reprojectionErrorThreshold]="item.sourceSettings.reprojectionErrorThreshold"
+          [serverType]="item.sourceSettings.serverType"
+          [wrapX]="item.sourceSettings.wrapX"></b3-source-tile-wms>
     </b3-layer-tile>
 </ng-container>

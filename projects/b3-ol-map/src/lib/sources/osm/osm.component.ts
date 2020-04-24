@@ -5,10 +5,10 @@ import { LayerTileComponent } from '../../layers/tile/tile.component';
 
 @Component({
   selector: 'b3-source-osm',
-  templateUrl: './source-osm.component.html',
-  styleUrls: ['./source-osm.component.css']
+  templateUrl: './osm.component.html',
+  styleUrls: ['./osm.component.css']
 })
-export class SourceOsmComponent implements AfterContentInit  {
+export class OsmComponent implements AfterContentInit  {
   source: OSM;
   
   @Input() cacheSize: number;

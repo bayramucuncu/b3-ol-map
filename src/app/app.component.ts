@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   constructor() {
     this.map = {
       settings: { width: "100vw", height: "100vh" },
-      view: { zoom: 14, center: [4364549.537769296, 5001346.4204131], projection: "EPSG:3857", minZoom: 0, maxZoom: 26 },
+      view: { zoom: 14, center: [3332870.606704303, 4977900.556315189], projection: "EPSG:3857", minZoom: 0, maxZoom: 26 },
       projections: [
         { code: "EPSG:5254", proj4: "+proj=tmerc +lat_0=0 +lon_0=30 +k=1 +x_0=500000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs " }
       ],
@@ -31,7 +31,8 @@ export class AppComponent implements OnInit {
         { name: "mousewheelzoom", title: "Mouse wheel interaction", settings: { duration: 250, timeout: 80, useAnchor: true, constrainResolution: false } }
       ],
       layers:[
-        { id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", order: 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
+        { 
+            id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", order: 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
       ]
     }  
   }
@@ -52,10 +53,10 @@ export class AppComponent implements OnInit {
   }
 
   onDragAndDrop(event: any){
-    console.log(event)
+    //console.log(event)
   }
 
   onLayerCreated(event: any) {
-    console.log("Layer cereated: ", event)
+    //console.log("Layer cereated: ", event)
   }
 }

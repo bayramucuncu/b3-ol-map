@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SourceOsmComponent } from './source-osm.component';
+import { TileWmsComponent } from './tile-wms.component';
 
-describe('SourceOsmComponent', () => {
-  let component: SourceOsmComponent;
-  let fixture: ComponentFixture<SourceOsmComponent>;
+describe('TileWmsComponent', () => {
+  let component: TileWmsComponent;
+  let fixture: ComponentFixture<TileWmsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SourceOsmComponent ]
+      declarations: [ TileWmsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SourceOsmComponent);
+    fixture = TestBed.createComponent(TileWmsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

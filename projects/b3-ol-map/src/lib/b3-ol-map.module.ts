@@ -21,8 +21,9 @@ import { KeyboardZoomComponent } from './interactions/keyboard-zoom/keyboard-zoo
 import { DragZoomComponent } from './interactions/drag-zoom/drag-zoom.component';
 import { ProjectionComponent } from './projection/projection.component';
 import { ProjectionContainerComponent } from './projection/projection-container/projection-container.component';
-import { SourceOsmComponent } from './sources/source-osm/source-osm.component';
+import { OsmComponent } from './sources/osm/osm.component';
 import { LayerContainerComponent } from './layers/layer-container.component';
+import { TileWmsComponent } from './sources/tile-wms/tile-wms.component';
 
 
 @NgModule({
@@ -47,8 +48,9 @@ import { LayerContainerComponent } from './layers/layer-container.component';
     DragZoomComponent,
     ProjectionComponent,
     ProjectionContainerComponent,
-    SourceOsmComponent,
-    LayerContainerComponent
+    OsmComponent,
+    LayerContainerComponent,
+    TileWmsComponent
   ],
   imports: [
     RouterModule,
@@ -74,7 +76,7 @@ import { LayerContainerComponent } from './layers/layer-container.component';
     KeyboardZoomComponent,
     ProjectionComponent,
     ProjectionContainerComponent,
-    SourceOsmComponent,
+    OsmComponent,
     LayerContainerComponent
   ]
 })

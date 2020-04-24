@@ -38,7 +38,7 @@ app.component.html
 ```
 
 
-## Default interactions
+## Interactions
 If you do not set the interactions, default interactions are 
 - DragPan, 
 - DoubleClickZoom
@@ -67,11 +67,11 @@ app.component.html
 ```html
 <b3-ol-map [width]="map.settings.width" [height]="map.settings.height">
     <b3-view [zoom]="map.view.zoom" [center]="map.view.center" [projection]="map.view.projection" [minZoom] ="map.view.minZoom" [maxZoom] ="map.view.maxZoom" ></b3-view>
-    <b3-interaction-container [interactions]="map.interactions" (outDragAndDrop)="onDragAndDrop($event)"></b3-interaction-container>
+    <b3-interaction-container [interactions]="map.interactions"></b3-interaction-container>
 </b3-ol-map>
 ```
 
-## Defalut projections
+## Projections
 If you do not set the projections, default interactions array is empty. 
 
 app.component.ts
@@ -94,8 +94,39 @@ app.component.html
 ```html
 <b3-ol-map [width]="map.settings.width" [height]="map.settings.height">
     <b3-view [zoom]="map.view.zoom" [center]="map.view.center" [projection]="map.view.projection" [minZoom] ="map.view.minZoom" [maxZoom] ="map.view.maxZoom" ></b3-view>
-    <b3-interaction-container [interactions]="map.interactions" (outDragAndDrop)="onDragAndDrop($event)"></b3-interaction-container>
+    <b3-interaction-container [interactions]="map.interactions"></b3-interaction-container>
     <b3-projection-container [projections]="map.projections"></b3-projection-container>
 </b3-ol-map>
 ```
 
+## Layers
+OSM map is default layer of map opject.
+
+app.component.ts
+```typescript
+export class AppComponent {
+  title = 'b3-ol-map';
+
+  public map: any = {
+    settings: { width: "100vw", height: "100vh" },
+    view: { zoom: 14, center: [4364549.537769296, 5001346.4204131],  projection: "EPSG:3857", minZoom: 0, maxZoom: 26 },
+    interactions: [
+        { name: "dragpan", title: "Drag pan" },
+        { name: "dragandrotate", title: "Drag and rotate", settings: { duration: 250 } }
+    ],
+    layers:[
+      { id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", order: 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
+    ]
+  }
+}
+```
+
+app.component.html
+```html
+<b3-ol-map [width]="map.settings.width" [height]="map.settings.height">
+    <b3-view [zoom]="map.view.zoom" [center]="map.view.center" [projection]="map.view.projection" [minZoom] ="map.view.minZoom" [maxZoom] ="map.view.maxZoom" ></b3-view>
+    <b3-interaction-container [interactions]="map.interactions"></b3-interaction-container>
+    <b3-projection-container [projections]="map.projections"></b3-projection-container>
+    <b3-layer-container [layers]="map.layers"></b3-layer-container>
+</b3-ol-map>
+```
