@@ -19,6 +19,8 @@ import { PinchRotateComponent } from './interactions/pinch-rotate/pinch-rotate.c
 import { KeyboardPanComponent } from './interactions/keyboard-pan/keyboard-pan.component';
 import { KeyboardZoomComponent } from './interactions/keyboard-zoom/keyboard-zoom.component';
 import { DragZoomComponent } from './interactions/drag-zoom/drag-zoom.component';
+import { ProjectionComponent } from './projection/projection.component';
+import { ProjectionContainerComponent } from './projection/projection-container/projection-container.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { DragZoomComponent } from './interactions/drag-zoom/drag-zoom.component'
     PinchRotateComponent,
     KeyboardPanComponent,
     KeyboardZoomComponent,
-    DragZoomComponent
+    DragZoomComponent,
+    ProjectionComponent,
+    ProjectionContainerComponent
   ],
   imports: [
     RouterModule,
@@ -63,7 +67,9 @@ import { DragZoomComponent } from './interactions/drag-zoom/drag-zoom.component'
     DragAndRotateComponent,
     PinchRotateComponent,
     KeyboardPanComponent,
-    KeyboardZoomComponent
+    KeyboardZoomComponent,
+    ProjectionComponent,
+    ProjectionContainerComponent
   ]
 })
 export class B3OlMapModule { }

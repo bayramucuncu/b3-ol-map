@@ -15,6 +15,9 @@ export class AppComponent implements OnInit {
     this.map = {
       settings: { width: "100vw", height: "100vh" },
       view: { zoom: 14, center: [4364549.537769296, 5001346.4204131], projection: "EPSG:3857", minZoom: 0, maxZoom: 26 },
+      projections: [
+        { code: "EPSG:5254", proj4: "+proj=tmerc +lat_0=0 +lon_0=30 +k=1 +x_0=500000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs " }
+      ],
       interactions: [
         { name: "dragpan", title: "Drag pan" },
         { name: "draganddrop", title: "Drag and drop", settings: { formatConstructors: [ "KML", "GeoJSON", "TopoJSON", "GPX"], projection: null, target: null } },

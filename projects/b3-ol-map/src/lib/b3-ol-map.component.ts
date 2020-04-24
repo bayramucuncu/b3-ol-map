@@ -48,11 +48,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
         new Tile({
           source: new OSM()
         })
-      ],
-      view: new View({
-        center: fromLonLat([37.41, 8.82]),
-        zoom: 4
-      })
+      ]
     });
 
     this.map.setTarget(this.element.nativeElement.firstElementChild);

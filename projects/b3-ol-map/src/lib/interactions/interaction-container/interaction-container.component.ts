@@ -15,10 +15,7 @@ export class InteractionContainerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
-    (!this.interactions) && (this.interactions = this.getDefaultInteractions());
-
-    this.interactions = this.interactions || [];
+    !this.interactions && (this.interactions = this.getDefaultInteractions());
   }
 
   onDragAndDrop($event: any): void {
