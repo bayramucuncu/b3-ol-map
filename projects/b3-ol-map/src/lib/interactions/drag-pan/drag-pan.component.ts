@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseInteractionComponent } from '../base-interaction-component';
 import { MapComponent } from '../../b3-ol-map.component';
 import { DragPan } from 'ol/interaction';
+import Kinetic  from 'ol/Kinetic';
 
 @Component({
   selector: 'b3-drag-pan',
@@ -15,7 +16,9 @@ export class DragPanComponent extends BaseInteractionComponent implements OnInit
   }
 
   ngOnInit() {
-    this.interaction = new DragPan();
+    this.interaction = new DragPan({
+      kinetic: new Kinetic(-0.005, 0.05, 100)
+    });
 
     super.ngOnInit(); 
   }
