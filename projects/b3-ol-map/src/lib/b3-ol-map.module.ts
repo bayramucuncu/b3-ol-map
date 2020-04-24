@@ -22,6 +22,7 @@ import { DragZoomComponent } from './interactions/drag-zoom/drag-zoom.component'
 import { ProjectionComponent } from './projection/projection.component';
 import { ProjectionContainerComponent } from './projection/projection-container/projection-container.component';
 import { SourceOsmComponent } from './sources/source-osm/source-osm.component';
+import { LayerContainerComponent } from './layers/layer-container.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { SourceOsmComponent } from './sources/source-osm/source-osm.component';
     DragZoomComponent,
     ProjectionComponent,
     ProjectionContainerComponent,
-    SourceOsmComponent
+    SourceOsmComponent,
+    LayerContainerComponent
   ],
   imports: [
     RouterModule,
@@ -72,7 +74,8 @@ import { SourceOsmComponent } from './sources/source-osm/source-osm.component';
     KeyboardZoomComponent,
     ProjectionComponent,
     ProjectionContainerComponent,
-    SourceOsmComponent
+    SourceOsmComponent,
+    LayerContainerComponent
   ]
 })
 export class B3OlMapModule { }

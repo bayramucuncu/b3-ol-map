@@ -29,6 +29,9 @@ export class AppComponent implements OnInit {
         { name: "pinchzoom", title: "Pich zoom", settings: { duration: 250 } },
         { name: "pinchrotate", title: "Pich rotate", settings: { duration: 250, threshold: 0.3 } },
         { name: "mousewheelzoom", title: "Mouse wheel interaction", settings: { duration: 250, timeout: 80, useAnchor: true, constrainResolution: false } }
+      ],
+      layers:[
+        { id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", order: 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
       ]
     }  
   }
@@ -48,7 +51,11 @@ export class AppComponent implements OnInit {
     return Math.floor(Math.random() * (max - min) ) + min;
   }
 
-  onDragAndDrop(e){
-console.log(e)
+  onDragAndDrop(event: any){
+    console.log(event)
+  }
+
+  onLayerCreated(event: any) {
+    console.log("Layer cereated: ", event)
   }
 }

@@ -3,5 +3,6 @@
         <b3-view [zoom]="map.view.zoom" [center]="map.view.center" [projection]="map.view.projection" [minZoom] ="map.view.minZoom" [maxZoom] ="map.view.maxZoom" ></b3-view>
         <b3-interaction-container [interactions]="map.interactions" (outDragAndDrop)="onDragAndDrop($event)"></b3-interaction-container>
         <b3-projection-container [projections]="map.projections"></b3-projection-container>
+        <b3-layer-container [layers]="map.layers" (outLayerCreate)="onLayerCreated($event)"></b3-layer-container>
     </b3-ol-map>
 </div>
