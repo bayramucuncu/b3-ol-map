@@ -37,5 +37,9 @@
           [reprojectionErrorThreshold]="item.sourceSettings.reprojectionErrorThreshold"
           [transition]="item.sourceSettings.transition"
           [wrapX]="item.sourceSettings.wrapX"></b3-source-tile-arcgisrest>
+        <b3-source-tile-wmts *ngIf="item.sourceSettings.type === 'tilewmts'"
+          [layer]="item.sourceSettings.layer"
+          [matrixSet]="item.sourceSettings.matrixSet"
+          [url]="item.sourceSettings.url"></b3-source-tile-wmts>
     </b3-layer-tile>
 </ng-container>

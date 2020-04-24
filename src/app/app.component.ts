@@ -32,7 +32,8 @@ export class AppComponent implements OnInit {
       ],
       layers:[
         { id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", order: 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
-        { "id": "79c55bd2-bc59-4a4f-9b86-ac8309728f6c", "order": 28, "type": "tile", "name": "İçme suyu esri", "isBase": false, "layerSettings": { "minResolution": 0.2, "maxResolution": 150, "visible": true  }, "sourceSettings": { "type": "tilearcgisrest", "url": "https://gisservices.isu.gov.tr/arcgis/rest/services/Altyapilar/Icmesuyu/MapServer" } },
+        //{ "id": "50c25bd2-bc59-4a4f-9b86-ac8309728f1c", "order": 3, "type": "tile", "name": "Uydu 2018", "isBase": false, "layerSettings": { "minResolution": "0.14", "maxResolution": "200" }, "sourceSettings": { "type": "tilewmts", "url": "https://tileservices.kocaeli.bel.tr/geoserver/gwc/service/wmts", "layer": "kbb:hybrid_v2_group", "matrixSet": "EPSG:900913" } },
+        { "id": "50c15bd2-bc59-4a4f-9b86-ac8309728f1c", "order": 2, "type": "tile", "name": "Şehir Haritası", "isBase": false, "layerSettings": { "minResolution": "0.14", "maxResolution": "200" }, "sourceSettings": { "type": "tilewmts", "url": "https://tileservices.kocaeli.bel.tr/geoserver/gwc/service/wmts", "layer": "kbb:wm_carto_v2", "matrixSet": "EPSG:900913" } },
       ]
     }  
   }

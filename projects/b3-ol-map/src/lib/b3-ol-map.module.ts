@@ -25,6 +25,8 @@ import { OsmComponent } from './sources/osm/osm.component';
 import { LayerContainerComponent } from './layers/layer-container.component';
 import { TileWmsComponent } from './sources/tile-wms/tile-wms.component';
 import { TileArcgisRestComponent } from './sources/tile-arcgis-rest/tile-arcgis-rest.component';
+import { TileWmtsComponent } from './sources/tile-wmts/tile-wmts.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -52,11 +54,13 @@ import { TileArcgisRestComponent } from './sources/tile-arcgis-rest/tile-arcgis-
     OsmComponent,
     LayerContainerComponent,
     TileWmsComponent,
-    TileArcgisRestComponent
+    TileArcgisRestComponent,
+    TileWmtsComponent
   ],
   imports: [
     RouterModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   exports: [
     MapComponent, 
@@ -79,7 +83,10 @@ import { TileArcgisRestComponent } from './sources/tile-arcgis-rest/tile-arcgis-
     ProjectionComponent,
     ProjectionContainerComponent,
     OsmComponent,
-    LayerContainerComponent
+    LayerContainerComponent,
+    TileWmsComponent,
+    TileArcgisRestComponent,
+    TileWmtsComponent
   ]
 })
 export class B3OlMapModule { }
