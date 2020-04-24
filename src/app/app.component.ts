@@ -31,8 +31,8 @@ export class AppComponent implements OnInit {
         { name: "mousewheelzoom", title: "Mouse wheel interaction", settings: { duration: 250, timeout: 80, useAnchor: true, constrainResolution: false } }
       ],
       layers:[
-        { 
-            id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", order: 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
+        { id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", order: 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
+        { "id": "79c55bd2-bc59-4a4f-9b86-ac8309728f6c", "order": 28, "type": "tile", "name": "İçme suyu esri", "isBase": false, "layerSettings": { "minResolution": 0.2, "maxResolution": 150, "visible": true  }, "sourceSettings": { "type": "tilearcgisrest", "url": "https://gisservices.isu.gov.tr/arcgis/rest/services/Altyapilar/Icmesuyu/MapServer" } },
       ]
     }  
   }

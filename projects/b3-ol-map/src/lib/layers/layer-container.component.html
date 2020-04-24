@@ -27,5 +27,15 @@
           [reprojectionErrorThreshold]="item.sourceSettings.reprojectionErrorThreshold"
           [serverType]="item.sourceSettings.serverType"
           [wrapX]="item.sourceSettings.wrapX"></b3-source-tile-wms>
+        <b3-source-tile-arcgisrest *ngIf="item.sourceSettings.type === 'tilearcgisrest'"
+          [url]="item.sourceSettings.url"
+          [urls]="item.sourceSettings.urls"
+          [params]="item.sourceSettings.params"
+          [cacheSize]="item.sourceSettings.cacheSize"
+          [crossOrigin]="item.sourceSettings.crossOrigin"         
+          [projection]="item.sourceSettings.projection"
+          [reprojectionErrorThreshold]="item.sourceSettings.reprojectionErrorThreshold"
+          [transition]="item.sourceSettings.transition"
+          [wrapX]="item.sourceSettings.wrapX"></b3-source-tile-arcgisrest>
     </b3-layer-tile>
 </ng-container>

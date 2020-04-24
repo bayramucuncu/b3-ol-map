@@ -24,6 +24,7 @@ import { ProjectionContainerComponent } from './projection/projection-container/
 import { OsmComponent } from './sources/osm/osm.component';
 import { LayerContainerComponent } from './layers/layer-container.component';
 import { TileWmsComponent } from './sources/tile-wms/tile-wms.component';
+import { TileArcgisRestComponent } from './sources/tile-arcgis-rest/tile-arcgis-rest.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { TileWmsComponent } from './sources/tile-wms/tile-wms.component';
     ProjectionContainerComponent,
     OsmComponent,
     LayerContainerComponent,
-    TileWmsComponent
+    TileWmsComponent,
+    TileArcgisRestComponent
   ],
   imports: [
     RouterModule,
