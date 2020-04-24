@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, AfterContentInit } from '@angular/core';
 import { OSM } from 'ol/source';
 import { LoadFunction } from 'ol/Tile';
-import { LayerTileComponent } from '../../layers/layer-tile/layer-tile.component';
+import { LayerTileComponent } from '../../layers/tile/tile.component';
 
 @Component({
   selector: 'b3-source-osm',

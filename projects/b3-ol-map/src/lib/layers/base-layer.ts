@@ -24,7 +24,7 @@ export abstract class BaseLayerComponent implements OnInit, OnDestroy {
         this.layer.set("name", this.name);
         this.layer.set("order", this.order);
         this.layer.set("isBase", this.isBase);
-        this.layer.set("showOnLayerView", this.showOnLayerView);
+        this.layer.set("showOnLayerView", this.showOnLayerView); 
 
         this.isBase === true
             ? this.layer.setZIndex(0) 

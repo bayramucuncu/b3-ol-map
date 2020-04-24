@@ -1,4 +1,4 @@
-import { Component, OnInit, SkipSelf, Optional, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, SkipSelf, Optional } from '@angular/core';
 import { Group } from 'ol/layer'
 import { MapComponent } from '../..';
 import { BaseLayerComponent } from '../base-layer';
@@ -6,8 +6,8 @@ import { BaseLayerComponent } from '../base-layer';
 
 @Component({
   selector: 'b3-layer-group',
-  templateUrl: './layer-group.component.html',
-  styleUrls: ['./layer-group.component.css']
+  templateUrl: './group.component.html',
+  styleUrls: ['./group.component.css']
 })
 export class LayerGroupComponent extends BaseLayerComponent implements OnInit {
 

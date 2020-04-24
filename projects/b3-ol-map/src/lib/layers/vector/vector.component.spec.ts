@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayerVectorComponent } from './layer-vector.component';
+import { VectorComponent } from './vector.component';
 
 describe('LayerVectorComponent', () => {
-  let component: LayerVectorComponent;
-  let fixture: ComponentFixture<LayerVectorComponent>;
+  let component: VectorComponent;
+  let fixture: ComponentFixture<VectorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LayerVectorComponent ]
+      declarations: [ VectorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LayerVectorComponent);
+    fixture = TestBed.createComponent(VectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

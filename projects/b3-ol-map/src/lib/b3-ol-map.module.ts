@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { MapComponent } from './b3-ol-map.component';
 import { RouterModule } from '@angular/router';
-import { LayerTileComponent } from './layers/layer-tile/layer-tile.component';
+import { LayerTileComponent } from './layers/tile/tile.component';
 import { MouseWheelZoomComponent } from './interactions/mouse-wheel-zoom/mouse-wheel-zoom.component';
-import { LayerVectorComponent } from './layers/layer-vector/layer-vector.component';
-import { LayerImageComponent } from './layers/layer-image/layer-image.component';
-import { LayerHeatmapComponent } from './layers/layer-heatmap/layer-heatmap.component';
-import { LayerGroupComponent } from './layers/layer-group/layer-group.component';
+import { VectorComponent } from './layers/vector/vector.component';
+import { ImageComponent } from './layers/image/image.component';
+import { HeatmapComponent } from './layers/heatmap/heatmap.component';
+import { LayerGroupComponent } from './layers/group/group.component';
 import { ViewComponent } from './view/view.component';
-import { InteractionContainerComponent } from './interactions/interaction-container/interaction-container.component';
+import { InteractionContainerComponent } from './interactions/interaction-container.component';
 import { CommonModule } from '@angular/common';
 import { PinchZoomComponent } from './interactions/pinch-zoom/pinch-zoom.component';
 import { DragPanComponent } from './interactions/drag-pan/drag-pan.component';
@@ -28,9 +28,9 @@ import { SourceOsmComponent } from './sources/source-osm/source-osm.component';
   declarations: [
     MapComponent, 
     LayerTileComponent, 
-    LayerVectorComponent, 
-    LayerImageComponent, 
-    LayerHeatmapComponent, 
+    VectorComponent, 
+    ImageComponent, 
+    HeatmapComponent, 
     LayerGroupComponent, 
     ViewComponent, 
     InteractionContainerComponent,
@@ -55,9 +55,9 @@ import { SourceOsmComponent } from './sources/source-osm/source-osm.component';
   exports: [
     MapComponent, 
     LayerTileComponent, 
-    LayerVectorComponent, 
-    LayerImageComponent, 
-    LayerHeatmapComponent, 
+    VectorComponent, 
+    ImageComponent, 
+    HeatmapComponent, 
     LayerGroupComponent, 
     ViewComponent,
     InteractionContainerComponent,

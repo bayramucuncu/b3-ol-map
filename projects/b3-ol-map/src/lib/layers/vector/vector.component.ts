@@ -1,17 +1,17 @@
-import { Component, OnInit, Optional, Input, ViewEncapsulation, ChangeDetectionStrategy, Host, ElementRef } from '@angular/core';
+import { Component, OnInit, Optional, Input} from '@angular/core';
 import { Vector } from 'ol/layer'
 import { Extent } from 'ol/extent';
 import Style, { StyleFunction } from 'ol/style/Style';
 import { BaseLayerComponent } from '../base-layer';
 import { MapComponent } from '../../b3-ol-map.component';
-import { LayerGroupComponent } from '../layer-group/layer-group.component';
+import { LayerGroupComponent } from '../group/group.component';
 
 @Component({
   selector: 'b3-layer-vector',
-  templateUrl: './layer-vector.component.html',
-  styleUrls: ['./layer-vector.component.css']
+  templateUrl: './vector.component.html',
+  styleUrls: ['./vector.component.css']
 })
-export class LayerVectorComponent extends BaseLayerComponent implements OnInit {
+export class VectorComponent extends BaseLayerComponent implements OnInit {
 
   @Input() opacity: number;
   @Input() extent: Extent;

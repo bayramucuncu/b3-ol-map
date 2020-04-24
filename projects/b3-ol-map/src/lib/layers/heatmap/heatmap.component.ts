@@ -3,14 +3,14 @@ import { Extent } from 'ol/extent';
 import { Heatmap } from 'ol/layer'
 import { MapComponent } from '../../b3-ol-map.component';
 import { BaseLayerComponent } from '../base-layer';
-import { LayerGroupComponent } from '../layer-group/layer-group.component';
+import { LayerGroupComponent } from '../group/group.component';
 
 @Component({
   selector: 'b3-layer-heatmap',
-  templateUrl: './layer-heatmap.component.html',
-  styleUrls: ['./layer-heatmap.component.css']
+  templateUrl: './heatmap.component.html',
+  styleUrls: ['./heatmap.component.css']
 })
-export class LayerHeatmapComponent extends BaseLayerComponent implements OnInit {
+export class HeatmapComponent extends BaseLayerComponent implements OnInit {
 
   @Input() opacity: number;
   @Input() visible: boolean;

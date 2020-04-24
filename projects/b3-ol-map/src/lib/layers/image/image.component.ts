@@ -1,24 +1,22 @@
 import { Component, OnInit, Input, Optional } from '@angular/core';
 import { Extent } from 'ol/extent';
-import { Tile } from 'ol/layer'
+import { Image } from 'ol/layer'
 import { BaseLayerComponent } from '../base-layer';
 import { MapComponent } from '../../b3-ol-map.component';
-import { LayerGroupComponent } from '../layer-group/layer-group.component';
+import { LayerGroupComponent } from '../group/group.component';
 
 @Component({
-  selector: 'b3-layer-tile',
-  templateUrl: './layer-tile.component.html',
-  styleUrls: ['./layer-tile.component.css']
+  selector: 'b3-layer-image',
+  templateUrl: './image.component.html',
+  styleUrls: ['./image.component.css']
 })
-export class LayerTileComponent extends BaseLayerComponent implements OnInit {
+export class ImageComponent extends BaseLayerComponent implements OnInit {
 
-  @Input() opacity: number; 
-  @Input() preload: number;
+  @Input() opacity: number;
   @Input() minResolution: number;
   @Input() maxResolution: number;
   @Input() visible: boolean;
   @Input() extent: Extent;
-  @Input() useInterimTilesOnError: boolean;
   @Input() zIndex: number;
 
   constructor(mapComponent: MapComponent, @Optional() group?: LayerGroupComponent) {
@@ -26,16 +24,15 @@ export class LayerTileComponent extends BaseLayerComponent implements OnInit {
   }
  
   ngOnInit() {
-    this.layer = new Tile({
+    this.layer = new Image({
       opacity: this.opacity,
-      preload: this.preload,
       minResolution: this.minResolution,
       maxResolution: this.maxResolution,
       visible: this.visible,
       extent: this.extent,
-      useInterimTilesOnError: this.useInterimTilesOnError
+      zIndex: this.zIndex
     });
-    
+
     super.ngOnInit();
   }
 }

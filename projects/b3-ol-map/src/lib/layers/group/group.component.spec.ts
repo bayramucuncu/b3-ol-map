@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayerGroupComponent } from './layer-group.component';
+import { LayerGroupComponent } from './group.component';
 import { MapComponent } from '../../b3-ol-map.component';
 import { ElementRef } from '@angular/core';
 

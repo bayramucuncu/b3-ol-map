@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayerImageComponent } from './layer-image.component';
+import { ImageComponent } from './image.component';
 import { MapComponent } from '../../b3-ol-map.component';
 import { ElementRef } from '@angular/core';
 import { from } from 'rxjs';
@@ -20,8 +20,8 @@ export class MockMap {
 }
 
 describe('LayerImageComponent', () => {
-  let component: LayerImageComponent;
-  let fixture: ComponentFixture<LayerImageComponent>;
+  let component: ImageComponent;
+  let fixture: ComponentFixture<ImageComponent>;
 
   const activatedRouteStub = {
     queryParams: {
@@ -33,7 +33,7 @@ describe('LayerImageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LayerImageComponent, MapComponent],
+      declarations: [ImageComponent, MapComponent],
       providers: [
         {
           provide: MapComponent,
@@ -53,7 +53,7 @@ describe('LayerImageComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LayerImageComponent);
+    fixture = TestBed.createComponent(ImageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

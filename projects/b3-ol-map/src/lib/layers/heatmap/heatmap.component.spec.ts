@@ -1,37 +1,48 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LayerTileComponent } from './layer-tile.component';
+import { HeatmapComponent } from './heatmap.component';
 import { MapComponent } from '../../b3-ol-map.component';
 import { ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Map } from 'ol';
 
 export class MockElementRef extends ElementRef {
   constructor() { super(null); }
   element: { nativeElement: { firstElementChild: {} } };
 }
 
+export class MockMap extends Map {
+  map: any = {
+    getLayers() : any[] {
+      return [];
+    }
+  }
+}
 
-describe('LayerTileComponent', () => {
-  let component: LayerTileComponent;
-  let fixture: ComponentFixture<LayerTileComponent>;
+describe('LayerHeatmapComponent', () => {
+  let component: HeatmapComponent;
+  let fixture: ComponentFixture<HeatmapComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LayerTileComponent, MapComponent],
-      providers: [
+      declarations: [ HeatmapComponent, MapComponent ],
+      providers: [ 
         {
-          provide: MapComponent
+          provide: MapComponent,
+          useClass: MockMap
         },
+
         {
           provide: ElementRef,
           useClass: MockElementRef
         }
-      ]
+       ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LayerTileComponent);
+    fixture = TestBed.createComponent(HeatmapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
