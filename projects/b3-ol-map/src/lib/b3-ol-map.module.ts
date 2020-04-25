@@ -44,6 +44,8 @@ import { Gml3Component } from './sources/gml3/gml3.component';
 import { Gml32Component } from './sources/gml32/gml32.component';
 import { ClusterComponent } from './sources/cluster/cluster.component';
 import { ClusterContainerComponent } from './sources/cluster/cluster-container/cluster-container.component';
+import { WktComponent } from './sources/wkt/wkt.component';
+import { EsrijsonComponent } from './sources/esrijson/esrijson.component';
 
 
 @NgModule({
@@ -89,7 +91,9 @@ import { ClusterContainerComponent } from './sources/cluster/cluster-container/c
     Gml3Component,
     Gml32Component,
     ClusterComponent,
-    ClusterContainerComponent
+    ClusterContainerComponent,
+    WktComponent,
+    EsrijsonComponent
   ],
   imports: [
     RouterModule,

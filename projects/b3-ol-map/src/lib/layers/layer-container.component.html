@@ -136,6 +136,11 @@
             [dataProjection]="item.sourceSettings.dataProjection"
             [featureProjection]="item.sourceSettings.featureProjection"></b3-source-cluster> 
       </b3-source-cluster-container>
+      <b3-source-esrijson *ngIf="item.sourceSettings.type === 'esrijson'"
+        [url]="item.sourceSettings.url"
+        [inSR]="item.sourceSettings.inSR"
+        [outSR]="item.sourceSettings.outSR"
+        [fields]="item.sourceSettings.fields"></b3-source-esrijson>
       <b3-source-feature *ngIf="item.sourceSettings.type === 'feature'"
         [features]="item.sourceSettings.features"></b3-source-feature>
       <b3-source-gml2 *ngIf="item.sourceSettings.type === 'gml2'"
@@ -174,6 +179,11 @@
         [layerName]="item.sourceSettings.layerName"
         [dataProjection]="item.sourceSettings.dataProjection"
         [featureProjection]="item.sourceSettings.featureProjection"></b3-source-topojson>
+      <b3-source-wkt *ngIf="item.sourceSettings.type === 'wkt'"
+        [wkt]="item.sourceSettings.wkt"
+        [dataProjection]="item.sourceSettings.dataProjection"
+        [featureProjection]="item.sourceSettings.featureProjection"
+        [extent]="item.sourceSettings.extent"></b3-source-wkt>
     </b3-layer-vector>
     <b3-layer-heatmap *ngIf="item.type === 'heatmap'"
         [id] = "item.id"
