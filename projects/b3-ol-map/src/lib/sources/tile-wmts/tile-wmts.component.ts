@@ -3,8 +3,7 @@ import { WMTS } from 'ol/source';
 import { LayerTileComponent } from '../../layers/tile/tile.component';
 import { WMTSCapabilities } from 'ol/format';
 import { optionsFromCapabilities } from "ol/source/WMTS";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { switchMap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'b3-source-tile-wmts',
@@ -22,29 +21,24 @@ export class TileWmtsComponent implements OnInit {
   constructor(private layerComponent: LayerTileComponent, private httpClient: HttpClient) {}
   
   ngOnInit() {
-    let parser = new WMTSCapabilities();
+    
     let url = `${this.url}?REQUEST=getcapabilities`;
-    
-    fetch(url).then((response:any) => {
-        return response.text();
-      }
-    ).then((text:any) => {
-        var result = parser.read(text);
 
-        var options = optionsFromCapabilities(result, {
-          layer: this.layer,
-          matrixSet: this.matrixSet
-        });
+    this.httpClient.get(url, { responseType: "text" }).subscribe((response: any)=>{
+      let parser = new WMTSCapabilities();
+      var result = parser.read(response);
 
-        this.source = new WMTS(options);
-        this.source.on("tileloadstart", ()=> this.layerComponent.layer.set("isLoading", true));
-        this.source.on("tileloadend", ()=> this.layerComponent.layer.set("isLoading", false));
-        this.source.on("tileloaderror", ()=> this.layerComponent.layer.set("isLoading", false));
-    
-        this.layerComponent.layer.setSource(this.source);
-      }
-    )
+      var options = optionsFromCapabilities(result, {
+        layer: this.layer,
+        matrixSet: this.matrixSet
+      });
 
+      this.source = new WMTS(options);
+      this.source.on("tileloadstart", ()=> this.layerComponent.layer.set("isLoading", true));
+      this.source.on("tileloadend", ()=> this.layerComponent.layer.set("isLoading", false));
+      this.source.on("tileloaderror", ()=> this.layerComponent.layer.set("isLoading", false));
+  
+      this.layerComponent.layer.setSource(this.source);
+    });
   }
-
 }
