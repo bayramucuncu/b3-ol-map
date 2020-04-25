@@ -27,6 +27,7 @@ import { TileWmsComponent } from './sources/tile-wms/tile-wms.component';
 import { TileArcgisRestComponent } from './sources/tile-arcgis-rest/tile-arcgis-rest.component';
 import { TileWmtsComponent } from './sources/tile-wmts/tile-wmts.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TopojsonComponent } from './sources/topojson/topojson.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { HttpClientModule } from '@angular/common/http';
     LayerContainerComponent,
     TileWmsComponent,
     TileArcgisRestComponent,
-    TileWmtsComponent
+    TileWmtsComponent,
+    TopojsonComponent
   ],
   imports: [
     RouterModule,
@@ -86,7 +88,8 @@ import { HttpClientModule } from '@angular/common/http';
     LayerContainerComponent,
     TileWmsComponent,
     TileArcgisRestComponent,
-    TileWmtsComponent
+    TileWmtsComponent,
+    TopojsonComponent
   ]
 })
 export class B3OlMapModule { }
