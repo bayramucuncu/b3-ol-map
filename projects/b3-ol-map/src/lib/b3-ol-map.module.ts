@@ -33,6 +33,7 @@ import { BingmapsComponent } from './sources/bingmaps/bingmaps.component';
 import { ImageWmsComponent } from './sources/image-wms/image-wms.component';
 import { ImageArcgisrestComponent } from './sources/image-arcgisrest/image-arcgisrest.component';
 import { ImageStaticComponent } from './sources/image-static/image-static.component';
+import { KmlComponent } from './sources/kml/kml.component';
 
 
 @NgModule({
@@ -67,7 +68,8 @@ import { ImageStaticComponent } from './sources/image-static/image-static.compon
     BingmapsComponent,
     ImageWmsComponent,
     ImageArcgisrestComponent,
-    ImageStaticComponent
+    ImageStaticComponent,
+    KmlComponent
   ],
   imports: [
     RouterModule,
