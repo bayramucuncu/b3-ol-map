@@ -131,6 +131,10 @@
         [dataProjection]="item.sourceSettings.dataProjection"
         [featureProjection]="item.sourceSettings.featureProjection"
         [geometryName]="item.sourceSettings.geometryName"></b3-source-geojson>
+      <b3-source-gpx *ngIf="item.sourceSettings.type === 'gpx'"
+        [url]="item.sourceSettings.url"
+        [dataProjection]="item.sourceSettings.dataProjection"
+        [featureProjection]="item.sourceSettings.featureProjection"></b3-source-gpx>
       <b3-source-kml *ngIf="item.sourceSettings.type === 'kml'"
         [url]="item.sourceSettings.url"
         [dataProjection]="item.sourceSettings.dataProjection"
@@ -138,7 +142,6 @@
         [extractStyles]="item.sourceSettings.extractStyles"
         [showPointNames]="item.sourceSettings.showPointNames"
         [writeStyles]="item.sourceSettings.writeStyles"></b3-source-kml>
-
       <b3-source-owner *ngIf="item.sourceSettings.type === 'owner'"
         [source]="item.sourceSettings.source"></b3-source-owner>
       <b3-source-signalr *ngIf="item.sourceSettings.type === 'signalrgeojson'"

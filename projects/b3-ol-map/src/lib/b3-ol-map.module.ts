@@ -38,6 +38,7 @@ import { GeojsonComponent } from './sources/geojson/geojson.component';
 import { SignalrComponent } from './sources/signalr/signalr.component';
 import { OwnerComponent } from './sources/owner/owner.component';
 import { FeatureComponent } from './sources/feature/feature.component';
+import { GpxComponent } from './sources/gpx/gpx.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { FeatureComponent } from './sources/feature/feature.component';
     GeojsonComponent,
     SignalrComponent,
     OwnerComponent,
-    FeatureComponent
+    FeatureComponent,
+    GpxComponent
   ],
   imports: [
     RouterModule,
