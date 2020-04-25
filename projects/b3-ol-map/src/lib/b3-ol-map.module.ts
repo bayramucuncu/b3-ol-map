@@ -29,6 +29,7 @@ import { TileWmtsComponent } from './sources/tile-wmts/tile-wmts.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TopojsonComponent } from './sources/topojson/topojson.component';
 import { XyzComponent } from './sources/xyz/xyz.component';
+import { BingmapsComponent } from './sources/bingmaps/bingmaps.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { XyzComponent } from './sources/xyz/xyz.component';
     TileArcgisRestComponent,
     TileWmtsComponent,
     TopojsonComponent,
-    XyzComponent
+    XyzComponent,
+    BingmapsComponent
   ],
   imports: [
     RouterModule,
@@ -92,7 +94,8 @@ import { XyzComponent } from './sources/xyz/xyz.component';
     TileArcgisRestComponent,
     TileWmtsComponent,
     TopojsonComponent,
-    XyzComponent
+    XyzComponent,
+    BingmapsComponent
   ]
 })
 export class B3OlMapModule { }

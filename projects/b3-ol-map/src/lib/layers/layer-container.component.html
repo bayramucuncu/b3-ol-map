@@ -55,6 +55,15 @@
           [tilePixelRatio]="item.sourceSettings.tilePixelRatio"
           [maxZoom]="item.sourceSettings.maxZoom"
           [minZoom]="item.sourceSettings.minZoom"></b3-source-xyz>
+        <b3-source-bingmaps *ngIf="item.sourceSettings.type === 'bingmaps'"
+          [key]="item.sourceSettings.key"
+          [cacheSize]="item.sourceSettings.cacheSize"
+          [hidpi]="item.sourceSettings.hidpi"
+          [culture]="item.sourceSettings.culture"
+          [imagerySet]="item.sourceSettings.imagerySet"
+          [maxZoom]="item.sourceSettings.maxZoom"
+          [reprojectionErrorThreshold]="item.sourceSettings.reprojectionErrorThreshold"
+          [wrapX]="item.sourceSettings.wrapX"></b3-source-bingmaps>
            
     </b3-layer-tile>
 

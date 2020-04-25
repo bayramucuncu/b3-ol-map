@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
       ],
       layers:[
         { id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", order: 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
+        
       ]
     }  
   }
