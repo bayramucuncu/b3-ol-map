@@ -31,6 +31,7 @@ import { TopojsonComponent } from './sources/topojson/topojson.component';
 import { XyzComponent } from './sources/xyz/xyz.component';
 import { BingmapsComponent } from './sources/bingmaps/bingmaps.component';
 import { ImageWmsComponent } from './sources/image-wms/image-wms.component';
+import { ImageArcgisrestComponent } from './sources/image-arcgisrest/image-arcgisrest.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { ImageWmsComponent } from './sources/image-wms/image-wms.component';
     TopojsonComponent,
     XyzComponent,
     BingmapsComponent,
-    ImageWmsComponent
+    ImageWmsComponent,
+    ImageArcgisrestComponent
   ],
   imports: [
     RouterModule,

@@ -86,15 +86,15 @@
         [hidpi]="item.sourceSettings.hidpi"
         [projection]="item.sourceSettings.projection"
         [serverType]="item.sourceSettings.serverType"></b3-source-image-wms>
-    <!--   <b3-source-imagearcgisrest *ngIf="item.sourceSettings.type === 'imagearcgisrest'"
+      <b3-source-image-arcgisrest *ngIf="item.sourceSettings.type === 'imagearcgisrest'"
         [url]="item.sourceSettings.url"
         [hidpi]="item.sourceSettings.hidpi"
         [params]="item.sourceSettings.params"
         [resolutions]="item.sourceSettings.resolutions"
         [crossOrigin]="item.sourceSettings.crossOrigin"
         [projection]="item.sourceSettings.projection"
-        [ratio]="item.sourceSettings.ratio"></b3-source-imagearcgisrest>          
-      <b3-source-imagestatic *ngIf="item.sourceSettings.type === 'imagestatic'"
+        [ratio]="item.sourceSettings.ratio"></b3-source-image-arcgisrest>          
+      <!--   <b3-source-imagestatic *ngIf="item.sourceSettings.type === 'imagestatic'"
         [url]="item.sourceSettings.url"
         [crossOrigin]="item.sourceSettings.crossOrigin"
         [imageExtent]="item.sourceSettings.imageExtent"
