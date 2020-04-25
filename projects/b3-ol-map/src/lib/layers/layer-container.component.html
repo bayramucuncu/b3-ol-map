@@ -102,7 +102,6 @@
         [projection]="item.sourceSettings.projection"
         [imageSize]="item.sourceSettings.imageSize"></b3-source-image-static> 
     </b3-layer-image>
-
     <b3-layer-vector *ngIf="item.type === 'vector'"
       [id] = "item.id"
       [name]="item.name"
@@ -121,13 +120,20 @@
       [visible]="item.layerSettings && item.layerSettings.visible"
       [zIndex]="item.layerSettings && item.layerSettings.zIndex"
       (outLayerCreate)="onLayerCreated($event)">
+      <b3-source-owner *ngIf="item.sourceSettings.type === 'owner'"
+        [source]="item.sourceSettings.source"></b3-source-owner>
+      <b3-source-signalr-geojson *ngIf="item.sourceSettings.type === 'signalrgeojson'"
+        [url]="item.sourceSettings.url"
+        [reconnectInterval]="item.sourceSettings.reconnectInterval"
+        [removeInterval]="item.sourceSettings.removeInterval"
+        [dataProjection]="item.sourceSettings.dataProjection"
+        [featureProjection]="item.sourceSettings.featureProjection"></b3-source-signalr-geojson>
       <b3-source-topojson *ngIf="item.sourceSettings.type === 'topojson'"
         [url]="item.sourceSettings.url"
         [layers]="item.sourceSettings.layers"
         [layerName]="item.sourceSettings.layerName"
         [dataProjection]="item.sourceSettings.dataProjection"
         [featureProjection]="item.sourceSettings.featureProjection"></b3-source-topojson>
-
     </b3-layer-vector>
     <b3-layer-heatmap *ngIf="item.type === 'heatmap'"
         [id] = "item.id"

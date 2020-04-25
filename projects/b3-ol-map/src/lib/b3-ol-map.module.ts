@@ -35,6 +35,8 @@ import { ImageArcgisrestComponent } from './sources/image-arcgisrest/image-arcgi
 import { ImageStaticComponent } from './sources/image-static/image-static.component';
 import { KmlComponent } from './sources/kml/kml.component';
 import { GeojsonComponent } from './sources/geojson/geojson.component';
+import { SignalrComponent } from './sources/signalr/signalr.component';
+import { OwnerComponent } from './sources/owner/owner.component';
 
 
 @NgModule({
@@ -71,7 +73,9 @@ import { GeojsonComponent } from './sources/geojson/geojson.component';
     ImageArcgisrestComponent,
     ImageStaticComponent,
     KmlComponent,
-    GeojsonComponent
+    GeojsonComponent,
+    SignalrComponent,
+    OwnerComponent
   ],
   imports: [
     RouterModule,
