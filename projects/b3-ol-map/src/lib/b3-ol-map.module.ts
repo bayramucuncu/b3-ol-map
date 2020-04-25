@@ -50,6 +50,7 @@ import { WfsComponent } from './sources/wfs/wfs.component';
 import { FeatureInfoWidgetContainerComponent } from './layers/vector/feature-info-widget-container/feature-info-widget-container.component';
 import { FeatureInfoWidgetComponent } from './layers/vector/feature-info-widget/feature-info-widget.component';
 import { WidgetHostDirective } from './layers/vector/feature-info-widget-container/widget-host.directive';
+import { VectorStyleComponent } from './layers/vector/vector-style/vector-style.component';
 
 
 @NgModule({
@@ -101,7 +102,8 @@ import { WidgetHostDirective } from './layers/vector/feature-info-widget-contain
     WfsComponent,
     FeatureInfoWidgetContainerComponent,
     FeatureInfoWidgetComponent,
-    WidgetHostDirective
+    WidgetHostDirective,
+    VectorStyleComponent
   ],
   imports: [
     RouterModule,
@@ -158,7 +160,8 @@ import { WidgetHostDirective } from './layers/vector/feature-info-widget-contain
     WfsComponent,
     FeatureInfoWidgetContainerComponent,
     FeatureInfoWidgetComponent,
-    WidgetHostDirective
+    WidgetHostDirective,
+    VectorStyleComponent
   ]
 })
 export class B3OlMapModule { }
