@@ -47,6 +47,9 @@ import { ClusterContainerComponent } from './sources/cluster/cluster-container/c
 import { WktComponent } from './sources/wkt/wkt.component';
 import { EsrijsonComponent } from './sources/esrijson/esrijson.component';
 import { WfsComponent } from './sources/wfs/wfs.component';
+import { FeatureInfoWidgetContainerComponent } from './layers/vector/feature-info-widget-container/feature-info-widget-container.component';
+import { FeatureInfoWidgetComponent } from './layers/vector/feature-info-widget/feature-info-widget.component';
+import { WidgetHostDirective } from './layers/vector/feature-info-widget-container/widget-host.directive';
 
 
 @NgModule({
@@ -95,12 +98,18 @@ import { WfsComponent } from './sources/wfs/wfs.component';
     ClusterContainerComponent,
     WktComponent,
     EsrijsonComponent,
-    WfsComponent
+    WfsComponent,
+    FeatureInfoWidgetContainerComponent,
+    FeatureInfoWidgetComponent,
+    WidgetHostDirective
   ],
   imports: [
     RouterModule,
     CommonModule,
     HttpClientModule
+  ],
+  entryComponents:[
+    FeatureInfoWidgetComponent
   ],
   exports: [
     MapComponent, 
@@ -129,7 +138,27 @@ import { WfsComponent } from './sources/wfs/wfs.component';
     TileWmtsComponent,
     TopojsonComponent,
     XyzComponent,
-    BingmapsComponent
+    BingmapsComponent,
+    ImageWmsComponent,
+    ImageArcgisrestComponent,
+    ImageStaticComponent,
+    KmlComponent,
+    GeojsonComponent,
+    SignalrComponent,
+    OwnerComponent,
+    FeatureComponent,
+    GpxComponent,
+    Gml2Component,
+    Gml3Component,
+    Gml32Component,
+    ClusterComponent,
+    ClusterContainerComponent,
+    WktComponent,
+    EsrijsonComponent,
+    WfsComponent,
+    FeatureInfoWidgetContainerComponent,
+    FeatureInfoWidgetComponent,
+    WidgetHostDirective
   ]
 })
 export class B3OlMapModule { }
