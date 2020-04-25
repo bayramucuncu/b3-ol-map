@@ -39,6 +39,9 @@ import { SignalrComponent } from './sources/signalr/signalr.component';
 import { OwnerComponent } from './sources/owner/owner.component';
 import { FeatureComponent } from './sources/feature/feature.component';
 import { GpxComponent } from './sources/gpx/gpx.component';
+import { Gml2Component } from './sources/gml2/gml2.component';
+import { Gml3Component } from './sources/gml3/gml3.component';
+import { Gml32Component } from './sources/gml32/gml32.component';
 
 
 @NgModule({
@@ -79,7 +82,10 @@ import { GpxComponent } from './sources/gpx/gpx.component';
     SignalrComponent,
     OwnerComponent,
     FeatureComponent,
-    GpxComponent
+    GpxComponent,
+    Gml2Component,
+    Gml3Component,
+    Gml32Component
   ],
   imports: [
     RouterModule,
