@@ -184,6 +184,13 @@
         [dataProjection]="item.sourceSettings.dataProjection"
         [featureProjection]="item.sourceSettings.featureProjection"
         [extent]="item.sourceSettings.extent"></b3-source-wkt>
+      <b3-source-wfs *ngIf="item.sourceSettings.type === 'wfs'"
+        [url]="item.sourceSettings.url"
+        [typename]= "item.sourceSettings.typename"
+        [version]= "item.sourceSettings.version"
+        [dataProjection]="item.sourceSettings.dataProjection"
+        [featureProjection]="item.sourceSettings.featureProjection"
+        [geometryName]="item.sourceSettings.geometryName"></b3-source-wfs>
     </b3-layer-vector>
     <b3-layer-heatmap *ngIf="item.type === 'heatmap'"
         [id] = "item.id"

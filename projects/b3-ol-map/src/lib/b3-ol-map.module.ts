@@ -46,6 +46,7 @@ import { ClusterComponent } from './sources/cluster/cluster.component';
 import { ClusterContainerComponent } from './sources/cluster/cluster-container/cluster-container.component';
 import { WktComponent } from './sources/wkt/wkt.component';
 import { EsrijsonComponent } from './sources/esrijson/esrijson.component';
+import { WfsComponent } from './sources/wfs/wfs.component';
 
 
 @NgModule({
@@ -93,7 +94,8 @@ import { EsrijsonComponent } from './sources/esrijson/esrijson.component';
     ClusterComponent,
     ClusterContainerComponent,
     WktComponent,
-    EsrijsonComponent
+    EsrijsonComponent,
+    WfsComponent
   ],
   imports: [
     RouterModule,
