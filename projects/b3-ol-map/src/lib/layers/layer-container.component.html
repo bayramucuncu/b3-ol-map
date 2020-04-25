@@ -94,14 +94,13 @@
         [crossOrigin]="item.sourceSettings.crossOrigin"
         [projection]="item.sourceSettings.projection"
         [ratio]="item.sourceSettings.ratio"></b3-source-image-arcgisrest>          
-      <!--   <b3-source-imagestatic *ngIf="item.sourceSettings.type === 'imagestatic'"
+      <b3-source-image-static *ngIf="item.sourceSettings.type === 'imagestatic'"
         [url]="item.sourceSettings.url"
         [crossOrigin]="item.sourceSettings.crossOrigin"
         [imageExtent]="item.sourceSettings.imageExtent"
         [attributions]="item.sourceSettings.attributions"
         [projection]="item.sourceSettings.projection"
-        [imageSize]="item.sourceSettings.imageSize"></b3-source-imagestatic> -->
-
+        [imageSize]="item.sourceSettings.imageSize"></b3-source-image-static> 
     </b3-layer-image>
 
     <b3-layer-vector *ngIf="item.type === 'vector'"

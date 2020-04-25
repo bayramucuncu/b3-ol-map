@@ -32,6 +32,7 @@ import { XyzComponent } from './sources/xyz/xyz.component';
 import { BingmapsComponent } from './sources/bingmaps/bingmaps.component';
 import { ImageWmsComponent } from './sources/image-wms/image-wms.component';
 import { ImageArcgisrestComponent } from './sources/image-arcgisrest/image-arcgisrest.component';
+import { ImageStaticComponent } from './sources/image-static/image-static.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { ImageArcgisrestComponent } from './sources/image-arcgisrest/image-arcgi
     XyzComponent,
     BingmapsComponent,
     ImageWmsComponent,
-    ImageArcgisrestComponent
+    ImageArcgisrestComponent,
+    ImageStaticComponent
   ],
   imports: [
     RouterModule,
