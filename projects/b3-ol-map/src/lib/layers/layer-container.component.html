@@ -41,6 +41,21 @@
           [layer]="item.sourceSettings.layer"
           [matrixSet]="item.sourceSettings.matrixSet"
           [url]="item.sourceSettings.url"></b3-source-tile-wmts>
+        <b3-source-xyz  *ngIf="item.sourceSettings.type === 'xyz'"
+          [url]="item.sourceSettings.url"
+          [urls]="item.sourceSettings.urls"
+          [cacheSize]="item.sourceSettings.cacheSize"
+          [crossOrigin]="item.sourceSettings.crossOrigin"
+          [projection]="item.sourceSettings.projection"
+          [reprojectionErrorThreshold]="item.sourceSettings.reprojectionErrorThreshold"
+          [wrapX]="item.sourceSettings.wrapX"
+          [transition]="item.sourceSettings.transition"
+          [opaque]="item.sourceSettings.opaque"
+          [tileSize]="item.sourceSettings.tileSize"
+          [tilePixelRatio]="item.sourceSettings.tilePixelRatio"
+          [maxZoom]="item.sourceSettings.maxZoom"
+          [minZoom]="item.sourceSettings.minZoom"></b3-source-xyz>
+           
     </b3-layer-tile>
 
     <b3-layer-vector *ngIf="item.type === 'vector'"
