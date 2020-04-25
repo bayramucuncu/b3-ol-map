@@ -42,6 +42,8 @@ import { GpxComponent } from './sources/gpx/gpx.component';
 import { Gml2Component } from './sources/gml2/gml2.component';
 import { Gml3Component } from './sources/gml3/gml3.component';
 import { Gml32Component } from './sources/gml32/gml32.component';
+import { ClusterComponent } from './sources/cluster/cluster.component';
+import { ClusterContainerComponent } from './sources/cluster/cluster-container/cluster-container.component';
 
 
 @NgModule({
@@ -85,7 +87,9 @@ import { Gml32Component } from './sources/gml32/gml32.component';
     GpxComponent,
     Gml2Component,
     Gml3Component,
-    Gml32Component
+    Gml32Component,
+    ClusterComponent,
+    ClusterContainerComponent
   ],
   imports: [
     RouterModule,

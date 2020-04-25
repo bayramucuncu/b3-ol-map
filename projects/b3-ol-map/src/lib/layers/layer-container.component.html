@@ -124,6 +124,18 @@
         [options]="item.styleSettings"></b3-vector-style> -->
       <!-- <b3-feature-info-container *ngIf="item.infoWindowSettings"
         [infoComponentType]="item.infoWindowSettings.infoComponentType"></b3-feature-info-container>           -->
+      <b3-source-cluster-container *ngIf="item.sourceSettings.type === 'cluster'"
+        [distance]="item.sourceSettings.distance">
+        <b3-source-cluster [url]="item.sourceSettings.url"
+            [overlaps]="item.sourceSettings.overlaps"
+            [useSpatialIndex]="item.sourceSettings.useSpatialIndex"
+            [wrapX]="item.sourceSettings.wrapX"
+            [format]="item.sourceSettings.format"
+            [strategy]="item.sourceSettings.strategy"
+            [dataFormat]="item.sourceSettings.dataFormat"
+            [dataProjection]="item.sourceSettings.dataProjection"
+            [featureProjection]="item.sourceSettings.featureProjection"></b3-source-cluster> 
+      </b3-source-cluster-container>
       <b3-source-feature *ngIf="item.sourceSettings.type === 'feature'"
         [features]="item.sourceSettings.features"></b3-source-feature>
       <b3-source-gml2 *ngIf="item.sourceSettings.type === 'gml2'"
