@@ -37,6 +37,7 @@ import { KmlComponent } from './sources/kml/kml.component';
 import { GeojsonComponent } from './sources/geojson/geojson.component';
 import { SignalrComponent } from './sources/signalr/signalr.component';
 import { OwnerComponent } from './sources/owner/owner.component';
+import { FeatureComponent } from './sources/feature/feature.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { OwnerComponent } from './sources/owner/owner.component';
     KmlComponent,
     GeojsonComponent,
     SignalrComponent,
-    OwnerComponent
+    OwnerComponent,
+    FeatureComponent
   ],
   imports: [
     RouterModule,

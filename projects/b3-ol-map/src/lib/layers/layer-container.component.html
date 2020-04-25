@@ -120,14 +120,33 @@
       [visible]="item.layerSettings && item.layerSettings.visible"
       [zIndex]="item.layerSettings && item.layerSettings.zIndex"
       (outLayerCreate)="onLayerCreated($event)">
+      <!-- <b3-vector-style *ngIf="item.styleSettings"
+        [options]="item.styleSettings"></b3-vector-style> -->
+      <!-- <b3-feature-info-container *ngIf="item.infoWindowSettings"
+        [infoComponentType]="item.infoWindowSettings.infoComponentType"></b3-feature-info-container>           -->
+      <b3-source-feature *ngIf="item.sourceSettings.type === 'feature'"
+        [features]="item.sourceSettings.features"></b3-source-feature>
+      <b3-source-geojson *ngIf="item.sourceSettings.type === 'geojson'"
+        [url]="item.sourceSettings.url"
+        [dataProjection]="item.sourceSettings.dataProjection"
+        [featureProjection]="item.sourceSettings.featureProjection"
+        [geometryName]="item.sourceSettings.geometryName"></b3-source-geojson>
+      <b3-source-kml *ngIf="item.sourceSettings.type === 'kml'"
+        [url]="item.sourceSettings.url"
+        [dataProjection]="item.sourceSettings.dataProjection"
+        [featureProjection]="item.sourceSettings.featureProjection"
+        [extractStyles]="item.sourceSettings.extractStyles"
+        [showPointNames]="item.sourceSettings.showPointNames"
+        [writeStyles]="item.sourceSettings.writeStyles"></b3-source-kml>
+
       <b3-source-owner *ngIf="item.sourceSettings.type === 'owner'"
         [source]="item.sourceSettings.source"></b3-source-owner>
-      <b3-source-signalr-geojson *ngIf="item.sourceSettings.type === 'signalrgeojson'"
+      <b3-source-signalr *ngIf="item.sourceSettings.type === 'signalrgeojson'"
         [url]="item.sourceSettings.url"
         [reconnectInterval]="item.sourceSettings.reconnectInterval"
         [removeInterval]="item.sourceSettings.removeInterval"
         [dataProjection]="item.sourceSettings.dataProjection"
-        [featureProjection]="item.sourceSettings.featureProjection"></b3-source-signalr-geojson>
+        [featureProjection]="item.sourceSettings.featureProjection"></b3-source-signalr>
       <b3-source-topojson *ngIf="item.sourceSettings.type === 'topojson'"
         [url]="item.sourceSettings.url"
         [layers]="item.sourceSettings.layers"

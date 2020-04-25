@@ -3,7 +3,7 @@ import { Vector } from 'ol/source';
 import { VectorComponent } from '../../layers/vector/vector.component';
 
 @Component({
-  selector: 'b3-owner',
+  selector: 'b3-source-owner',
   templateUrl: './owner.component.html',
   styleUrls: ['./owner.component.css']
 })
