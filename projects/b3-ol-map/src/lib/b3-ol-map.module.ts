@@ -30,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TopojsonComponent } from './sources/topojson/topojson.component';
 import { XyzComponent } from './sources/xyz/xyz.component';
 import { BingmapsComponent } from './sources/bingmaps/bingmaps.component';
+import { ImageWmsComponent } from './sources/image-wms/image-wms.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { BingmapsComponent } from './sources/bingmaps/bingmaps.component';
     TileWmtsComponent,
     TopojsonComponent,
     XyzComponent,
-    BingmapsComponent
+    BingmapsComponent,
+    ImageWmsComponent
   ],
   imports: [
     RouterModule,
