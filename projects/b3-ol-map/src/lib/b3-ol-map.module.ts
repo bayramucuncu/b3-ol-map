@@ -53,6 +53,7 @@ import { WidgetHostDirective } from './layers/vector/feature-info-widget-contain
 import { VectorStyleComponent } from './layers/vector/vector-style/vector-style.component';
 import { FullScreenComponent } from './controls/full-screen/full-screen.component';
 import { MousePositionComponent } from './controls/mouse-position/mouse-position.component';
+import { ScaleLineComponent } from './controls/scale-line/scale-line.component';
 
 
 @NgModule({
@@ -107,7 +108,8 @@ import { MousePositionComponent } from './controls/mouse-position/mouse-position
     WidgetHostDirective,
     VectorStyleComponent,
     FullScreenComponent,
-    MousePositionComponent
+    MousePositionComponent,
+    ScaleLineComponent
   ],
   imports: [
     RouterModule,
