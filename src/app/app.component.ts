@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
       ],
       layers: [
         { id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", order: 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
+
       ],
       controls: [
         { "id": "399fe7da-0edc-4021-8811-0e0a786f7547", "name": "fullscreen", "title": "Full Screen Control", "settings": { "tipLabel": "Full Screen" } },
@@ -40,7 +41,7 @@ export class AppComponent implements OnInit {
         { "id": "399fe7d2-0edc-4021-8811-0e0a786f7547", "name": "zoomslider", "title": "Zoom Slider Control", "settings": { "className": "ol-zoomslider", "duration": 200 } },
         { "id": "399fe7d3-0edc-4021-8811-0e0a786f7547", "name": "zoomtoextent", "title": "Zoom To Extent Control", "settings": { "className": "ol-zoom-extent", "label": "E", "target": null, "tipLabel": "Fit to extent", "extent": null } },
         //{ "id": "99f1c025-8c66-488e-881c-247a492951c7", "name": "mouseposition", "title": "MousePositionControl", "precision":"6", "projection":"EPSG:3857" }
-        { "id": "97f1c024-8c66-488e-881c-247a492951c7", "name": "layerview", "title": "Katmanlar" },
+        { "id": "97f1c024-8c66-488e-881c-247a492951c7", "name": "layerview", "title": "Layers" },
         { "id": "97f1c024-8c67-488e-881c-247a492951c7", "name": "dataview", "title": "Data" },
         { "id": "12f1c024-8c67-488e-881c-247a492951c7", "name": "measure", "title": "Measure" },
       ]
