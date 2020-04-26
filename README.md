@@ -1,3 +1,4 @@
+![build code](https://github.com/bayramucuncu/b3-ol-map/workflows/build%20code/badge.svg)
 # b3-ol-map
 Openlayers based Angular application.
 
