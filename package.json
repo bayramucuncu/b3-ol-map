@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-lib": "ng build b3-ol-map",
+    "build-lib-watch": "ng build b3-ol-map --watch",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
