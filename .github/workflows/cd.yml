@@ -24,6 +24,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
     - run: npm run build-lib-prod
+    - run: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
     - run: npm publish ./projects/b3-ol-map --access public 
       env:
         CI: true
