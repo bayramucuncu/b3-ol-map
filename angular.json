@@ -133,6 +133,11 @@
           "options": {
             "tsConfig": "projects/b3-ol-map/tsconfig.lib.json",
             "project": "projects/b3-ol-map/ng-package.json"
+          },
+          "configurations": {
+            "production":{
+              "project": "projects/b3-ol-map/ng-package.json"
+            }
           }
         },
         "test": {

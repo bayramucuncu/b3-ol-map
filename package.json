@@ -7,6 +7,7 @@
     "build": "ng build",
     "build-lib": "ng build b3-ol-map",
     "build-lib-watch": "ng build b3-ol-map --watch",
+    "build-lib-prod": "ng build b3-ol-map --prod=true",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
