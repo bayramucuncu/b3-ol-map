@@ -56,6 +56,7 @@ import { MousePositionComponent } from './controls/mouse-position/mouse-position
 import { ScaleLineComponent } from './controls/scale-line/scale-line.component';
 import { ZoomComponent } from './controls/zoom/zoom.component';
 import { ZoomSliderComponent } from './controls/zoom-slider/zoom-slider.component';
+import { ZoomToExtentComponent } from './controls/zoom-to-extent/zoom-to-extent.component';
 
 
 @NgModule({
@@ -113,7 +114,8 @@ import { ZoomSliderComponent } from './controls/zoom-slider/zoom-slider.componen
     MousePositionComponent,
     ScaleLineComponent,
     ZoomComponent,
-    ZoomSliderComponent
+    ZoomSliderComponent,
+    ZoomToExtentComponent
   ],
   imports: [
     RouterModule,
