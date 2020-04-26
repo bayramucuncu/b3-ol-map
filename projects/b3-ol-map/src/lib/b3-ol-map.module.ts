@@ -54,6 +54,7 @@ import { VectorStyleComponent } from './layers/vector/vector-style/vector-style.
 import { FullScreenComponent } from './controls/full-screen/full-screen.component';
 import { MousePositionComponent } from './controls/mouse-position/mouse-position.component';
 import { ScaleLineComponent } from './controls/scale-line/scale-line.component';
+import { ZoomComponent } from './controls/zoom/zoom.component';
 
 
 @NgModule({
@@ -109,7 +110,8 @@ import { ScaleLineComponent } from './controls/scale-line/scale-line.component';
     VectorStyleComponent,
     FullScreenComponent,
     MousePositionComponent,
-    ScaleLineComponent
+    ScaleLineComponent,
+    ZoomComponent
   ],
   imports: [
     RouterModule,
