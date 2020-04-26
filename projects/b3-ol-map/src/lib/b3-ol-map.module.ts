@@ -52,6 +52,7 @@ import { FeatureInfoWidgetComponent } from './layers/vector/feature-info-widget/
 import { WidgetHostDirective } from './layers/vector/feature-info-widget-container/widget-host.directive';
 import { VectorStyleComponent } from './layers/vector/vector-style/vector-style.component';
 import { FullScreenComponent } from './controls/full-screen/full-screen.component';
+import { MousePositionComponent } from './controls/mouse-position/mouse-position.component';
 
 
 @NgModule({
@@ -105,7 +106,8 @@ import { FullScreenComponent } from './controls/full-screen/full-screen.componen
     FeatureInfoWidgetComponent,
     WidgetHostDirective,
     VectorStyleComponent,
-    FullScreenComponent
+    FullScreenComponent,
+    MousePositionComponent
   ],
   imports: [
     RouterModule,
@@ -163,7 +165,8 @@ import { FullScreenComponent } from './controls/full-screen/full-screen.componen
     FeatureInfoWidgetContainerComponent,
     FeatureInfoWidgetComponent,
     WidgetHostDirective,
-    VectorStyleComponent
+    VectorStyleComponent,
+    FullScreenComponent
   ]
 })
 export class B3OlMapModule { }
