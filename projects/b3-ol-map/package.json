@@ -1,6 +1,27 @@
 {
   "name": "b3-ol-map",
   "version": "0.0.1",
+  "description": "This is an Angular map application libraray. Used map library is Openlayers 6.x",
+  "author": {
+    "name": "Bayram Üçüncü",
+    "url": "http://www.bayramucuncu.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bayramucuncu/b3-ol-map"
+  },
+  "bugs": {
+    "url": "https://github.com/bayramucuncu/b3-ol-map/issues"
+  },
+  "keywords": [
+    "javascript",
+    "angular",
+    "openlayers",
+    "ol",
+    "map",
+    "map-application"
+  ],
+  "license": "MIT",
   "peerDependencies": {
     "@angular/common": "^8.2.14",
     "@angular/core": "^8.2.14",
