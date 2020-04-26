@@ -42,7 +42,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   ngOnInit() {
 
     this.map = new Map({
-      //controls: this.controls,
+      controls: this.controls,
       interactions: this.interactions
     });
 

@@ -4,7 +4,7 @@ import { MapComponent } from '../../b3-ol-map.component';
 import { Zoom } from 'ol/control';
 
 @Component({
-  selector: 'b3-zoom',
+  selector: 'b3-control-zoom',
   templateUrl: './zoom.component.html',
   styleUrls: ['./zoom.component.css']
 })
@@ -24,7 +24,7 @@ export class ZoomComponent extends BaseControlComponent implements OnInit {
 
   ngOnInit() {
     this.control = new Zoom({
-      className:this.className || "ol-scale-line",
+      className:this.className || "ol-zoom",
       duration: this.duration,
       zoomInLabel: this.zoomInLabel,
       zoomOutLabel: this.zoomOutLabel,

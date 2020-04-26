@@ -7,7 +7,7 @@ import { interval } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  
+
   title = 'b3-ol-map';
   map: any;
 
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
       ],
       interactions: [
         { name: "dragpan", title: "Drag pan" },
-        { name: "draganddrop", title: "Drag and drop", settings: { formatConstructors: [ "KML", "GeoJSON", "TopoJSON", "GPX"], projection: null, target: null } },
+        { name: "draganddrop", title: "Drag and drop", settings: { formatConstructors: ["KML", "GeoJSON", "TopoJSON", "GPX"], projection: null, target: null } },
         { name: "dragandrotate", title: "Drag and rotate", settings: { duration: 250 } },
         { name: "dragzoom", title: "Drag zoom", settings: { className: "'ol-dragbox", minArea: 64, duration: 200, out: false } },
         { name: "doubleclickzoom", title: "Double click", settings: { duration: 250, delta: 1 } },
@@ -30,10 +30,18 @@ export class AppComponent implements OnInit {
         { name: "pinchrotate", title: "Pich rotate", settings: { duration: 250, threshold: 0.3 } },
         { name: "mousewheelzoom", title: "Mouse wheel interaction", settings: { duration: 250, timeout: 80, useAnchor: true, constrainResolution: false } }
       ],
-      layers:[
+      layers: [
         { id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", order: 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
+      ],
+      components: [
+        { "id": "399fe7da-0edc-4021-8811-0e0a786f7547", "name": "fullscreen", "title": "Full Screen Control", "settings": { "tipLabel": "Full Screen" } },
+        { "id": "99f1c02b-8c66-488e-881c-247a492951c7", "name": "scaleline", "title": "Scale Control", "settings": { "className": "ol-scale-line", "minWidth": 64, "units": "metric", "bar": false, "steps": 4, "text": false, "target": null } },
+        { "id": "99f1c021-8c66-488e-881c-247a492951c7", "name": "zoom", "title": "Zoom Control", "settings": { "duration": 250, "minWidth": 64, "target": null, "units": "metric" } },
+        { "id": "399fe7d2-0edc-4021-8811-0e0a786f7547", "name": "zoomslider", "title": "Zoom Slider COntrol", "settings": { "className": "ol-zoomslider", "duration": 200 } },
+        { "id": "399fe7d3-0edc-4021-8811-0e0a786f7547", "name": "zoomtoextent", "title": "Zoom To Extent COntrol", "settings": { "className": "ol-zoom-extent", "label": "E", "target": null, "tipLabel": "Fit to extent", "extent": null } },
+        //{ "id": "99f1c025-8c66-488e-881c-247a492951c7", "name": "mouseposition", "title": "MousePositionControl", "precision":"6", "projection":"EPSG:3857" }
       ]
-    }  
+    }
   }
 
   ngOnInit(): void {
@@ -48,10 +56,10 @@ export class AppComponent implements OnInit {
   }
 
   private getRandonInteger(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min) ) + min;
+    return Math.floor(Math.random() * (max - min)) + min;
   }
 
-  onDragAndDrop(event: any){
+  onDragAndDrop(event: any) {
     //console.log(event)
   }
 

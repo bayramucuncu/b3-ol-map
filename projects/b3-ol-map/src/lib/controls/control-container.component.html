@@ -1,0 +1,52 @@
+<ng-container *ngFor="let item of controls">
+    <b3-control-full-screen *ngIf="item.name === 'fullscreen'" 
+      [className]="item.settings.className" 
+      [target]="item.settings.target"
+      [tipLabel]="item.settings.tipLabel"
+      [label]="item.settings.label"
+      [labelActive]="item.settings.labelActive"
+      [keys]="item.settings.keys">
+    </b3-control-full-screen>
+    <b3-control-scale-line *ngIf="item.name === 'scaleline'" 
+      [className]="item.settings.className" 
+      [minWidth]="item.settings.minWidth"
+      [units]="item.settings.units"
+      [bar]="item.settings.bar"
+      [steps]="item.settings.steps"
+      [target]="item.settings.target"></b3-control-scale-line>    
+    <b3-control-mouse-position *ngIf="item.name === 'mouseposition'" 
+      [className]="item.settings.className" 
+      [target]="item.settings.target"
+      [precision]="item.settings.precision" 
+      [projection]="item.settings.projection"></b3-control-mouse-position>
+    <b3-control-zoom *ngIf="item.name === 'zoom'" 
+      [className]="item.settings.className"
+      [duration]="item.settings.duration" 
+      [zoomInLabel]="item.settings.zoomInLabel"
+      [zoomOutLabel]="item.settings.zoomOutLabel" 
+      [zoomInTipLabel]="item.settings.zoomInTipLabel" 
+      [zoomOutTipLabel]="item.settings.zoomOutTipLabel"
+      [delta]="item.settings.delta">
+    </b3-control-zoom>
+    <b3-control-zoom-slider *ngIf="item.name === 'zoomslider'" 
+      [className]="item.settings.className" 
+      [duration]="item.settings.duration">
+    </b3-control-zoom-slider>
+    <b3-control-zoom-to-extent *ngIf="item.name === 'zoomtoextent'" 
+      [className]="item.settings.className" 
+      [label]="item.settings.label"
+      [target]="item.settings.target" 
+      [tipLabel]="item.settings.tipLabel" 
+      [extent]="item.settings.extent"></b3-control-zoom-to-extent>
+    <!-- <b3-layer-view-control *ngIf="item.name === 'layerview'" 
+      [title]="item.title"
+      (outLayerDelete)="onLayerDeleted($event)"></b3-layer-view-control>
+    <b3-data-view *ngIf="item.name === 'dataview'" 
+      [title]="item.title"
+      (outDataViewFeatureAdd)="onDataViewFeatureAded($event)"></b3-data-view>
+    <b3-measure *ngIf="item.name === 'measure'"
+      [id] = "item.id"
+      [title]="item.title"
+      (outMeasureCreate)="onMeasureCreated($event)"
+      (outMeasureRemove)="onMeasureRemoved($event)"></b3-measure>       -->
+  </ng-container>

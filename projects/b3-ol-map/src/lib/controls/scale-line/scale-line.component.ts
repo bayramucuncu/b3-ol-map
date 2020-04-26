@@ -5,7 +5,7 @@ import { MapComponent } from '../../b3-ol-map.component';
 import { BaseControlComponent } from '../base-control-component';
 
 @Component({
-  selector: 'b3-scale-line',
+  selector: 'b3-control-scale-line',
   templateUrl: './scale-line.component.html',
   styleUrls: ['./scale-line.component.css']
 })

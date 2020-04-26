@@ -57,6 +57,7 @@ import { ScaleLineComponent } from './controls/scale-line/scale-line.component';
 import { ZoomComponent } from './controls/zoom/zoom.component';
 import { ZoomSliderComponent } from './controls/zoom-slider/zoom-slider.component';
 import { ZoomToExtentComponent } from './controls/zoom-to-extent/zoom-to-extent.component';
+import { ControlContainerComponent } from './controls/control-container.component';
 
 
 @NgModule({
@@ -115,7 +116,8 @@ import { ZoomToExtentComponent } from './controls/zoom-to-extent/zoom-to-extent.
     ScaleLineComponent,
     ZoomComponent,
     ZoomSliderComponent,
-    ZoomToExtentComponent
+    ZoomToExtentComponent,
+    ControlContainerComponent
   ],
   imports: [
     RouterModule,
@@ -174,7 +176,13 @@ import { ZoomToExtentComponent } from './controls/zoom-to-extent/zoom-to-extent.
     FeatureInfoWidgetComponent,
     WidgetHostDirective,
     VectorStyleComponent,
-    FullScreenComponent
+    FullScreenComponent,
+    MousePositionComponent,
+    ScaleLineComponent,
+    ZoomComponent,
+    ZoomSliderComponent,
+    ZoomToExtentComponent,
+    ControlContainerComponent
   ]
 })
 export class B3OlMapModule { }

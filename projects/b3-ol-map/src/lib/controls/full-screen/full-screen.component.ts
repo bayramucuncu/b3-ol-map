@@ -4,7 +4,7 @@ import { MapComponent } from '../../b3-ol-map.component';
 import { FullScreen } from 'ol/control';
 
 @Component({
-  selector: 'b3-full-screen',
+  selector: 'b3-control-full-screen',
   templateUrl: './full-screen.component.html',
   styleUrls: ['./full-screen.component.css']
 })

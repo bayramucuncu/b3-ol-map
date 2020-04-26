@@ -6,7 +6,7 @@ import { MapComponent } from '../../b3-ol-map.component';
 import { BaseControlComponent } from '../base-control-component';
 
 @Component({
-  selector: 'b3-mouse-position',
+  selector: 'b3-control-mouse-position',
   templateUrl: './mouse-position.component.html',
   styleUrls: ['./mouse-position.component.css']
 })

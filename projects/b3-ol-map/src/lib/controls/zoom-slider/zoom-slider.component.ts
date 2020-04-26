@@ -4,7 +4,7 @@ import { MapComponent } from '../../b3-ol-map.component';
 import { BaseControlComponent } from '../base-control-component';
 
 @Component({
-  selector: 'b3-zoom-slider',
+  selector: 'b3-control-zoom-slider',
   templateUrl: './zoom-slider.component.html',
   styleUrls: ['./zoom-slider.component.css']
 })

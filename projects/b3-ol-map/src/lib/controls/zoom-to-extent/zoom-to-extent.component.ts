@@ -5,7 +5,7 @@ import { MapComponent } from '../../b3-ol-map.component';
 import { BaseControlComponent } from '../base-control-component';
 
 @Component({
-  selector: 'b3-zoom-to-extent',
+  selector: 'b3-control-zoom-to-extent',
   templateUrl: './zoom-to-extent.component.html',
   styleUrls: ['./zoom-to-extent.component.css']
 })
