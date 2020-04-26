@@ -1,6 +1,7 @@
 import { Component, Input, Host } from '@angular/core';
 import { VectorComponent } from '../vector.component';
-import { ThematicViewFunctionStrategy } from './feature-style';
+import { ThematicViewFunctionStrategy } from './feature-style/style-function-strategy.contract';
+
 
 @Component({
   selector: 'b3-vector-style',

@@ -1,4 +1,3 @@
-import { Feature } from 'ol';
 import { IFeatureLabelRotationCalculator } from './feature-label-rotation.calculator';
 
 export class NoLabelRotationCalculator implements IFeatureLabelRotationCalculator {
