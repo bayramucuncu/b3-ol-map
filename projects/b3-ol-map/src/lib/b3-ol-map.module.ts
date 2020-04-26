@@ -51,6 +51,7 @@ import { FeatureInfoWidgetContainerComponent } from './layers/vector/feature-inf
 import { FeatureInfoWidgetComponent } from './layers/vector/feature-info-widget/feature-info-widget.component';
 import { WidgetHostDirective } from './layers/vector/feature-info-widget-container/widget-host.directive';
 import { VectorStyleComponent } from './layers/vector/vector-style/vector-style.component';
+import { FullScreenComponent } from './controls/full-screen/full-screen.component';
 
 
 @NgModule({
@@ -103,7 +104,8 @@ import { VectorStyleComponent } from './layers/vector/vector-style/vector-style.
     FeatureInfoWidgetContainerComponent,
     FeatureInfoWidgetComponent,
     WidgetHostDirective,
-    VectorStyleComponent
+    VectorStyleComponent,
+    FullScreenComponent
   ],
   imports: [
     RouterModule,
