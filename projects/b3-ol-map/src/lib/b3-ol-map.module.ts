@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
-import { MapComponent } from './b3-ol-map.component';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { MapComponent } from './b3-ol-map.component';
 import { LayerTileComponent } from './layers/tile/tile.component';
 import { MouseWheelZoomComponent } from './interactions/mouse-wheel-zoom/mouse-wheel-zoom.component';
 import { VectorComponent } from './layers/vector/vector.component';
@@ -58,6 +59,12 @@ import { ZoomComponent } from './controls/zoom/zoom.component';
 import { ZoomSliderComponent } from './controls/zoom-slider/zoom-slider.component';
 import { ZoomToExtentComponent } from './controls/zoom-to-extent/zoom-to-extent.component';
 import { ControlContainerComponent } from './controls/control-container.component';
+import { DraggableDirective } from './directives/draggable.directive';
+import { DraggableDropZoneDirective } from './directives/draggable-drop-zone.directive';
+import { DataViewComponent } from './controls/data-view/dataview.control.component';
+import { LayerViewControlComponent } from './controls/layer-view/layerview.control.component';
+import { MeasureComponent } from './controls/measure/measure.component';
+import { LayerViewNodeComponent } from './controls/layer-view/layerviewnode.component';
 
 
 @NgModule({
@@ -117,11 +124,18 @@ import { ControlContainerComponent } from './controls/control-container.componen
     ZoomComponent,
     ZoomSliderComponent,
     ZoomToExtentComponent,
-    ControlContainerComponent
+    ControlContainerComponent,
+    DraggableDirective,
+    DraggableDropZoneDirective,
+    DataViewComponent,
+    LayerViewControlComponent,
+    LayerViewNodeComponent,
+    MeasureComponent
   ],
   imports: [
     RouterModule,
     CommonModule,
+    FormsModule,
     HttpClientModule
   ],
   entryComponents:[
@@ -182,7 +196,11 @@ import { ControlContainerComponent } from './controls/control-container.componen
     ZoomComponent,
     ZoomSliderComponent,
     ZoomToExtentComponent,
-    ControlContainerComponent
+    ControlContainerComponent,
+    DataViewComponent,
+    LayerViewControlComponent,
+    LayerViewNodeComponent,
+    MeasureComponent
   ]
 })
 export class B3OlMapModule { }

@@ -1,0 +1,9 @@
+<div class="b3-layer-view-pane">
+    <div (click)="toggle()" class="b3-layer-view-toggle"></div>
+    <div class="b3-layer-container" [style.display]="visibility ? 'block' : 'none'">
+        <h1> {{title}} <i class="b3-layer-close-icon" (click)="toggle()"></i></h1>
+        <b3-layer-view-node 
+            [nodes]="getNodes()" 
+            (outLayerDelete)="onLayerDeleted($event)"></b3-layer-view-node>
+     </div>
+</div>

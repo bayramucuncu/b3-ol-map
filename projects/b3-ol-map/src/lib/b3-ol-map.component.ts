@@ -6,7 +6,7 @@ import { Interaction } from 'ol/interaction';
 import { Feature } from 'ol';
 import { Layer } from 'ol/layer';
 import { Cluster } from 'ol/source';
-import { transform, fromLonLat } from 'ol/proj';
+import { transform } from 'ol/proj';
 import { click } from 'ol/events/condition.js';
 import Select from 'ol/interaction/Select.js';
 

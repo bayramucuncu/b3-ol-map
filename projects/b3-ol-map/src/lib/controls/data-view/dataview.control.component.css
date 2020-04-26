@@ -1,0 +1,104 @@
+.b3-data-view-pane {
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+
+.b3-data-view-toggle {
+  background-image: url("/assets/images/raw.png");
+  border: 3px solid rgba(0, 60, 136, 0.4);
+  border-radius: 6px;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 32px;
+  background-size: 32px 32px;
+  background-color: #fff;
+}
+
+.b3-data-view-control {
+  width: 350px;
+  margin: 5px auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  background: #F5F5F5; 
+  max-height: 800px;
+}
+
+.b3-data-view-control .layer-close-icon {
+  cursor: pointer;
+  float: right;
+  width: 24px;
+  height: 24px;
+  background: url('/assets/images/cancel.png') no-repeat top left;
+  background-size: 24px 24px;
+}
+
+.b3-data-view-control h1 {
+  background: #2980B9;
+  margin: 0;
+  padding: 10px 10px;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: normal;
+  color: white;
+  user-select: none;
+}
+
+.b3-data-view-control input[type=text],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.b3-data-view-control label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+.b3-data-view-control input[type=submit] {
+  background-color: #2980B9;
+  color: white;
+  padding: 12px 12px;
+  border: none;
+  cursor: pointer;
+  float: right;
+  width: 100%
+}
+
+.b3-data-view-control input[type=submit]:hover {
+  background-color: #1970B7;
+}
+
+.b3-data-view-control .container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.b3-data-view-control .col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.b3-data-view-control .col-100 {
+  float: left;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.b3-data-view-control .col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+.b3-data-view-control .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

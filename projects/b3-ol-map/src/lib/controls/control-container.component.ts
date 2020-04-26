@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import Feature from 'ol/Feature';
+import BaseLayer from 'ol/layer/Base';
 
 @Component({
   selector: 'b3-control-container',
@@ -8,17 +10,41 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ControlContainerComponent implements OnInit {
 
   @Input() controls: any[];
+  @Output() outDataViewFeatureAdd: EventEmitter<Feature[]>;
+  @Output() outLayerDelete: EventEmitter<BaseLayer>;
+  @Output() outMeasureCreate: EventEmitter<any>;
+  @Output() outMeasureRemove: EventEmitter<any>;
 
-  constructor() { }
+  constructor() {
+    this.outDataViewFeatureAdd = new EventEmitter<Feature[]>();
+    this.outLayerDelete =  new EventEmitter<BaseLayer>();
+    this.outMeasureCreate = new EventEmitter<any>();
+    this.outMeasureRemove = new EventEmitter<any>();
+  }
 
   ngOnInit() {
     !this.controls && (this.controls = this.getDefaultControls());
   }
 
   private getDefaultControls(): any[] {
-    return[
+    return [
       { "name": "zoom", "title": "Zoom Control", "settings": { "duration": 250, "minWidth": 64, "target": null, "units": "metric" } },
     ]
   }
 
+  onDataViewFeatureAded($event: any){
+    this.outDataViewFeatureAdd.emit($event);
+  }
+
+  onLayerDeleted($event: any){
+    this.outLayerDelete.emit($event);
+  }
+
+  onMeasureCreated($event: any){
+    this.outMeasureCreate.emit($event);
+  }
+
+  onMeasureRemoved($event: any){
+    this.outMeasureRemove.emit($event);
+  }
 }
