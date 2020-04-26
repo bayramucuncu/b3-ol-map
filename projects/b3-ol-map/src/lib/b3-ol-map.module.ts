@@ -55,6 +55,7 @@ import { FullScreenComponent } from './controls/full-screen/full-screen.componen
 import { MousePositionComponent } from './controls/mouse-position/mouse-position.component';
 import { ScaleLineComponent } from './controls/scale-line/scale-line.component';
 import { ZoomComponent } from './controls/zoom/zoom.component';
+import { ZoomSliderComponent } from './controls/zoom-slider/zoom-slider.component';
 
 
 @NgModule({
@@ -111,7 +112,8 @@ import { ZoomComponent } from './controls/zoom/zoom.component';
     FullScreenComponent,
     MousePositionComponent,
     ScaleLineComponent,
-    ZoomComponent
+    ZoomComponent,
+    ZoomSliderComponent
   ],
   imports: [
     RouterModule,
