@@ -29,6 +29,6 @@ jobs:
     - name: Build application.
       run: npm run build --if-present
     - name: Build library.
-      run: npm run build --project=b3-ol-map --if-present
+      run: npm run build-lib
       env:
         CI: true
