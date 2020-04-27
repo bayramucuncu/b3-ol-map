@@ -41,9 +41,6 @@
     <b3-data-view *ngIf="item.name === 'dataview'" 
       [title]="item.title"
       (outDataViewFeatureAdd)="onDataViewFeatureAded($event)"></b3-data-view>      
-    <b3-layer-view-control *ngIf="item.name === 'layerview'" 
-      [title]="item.title"
-      (outLayerDelete)="onLayerDeleted($event)"></b3-layer-view-control>
     <b3-measure *ngIf="item.name === 'measure'"
       [id] = "item.id"
       [title]="item.title"

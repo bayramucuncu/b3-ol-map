@@ -1,225 +1,138 @@
+<b3-layer-view-control *ngIf="showControl" [title]="controlTitle">
+</b3-layer-view-control>
 <ng-container *ngFor="let item of layers">
-    <b3-layer-tile *ngIf="item.type === 'tile'"
-      [id] = "item.id"
-      [name] = "item.name"
-      [order] = "item.order"
-      [showOnLayerView] = "item.showOnLayerView"
-      [isBase] = "item.isBase"
-      [opacity] = "item.layerSettings && item.layerSettings.opacity"
-      [preload] = "item.layerSettings && item.layerSettings.preload"
-      [minResolution]="item.layerSettings && item.layerSettings.minResolution"
-      [maxResolution]="item.layerSettings && item.layerSettings.maxResolution"
-      [visible]="item.layerSettings && item.layerSettings.visible"
-      [extent]="item.layerSettings && item.layerSettings.extent"
-      [useInterimTilesOnError]="item.layerSettings && item.layerSettings.useInterimTilesOnError"
-      [zIndex]="item.layerSettings && item.layerSettings.zIndex"
-      (outLayerCreate)="onLayerCreated($event)">
-        <b3-source-osm *ngIf="item.sourceSettings.type === 'osm'"></b3-source-osm>
-        <b3-source-tile-wms *ngIf="item.sourceSettings.type === 'tilewms'"
-          [url]="item.sourceSettings.url"
-          [urls]="item.sourceSettings.urls"
-          [params]="item.sourceSettings.params"
-          [cacheSize]="item.sourceSettings.cacheSize"
-          [crossOrigin]="item.sourceSettings.crossOrigin"
-          [gutter]="item.sourceSettings.gutter"
-          [hidpi]="item.sourceSettings.hidpi"
-          [projection]="item.sourceSettings.projection"
-          [reprojectionErrorThreshold]="item.sourceSettings.reprojectionErrorThreshold"
-          [serverType]="item.sourceSettings.serverType"
-          [wrapX]="item.sourceSettings.wrapX"></b3-source-tile-wms>
-        <b3-source-tile-arcgisrest *ngIf="item.sourceSettings.type === 'tilearcgisrest'"
-          [url]="item.sourceSettings.url"
-          [urls]="item.sourceSettings.urls"
-          [params]="item.sourceSettings.params"
-          [cacheSize]="item.sourceSettings.cacheSize"
-          [crossOrigin]="item.sourceSettings.crossOrigin"         
-          [projection]="item.sourceSettings.projection"
-          [reprojectionErrorThreshold]="item.sourceSettings.reprojectionErrorThreshold"
-          [transition]="item.sourceSettings.transition"
-          [wrapX]="item.sourceSettings.wrapX"></b3-source-tile-arcgisrest>
-        <b3-source-tile-wmts *ngIf="item.sourceSettings.type === 'tilewmts'"
-          [layer]="item.sourceSettings.layer"
-          [matrixSet]="item.sourceSettings.matrixSet"
-          [url]="item.sourceSettings.url"></b3-source-tile-wmts>
-        <b3-source-xyz  *ngIf="item.sourceSettings.type === 'xyz'"
-          [url]="item.sourceSettings.url"
-          [urls]="item.sourceSettings.urls"
-          [cacheSize]="item.sourceSettings.cacheSize"
-          [crossOrigin]="item.sourceSettings.crossOrigin"
-          [projection]="item.sourceSettings.projection"
-          [reprojectionErrorThreshold]="item.sourceSettings.reprojectionErrorThreshold"
-          [wrapX]="item.sourceSettings.wrapX"
-          [transition]="item.sourceSettings.transition"
-          [opaque]="item.sourceSettings.opaque"
-          [tileSize]="item.sourceSettings.tileSize"
-          [tilePixelRatio]="item.sourceSettings.tilePixelRatio"
-          [maxZoom]="item.sourceSettings.maxZoom"
-          [minZoom]="item.sourceSettings.minZoom"></b3-source-xyz>
-        <b3-source-bingmaps *ngIf="item.sourceSettings.type === 'bingmaps'"
-          [key]="item.sourceSettings.key"
-          [cacheSize]="item.sourceSettings.cacheSize"
-          [hidpi]="item.sourceSettings.hidpi"
-          [culture]="item.sourceSettings.culture"
-          [imagerySet]="item.sourceSettings.imagerySet"
-          [maxZoom]="item.sourceSettings.maxZoom"
-          [reprojectionErrorThreshold]="item.sourceSettings.reprojectionErrorThreshold"
-          [wrapX]="item.sourceSettings.wrapX"></b3-source-bingmaps>
-           
-    </b3-layer-tile>
-    <b3-layer-image *ngIf="item.type === 'image'"
-      [id] = "item.id"
-      [name] = "item.name"
-      [order] = "item.order"
-      [showOnLayerView] = "item.showOnLayerView"
-      [isBase] = "item.isBase"
-      [opacity] = "item.layerSettings.opacity"
-      [minResolution]="item.layerSettings.minResolution"
-      [maxResolution]="item.layerSettings.maxResolution"
-      [visible]="item.layerSettings.visible"
-      [extent]="item.layerSettings.extent"
-      [zIndex]="item.layerSettings.zIndex"
-      (outLayerCreate)="onLayerCreated($event)">
-      <b3-source-image-wms *ngIf="item.sourceSettings.type === 'imagewms'"
-        [url]="item.sourceSettings.url"
-        [params]="item.sourceSettings.params"
-        [crossOrigin]="item.sourceSettings.crossOrigin"
-        [hidpi]="item.sourceSettings.hidpi"
-        [projection]="item.sourceSettings.projection"
-        [serverType]="item.sourceSettings.serverType"></b3-source-image-wms>
-      <b3-source-image-arcgisrest *ngIf="item.sourceSettings.type === 'imagearcgisrest'"
-        [url]="item.sourceSettings.url"
-        [hidpi]="item.sourceSettings.hidpi"
-        [params]="item.sourceSettings.params"
-        [resolutions]="item.sourceSettings.resolutions"
-        [crossOrigin]="item.sourceSettings.crossOrigin"
-        [projection]="item.sourceSettings.projection"
-        [ratio]="item.sourceSettings.ratio"></b3-source-image-arcgisrest>          
-      <b3-source-image-static *ngIf="item.sourceSettings.type === 'imagestatic'"
-        [url]="item.sourceSettings.url"
-        [crossOrigin]="item.sourceSettings.crossOrigin"
-        [imageExtent]="item.sourceSettings.imageExtent"
-        [attributions]="item.sourceSettings.attributions"
-        [projection]="item.sourceSettings.projection"
-        [imageSize]="item.sourceSettings.imageSize"></b3-source-image-static> 
-    </b3-layer-image>
-    <b3-layer-vector *ngIf="item.type === 'vector'"
-      [id] = "item.id"
-      [name]="item.name"
-      [order] = "item.order"
-      [showOnLayerView] = "item.showOnLayerView"
-      [isBase] = "item.isBase"
-      [opacity]="item.layerSettings && item.layerSettings.opacity"
-      [extent]="item.layerSettings && item.layerSettings.extent"
-      [minResolution]="item.layerSettings && item.layerSettings.minResolution"
-      [maxResolution]="item.layerSettings && item.layerSettings.maxResolution"
-      [renderBuffer]="item.layerSettings && item.layerSettings.renderBuffer"
-      [declutter]="item.layerSettings && item.layerSettings.declutter"
-      [style]="item.layerSettings && item.layerSettings.style"
-      [updateWhileAnimating]="item.layerSettings && item.layerSettings.updateWhileAnimating"
-      [updateWhileInteracting]="item.layerSettings && item.layerSettings.updateWhileInteracting"
-      [visible]="item.layerSettings && item.layerSettings.visible"
-      [zIndex]="item.layerSettings && item.layerSettings.zIndex"
-      (outLayerCreate)="onLayerCreated($event)">
-      <b3-vector-style *ngIf="item.styleSettings"
-        [options]="item.styleSettings"></b3-vector-style>
-      <b3-feature-info-widget-container 
-          [widgetData]="item.infoWindowSettings"></b3-feature-info-widget-container>
-      <b3-source-cluster-container *ngIf="item.sourceSettings.type === 'cluster'"
-        [distance]="item.sourceSettings.distance">
-        <b3-source-cluster [url]="item.sourceSettings.url"
-            [overlaps]="item.sourceSettings.overlaps"
-            [useSpatialIndex]="item.sourceSettings.useSpatialIndex"
-            [wrapX]="item.sourceSettings.wrapX"
-            [format]="item.sourceSettings.format"
-            [strategy]="item.sourceSettings.strategy"
-            [dataFormat]="item.sourceSettings.dataFormat"
-            [dataProjection]="item.sourceSettings.dataProjection"
-            [featureProjection]="item.sourceSettings.featureProjection"></b3-source-cluster> 
-      </b3-source-cluster-container>
-      <b3-source-esrijson *ngIf="item.sourceSettings.type === 'esrijson'"
-        [url]="item.sourceSettings.url"
-        [inSR]="item.sourceSettings.inSR"
-        [outSR]="item.sourceSettings.outSR"
-        [fields]="item.sourceSettings.fields"></b3-source-esrijson>
-      <b3-source-feature *ngIf="item.sourceSettings.type === 'feature'"
-        [features]="item.sourceSettings.features"></b3-source-feature>
-      <b3-source-gml2 *ngIf="item.sourceSettings.type === 'gml2'"
-        [url]="item.sourceSettings.url"></b3-source-gml2>
-      <b3-source-gml3 *ngIf="item.sourceSettings.type === 'gml3'"
-        [url]="item.sourceSettings.url"></b3-source-gml3>
-      <b3-source-gml32 *ngIf="item.sourceSettings.type === 'gml32'"
-        [url]="item.sourceSettings.url"></b3-source-gml32>
-      <b3-source-geojson *ngIf="item.sourceSettings.type === 'geojson'"
-        [url]="item.sourceSettings.url"
-        [dataProjection]="item.sourceSettings.dataProjection"
-        [featureProjection]="item.sourceSettings.featureProjection"
-        [geometryName]="item.sourceSettings.geometryName"></b3-source-geojson>
-      <b3-source-gpx *ngIf="item.sourceSettings.type === 'gpx'"
-        [url]="item.sourceSettings.url"
-        [dataProjection]="item.sourceSettings.dataProjection"
-        [featureProjection]="item.sourceSettings.featureProjection"></b3-source-gpx>
-      <b3-source-kml *ngIf="item.sourceSettings.type === 'kml'"
-        [url]="item.sourceSettings.url"
-        [dataProjection]="item.sourceSettings.dataProjection"
-        [featureProjection]="item.sourceSettings.featureProjection"
-        [extractStyles]="item.sourceSettings.extractStyles"
-        [showPointNames]="item.sourceSettings.showPointNames"
-        [writeStyles]="item.sourceSettings.writeStyles"></b3-source-kml>
-      <b3-source-owner *ngIf="item.sourceSettings.type === 'owner'"
-        [source]="item.sourceSettings.source"></b3-source-owner>
-      <b3-source-signalr *ngIf="item.sourceSettings.type === 'signalrgeojson'"
-        [url]="item.sourceSettings.url"
-        [reconnectInterval]="item.sourceSettings.reconnectInterval"
-        [removeInterval]="item.sourceSettings.removeInterval"
-        [dataProjection]="item.sourceSettings.dataProjection"
-        [featureProjection]="item.sourceSettings.featureProjection"></b3-source-signalr>
-      <b3-source-topojson *ngIf="item.sourceSettings.type === 'topojson'"
-        [url]="item.sourceSettings.url"
-        [layers]="item.sourceSettings.layers"
-        [layerName]="item.sourceSettings.layerName"
-        [dataProjection]="item.sourceSettings.dataProjection"
-        [featureProjection]="item.sourceSettings.featureProjection"></b3-source-topojson>
-      <b3-source-wkt *ngIf="item.sourceSettings.type === 'wkt'"
-        [wkt]="item.sourceSettings.wkt"
-        [dataProjection]="item.sourceSettings.dataProjection"
-        [featureProjection]="item.sourceSettings.featureProjection"
-        [extent]="item.sourceSettings.extent"></b3-source-wkt>
-      <b3-source-wfs *ngIf="item.sourceSettings.type === 'wfs'"
-        [url]="item.sourceSettings.url"
-        [typename]= "item.sourceSettings.typename"
-        [version]= "item.sourceSettings.version"
-        [dataProjection]="item.sourceSettings.dataProjection"
-        [featureProjection]="item.sourceSettings.featureProjection"
-        [geometryName]="item.sourceSettings.geometryName"></b3-source-wfs>
-    </b3-layer-vector>
-    <b3-layer-heatmap *ngIf="item.type === 'heatmap'"
-        [id] = "item.id"
-        [name] = "item.name"
-        [order] = "item.order"
-        [showOnLayerView] = "item.showOnLayerView"
-        [isBase] = "item.isBase"
-        [opacity]="item.layerSettings.opacity"
-        [extent]="item.layerSettings.extent"
-        [minResolution]="item.layerSettings.minResolution"
-        [maxResolution]="item.layerSettings.maxResolution"
-        [visible]="item.layerSettings.visible"
-        [zIndex]="item.layerSettings.zIndex"
-        [gradient]="item.layerSettings.gradient"
-        [radius]="item.layerSettings.radius"
-        [blur]="item.layerSettings.blur"         
-        [weight]="item.layerSettings.weight"          
-        (outLayerCreate)="onLayerCreated($event)">
-     <b3-source-kml *ngIf="item.sourceSettings.type === 'kml'"
-        [url]="item.sourceSettings.url"
-        [extractStyles]="item.sourceSettings.extractStyles"
-        [showPointNames]="item.sourceSettings.showPointNames"
-        [dataProjection]="item.sourceSettings.dataProjection"
-        [featureProjection]="item.sourceSettings.featureProjection"
-        [writeStyles]="item.sourceSettings.writeStyles"></b3-source-kml>
-      <b3-source-geojson *ngIf="item.sourceSettings.type === 'geojson'"
-        [url]="item.sourceSettings.url"
-        [dataProjection]="item.sourceSettings.dataProjection"
-        [featureProjection]="item.sourceSettings.featureProjection"
-        [geometryName]="item.sourceSettings.geometryName"></b3-source-geojson>
-    </b3-layer-heatmap>
+  <b3-layer-tile *ngIf="item.type === 'tile'" [id]="item.id" [name]="item.name" [order]="item.order"
+    [showOnLayerView]="item.showOnLayerView" [isBase]="item.isBase"
+    [opacity]="item.layerSettings && item.layerSettings.opacity"
+    [preload]="item.layerSettings && item.layerSettings.preload"
+    [minResolution]="item.layerSettings && item.layerSettings.minResolution"
+    [maxResolution]="item.layerSettings && item.layerSettings.maxResolution"
+    [visible]="item.layerSettings && item.layerSettings.visible"
+    [extent]="item.layerSettings && item.layerSettings.extent"
+    [useInterimTilesOnError]="item.layerSettings && item.layerSettings.useInterimTilesOnError"
+    [zIndex]="item.layerSettings && item.layerSettings.zIndex" (outLayerCreate)="onLayerCreated($event)">
+    <b3-source-osm *ngIf="item.sourceSettings.type === 'osm'"></b3-source-osm>
+    <b3-source-tile-wms *ngIf="item.sourceSettings.type === 'tilewms'" [url]="item.sourceSettings.url"
+      [urls]="item.sourceSettings.urls" [params]="item.sourceSettings.params"
+      [cacheSize]="item.sourceSettings.cacheSize" [crossOrigin]="item.sourceSettings.crossOrigin"
+      [gutter]="item.sourceSettings.gutter" [hidpi]="item.sourceSettings.hidpi"
+      [projection]="item.sourceSettings.projection"
+      [reprojectionErrorThreshold]="item.sourceSettings.reprojectionErrorThreshold"
+      [serverType]="item.sourceSettings.serverType" [wrapX]="item.sourceSettings.wrapX"></b3-source-tile-wms>
+    <b3-source-tile-arcgisrest *ngIf="item.sourceSettings.type === 'tilearcgisrest'" [url]="item.sourceSettings.url"
+      [urls]="item.sourceSettings.urls" [params]="item.sourceSettings.params"
+      [cacheSize]="item.sourceSettings.cacheSize" [crossOrigin]="item.sourceSettings.crossOrigin"
+      [projection]="item.sourceSettings.projection"
+      [reprojectionErrorThreshold]="item.sourceSettings.reprojectionErrorThreshold"
+      [transition]="item.sourceSettings.transition" [wrapX]="item.sourceSettings.wrapX"></b3-source-tile-arcgisrest>
+    <b3-source-tile-wmts *ngIf="item.sourceSettings.type === 'tilewmts'" [layer]="item.sourceSettings.layer"
+      [matrixSet]="item.sourceSettings.matrixSet" [url]="item.sourceSettings.url"></b3-source-tile-wmts>
+    <b3-source-xyz *ngIf="item.sourceSettings.type === 'xyz'" [url]="item.sourceSettings.url"
+      [urls]="item.sourceSettings.urls" [cacheSize]="item.sourceSettings.cacheSize"
+      [crossOrigin]="item.sourceSettings.crossOrigin" [projection]="item.sourceSettings.projection"
+      [reprojectionErrorThreshold]="item.sourceSettings.reprojectionErrorThreshold" [wrapX]="item.sourceSettings.wrapX"
+      [transition]="item.sourceSettings.transition" [opaque]="item.sourceSettings.opaque"
+      [tileSize]="item.sourceSettings.tileSize" [tilePixelRatio]="item.sourceSettings.tilePixelRatio"
+      [maxZoom]="item.sourceSettings.maxZoom" [minZoom]="item.sourceSettings.minZoom"></b3-source-xyz>
+    <b3-source-bingmaps *ngIf="item.sourceSettings.type === 'bingmaps'" [key]="item.sourceSettings.key"
+      [cacheSize]="item.sourceSettings.cacheSize" [hidpi]="item.sourceSettings.hidpi"
+      [culture]="item.sourceSettings.culture" [imagerySet]="item.sourceSettings.imagerySet"
+      [maxZoom]="item.sourceSettings.maxZoom"
+      [reprojectionErrorThreshold]="item.sourceSettings.reprojectionErrorThreshold" [wrapX]="item.sourceSettings.wrapX">
+    </b3-source-bingmaps>
+
+  </b3-layer-tile>
+  <b3-layer-image *ngIf="item.type === 'image'" [id]="item.id" [name]="item.name" [order]="item.order"
+    [showOnLayerView]="item.showOnLayerView" [isBase]="item.isBase" [opacity]="item.layerSettings.opacity"
+    [minResolution]="item.layerSettings.minResolution" [maxResolution]="item.layerSettings.maxResolution"
+    [visible]="item.layerSettings.visible" [extent]="item.layerSettings.extent" [zIndex]="item.layerSettings.zIndex"
+    (outLayerCreate)="onLayerCreated($event)">
+    <b3-source-image-wms *ngIf="item.sourceSettings.type === 'imagewms'" [url]="item.sourceSettings.url"
+      [params]="item.sourceSettings.params" [crossOrigin]="item.sourceSettings.crossOrigin"
+      [hidpi]="item.sourceSettings.hidpi" [projection]="item.sourceSettings.projection"
+      [serverType]="item.sourceSettings.serverType"></b3-source-image-wms>
+    <b3-source-image-arcgisrest *ngIf="item.sourceSettings.type === 'imagearcgisrest'" [url]="item.sourceSettings.url"
+      [hidpi]="item.sourceSettings.hidpi" [params]="item.sourceSettings.params"
+      [resolutions]="item.sourceSettings.resolutions" [crossOrigin]="item.sourceSettings.crossOrigin"
+      [projection]="item.sourceSettings.projection" [ratio]="item.sourceSettings.ratio"></b3-source-image-arcgisrest>
+    <b3-source-image-static *ngIf="item.sourceSettings.type === 'imagestatic'" [url]="item.sourceSettings.url"
+      [crossOrigin]="item.sourceSettings.crossOrigin" [imageExtent]="item.sourceSettings.imageExtent"
+      [attributions]="item.sourceSettings.attributions" [projection]="item.sourceSettings.projection"
+      [imageSize]="item.sourceSettings.imageSize"></b3-source-image-static>
+  </b3-layer-image>
+  <b3-layer-vector *ngIf="item.type === 'vector'" [id]="item.id" [name]="item.name" [order]="item.order"
+    [showOnLayerView]="item.showOnLayerView" [isBase]="item.isBase"
+    [opacity]="item.layerSettings && item.layerSettings.opacity"
+    [extent]="item.layerSettings && item.layerSettings.extent"
+    [minResolution]="item.layerSettings && item.layerSettings.minResolution"
+    [maxResolution]="item.layerSettings && item.layerSettings.maxResolution"
+    [renderBuffer]="item.layerSettings && item.layerSettings.renderBuffer"
+    [declutter]="item.layerSettings && item.layerSettings.declutter"
+    [style]="item.layerSettings && item.layerSettings.style"
+    [updateWhileAnimating]="item.layerSettings && item.layerSettings.updateWhileAnimating"
+    [updateWhileInteracting]="item.layerSettings && item.layerSettings.updateWhileInteracting"
+    [visible]="item.layerSettings && item.layerSettings.visible"
+    [zIndex]="item.layerSettings && item.layerSettings.zIndex" (outLayerCreate)="onLayerCreated($event)">
+    <b3-vector-style *ngIf="item.styleSettings" [options]="item.styleSettings"></b3-vector-style>
+    <b3-feature-info-widget-container [widgetData]="item.infoWindowSettings"></b3-feature-info-widget-container>
+    <b3-source-cluster-container *ngIf="item.sourceSettings.type === 'cluster'"
+      [distance]="item.sourceSettings.distance">
+      <b3-source-cluster [url]="item.sourceSettings.url" [overlaps]="item.sourceSettings.overlaps"
+        [useSpatialIndex]="item.sourceSettings.useSpatialIndex" [wrapX]="item.sourceSettings.wrapX"
+        [format]="item.sourceSettings.format" [strategy]="item.sourceSettings.strategy"
+        [dataFormat]="item.sourceSettings.dataFormat" [dataProjection]="item.sourceSettings.dataProjection"
+        [featureProjection]="item.sourceSettings.featureProjection"></b3-source-cluster>
+    </b3-source-cluster-container>
+    <b3-source-esrijson *ngIf="item.sourceSettings.type === 'esrijson'" [url]="item.sourceSettings.url"
+      [inSR]="item.sourceSettings.inSR" [outSR]="item.sourceSettings.outSR" [fields]="item.sourceSettings.fields">
+    </b3-source-esrijson>
+    <b3-source-feature *ngIf="item.sourceSettings.type === 'feature'" [features]="item.sourceSettings.features">
+    </b3-source-feature>
+    <b3-source-gml2 *ngIf="item.sourceSettings.type === 'gml2'" [url]="item.sourceSettings.url"></b3-source-gml2>
+    <b3-source-gml3 *ngIf="item.sourceSettings.type === 'gml3'" [url]="item.sourceSettings.url"></b3-source-gml3>
+    <b3-source-gml32 *ngIf="item.sourceSettings.type === 'gml32'" [url]="item.sourceSettings.url"></b3-source-gml32>
+    <b3-source-geojson *ngIf="item.sourceSettings.type === 'geojson'" [url]="item.sourceSettings.url"
+      [dataProjection]="item.sourceSettings.dataProjection" [featureProjection]="item.sourceSettings.featureProjection"
+      [geometryName]="item.sourceSettings.geometryName"></b3-source-geojson>
+    <b3-source-gpx *ngIf="item.sourceSettings.type === 'gpx'" [url]="item.sourceSettings.url"
+      [dataProjection]="item.sourceSettings.dataProjection" [featureProjection]="item.sourceSettings.featureProjection">
+    </b3-source-gpx>
+    <b3-source-kml *ngIf="item.sourceSettings.type === 'kml'" [url]="item.sourceSettings.url"
+      [dataProjection]="item.sourceSettings.dataProjection" [featureProjection]="item.sourceSettings.featureProjection"
+      [extractStyles]="item.sourceSettings.extractStyles" [showPointNames]="item.sourceSettings.showPointNames"
+      [writeStyles]="item.sourceSettings.writeStyles"></b3-source-kml>
+    <b3-source-owner *ngIf="item.sourceSettings.type === 'owner'" [source]="item.sourceSettings.source">
+    </b3-source-owner>
+    <b3-source-signalr *ngIf="item.sourceSettings.type === 'signalrgeojson'" [url]="item.sourceSettings.url"
+      [reconnectInterval]="item.sourceSettings.reconnectInterval" [removeInterval]="item.sourceSettings.removeInterval"
+      [dataProjection]="item.sourceSettings.dataProjection" [featureProjection]="item.sourceSettings.featureProjection">
+    </b3-source-signalr>
+    <b3-source-topojson *ngIf="item.sourceSettings.type === 'topojson'" [url]="item.sourceSettings.url"
+      [layers]="item.sourceSettings.layers" [layerName]="item.sourceSettings.layerName"
+      [dataProjection]="item.sourceSettings.dataProjection" [featureProjection]="item.sourceSettings.featureProjection">
+    </b3-source-topojson>
+    <b3-source-wkt *ngIf="item.sourceSettings.type === 'wkt'" [wkt]="item.sourceSettings.wkt"
+      [dataProjection]="item.sourceSettings.dataProjection" [featureProjection]="item.sourceSettings.featureProjection"
+      [extent]="item.sourceSettings.extent"></b3-source-wkt>
+    <b3-source-wfs *ngIf="item.sourceSettings.type === 'wfs'" [url]="item.sourceSettings.url"
+      [typename]="item.sourceSettings.typename" [version]="item.sourceSettings.version"
+      [dataProjection]="item.sourceSettings.dataProjection" [featureProjection]="item.sourceSettings.featureProjection"
+      [geometryName]="item.sourceSettings.geometryName"></b3-source-wfs>
+  </b3-layer-vector>
+  <b3-layer-heatmap *ngIf="item.type === 'heatmap'" [id]="item.id" [name]="item.name" [order]="item.order"
+    [showOnLayerView]="item.showOnLayerView" [isBase]="item.isBase" [opacity]="item.layerSettings.opacity"
+    [extent]="item.layerSettings.extent" [minResolution]="item.layerSettings.minResolution"
+    [maxResolution]="item.layerSettings.maxResolution" [visible]="item.layerSettings.visible"
+    [zIndex]="item.layerSettings.zIndex" [gradient]="item.layerSettings.gradient" [radius]="item.layerSettings.radius"
+    [blur]="item.layerSettings.blur" [weight]="item.layerSettings.weight" (outLayerCreate)="onLayerCreated($event)">
+    <b3-source-kml *ngIf="item.sourceSettings.type === 'kml'" [url]="item.sourceSettings.url"
+      [extractStyles]="item.sourceSettings.extractStyles" [showPointNames]="item.sourceSettings.showPointNames"
+      [dataProjection]="item.sourceSettings.dataProjection" [featureProjection]="item.sourceSettings.featureProjection"
+      [writeStyles]="item.sourceSettings.writeStyles"></b3-source-kml>
+    <b3-source-geojson *ngIf="item.sourceSettings.type === 'geojson'" [url]="item.sourceSettings.url"
+      [dataProjection]="item.sourceSettings.dataProjection" [featureProjection]="item.sourceSettings.featureProjection"
+      [geometryName]="item.sourceSettings.geometryName"></b3-source-geojson>
+  </b3-layer-heatmap>
 </ng-container>
+  
+

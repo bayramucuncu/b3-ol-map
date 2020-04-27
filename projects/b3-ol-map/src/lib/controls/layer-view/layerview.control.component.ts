@@ -19,10 +19,6 @@ export class LayerViewControlComponent implements OnInit {
     visibility: boolean;
     
     ngOnInit(): void {
-
-    }
-
-    constructor(private mapComponent: MapComponent) {
         this.mapComponent.map.getLayers().on("add", (event: CollectionEvent<BaseLayer>) => {
             let order = event.element.get("order")
                 ? event.element.get("order")
@@ -31,7 +27,7 @@ export class LayerViewControlComponent implements OnInit {
             let name = event.element.get("name") 
                 ? event.element.get("name")
                 : "New Layer - " + order;
-
+            
             let showOnLayerView = event.element.get("showOnLayerView") !== false;
             
             if(showOnLayerView){
@@ -48,6 +44,34 @@ export class LayerViewControlComponent implements OnInit {
         this.mapComponent.map.getLayers().on("remove", (event: CollectionEvent<BaseLayer>) => {
             this.nodes.splice(this.nodes.findIndex(s => s.layer === event.element), 1);
         });
+    }
+
+    constructor(private mapComponent: MapComponent) {
+        // this.mapComponent.map.getLayers().on("add", (event: CollectionEvent<BaseLayer>) => {
+        //     let order = event.element.get("order")
+        //         ? event.element.get("order")
+        //         : this.mapComponent.map.getLayers().getLength();
+
+        //     let name = event.element.get("name") 
+        //         ? event.element.get("name")
+        //         : "New Layer - " + order;
+
+        //     let showOnLayerView = event.element.get("showOnLayerView") !== false;
+            
+        //     if(showOnLayerView){
+        //         this.nodes.push(new LayerNode(
+        //             name,
+        //             order,
+        //             [],
+        //             event.element,
+        //             false
+        //         ));
+        //     }
+        // });
+
+        // this.mapComponent.map.getLayers().on("remove", (event: CollectionEvent<BaseLayer>) => {
+        //     this.nodes.splice(this.nodes.findIndex(s => s.layer === event.element), 1);
+        // });
     }
 
     toggle() {

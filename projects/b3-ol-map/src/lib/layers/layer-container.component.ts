@@ -9,6 +9,8 @@ import BaseLayer from 'ol/layer/Base';
 export class LayerContainerComponent implements OnInit {
 
   @Input() layers: any[];
+  @Input() showControl: boolean;
+  @Input() controlTitle: string;
 
   @Output() outLayerCreate: EventEmitter<BaseLayer>;
   
@@ -18,6 +20,8 @@ export class LayerContainerComponent implements OnInit {
 
   ngOnInit() {
     !this.layers && (this.layers = this.getDefaultLayers());
+    !this.showControl && (this.showControl = false);
+    !this.controlTitle && (this.controlTitle = "Layers");
   }
 
   onLayerCreated($event: any): void {
