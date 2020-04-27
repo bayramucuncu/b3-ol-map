@@ -5,7 +5,7 @@ name: publish npm
 
 on:
   release:
-    types: [ published ]
+    types: [created]
 
 jobs:
   build:
@@ -23,8 +23,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         registry-url: 'https://registry.npmjs.org'
+    - run: npm ci
     - run: npm run build-lib-prod
-    - run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
     - run: npm publish ./projects/b3-ol-map --access public 
-      env:      
+      env:
         NODE_AUTH_TOKEN: ${{secrets.npm_token}}
