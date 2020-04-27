@@ -1,0 +1,11 @@
+.b3-mouse-position {
+    background: rgba(0,60,136,0.3);
+    border-radius: 4px;
+    bottom: 8px;
+    left: 100px;
+    padding: 4px 6px;
+    position: absolute;
+}
+.b3-mouse-Position-value{
+    width: 520px;
+}
