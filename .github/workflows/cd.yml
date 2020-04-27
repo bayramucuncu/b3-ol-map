@@ -22,10 +22,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
+        registry-url: 'https://registry.npmjs.org'
     - run: npm run build-lib-prod
     - run: echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" > ~/.npmrc
     - run: npm publish ./projects/b3-ol-map --access public 
-      env:
-        CI: true
+      env:      
         NODE_AUTH_TOKEN: ${{secrets.npm_token}}
