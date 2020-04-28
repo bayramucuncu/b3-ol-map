@@ -1,6 +1,21 @@
 # b3-ol-map
 Openlayers based Angular library.
 
+## installation
+
+```shell
+npm install b3-ol-map
+```
+
+After all dependencies installed, open your angular.json and add openlayers css style file.
+
+```json
+  "styles": [
+    "./node_modules/ol/ol.css",
+    "src/styles.css"
+  ]
+```
+
 ## Basic usage
 
 If you does not set any options, the map will apply default settings.
@@ -130,3 +145,20 @@ app.component.html
     <b3-layer-container [layers]="map.layers"></b3-layer-container>
 </b3-ol-map>
 ```
+
+## Route Parameters
+If you want to pan your map to a lon/lat position, you can use ActivatedRoute object of Angular.
+
+```typescript
+  constructor(private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.queryParams.subscribe(params => {
+      if(params["lon"] && params["lat"]){
+        let coordinates = [parseFloat(params["lon"]),parseFloat(params["lat"])];
+        let destinationProj = (this.map.view && this.map.view.projection) || "EPSG:3857";
+        let sourceProj = "EPSG:4326";
+        (this.map.view) && (this.map.view.center = transform(coordinates, sourceProj, destinationProj));
+      }
+    });
+  }
+```
+transform() is an Openlayers function that located in 'ol/proj'

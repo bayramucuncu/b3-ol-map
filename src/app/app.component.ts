@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { interval } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { transform } from 'ol/proj';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,17 @@ export class AppComponent implements OnInit {
   title = 'b3-ol-map';
   map: any;
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute) {
+
+    this.activatedRoute.queryParams.subscribe(params => {
+      if(params["lon"] && params["lat"]){
+        let coordinates = [parseFloat(params["lon"]),parseFloat(params["lat"])];
+        let destinationProj = (this.map.view && this.map.view.projection) || "EPSG:3857";
+        let sourceProj = "EPSG:4326";
+        (this.map.view) && (this.map.view.center = transform(coordinates, sourceProj, destinationProj));
+      }
+    });
+
     this.map = {
       settings: { width: "100vw", height: "100vh" },
       view: { zoom: 14, center: [3332870.606704303, 4977900.556315189], projection: "EPSG:3857", minZoom: 0, maxZoom: 26 },
@@ -48,6 +59,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+   
     // const ounter = interval(1000);
 
     // ounter.subscribe( t => {

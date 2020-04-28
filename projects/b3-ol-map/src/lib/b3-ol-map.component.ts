@@ -6,7 +6,6 @@ import { Interaction } from 'ol/interaction';
 import { Feature } from 'ol';
 import { Layer } from 'ol/layer';
 import { Cluster } from 'ol/source';
-import { transform } from 'ol/proj';
 import { click } from 'ol/events/condition.js';
 import Select from 'ol/interaction/Select.js';
 
@@ -34,7 +33,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   @Output() outClick: EventEmitter<MapBrowserEvent>;
   @Output() outMoveend: EventEmitter<MapBrowserEvent>;
 
-  constructor(private element: ElementRef, private activatedRoute: ActivatedRoute) {
+  constructor(private element: ElementRef) {
     this.outClick = new EventEmitter<MapBrowserEvent>();
     this.outMoveend = new EventEmitter<MapBrowserEvent>();
   }
@@ -50,8 +49,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
 
     this.map.on('click', (event: MapBrowserEvent) => this.outClick.emit(event));
     this.map.on('moveend', (event: MapBrowserEvent) => this.outMoveend.emit(event));
-
-    this.routeControl();
   }
 
   ngAfterViewInit(): void { 
@@ -61,17 +58,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   @HostListener('window:resize')
   onWindowResize() {
     this.map.updateSize();
-  }
-
-  private routeControl(): void{
-    this.activatedRoute.queryParams.subscribe(params => {
-      if(params["lon"] && params["lat"]){
-        let coordinates = [parseFloat(params["lon"]),parseFloat(params["lat"])];
-        let destinationProj = this.map.getView().getProjection().getCode();
-        let sourceProj = "EPSG:4326";
-        this.map.getView().setCenter(transform(coordinates, sourceProj, destinationProj));
-      }
-    })
   }
 
   ngOnChanges(changes: SimpleChanges): void {

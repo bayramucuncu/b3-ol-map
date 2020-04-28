@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { MapComponent } from './b3-ol-map.component';
 import { LayerTileComponent } from './layers/tile/tile.component';
 import { MouseWheelZoomComponent } from './interactions/mouse-wheel-zoom/mouse-wheel-zoom.component';
@@ -133,7 +132,6 @@ import { LayerViewNodeComponent } from './controls/layer-view/layerviewnode.comp
     MeasureComponent
   ],
   imports: [
-    RouterModule,
     CommonModule,
     FormsModule,
     HttpClientModule
