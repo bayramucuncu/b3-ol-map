@@ -33,8 +33,7 @@
     "ol": "^6.1.1",
     "proj4": "^2.5.0"
   },
-  "dependencies": { 
-    "@angular/router": "~8.2.14",
+  "dependencies": {
     "@aspnet/signalr": "^1.1.4",
     "@types/ol": "^6.1.0",
     "@types/proj4": "^2.5.0",
