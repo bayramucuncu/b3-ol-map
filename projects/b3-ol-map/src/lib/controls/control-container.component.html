@@ -43,7 +43,9 @@
       (outDataViewFeatureAdd)="onDataViewFeatureAded($event)"></b3-data-view>      
     <b3-measure *ngIf="item.name === 'measure'"
       [id] = "item.id"
-      [title]="item.title"
+      [title]="item.settings.title"
+      [lengthLabel]="item.settings.lengthLabel"
+      [areaLabel]="item.settings.areaLabel"
       (outMeasureCreate)="onMeasureCreated($event)"
       (outMeasureRemove)="onMeasureRemoved($event)"></b3-measure>
   </ng-container>

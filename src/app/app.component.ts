@@ -53,7 +53,7 @@ export class AppComponent implements OnInit {
         { "id": "399fe7d3-0edc-4021-8811-0e0a786f7547", "name": "zoomtoextent", "title": "Zoom To Extent Control", "settings": { "className": "ol-zoom-extent", "label": "E", "target": null, "tipLabel": "Fit to extent", "extent": null } },
         { "id": "99f1c025-8c66-488e-881c-247a492951c7", "name": "mouseposition", "title": "MousePositionControl", "settings": {"precision":"6", "projection":"EPSG:3857" }},
         { "id": "97f1c024-8c67-488e-881c-247a492951c7", "name": "dataview", "title": "Data" },
-        { "id": "12f1c024-8c67-488e-881c-247a492951c7", "name": "measure", "title": "Measure" },
+        { "id": "12f1c024-8c67-488e-881c-247a492951c7", "name": "measure", "title": "Measure", "settings": { "title": "Measure", "lengthLabel": "Length", "areaLabel": "Area" } },
       ]
     }
   }

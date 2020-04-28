@@ -1,12 +1,12 @@
 <div class="b3-measure-pane">
     <div (click)="toggle()" class="b3-measure-toggle"></div>
     <div *ngIf="visibility" class="b3-measure-control">
-        <h1> Measure <i class="measure-close-icon" (click)="toggle()"></i></h1>
+        <h1> {{title}} <i class="measure-close-icon" (click)="toggle()"></i></h1>
         <div class="container">
             <label><input (input)="select('LineString')" [ngModel]="measureType" type="radio" value="LineString"
-                    name="measureType" />Uzunluk</label>
+                    name="measureType" />{{ lengthLabel }}</label>
             <label><input (input)="select('Polygon')" [ngModel]="measureType" type="radio" value="Polygon"
-                    name="measureType" />Alan</label>
+                    name="measureType" />{{ areaLabel }}</label>
         </div>
     </div>
 </div> 

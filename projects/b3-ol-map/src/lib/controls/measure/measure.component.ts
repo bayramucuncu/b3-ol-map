@@ -31,17 +31,13 @@ import { MapComponent } from '../../b3-ol-map.component';
         private listener: any;
         private pointerMoveHandler: (evt: MapBrowserEvent) => void;
 
-        @Input()
-        id: any;
+        @Input() id: any;
+        @Input() title: string;
+        @Input() lengthLabel: string;
+        @Input() areaLabel: string;
 
-        @Input()
-        title: string;
-
-        @Output()
-        outMeasureCreate: EventEmitter<any>;
-
-        @Output()
-        outMeasureRemove: EventEmitter<any>;
+        @Output() outMeasureCreate: EventEmitter<any>;
+        @Output() outMeasureRemove: EventEmitter<any>;
 
         constructor(private mapComponent: MapComponent, private renderer: Renderer2) {
             this.source = new VectorSource();
@@ -50,7 +46,9 @@ import { MapComponent } from '../../b3-ol-map.component';
         }
 
         ngOnInit() {
-            
+            !this.lengthLabel && (this.lengthLabel = "Length");
+            !this.areaLabel && (this.areaLabel = "Area");
+            !this.title && (this.title = "Measure");
         }
 
         private createDrawInteraction() {
