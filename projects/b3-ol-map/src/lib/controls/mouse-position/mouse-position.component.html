@@ -1,14 +1,15 @@
-
 <div class="b3-mouse-position">
-    <form>
+    <div>
         <label>Projection </label>
         <select (change)="selectProjection($event.target.value)">
-            <option *ngFor="let item of projections" value={{item.code}}>
-              {{item.code}}
+            <option *ngFor="let item of projections" value={{item.code}} [selected]="item.code==projection">
+                {{item.code}}
             </option>
-          </select>
+        </select>
         <label>Precision </label>
-        <input type="number" min="0" max="12" (change)="onPrecisionChanged($event.target.value)" [value]="precision"/>
-        <div class="b3-mouse-Position-value"><label #coordinate ></label></div>
-      </form>
+        <input type="number" min="0" max="12" (change)="onPrecisionChanged($event.target.value)" [value]="precision" />
+    </div>
+    <div>
+        <label #coordinate class="b3-mouse-Position-value"></label>
+    </div>
 </div>

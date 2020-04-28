@@ -4,7 +4,6 @@ import { MousePosition } from 'ol/control';
 import { createStringXY } from 'ol/coordinate';
 import { MapComponent } from '../../b3-ol-map.component';
 import { BaseControlComponent } from '../base-control-component';
-import { stat } from 'fs';
 
 @Component({
   selector: 'b3-control-mouse-position',
@@ -39,10 +38,10 @@ export class MousePositionComponent extends BaseControlComponent implements OnIn
     (<MousePosition>this.control).setCoordinateFormat(createStringXY(value))
   }
 
-  ngOnInit() {console.log(this.targetElement)
+  ngOnInit() {
     this.control = new MousePosition({
       coordinateFormat: createStringXY(this.precision),
-      className: this.className || "ol-mouse-position",
+      className: this.className || "b3-mouse-Position-value",
       target: this.target || this.targetElement.nativeElement,
       projection: this.projection,
       undefinedHTML: this.undefinedHTML || "&#160;"
