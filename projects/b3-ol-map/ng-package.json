@@ -3,5 +3,14 @@
   "dest": "../../dist/b3-ol-map",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "@angular/router",
+    "@aspnet/signalr",
+    "@types/ol",
+    "@types/proj4",
+    "ol",
+    "proj4"
+  ]
 }
