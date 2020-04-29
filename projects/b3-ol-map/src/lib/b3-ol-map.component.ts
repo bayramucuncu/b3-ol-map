@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewInit, SimpleChanges, HostListener, OnChanges } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
 import { Map, MapBrowserEvent, View } from 'ol';
 import { Control } from 'ol/control';
 import { Interaction } from 'ol/interaction';
@@ -42,7 +41,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
 
     this.map = new Map({
       controls: this.controls,
-      interactions: this.interactions
+      interactions: this.interactions,
+      keyboardEventTarget: document
     });
 
     this.map.setTarget(this.element.nativeElement.firstElementChild);

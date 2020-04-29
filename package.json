@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --open --port=4201",
     "build": "ng build",
     "build-lib": "ng build b3-ol-map",
     "build-lib-watch": "ng build b3-ol-map --watch",
     "build-lib-prod": "ng build b3-ol-map --prod=true",
+    "npm-pack-lib": "cd dist/b3-ol-map && npm pack",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
