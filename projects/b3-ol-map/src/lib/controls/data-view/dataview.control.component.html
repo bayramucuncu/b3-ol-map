@@ -24,14 +24,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-25">
+                <div class="col-75">
+                    <input  [(ngModel)]="model.name" name="name" type="text" placeholder="Layer name">
                 </div>
                 <div class="col-25">
-                </div>
-                <div class="col-25">
-                </div>
-                <div class="col-25">
-                    <input (click)="addToLayer()" type="submit"  value="Layer">
+                    <input (click)="addToLayer()" type="submit"  value="Add Layer">
                 </div>
             </div>
         </div>

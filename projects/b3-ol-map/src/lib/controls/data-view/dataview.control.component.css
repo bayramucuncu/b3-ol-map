@@ -48,7 +48,7 @@
 select,
 textarea {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   border: 1px solid #ccc;
   resize: vertical;
   box-sizing: border-box;
@@ -62,11 +62,11 @@ textarea {
 .b3-data-view-control input[type=submit] {
   background-color: #2980B9;
   color: white;
-  padding: 12px 12px;
+  padding: 11px 8px;
   border: none;
   cursor: pointer;
   float: right;
-  width: 100%
+  width: 100%;
 }
 
 .b3-data-view-control input[type=submit]:hover {

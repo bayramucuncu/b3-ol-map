@@ -28,9 +28,14 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() width: string = '100%';
   @Input() height: string = '100%';
-  
+
   @Output() outClick: EventEmitter<MapBrowserEvent>;
   @Output() outMoveend: EventEmitter<MapBrowserEvent>;
+  
+  @HostListener('window:resize') onWindowResize() {
+    this.map.updateSize();
+  }
+
 
   constructor(private element: ElementRef) {
     this.outClick = new EventEmitter<MapBrowserEvent>();
@@ -51,12 +56,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
     this.map.on('moveend', (event: MapBrowserEvent) => this.outMoveend.emit(event));
   }
 
-  ngAfterViewInit(): void { 
-    this.map.updateSize();
-  }
-  
-  @HostListener('window:resize')
-  onWindowResize() {
+  ngAfterViewInit(): void {
     this.map.updateSize();
   }
 

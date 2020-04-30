@@ -9,11 +9,13 @@ export class MapData {
     srid: string;
     format: string;
     data: string;
+    name: string;
 
-    constructor(srid: string, format: string, data: string) {
+    constructor(srid: string, format: string, data: string, name: string) {
         this.srid = srid;
         this.format = format;
         this.data = data;
+        this.name = name;
     }
 }
 
@@ -25,15 +27,12 @@ export class MapData {
 export class DataViewComponent {
 
     visibility: boolean;
-    layer: LayerVector;
-    source = new VectorSource;
+    model: MapData;
 
     @Output() outDataViewFeatureAdd: EventEmitter<Feature[]> = new EventEmitter<Feature[]>();
 
     constructor(private mapComponentControl: MapComponent) {
-        this.layer = new LayerVector();
 
-        this.layer.set("showOnLayerView", false);
     }
 
     srids: string[] = [
@@ -48,8 +47,6 @@ export class DataViewComponent {
         "TopoJSON",
         "WKT"
     ];
-
-    model: MapData = new MapData(this.srids[0], this.formats[0], "");
 
     private getFeatures() {
         let features: any[];
@@ -82,26 +79,26 @@ export class DataViewComponent {
 
     toggle(): void {
         this.visibility = !this.visibility;
+        this.model = new MapData(this.srids[0], this.formats[0], "", "");
     }
 
     addToLayer(): void {
         let features = this.getFeatures();
 
-        this.source = new VectorSource({
+        let source = new VectorSource({
             features: features
         });
 
-        this.mapComponentControl.map.getView().fit(this.source.getExtent(), {
-            minResolution: 5
+        let layer = new LayerVector({
+            source: source,
         });
-        
+
+        layer.set("name", this.model.name || "Data Layer");
+
+        this.mapComponentControl.map.addLayer(layer);
+
+        this.mapComponentControl.map.getView().fit(source.getExtent(), { size: this.mapComponentControl.map.getSize() });
+
         this.outDataViewFeatureAdd.emit(features);
-    }
-
-    cancel(): void {
-        this.visibility = false;
-
-        if (this.mapComponentControl.map.getLayers().getArray().find(s => s === this.layer))
-            this.mapComponentControl.map.removeLayer(this.layer);
     }
 }
