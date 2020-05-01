@@ -1,0 +1,53 @@
+.ol-control {
+    background-color: rgba(255,255,255,0.8);
+}
+.ol-control button {
+    background-color: rgb(69, 134, 180);
+    font-weight: normal;
+    color: white;
+}
+.ol-control button:focus {
+    background-color: rgb(69, 134, 180);
+    outline: 0;
+}
+.ol-control button:hover {
+    background-color: rgb(66,147,230);
+}
+.ol-scale-line {
+    background-color: rgb(69, 134, 180);
+    border-radius: 2px;
+}
+
+.ol-zoomslider {
+    top: 7.1em;
+    left: .5em;
+    height: 200px;
+}
+
+/* iPhone 6, 7, & 8 in portrait  */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px)
+ { 
+    .ol-scale-line {
+        bottom: 16px;
+    }
+
+    .ol-zoomslider { display: none; }
+
+    .ol-full-screen{ display: none; }
+}
+
+/* iPhone 6, 7, & 8 in landscape */
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px)
+and (orientation : landscape) { 
+    .ol-scale-line {
+        bottom: 18px;
+    }
+
+    .ol-zoomslider { display: none; }
+
+    .ol-full-screen{ display: none; }
+}

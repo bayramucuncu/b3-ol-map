@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewInit, SimpleChanges, HostListener, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewInit, SimpleChanges, HostListener, OnChanges, ViewEncapsulation } from '@angular/core';
 import { Map, MapBrowserEvent, View } from 'ol';
 import { Control } from 'ol/control';
 import { Interaction } from 'ol/interaction';
@@ -10,7 +10,9 @@ import Select from 'ol/interaction/Select.js';
 
 @Component({
   selector: 'b3-ol-map',
-  template: `<div class="map" [style.width]="width" [style.height]="height"></div><ng-content></ng-content>`
+  template: `<div class="map" [style.width]="width" [style.height]="height"></div><ng-content></ng-content>`,
+  styleUrls:['b3-ol-map.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MapComponent implements OnInit, AfterViewInit, OnChanges {
 

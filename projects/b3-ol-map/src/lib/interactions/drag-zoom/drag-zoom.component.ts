@@ -1,13 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { BaseInteractionComponent } from '../base-interaction-component';
-import { MapComponent } from '../../b3-ol-map.component';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { DragZoom } from 'ol/interaction';
 import { altKeyOnly } from 'ol/events/condition';
+import { MapComponent } from '../../b3-ol-map.component';
+import { BaseInteractionComponent } from '../base-interaction-component';
 
 @Component({
   selector: 'b3-drag-zoom',
   templateUrl: './drag-zoom.component.html',
-  styleUrls: ['./drag-zoom.component.css']
+  styleUrls: ['./drag-zoom.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class DragZoomComponent extends BaseInteractionComponent implements OnInit {
   
