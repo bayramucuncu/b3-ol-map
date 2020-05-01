@@ -64,6 +64,7 @@ import { DataViewComponent } from './controls/data-view/dataview.control.compone
 import { LayerViewControlComponent } from './controls/layer-view/layerview.control.component';
 import { MeasureComponent } from './controls/measure/measure.component';
 import { LayerViewNodeComponent } from './controls/layer-view/layerviewnode.component';
+import { RotateComponent } from './controls/rotate/rotate.component';
 
 
 @NgModule({
@@ -129,7 +130,8 @@ import { LayerViewNodeComponent } from './controls/layer-view/layerviewnode.comp
     DataViewComponent,
     LayerViewControlComponent,
     LayerViewNodeComponent,
-    MeasureComponent
+    MeasureComponent,
+    RotateComponent
   ],
   imports: [
     CommonModule,

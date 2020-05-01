@@ -38,6 +38,13 @@
       [target]="item.settings.target" 
       [tipLabel]="item.settings.tipLabel" 
       [extent]="item.settings.extent"></b3-control-zoom-to-extent>
+    <b3-control-rotate *ngIf="item.name === 'rotate'" 
+      [className]="item.settings.className" 
+      [label]="item.settings.label"
+      [target]="item.settings.target" 
+      [tipLabel]="item.settings.tipLabel" 
+      [duration]="item.settings.duration" 
+      [autoHide]="item.settings.autoHide"></b3-control-rotate>
     <b3-data-view *ngIf="item.name === 'dataview'" 
       [title]="item.title"
       (outDataViewFeatureAdd)="onDataViewFeatureAded($event)"></b3-data-view>      

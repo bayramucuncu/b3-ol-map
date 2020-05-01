@@ -24,18 +24,26 @@
     height: 200px;
 }
 
+.ol-rotate{
+    right: .5em;
+    top: 3.2em;
+}
+
 /* iPhone 6, 7, & 8 in portrait  */
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px)
  { 
-    .ol-scale-line {
-        bottom: 16px;
-    }
+    .ol-scale-line { bottom: 16px; }
 
     .ol-zoomslider { display: none; }
 
     .ol-full-screen{ display: none; }
+
+    .ol-rotate{
+        right: .5em;
+        top: .5em;
+    }
 }
 
 /* iPhone 6, 7, & 8 in landscape */
@@ -43,11 +51,15 @@ and (max-device-width : 667px)
 and (min-device-width : 375px) 
 and (max-device-width : 667px)
 and (orientation : landscape) { 
-    .ol-scale-line {
-        bottom: 18px;
-    }
+    
+    .ol-scale-line {  bottom: 18px; }
 
     .ol-zoomslider { display: none; }
 
     .ol-full-screen{ display: none; }
+
+    .ol-rotate{
+        right: .5em;
+        top: .5em;
+    }
 }
