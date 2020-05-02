@@ -1,15 +1,27 @@
 <div class="b3-mouse-position">
-    <div>
-        <label>Projection </label>
-        <select (change)="selectProjection($event.target.value)">
-            <option *ngFor="let item of projections" value={{item.code}} [selected]="item.code==projection">
-                {{item.code}}
-            </option>
-        </select>
-        <label>Precision </label>
-        <input type="number" min="0" max="12" (change)="onPrecisionChanged($event.target.value)" [value]="precision" />
+    <div class="b3-mouse-position-item">
+        <button type="button" class="settings-button" (click)="toggleSettingsMode()">
+            <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACXklEQVRIiZ2WMWgUURCG/7ccIcgRgqQKIYRURwo5FIKIpFEiRJBwNiISLCysxNbSQqysLC3EysoihQgqiFqInWCRxhRGxELliCbGSPJ/Fvs2rntvz4s/HDvsm5l/ZnbezEk1AEaA88AycBvISmcCbgCPbF8ERuv81DmfB1Zs75Lju+0OMAQ04nk3nu0Cq0DHdo+vRg3HCNAKIRSEzRDCfUlvJFlSW9Jw1M0kTUuayLIs5SuZwbhtAGwziAzMpXz1UAKSdLSIPoSgQWTgWLRNRjwLTMaPN2d7lRr0yaALLAHDtqeA45IUgCbwWlJL0g9JzYI4RtYj/wOWlIUQ1iQdaUhaCCG0YrmaVe2iDJI2JK2FEH5JmpR0sIagKPukpEUBD/qVIuKJ7TaQAbI9ZftOWadGfibgJtDt0yGvgOFqmJHobqFb/QHvbV8pbuWC7a1EIrvAmdpi2y1gPWH31Xa7HE3D9vNEidaB6ToC8lu9mijpMrEhsopB9dnQnxubwpCkIUrdFStyINruvZgHNhOpAlztk8FJYDthswUsAlkxFbuJNAt8BmYSzsdsv62UtCxvAvcakmYkjVbTlPYu15ikl8At4HEIYUfSLHBN0lRZvyIfkDQp4Bx5t/RFjGo7pj8QbF8uFstKfDEo0SDyB/LsVUzCNvmg6tj+9B/j+iPQiT4OAfN1nSHyVblfXEhttDqS8f2WCJhI+arbcW1Kly7KPyW9kPRU0ga9nXN4PwQ7kt5Jctxc3ySdlXQihHBK0ukQwpfSRlvr4ysN8u5aAh6S/235K2LgOvkYvwTU7Qb9BnyToJYxXeMcAAAAAElFTkSuQmCC">
+        </button>
     </div>
-    <div>
-        <label #coordinate class="b3-mouse-Position-value"></label>
+    <div class="b3-mouse-position-item" *ngIf="isSettingsMode">
+        <form>
+            <label>Projection </label>
+            <select (change)="selectProjection($event.target.value)">
+                <option *ngFor="let item of projections" value={{item.code}} [selected]="item.code==projection">
+                    {{item.code}}
+                </option>
+            </select>
+            <label>Precision </label>
+            <select (change)="selectPrecision($event.target.value)">
+                <option *ngFor="let item of precisions" value={{item.code}} [selected]="item.code==precision">
+                    {{item.code}}
+                </option>
+            </select>
+        </form>
+    </div>
+    <div class="b3-mouse-position-item">
+        <div class="b3-mouse-position-value">{{coordinate}}</div>
     </div>
 </div>

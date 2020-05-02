@@ -20,7 +20,7 @@ export class LayerContainerComponent implements OnInit {
 
   ngOnInit() {
     !this.layers && (this.layers = this.getDefaultLayers());
-console.log(this.layers.sort((a, b) => a.order > b.order ? 1 : -1))
+    
     if (this.layers) {
       this.layers = this.layers.sort((a, b) => a.order > b.order ? 1 : -1);
     } else {

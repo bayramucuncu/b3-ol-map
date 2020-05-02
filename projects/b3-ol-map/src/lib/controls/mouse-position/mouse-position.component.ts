@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { ProjectionLike } from 'ol/proj';
-import { MousePosition } from 'ol/control';
+import { ProjectionLike, transform } from 'ol/proj';
 import { createStringXY } from 'ol/coordinate';
 import { MapComponent } from '../../b3-ol-map.component';
 import { BaseControlComponent } from '../base-control-component';
+import { MapBrowserEvent } from 'ol';
 
 @Component({
   selector: 'b3-control-mouse-position',
@@ -18,35 +18,66 @@ export class MousePositionComponent extends BaseControlComponent implements OnIn
   @Input() projection: ProjectionLike;
   @Input() undefinedHTML: string;
 
-  @ViewChild("coordinate", {static: true}) targetElement: ElementRef;
+  public coordinate: string = "";
+  public isSettingsMode: boolean = false;
 
-  projections: any[] = [
+  public projections: any[] = [
     { code: "EPSG:4326" },
     { code: "EPSG:3857" },
     { code: "EPSG:5254" }
+  ]
+
+  public precisions: any[] = [
+    { code: 0 },
+    { code: 1 },
+    { code: 2 },
+    { code: 3 },
+    { code: 4 },
+    { code: 5 },
+    { code: 6 }
   ]
 
   constructor(mapComponent: MapComponent) {
     super(mapComponent);
   }
 
-  selectProjection(value: any){
-    (<MousePosition>this.control).setProjection(value)
+  toggleSettingsMode() {
+    this.isSettingsMode = !this.isSettingsMode;
   }
 
-  onPrecisionChanged(value:any){
-    (<MousePosition>this.control).setCoordinateFormat(createStringXY(value))
+  selectProjection(value: any) {
+    this.projection = value;
+  }
+
+  selectPrecision(value: any) {
+    this.precision = value;
   }
 
   ngOnInit() {
-    this.control = new MousePosition({
-      coordinateFormat: createStringXY(this.precision),
-      className: this.className || "b3-mouse-Position-value",
-      target: this.target || this.targetElement.nativeElement,
-      projection: this.projection,
-      undefinedHTML: this.undefinedHTML || "&#160;"
-    });
+    let initCoordinate = this.transformCoordinate(this.mapControl.map.getView().getCenter());
+    this.coordinate = this.formatCoordinate(initCoordinate);
 
-    super.ngOnInit();
+    this.mapControl.map.on("click", this.onMapClicked());
+  }
+
+  ngOnDestroy() {
+    this.mapControl.map.un("click", this.onMapClicked());
+  }
+
+  private onMapClicked(): (evt: MapBrowserEvent) => void {
+    return (event: MapBrowserEvent) => {
+      let coordinate = this.transformCoordinate(event.coordinate);
+      this.coordinate = this.formatCoordinate(coordinate);
+    };
+  }
+
+  private transformCoordinate(coordinate: any) {
+    return transform(coordinate, this.mapControl.map.getView().getProjection(), this.projection);
+  }
+
+  private formatCoordinate(coordinate: any) {
+    let formatterFunc = createStringXY(this.precision);
+
+    return formatterFunc(coordinate);
   }
 }

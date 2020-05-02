@@ -1,16 +1,74 @@
 .b3-mouse-position {
-    background: rgba(0, 60, 136, 0.3);
+    background: rgb(69, 134, 180);
     border-radius: 4px;
+    color: #fff;
     bottom: 8px;
     left: 50%;
-    padding: 4px 6px;
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     transform: translate(-50%, 0%);
 }
- 
-.b3-mouse-Position-value {
-    width: 100%;
+
+.b3-mouse-position-item {
+    float: left;
+    margin: 4px 6px;
+    font-size: 16px;
+}
+
+.b3-mouse-position-item .settings-button {
+    background-color: #456;
+    border: none;
+    color: white;
+    padding: 10px;
+    display: inline-block;
+    align-items: center;
+    border-radius: 4px;
+    outline: 0;
+    cursor: pointer;
+}
+
+.b3-mouse-position-item .settings-button:hover {
+    background-color: #678
+}
+
+.b3-mouse-position-item .settings-button img {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+.b3-mouse-position-item select {
+    padding: 4px 10px;
+
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+.b3-mouse-position-item form label {
+    margin: 0px 2px;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
+
+.b3-mouse-position-value {
+    align-content: center;
+    padding-top: 5px;
+}
+
+/* iPhone 6, 7, & 8 in portrait  */
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
+    .b3-mouse-position {
+        width: 95%;
+    }
 }
