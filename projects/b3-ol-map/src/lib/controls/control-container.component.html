@@ -45,6 +45,8 @@
       [tipLabel]="item.settings.tipLabel" 
       [duration]="item.settings.duration" 
       [autoHide]="item.settings.autoHide"></b3-control-rotate>
+    <b3-control-geolocation *ngIf="item.name === 'geolocation'" 
+      [title]="item.title"></b3-control-geolocation>     
     <b3-data-view *ngIf="item.name === 'dataview'" 
       [title]="item.title"
       (outDataViewFeatureAdd)="onDataViewFeatureAded($event)"></b3-data-view>      

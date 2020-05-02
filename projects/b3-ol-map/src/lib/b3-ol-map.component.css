@@ -18,15 +18,25 @@
     border-radius: 2px;
 }
 
-.ol-zoomslider {
+.ol-zoom-extent{
     top: 7.1em;
+}
+
+.ol-zoomslider {
+    top: 9.6em;
     left: .5em;
     height: 200px;
 }
 
 .ol-rotate{
     right: .5em;
-    top: 3.2em;
+    top: 3.0em;
+}
+
+.ol-geolocation{
+    top: 20.4em;
+    left: .5em;
+    align-items: center;
 }
 
 /* iPhone 6, 7, & 8 in portrait  */
@@ -43,6 +53,10 @@ and (max-device-width : 667px)
     .ol-rotate{
         right: .5em;
         top: .5em;
+    }
+
+    .ol-geolocation{
+        top: 10.4em;
     }
 }
 
@@ -61,5 +75,9 @@ and (orientation : landscape) {
     .ol-rotate{
         right: .5em;
         top: .5em;
+    }
+
+    .ol-geolocation{
+        top: 10.4em;
     }
 }

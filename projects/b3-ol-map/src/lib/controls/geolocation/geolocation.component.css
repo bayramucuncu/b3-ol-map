@@ -1,0 +1,9 @@
+.ol-geolocation {
+    top: 4.643em;
+    left: .5em;
+    align-items: center;
+}
+
+.ol-geolocation .traceing-button{
+    background-color: sandybrown !important;
+}

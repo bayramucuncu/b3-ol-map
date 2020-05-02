@@ -13,13 +13,20 @@ export class LayerContainerComponent implements OnInit {
   @Input() controlTitle: string;
 
   @Output() outLayerCreate: EventEmitter<BaseLayer>;
-  
-  constructor() { 
+
+  constructor() {
     this.outLayerCreate = new EventEmitter<BaseLayer>();
   }
 
   ngOnInit() {
     !this.layers && (this.layers = this.getDefaultLayers());
+console.log(this.layers.sort((a, b) => a.order > b.order ? 1 : -1))
+    if (this.layers) {
+      this.layers = this.layers.sort((a, b) => a.order > b.order ? 1 : -1);
+    } else {
+      this.layers = this.getDefaultLayers();
+    }
+
     !this.showControl && (this.showControl = false);
     !this.controlTitle && (this.controlTitle = "Layers");
   }

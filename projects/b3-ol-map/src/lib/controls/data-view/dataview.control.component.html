@@ -3,34 +3,37 @@
     <div *ngIf="visibility" class="b3-data-view-control">
         <h1> Data <i class="layer-close-icon" (click)="toggle()"></i></h1>
         <div class="container">
-            <div class="row">
-                <div class="col-100">
-                    <select [(ngModel)]="model.srid" id="srid" name="srid" required>
-                        <option *ngFor="let srid of srids" [value]="srid">{{srid}}</option>
-                    </select>
+            <form autocomplete="off">
+                <div class="row">
+                    <div class="col-100">
+                        <select [(ngModel)]="model.srid" id="srid" name="srid" required>
+                            <option *ngFor="let srid of srids" [value]="srid">{{srid}}</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-100">
-                    <select [(ngModel)]="model.format" id="format" name="format" required>
-                        <option *ngFor="let format of formats" [value]="format">{{format}}</option>
-                    </select>
+                <div class="row">
+                    <div class="col-100">
+                        <select [(ngModel)]="model.format" id="format" name="format" required>
+                            <option *ngFor="let format of formats" [value]="format">{{format}}</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-100">
-                    <textarea [(ngModel)]="model.data" id="data" name="data" placeholder="Write data.."
-                        style="height:400px" required></textarea>
+                <div class="row">
+                    <div class="col-100">
+                        <textarea [(ngModel)]="model.data" id="data" name="data" placeholder="Write data.."
+                            style="height:400px" required></textarea>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-75">
-                    <input  [(ngModel)]="model.name" name="name" type="text" placeholder="Layer name">
+                <div class="row">
+                    <div class="col-75">
+                        <input [(ngModel)]="model.name" name="name" type="text" placeholder="Layer name">
+                    </div>
+                    <div class="col-25">
+                        <input (click)="addToLayer()" type="submit" value="Add Layer">
+                    </div>
                 </div>
-                <div class="col-25">
-                    <input (click)="addToLayer()" type="submit"  value="Add Layer">
-                </div>
-            </div>
+            </form>
+
         </div>
     </div>
 </div>

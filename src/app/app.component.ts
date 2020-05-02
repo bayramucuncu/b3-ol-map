@@ -42,9 +42,9 @@ export class AppComponent implements OnInit {
         { name: "mousewheelzoom", title: "Mouse wheel interaction", settings: { duration: 250, timeout: 80, useAnchor: true, constrainResolution: false } }
       ],
       layers: [
-        { id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", order: 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
-        { "id": "50c25bd2-bc59-4a4f-9b86-ac8309728f1c", "order": 3, "type": "tile", "name": "Uydu 2018", "isBase": false, "layerSettings": { "minResolution": "0.14", "maxResolution": "200" }, "sourceSettings": { "type": "tilewmts", "url": "https://tileservices.kocaeli.bel.tr/geoserver/gwc/service/wmts", "layer": "kbb:hybrid_v2_group", "matrixSet": "EPSG:900913" } },
-        { "id": "50c15bd2-bc59-4a4f-9b86-ac8309728f1c", "order": 2, "type": "tile", "name": "Şehir Haritası", "isBase": false, "layerSettings": { "minResolution": "0.14", "maxResolution": "200" }, "sourceSettings": { "type": "tilewmts", "url": "https://tileservices.kocaeli.bel.tr/geoserver/gwc/service/wmts", "layer": "kbb:wm_carto_v2", "matrixSet": "EPSG:900913" } },
+        { id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", "order": 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
+        { "id": "50c25bd2-bc59-4a4f-9b86-ac8309728f1c", "order": 3, "type": "tile", "name": "Uydu 2018", "isBase": true, "layerSettings": { "minResolution": "0.14", "maxResolution": "200" }, "sourceSettings": { "type": "tilewmts", "url": "https://tileservices.kocaeli.bel.tr/geoserver/gwc/service/wmts", "layer": "kbb:hybrid_v2_group", "matrixSet": "EPSG:900913" } },
+        { "id": "50c15bd2-bc59-4a4f-9b86-ac8309728f1c", "order": 2, "type": "tile", "name": "Şehir Haritası", "isBase": true, "layerSettings": { "minResolution": "0.14", "maxResolution": "200" }, "sourceSettings": { "type": "tilewmts", "url": "https://tileservices.kocaeli.bel.tr/geoserver/gwc/service/wmts", "layer": "kbb:wm_carto_v2", "matrixSet": "EPSG:900913" } },
         
       ],
       controls: [
@@ -56,6 +56,7 @@ export class AppComponent implements OnInit {
         { "id": "111fe7d3-0edc-4021-8811-0e0a786f7547", "name": "rotate", "title": "Rotate COntrol", "settings": { "className": "ol-rotate", "label": "⇧", "target": null, "tipLabel": "Reset rotation", "duration": 250, "autoHide": true } },
         { "id": "99f1c025-8c66-488e-881c-247a492951c7", "name": "mouseposition", "title": "MousePositionControl", "settings": {"precision":"6", "projection":"EPSG:3857" }},
         { "id": "97f1c024-8c67-488e-881c-247a492951c7", "name": "dataview", "title": "Data" },
+        { "id": "45f1c024-8c67-488e-881c-247a492951c7", "name": "geolocation", "title": "Geolocation" },
         { "id": "12f1c024-8c67-488e-881c-247a492951c7", "name": "measure", "title": "Measure", "settings": { "title": "Measure", "lengthLabel": "Length", "areaLabel": "Area" } },
       ]
     }
