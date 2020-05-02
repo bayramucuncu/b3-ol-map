@@ -16,9 +16,10 @@ import CircleStyle from 'ol/style/Circle';
 export class GeolocationComponent implements OnInit {
 
   private geolocation: Geolocation;
-  private isTracing: boolean = false;
   private positionFeature: Feature = new Feature();
   private vectorLayer: VectorLayer;
+  
+  isTracing: boolean = false;
 
   constructor(private mapComponent: MapComponent) {
     this.vectorLayer = new VectorLayer({
