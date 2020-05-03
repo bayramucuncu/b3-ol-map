@@ -7,13 +7,13 @@
     </div>
     <div class="b3-mouse-position-item" *ngIf="isSettingsMode">
         <form>
-            <label>Projection </label>
+            <label>{{projectionLabel}} </label>
             <select (change)="selectProjection($event.target.value)">
                 <option *ngFor="let item of projections" value={{item.code}} [selected]="item.code==projection">
                     {{item.code}}
                 </option>
             </select>
-            <label>Precision </label>
+            <label>{{precisionLabel}} </label>
             <select (change)="selectPrecision($event.target.value)">
                 <option *ngFor="let item of precisions" value={{item.code}} [selected]="item.code==precision">
                     {{item.code}}

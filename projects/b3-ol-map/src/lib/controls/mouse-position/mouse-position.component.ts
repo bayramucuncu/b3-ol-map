@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProjectionLike, transform } from 'ol/proj';
 import { createStringXY } from 'ol/coordinate';
 import { MapComponent } from '../../b3-ol-map.component';
@@ -12,33 +12,37 @@ import { MapBrowserEvent } from 'ol';
 })
 export class MousePositionComponent extends BaseControlComponent implements OnInit {
 
-  @Input() className: string;
-  @Input() target: (string | HTMLElement);
   @Input() precision: number;
+  @Input() precisionLabel: string;
   @Input() projection: ProjectionLike;
-  @Input() undefinedHTML: string;
+  @Input() projectionLabel: string;
+  @Input() projections: ProjectionLike[];
 
-  public coordinate: string = "";
+
+  public coordinate: string;
   public isSettingsMode: boolean = false;
 
-  public projections: any[] = [
-    { code: "EPSG:4326" },
-    { code: "EPSG:3857" },
-    { code: "EPSG:5254" }
-  ]
-
-  public precisions: any[] = [
-    { code: 0 },
-    { code: 1 },
-    { code: 2 },
-    { code: 3 },
-    { code: 4 },
-    { code: 5 },
-    { code: 6 }
-  ]
+  public precisions: any[] = [...Array(11).keys()].map((n: number) => { return { code: n } });
 
   constructor(mapComponent: MapComponent) {
     super(mapComponent);
+  }
+
+  ngOnInit() {console.log(this)
+    !this.precision && (this.precision = 6);
+    !this.precisionLabel && (this.precisionLabel = "Precision");
+    !this.projection && (this.projection = "EPSG:3856");
+    !this.projectionLabel && (this.projectionLabel = "Projection");
+    !this.projections && (this.projections = this.getDefaultProjections());
+
+    let initCoordinate = this.transformCoordinate(this.mapControl.map.getView().getCenter());
+    this.coordinate = this.formatCoordinate(initCoordinate);
+
+    this.mapControl.map.on("click", this.onMapClicked());
+  }
+
+  ngOnDestroy() {
+    this.mapControl.map.un("click", this.onMapClicked());
   }
 
   toggleSettingsMode() {
@@ -52,16 +56,13 @@ export class MousePositionComponent extends BaseControlComponent implements OnIn
   selectPrecision(value: any) {
     this.precision = value;
   }
-
-  ngOnInit() {
-    let initCoordinate = this.transformCoordinate(this.mapControl.map.getView().getCenter());
-    this.coordinate = this.formatCoordinate(initCoordinate);
-
-    this.mapControl.map.on("click", this.onMapClicked());
-  }
-
-  ngOnDestroy() {
-    this.mapControl.map.un("click", this.onMapClicked());
+  
+  private getDefaultProjections(): any{
+    return [
+      { code: "EPSG:4326" },
+      { code: "EPSG:3857" },
+      { code: "EPSG:5254" }
+    ];
   }
 
   private onMapClicked(): (evt: MapBrowserEvent) => void {
