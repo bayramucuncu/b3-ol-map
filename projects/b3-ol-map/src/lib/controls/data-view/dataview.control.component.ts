@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ViewEncapsulation, Input, OnInit } from '@angular/core';
 import { GeoJSON, EsriJSON, TopoJSON, WKT } from 'ol/format';
 import { Vector as VectorSource } from 'ol/source';
 import { Vector as LayerVector } from 'ol/layer';
@@ -22,9 +22,13 @@ export class MapData {
 @Component({
     selector: 'b3-data-view',
     styleUrls: ["./dataview.control.component.css"],
-    templateUrl: "./dataview.control.component.html"
+    templateUrl: "./dataview.control.component.html",
+    encapsulation: ViewEncapsulation.None
 })
-export class DataViewComponent {
+export class DataViewComponent implements OnInit {
+
+    @Input() title: string;
+    @Input() projections: any[];
 
     visibility: boolean;
     model: MapData;
@@ -35,11 +39,10 @@ export class DataViewComponent {
 
     }
 
-    srids: string[] = [
-        "EPSG:4326",
-        "EPSG:3857",
-        "EPSG:5254"
-    ];
+    ngOnInit(): void {
+        !this.title && (this.title = "Data");
+        !this.projections && (this.projections = this.getDefaultProjections());
+    }
 
     formats: any[] = [
         "GeoJSON",
@@ -47,6 +50,14 @@ export class DataViewComponent {
         "TopoJSON",
         "WKT"
     ];
+
+    private getDefaultProjections(): any{
+        return [
+          { code: "EPSG:4326" },
+          { code: "EPSG:3857" },
+          { code: "EPSG:5254" }
+        ];
+      }
 
     private getFeatures() {
         let features: any[];
@@ -79,7 +90,7 @@ export class DataViewComponent {
 
     toggle(): void {
         this.visibility = !this.visibility;
-        this.model = new MapData(this.srids[0], this.formats[0], "", "");
+        this.model = new MapData(this.projections[0].code, this.formats[0], "", "");
     }
 
     addToLayer(): void {

@@ -2,8 +2,18 @@
     top: 4.643em;
     left: .5em;
     align-items: center;
+    z-index: 3;
 }
 
 .ol-geolocation .traceing-button{
     background-color: sandybrown !important;
+}
+
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
+    .ol-geolocation{
+        top: 5.4em;
+    }
+    .ol-geolocation button{
+        font-size: 1.5em;
+    }
 }

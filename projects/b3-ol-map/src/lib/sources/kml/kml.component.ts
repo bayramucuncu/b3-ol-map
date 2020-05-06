@@ -39,7 +39,7 @@ export class KmlComponent extends XmlResponseAcceptedSource implements OnInit {
           format: format,
           loader: this.loader(layer)
       })
-      console.log(this.source)
+      
       layer.setSource(this.source);
 
       if (this.heatmapLayerComponent) {

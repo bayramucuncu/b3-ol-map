@@ -1,24 +1,31 @@
 .ol-control {
-    background-color: rgba(255,255,255,0.8);
+    background-color: rgba(255, 255, 255, 0.8);
+
 }
+
 .ol-control button {
+    font-size: 1.14em;
     background-color: rgb(69, 134, 180);
     font-weight: normal;
     color: white;
 }
+
 .ol-control button:focus {
     background-color: rgb(69, 134, 180);
     outline: 0;
 }
+
 .ol-control button:hover {
-    background-color: rgb(66,147,230);
+    background-color: rgb(66, 147, 230);
 }
+
 .ol-scale-line {
     background-color: rgb(69, 134, 180);
     border-radius: 2px;
+    left: 0.5em;
 }
 
-.ol-zoom-extent{
+.ol-zoom-extent {
     top: 7.1em;
 }
 
@@ -28,56 +35,125 @@
     height: 200px;
 }
 
-.ol-rotate{
-    right: .5em;
-    top: 3.0em;
+.ol-rotate {
+    top: .5em;
+    right: 3.1em;
 }
 
-.ol-geolocation{
+.ol-full-screen {
+    top: 3.2em;
+    right: .5em;
+}
+
+.ol-full-screen button {
+    font-size: 1.5em;
+}
+
+.ol-geolocation {
     top: 20.4em;
     left: .5em;
     align-items: center;
 }
 
+/* ol-touch for responseive screens */
+.ol-touch .ol-zoom-extent {
+    top: 8.2em;
+}
+
+.ol-touch .ol-zoomslider {
+    top: 11.0em;
+}
+
+.ol-touch .ol-scale-line {
+    bottom: 46px;
+}
+
+.ol-touch .ol-full-screen {
+    top: 3.2em;
+}
+
+.ol-touch .ol-rotate {
+    top: .5em;
+}
+
+/* b3-ol-map panel wrapper */
+.b3-ol-map-panel-wrapper {
+    width: 370px;
+    height: calc(100vh - 1.2em);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    right: 3.2em;
+    z-index: 10;
+    top: 50%;
+    overflow: auto;
+    position: absolute;
+    transform: translate(0, -50%);
+}
+
+.b3-ol-map-panel-container {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    overflow: auto;
+}
+
+.b3-ol-map-panel-header {
+    background: #2980B9;
+    margin: 0;
+    padding: 8px 10px;
+    font-size: 20px;
+    font-weight: normal;
+    color: white;
+    user-select: none;
+}
+
+.b3-ol-map-panel-body {
+    max-height: calc(100% - 40px);   /* b3-layer-container.height-header.height */
+    overflow: auto;
+}
+
+.b3-panel-close-icon {
+    cursor: pointer;
+    float: right;
+    width: 22px;
+    height: 22px;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAADlAAAA5QGP5Zs8AAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAIpQTFRF////20lt30Bg30pg4FJc409g4FBe4E9f4U9f4U9g4U9f4E9g31Bf4E9f4E9f4E9f4E9f4E9f4FFh4Vdm4lhn42Bv5GNx5W575nJ/6HqH6HyI6YCM6YGM6YGN6oaR8Kev9MPI9cbM9snO9s3R+Nfb+dzg+d/i++vt/O7v/fb3/vj5//z8//7+////KofnuQAAABF0Uk5TAAcIGBktSYSXmMHI2uPy8/XVqDFbAAAA8UlEQVQ4y4VT15LCMBBTQkgPYem9d9D//x4P2I7vILN68kj2WtsAhyDO8rKuyzyLA3wjSnvi0Eujf3KY9OUP+kno651CvlB0Gr1byQ9UXff+py5SmRhhIS0oPj4SaUUCAJHxP9+tLb/ezU0uEYDUsCc+l5/T8smTIVMgsPXZkvepiMj0Tm5txQLENu7gSF7HIuMreRxYNkbmHI0u5Hk4PJOXkSMz5I3nyY08HMjbpOFylF5WswdJPmYeVaL28968yNfGZ2r9gvqFalJNUy2UWmq1Wa7di/3Kxl3tF1671YHRR04dWn3s9cXRV09f3vb1fwPD7z9j1WgeRgAAAABJRU5ErkJggg==') no-repeat top left;
+    background-size: 22px 22px;
+}
+
 /* iPhone 6, 7, & 8 in portrait  */
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px)
- { 
-    .ol-scale-line { bottom: 46px; }
-
-    .ol-zoomslider { display: none; }
-
-    .ol-full-screen{ display: none; }
-
-    .ol-rotate{
-        right: .5em;
-        top: .5em;
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
+    .b3-ol-map-panel-body {
+        max-height: calc(100% - 40px);
     }
 
-    .ol-geolocation{
-        top: 10.4em;
+    .ol-zoomslider {
+        height: 150px;
+    }
+
+    .ol-full-screen {
+        display: none;
+    }
+
+    .b3-ol-map-panel-wrapper {
+        width: calc(100vw - 2px);  /*100% - (wrapper.padding*2 + 1px*2)*/
+        height: calc(50vh - 1px);
+        bottom: 0;
+        right: 1px;
+        margin: 0 auto;
+        transform: translate(0, 0);
+        overflow: auto;
     }
 }
 
 /* iPhone 6, 7, & 8 in landscape */
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 667px)
-and (orientation : landscape) { 
-    
-    .ol-scale-line {  bottom: 46px; }
+/* @media only screen and (min-device-width : 375px) and (max-device-width : 667px) and (orientation : landscape) {
 
-    .ol-zoomslider { display: none; }
-
-    .ol-full-screen{ display: none; }
-
-    .ol-rotate{
-        right: .5em;
-        top: .5em;
+    .ol-zoomslider {
+        height: 120px;
     }
 
-    .ol-geolocation{
-        top: 10.4em;
+    .ol-zoomslider button {
+        top: 50px !important;
     }
-}
+
+} */

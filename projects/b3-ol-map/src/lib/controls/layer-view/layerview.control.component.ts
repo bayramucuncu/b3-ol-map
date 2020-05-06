@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ViewEncapsulation } from '@angular/core';
 import { LayerNode } from './layer-node';
 import { CollectionEvent } from 'ol/Collection';
 import BaseLayer from 'ol/layer/Base';
@@ -8,6 +8,7 @@ import { MapComponent } from '../../b3-ol-map.component';
     selector: 'b3-layer-view-control',
     templateUrl: "./layerview.control.component.html",
     styleUrls: ["./layerview.control.component.css"],
+    encapsulation: ViewEncapsulation.None
 })
 export class LayerViewControlComponent implements OnInit {
 

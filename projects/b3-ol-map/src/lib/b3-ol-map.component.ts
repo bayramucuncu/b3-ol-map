@@ -10,7 +10,7 @@ import Select from 'ol/interaction/Select.js';
 
 @Component({
   selector: 'b3-ol-map',
-  template: `<div class="map" [style.width]="width" [style.height]="height"></div><ng-content></ng-content>`,
+  templateUrl: 'b3-ol-map.component.html',
   styleUrls: [ 'b3-ol-map.component.css' ],
   encapsulation: ViewEncapsulation.None
 })

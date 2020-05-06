@@ -35,7 +35,7 @@ export class BingmapsComponent implements OnInit {
         tileLoadFunction: this.tileLoadFunction,
         wrapX: this.wrapX
     });
-console.log(this.source)
+
     this.source.on("tileloadstart", ()=> this.layerComponent.layer.set("isLoading", true));
     this.source.on("tileloadend", ()=> this.layerComponent.layer.set("isLoading", false));
     this.source.on("tileloaderror", ()=> this.layerComponent.layer.set("isLoading", false));

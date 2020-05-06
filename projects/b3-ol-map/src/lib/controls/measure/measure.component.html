@@ -1,12 +1,36 @@
-<div class="b3-measure-pane">
-    <div (click)="toggle()" class="b3-measure-toggle"></div>
-    <div *ngIf="visibility" class="b3-measure-control">
-        <h1> {{title}} <i class="measure-close-icon" (click)="toggle()"></i></h1>
-        <div class="container">
-            <label><input (input)="select('LineString')" [ngModel]="measureType" type="radio" value="LineString"
-                    name="measureType" />{{ lengthLabel }}</label>
-            <label><input (input)="select('Polygon')" [ngModel]="measureType" type="radio" value="Polygon"
-                    name="measureType" />{{ areaLabel }}</label>
+<div class="b3-measure ol-unselectable ol-control">
+    <button type="button" [title]="title" (click)="toggle()">
+        <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAA7AAAAOwBeShxvQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAUZSURBVFiFtZZNcFNVFMf/5+a9l9c0/SApKW0tw7dA24CUj6GIBcYyA46DgswoM8y4ZOm4cRxnXMhCZ3Rk4cK9C3UhMjjytVAwKNZOse20wTZtoDaY0jZpk6ZJk76P6yIk816b14Raz+6dc+/9/c+5991zCSWa2tP4tk7pd0nJbNM1RSJNJa5rABMAm6CTTUqTIHcJgv0Davn7Xqnr0nJBHjpYpkYeXdcz8XbSVILkAJgNxIRsXFcBVQFXUgDX8/OY7FyA7PxSbBl/Z8UCMj0N7zMlcZHby2zMXgWI8nJSwTNJ8PQseGomL4bkqnlyVB4Xm8Z+zY+83eSko/65ZQUo/Q23ATpCZdUAsWJJmKVoCpCMQJ+LAuDZLar0fCwp2iVFTYWgZSRW6X5daApfLShA8W/shCQfICYWBIyFG9BYFwYHIZ5wYk3lLFLpMswly+FxRwwLpaBPj2UFMRts7k1JfXq0nGsKSJB4ToQpPfWh9yuSKyzhANA1sAvjUx5Mx6p5V/9uDgJ/MLIVwbEN5oGiA2ztVrDyGrA16wFRLqeaTSBBAlcXSI9Hrqj9dafzFcgEvG/ZbPi6EHQ6Xo37fi862u5OhSfW3YAofLp+37WBXDzoO3mmqiJxXtGEE90DXunE4duWCfBMAnp0NPsh2DkBAOdnJf3R0AzncBgHDz3ajCrnHGprJpW/Hm6+5D3+/XuWKwPg/Igw1aN/q3N2+qbvKJ179QoY6aYxeuxx9qACYOXuMAMAPRj4YjEcAKqcc+h50KQKCpqLwQGA6I7q2eN7IzLjvvhi6x9L4FrsCbRk/CncNSHuiTQQAKhB7zwA03+WXpAhS2nFtkDNtKMvUAyer8LwlkqNlQ0D5DFnHsbIaCP6Qu041fbNpGP/RC0ACDywu0ODvuQn/+HnDuxt6f1k20vXVgXOU1Fs9kRhsztiOTgAkDrScgVEry1ZjLMpcUuvZ7F/pXAgV/boOmOcgdBmdIyF6/HdrVcwPum5sRrw3qFm/DJ4FlTuXgIHAAGgSqOjsW4cgqBB4eJnlsAHO+pUu3iTgW8gIp/G+X6rzJsafsNQ9NistCeyBA4ApAa9GgDThbSgiNyx/b7lHawEvX0EeK3ixcpuNLYYPh2vxo93XrYa/3QS37AcvMvfCn/4YFF4di2CZnS4qmI4ffz6sgKIyGcF56kodtZ3YZ6vnSsGBwBGoLTRkUrL6O7fRUHfyTOFJnB/k5Nz7LWCA0CFyzZ56M2rFcXgAMA416NGx1zSCUWRUFWROL8EPrylUpNZkAOmzPRYGJ0D+zAe25S74WoXz7UUAE63jA6PO4KDL3RDkhZOcH5EyMMHn6/QWFnA6rSvdwUQSuwuqewmATab+HmhwE+dh6RQp/1yHi7ahwEyZWYse0NDbOLwucslld1ouV4wBaBmcTASc/HIjPvi9o2BC4Uy7/K3Ymd9FypcrOhpt7JsNyT9o0LBm76jJEvzH1qV3WFPYDDS/sxlN1r+QaIFvSEOPGcCcVagn5d+yZRi+UuIMbEDMN8JheC9Q81QdQGs3D35X+EmAbTx/qBOuMB54YG5zGNJD4aix2af5Vdbzkyv4mxXczwGYDrN5rK7J0SLxrISM/UBjRyBxXAt9gQjo41P4a5VhZsE8O5WBydyGYN6LAw9GUVfqB2j8bbYauz5YjNvQWDnAc0m3AUgGsuuybVTjn1PSn4drVhAToSSit7jiUkGrP6el2Sqv/5U5ndZV/6s+ef/Zv0LYRR2j+/Ov4MAAAAASUVORK5CYII=">
+    </button>
+</div>
+<div class="b3-ol-map-panel-wrapper" *ngIf="visibility">
+    <div class="b3-ol-map-panel-container">
+        <div class="b3-ol-map-panel-header">
+            <span>{{title}}</span>
+            <i class="b3-panel-close-icon" (click)="toggle()"></i>
+        </div>
+        <div class="b3-ol-map-panel-body b3-measure-control">
+            <h3>Measure Types</h3>
+            <form autocomplete="off">
+                <div class="measure-line">
+                    <label>
+                        <input (input)="select('LineString')" [ngModel]="measureType" type="radio" value="LineString"
+                            name="measureType">
+                        {{ lengthLabel }}
+                    </label>
+                </div>
+                <div class="measure-line">
+                    <label>
+                        <input (input)="select('Polygon')" [ngModel]="measureType" type="radio" value="Polygon"
+                            name="measureType">
+                        {{ areaLabel }}
+                    </label>
+                </div>
+            </form>
+
+            <h3>Result</h3>
+            <p><samp>{{result ? result : 'n/a'}}<sup>{{ (result && isPolygon()) ? '2' : '' }}</sup></samp></p>
         </div>
     </div>
-</div> 
+</div>

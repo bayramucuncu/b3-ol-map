@@ -1,13 +1,22 @@
-<div class="b3-data-view-pane">
-    <div (click)="toggle()" class="b3-data-view-toggle"></div>
-    <div *ngIf="visibility" class="b3-data-view-control">
-        <h1> Data <i class="layer-close-icon" (click)="toggle()"></i></h1>
-        <div class="container">
+<div class="b3-data-view ol-unselectable ol-control">
+    <button type="button" [title]="title" (click)="toggle()">
+        <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAApElEQVRIie2VOw7CMBAFZxEUUKflNNyIk+QQnIGOY0UUFEMBQoT8nBiQIpjO3ve8tp5lw9yJ54HqoxARTXk/bf5lijiHzga5J8gTjfAvchZL4eMNOjNoY8otG32CseHPP4OkBmr5ev28UQ55U0PeA1ugUgM4AJv7fC+NwFTbglTXwAlYARdgFxHnVH9N0FMr1KNaTPGnCQb4+lPx/w9qvGtTP8YVraNol+o9ndUAAAAASUVORK5CYII=">
+    </button>
+</div>
+
+<div class="b3-ol-map-panel-wrapper" *ngIf="visibility">
+    <div class="b3-ol-map-panel-container">
+        <div class="b3-ol-map-panel-header">
+            <span>{{title}}</span>
+            <i class="b3-panel-close-icon" (click)="toggle()"></i>
+        </div>
+        <div class="b3-ol-map-panel-body b3-ol-map-data-view-container">
             <form autocomplete="off">
                 <div class="row">
                     <div class="col-100">
                         <select [(ngModel)]="model.srid" id="srid" name="srid" required>
-                            <option *ngFor="let srid of srids" [value]="srid">{{srid}}</option>
+                            <option *ngFor="let projection of projections" [value]="projection.code">{{projection.code}}</option>
                         </select>
                     </div>
                 </div>
@@ -20,8 +29,7 @@
                 </div>
                 <div class="row">
                     <div class="col-100">
-                        <textarea [(ngModel)]="model.data" id="data" name="data" placeholder="Write data.."
-                            style="height:400px" required></textarea>
+                        <textarea [(ngModel)]="model.data" id="data" name="data" placeholder="Write data.." required></textarea>
                     </div>
                 </div>
                 <div class="row">
@@ -33,7 +41,6 @@
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 </div>

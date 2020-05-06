@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { ProjectionLike, transform } from 'ol/proj';
 import { createStringXY } from 'ol/coordinate';
 import { MapComponent } from '../../b3-ol-map.component';
@@ -8,7 +8,8 @@ import { MapBrowserEvent } from 'ol';
 @Component({
   selector: 'b3-control-mouse-position',
   templateUrl: './mouse-position.component.html',
-  styleUrls: ['./mouse-position.component.css']
+  styleUrls: ['./mouse-position.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class MousePositionComponent extends BaseControlComponent implements OnInit {
 
@@ -28,12 +29,8 @@ export class MousePositionComponent extends BaseControlComponent implements OnIn
     super(mapComponent);
   }
 
-  ngOnInit() {console.log(this)
-    !this.precision && (this.precision = 6);
-    !this.precisionLabel && (this.precisionLabel = "Precision");
-    !this.projection && (this.projection = "EPSG:3856");
-    !this.projectionLabel && (this.projectionLabel = "Projection");
-    !this.projections && (this.projections = this.getDefaultProjections());
+  ngOnInit() {
+    this.initializeParameters();
 
     let initCoordinate = this.transformCoordinate(this.mapControl.map.getView().getCenter());
     this.coordinate = this.formatCoordinate(initCoordinate);
@@ -57,6 +54,14 @@ export class MousePositionComponent extends BaseControlComponent implements OnIn
     this.precision = value;
   }
   
+  private initializeParameters() {
+    !this.precision && (this.precision = 6);
+    !this.precisionLabel && (this.precisionLabel = "Precision");
+    !this.projection && (this.projection = "EPSG:3856");
+    !this.projectionLabel && (this.projectionLabel = "Projection");
+    !this.projections && (this.projections = this.getDefaultProjections());
+  }
+
   private getDefaultProjections(): any{
     return [
       { code: "EPSG:4326" },

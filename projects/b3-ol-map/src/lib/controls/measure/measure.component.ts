@@ -1,35 +1,43 @@
-import { Component, Output, EventEmitter, OnInit, Input, Renderer2, ElementRef } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input, Renderer2, ViewEncapsulation } from '@angular/core';
 import { Vector as VectorSource } from 'ol/source';
 import { Draw } from 'ol/interaction';
 import { Style, Fill, Stroke, Circle } from 'ol/style';
-import { Feature, MapBrowserEvent, } from 'ol';
-import { Polygon, LineString, Geometry } from 'ol/geom';
-import { getArea, getLength } from 'ol/sphere';
-import { unByKey } from 'ol/Observable';
-import Overlay from 'ol/Overlay';
-import OverlayPositioning from 'ol/OverlayPositioning';
 import GeometryType from 'ol/geom/GeometryType';
-import { DrawEvent } from 'ol/interaction/Draw';
 import { MapComponent } from '../../b3-ol-map.component';
+import { Vector } from 'ol/layer';
+import CircleStyle from 'ol/style/Circle';
 
 @Component({
     selector: 'b3-measure',
     templateUrl: './measure.component.html',
     styleUrls: ['./measure.component.css'],
+    encapsulation: ViewEncapsulation.None
 })
 export class MeasureComponent implements OnInit {
     visibility: boolean;
-    source = new VectorSource;
+    result: string;
     measureType: GeometryType = GeometryType.POLYGON;
-    draw: Draw;
+    source = new VectorSource;
+    vectorLayer = new Vector({
+        source: new VectorSource(),
+        style: new Style({
+            fill: new Fill({
+                color: 'rgba(255, 255, 255, 0.4)'
+            }),
+            stroke: new Stroke({
+                color: '#ffcc33',
+                width: 2
+            }),
+            image: new CircleStyle({
+                radius: 7,
+                fill: new Fill({
+                    color: '#ffcc33'
+                })
+            })
+        })
+    });
 
-    private helpTooltipElement: HTMLElement;
-    private measureTooltipElement: HTMLElement;
-    private helpTooltip: Overlay;
-    private measureTooltip: Overlay;
-    private sketch: Feature;
-    private listener: any;
-    private pointerMoveHandler: (evt: MapBrowserEvent) => void;
+    private measuringTool: Draw;
 
     @Input() id: any;
     @Input() title: string;
@@ -51,10 +59,14 @@ export class MeasureComponent implements OnInit {
         !this.title && (this.title = "Measure");
     }
 
-    private createDrawInteraction() {
-        let draw = new Draw({
-            source: this.source,
+    private enableMeasuringTool() {
+        this.mapComponent.map.removeInteraction(this.measuringTool);
+        this.result = undefined;
+        this.vectorLayer.getSource().clear();
+
+        this.measuringTool = new Draw({
             type: this.measureType,
+            source: this.vectorLayer.getSource(),
             style: new Style({
                 fill: new Fill({
                     color: 'rgba(255, 255, 255, 0.2)'
@@ -76,98 +88,37 @@ export class MeasureComponent implements OnInit {
             })
         });
 
-        draw.on('drawstart', (drawEvent: DrawEvent) => {
-            this.source.clear();
+        this.measuringTool.on('drawstart', (measureEvent: any) => {
 
-            if (!this.measureTooltip)
-                this.measureTooltip = this.createMeasureTooltip();
+            this.vectorLayer.getSource().clear();
 
-            this.renderer.removeClass(this.measureTooltipElement, "ol-tooltip-static");
-            this.renderer.removeClass(this.measureTooltipElement, "ol-tooltip-measure");
+            measureEvent.feature.on('change', (changeEvent: any) => {
+                var measurement = this.measureType === 'Polygon'
+                    ? changeEvent.target.getGeometry().getArea()
+                    : changeEvent.target.getGeometry().getLength();
 
-            this.sketch = drawEvent.feature;
-            let tooltipCoord: any;
-            this.listener = this.sketch.getGeometry().on('change', (changeEvent) => {
-                var geom = changeEvent.target;
-                var output: any;
-                if (geom instanceof Polygon) {
-                    output = this.formatArea(geom);
-                    tooltipCoord = geom.getInteriorPoint().getCoordinates();
-                } else if (geom instanceof LineString) {
-                    output = this.formatLength(geom);
-                    tooltipCoord = geom.getLastCoordinate();
-                }
+                var devideBy = this.measureType === 'Polygon' ? 1000000 : 1000;
 
-                this.measureTooltipElement.innerHTML = output;
-                this.measureTooltip.setPosition(tooltipCoord);
+                var measurementFormatted = measurement >= devideBy
+                    ? (measurement / devideBy).toFixed(2) + ' km'
+                    : measurement.toFixed(2) + ' m';
+
+                this.result = measurementFormatted;
             });
         });
 
-        draw.on('drawend', (evt) => {
-            this.renderer.addClass(this.measureTooltipElement, "ol-tooltip");
-            this.renderer.addClass(this.measureTooltipElement, "ol-tooltip-static");
-            this.measureTooltip.setOffset([0, -7]);
-            this.sketch = null;
+        this.mapComponent.map.addInteraction(this.measuringTool);
+    }
 
-            unByKey(this.listener);
-        });
-
-        return draw;
+    isPolygon() {
+        return this.measureType == GeometryType.POLYGON;
     }
 
     toggle(): void {
         this.visibility = !this.visibility;
 
-        if (this.visibility === true) {
-            this.outMeasureCreate.emit({
-                id: this.id,
-                title: this.title,
-                source: this.source
-            });
-
-            this.helpTooltip = this.createHelpTooltip();
-            this.mapComponent.map.addOverlay(this.helpTooltip);
-            this.measureTooltip = this.createMeasureTooltip();
-            this.mapComponent.map.addOverlay(this.measureTooltip);
-
-            this.pointerMoveHandler = (evt: MapBrowserEvent) => {
-                if (evt.dragging) {
-                    return;
-                }
-
-                var helpMsg = 'Click to start drawing';
-
-                if (this.sketch) {
-                    var geom = this.sketch.getGeometry();
-                    if (geom instanceof Polygon) {
-                        helpMsg = 'Click to continue drawing the polygon';
-                    } else if (geom instanceof LineString) {
-                        helpMsg = 'Click to continue drawing the line';
-                    }
-                }
-
-                this.helpTooltipElement.innerHTML = helpMsg;
-                this.helpTooltip.setPosition(evt.coordinate);
-
-                this.renderer.removeClass(this.helpTooltipElement, "hidden");
-            };
-
-            this.draw = this.createDrawInteraction();
-            this.mapComponent.map.addInteraction(this.draw);
-            this.mapComponent.map.on("pointermove", this.pointerMoveHandler);
-        }
-        else {
-            this.outMeasureRemove.emit({
-                id: this.id
-            });
-
-            this.source.clear();
-            this.mapComponent.map.removeInteraction(this.draw);
-            this.mapComponent.map.un("pointermove", this.pointerMoveHandler);
-            this.mapComponent.map.removeInteraction(this.draw);
-            this.mapComponent.map.removeOverlay(this.measureTooltip);
-            this.mapComponent.map.removeOverlay(this.helpTooltip);
-        }
+        this.visibility ? this.mapComponent.map.addLayer(this.vectorLayer) : this.mapComponent.map.removeLayer(this.vectorLayer);
+        this.visibility ? this.enableMeasuringTool() : this.mapComponent.map.removeInteraction(this.measuringTool);
     }
 
     select(value: any) {
@@ -175,66 +126,6 @@ export class MeasureComponent implements OnInit {
             ? GeometryType.LINE_STRING
             : GeometryType.POLYGON;
 
-        this.mapComponent.map.removeInteraction(this.draw)
-        this.draw = this.createDrawInteraction();
-        this.mapComponent.map.addInteraction(this.draw);
+        this.enableMeasuringTool();
     }
-
-    private createHelpTooltip(): Overlay {
-
-        this.helpTooltipElement = this.renderer.createElement("div");
-        this.renderer.addClass(this.helpTooltipElement, 'ol-tooltip');
-        this.renderer.addClass(this.helpTooltipElement, 'hidden');
-
-        let tooltip = new Overlay({
-            element: this.helpTooltipElement,
-            offset: [15, 0],
-            positioning: OverlayPositioning.CENTER_LEFT
-        });
-
-        return tooltip;
-    }
-
-    private createMeasureTooltip(): Overlay {
-
-        if (this.measureTooltipElement)
-            this.renderer.removeChild(this.measureTooltipElement.parentElement, this.measureTooltipElement);
-
-        this.measureTooltipElement = this.renderer.createElement("div");
-        this.renderer.addClass(this.measureTooltipElement, 'ol-tooltip');
-        this.renderer.addClass(this.measureTooltipElement, 'ol-tooltip-measure');
-
-        let tooltip = new Overlay({
-            element: this.measureTooltipElement,
-            offset: [0, -15],
-            positioning: OverlayPositioning.BOTTOM_CENTER
-        });
-
-        return tooltip;
-    }
-
-    private formatArea(geometry: Geometry): string {
-        let area = getArea(geometry);
-        let output: string;
-
-        if (area > 10000)
-            output = (Math.round(area / 1000000 * 100) / 100) + ' ' + 'km<sup>2</sup>';
-        else
-            output = (Math.round(area * 100) / 100) + ' ' + 'm<sup>2</sup>';
-
-        return output;
-    }
-
-    private formatLength(geometry: Geometry): string {
-        var length = getLength(geometry);
-        var output: string;
-
-        if (length > 100)
-            output = (Math.round(length / 1000 * 100) / 100) + ' ' + 'km';
-        else
-            output = (Math.round(length * 100) / 100) + ' ' + 'm';
-
-        return output;
-    }
-
 }
