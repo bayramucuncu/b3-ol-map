@@ -66,6 +66,7 @@ import { MeasureComponent } from './controls/measure/measure.component';
 import { LayerViewNodeComponent } from './controls/layer-view/layerviewnode.component';
 import { RotateComponent } from './controls/rotate/rotate.component';
 import { GeolocationComponent } from './controls/geolocation/geolocation.component';
+import { SearchComponent } from './controls/search/search.component';
 
 
 @NgModule({
@@ -133,7 +134,8 @@ import { GeolocationComponent } from './controls/geolocation/geolocation.compone
     LayerViewNodeComponent,
     MeasureComponent,
     RotateComponent,
-    GeolocationComponent
+    GeolocationComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,

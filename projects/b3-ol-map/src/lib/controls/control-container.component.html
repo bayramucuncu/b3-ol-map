@@ -60,4 +60,6 @@
       [resultLabel]="item.settings.resultLabel"
       (outMeasureCreate)="onMeasureCreated($event)"
       (outMeasureRemove)="onMeasureRemoved($event)"></b3-measure>
+    <b3-control-search *ngIf="item.name === 'search'"
+      [placeholder]="item.settings.placeholder"></b3-control-search>
   </ng-container>
