@@ -1,8 +1,6 @@
 <div class="b3-measure ol-unselectable ol-control">
     <button type="button" [title]="title" (click)="toggle()">
-        <img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA8UlEQVRIieXTsS4EURQG4Dt2aVZBgkrEVrzFVkToFLpZ3ZZbexSFKCRUajEKohB6jYdAwgt8mpFMxhAxRyFu+yfff3LPvSn9+4Mt5J/l3bZ4SmmcUnpClmXZURvvA45XbKKDYwwj8Uss4RqDsJISv8Id+pjBqMw6OPlqJ9/BHzGPVezW8h6Kcjc/ws+wjXP0ovF7HGICG9VriMAfMI0x1qMnL3CAvYa8Nf6MHWTYxyASvyhfS4F+9OQFbrCCbi1vjb9gEcu4xVz05GvlT53CbAheAjlOMYmFWtYOr0DD95JwvKkkHG8oiccrJfmv4X/qvAGOBMhffkQvTgAAAABJRU5ErkJggg==
-">
+        <i class="icon"></i>
     </button>
 </div>
 <div class="b3-ol-map-panel-wrapper" *ngIf="visibility">
@@ -12,7 +10,7 @@
             <i class="b3-panel-close-icon" (click)="toggle()"></i>
         </div>
         <div class="b3-ol-map-panel-body b3-measure-control">
-            <h3>Measure Types</h3>
+            <h3>{{typeLabel}}</h3>
             <form autocomplete="off">
                 <div class="measure-line">
                     <label>
@@ -30,7 +28,7 @@
                 </div>
             </form>
 
-            <h3>Result</h3>
+            <h3>{{resultLabel}}</h3>
             <p><samp>{{result ? result : 'n/a'}}<sup>{{ (result && isPolygon()) ? '2' : '' }}</sup></samp></p>
         </div>
     </div>

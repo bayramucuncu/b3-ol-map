@@ -43,6 +43,8 @@ export class MeasureComponent implements OnInit {
     @Input() title: string;
     @Input() lengthLabel: string;
     @Input() areaLabel: string;
+    @Input() typeLabel: string;
+    @Input() resultLabel: string;
 
     @Output() outMeasureCreate: EventEmitter<any>;
     @Output() outMeasureRemove: EventEmitter<any>;
@@ -57,6 +59,8 @@ export class MeasureComponent implements OnInit {
         !this.lengthLabel && (this.lengthLabel = "Length");
         !this.areaLabel && (this.areaLabel = "Area");
         !this.title && (this.title = "Measure");
+        !this.typeLabel && (this.typeLabel = "Measure Types");
+        !this.resultLabel && (this.resultLabel = "Result");
     }
 
     private enableMeasuringTool() {

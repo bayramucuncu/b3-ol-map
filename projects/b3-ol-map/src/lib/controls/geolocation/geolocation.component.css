@@ -5,15 +5,27 @@
     z-index: 3;
 }
 
-.ol-geolocation .traceing-button{
+.ol-geolocation .traceing-button {
     background-color: sandybrown !important;
 }
 
+.ol-geolocation .icon {
+    position: absolute;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2klEQVRIidWTPRLBUBSFz01JqWUfOvYhnQ0o6WitQ8ZSxDqSNaT0KcTgCXkvPzN85Zv7zrlz5lzpHwGGwLgP4QiIgRMw6Fp8CqTcWHQpPAESHqRA1IXwENgBBa9M2wrfc85559BW/DlnlwKYNBV2c65i20T4U84uGSG1rMm5Cv9a1uRchV8t8cu5iq+1tFJ8JGkp6VuOc0kz5y0xs7h2ex+ArbO5Vy3bnPTezLK+DHJJe5/BpgZrMyv6MjhLOvoONzFYmdmlL4PEzNKQDyEGhaRN2D4BlMf4e1wBKAitSv5KDNEAAAAASUVORK5CYII=') no-repeat;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
-    .ol-geolocation{
+    .ol-geolocation {
         top: 5.4em;
     }
-    .ol-geolocation button{
+
+    .ol-geolocation button {
         font-size: 1.5em;
     }
 }

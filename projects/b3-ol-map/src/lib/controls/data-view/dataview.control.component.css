@@ -18,6 +18,17 @@
   height: 24px;
 }
 
+.b3-data-view .icon {
+  position: absolute;
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAApElEQVRIie2VOw7CMBAFZxEUUKflNNyIk+QQnIGOY0UUFEMBQoT8nBiQIpjO3ve8tp5lw9yJ54HqoxARTXk/bf5lijiHzga5J8gTjfAvchZL4eMNOjNoY8otG32CseHPP4OkBmr5ev28UQ55U0PeA1ugUgM4AJv7fC+NwFTbglTXwAlYARdgFxHnVH9N0FMr1KNaTPGnCQb4+lPx/w9qvGtTP8YVraNol+o9ndUAAAAASUVORK5CYII=') no-repeat;
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
 .b3-ol-map-data-view-container form{
   padding: 10px;
 }

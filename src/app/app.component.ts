@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
         { "id": "99f1c025-8c66-488e-881c-247a492951c7", "name": "mouseposition", "title": "MousePositionControl", "settings": { "precision":"6", "precisionLabel": "Precision", "projection": "EPSG:3857", "projectionLabel": "Projection" }},
         { "id": "97f1c024-8c67-488e-881c-247a492951c7", "name": "dataview", "title": "Data" },
         { "id": "45f1c024-8c67-488e-881c-247a492951c7", "name": "geolocation", "title": "Geolocation" },
-        { "id": "12f1c024-8c67-488e-881c-247a492951c7", "name": "measure", "title": "Measure", "settings": { "title": "Measure", "lengthLabel": "Length", "areaLabel": "Area" } },
+        { "id": "12f1c024-8c67-488e-881c-247a492951c7", "name": "measure", "title": "Measure", "settings": { "title": "Measure", "lengthLabel": "Length", "areaLabel": "Area", "typeLabel": "Measure Types", "resultLabel": "Result" } },
 
       ]
     }

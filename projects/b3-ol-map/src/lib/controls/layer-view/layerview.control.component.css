@@ -18,6 +18,17 @@
     height: 18px;
 }
 
+.b3-layer .icon {
+    position: absolute;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABgElEQVRIidXVv0ocURTH8TsqEjAxDIjPsGCK2Nj4BkFCsDNL0lilsjVNEN3kLfIAkqQRC18hKIFgK8TCRomwYVv1k2KPuFxnd8c/IcmBW8y9v/M958wwv5vS/x5FXSGmUkrL8fixKIqf99IBSrxHx1V00EJ5F/Ak3qGtf7RDM3kT8ARWcToAnMdp5EwMgzdxfANwHsdo9jJHshrPU0rTtce9HtPB6DvBKF7j4BbdH+AVRoe2gTEs47AG+DC0Y7VmRAOLKDCONziqAB/F2XhoF9EYBl/HWQC+40XsP8AKfsRaib1L8H7knGF9UIEWzrNO9/CsQruAb5n2HK1hUzzBF1xkyV9jwg3sZmcX+IyZWt8hCs1iq+Ld57GFp3WhI3iJD7rmljCHnQrwDuZCMxU5S+hvoNjsAXR0Ta6Ms3l8ijUfe2WAe41wc1CBJk6yTi8N7VGP7jHW8CvTnsisoqrIQ7x13eza2I6Vg+uZXVboz9h1RaFS9/+41YXz96/Mfz5+A8MBlZ9LWrsbAAAAAElFTkSuQmCC') no-repeat;
+    width: 24px;
+    height: 24px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+
 .spinner {
     animation-name: spinner;
     animation-duration: 800ms;
