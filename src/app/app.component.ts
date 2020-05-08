@@ -43,7 +43,6 @@ export class AppComponent implements OnInit {
       ],
       layers: [
         { id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", "order": 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
-
       ],
       controls: [
         { "id": "399fe7da-0edc-4021-8811-0e0a786f7547", "name": "fullscreen", "title": "Full Screen Control", "settings": { "tipLabel": "Full Screen" } },
@@ -60,7 +59,7 @@ export class AppComponent implements OnInit {
       ]
     }
   }
-
+  
   ngOnInit(): void {
    
     // const ounter = interval(1000);

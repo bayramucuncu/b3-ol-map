@@ -23,12 +23,17 @@
 .b3-search .result {
     width: 100%;
     overflow: auto;
-    padding: 3px 0;
+    margin-top: 2px;
 }
 
-.b3-search .not-found-result{
-    background-color: #f3f3f3;
-    padding: 3px 0;
+.b3-search .load-container{
+    border: 1px solid rgb(69, 134, 180);
+    background-color: rgba(69, 134, 180, 0.3);
+    margin-top: 2px;
+    height: 40px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .b3-search ul {
@@ -70,7 +75,7 @@
     }
 }
 
-.loader {
+.b3-search .loader {
     border: 4px solid #ffffff;
     border-radius: 50%;
     border-top: 4px solid #3498db;

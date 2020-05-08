@@ -1,15 +1,14 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, ɵConsole } from '@angular/core';
 import { Subject, Observable, from, of, BehaviorSubject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap, map, delay, tap } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import VectorLayer from 'ol/layer/Vector';
 import { Feature } from 'ol';
 import VectorSource from 'ol/source/Vector';
 import { MapComponent } from '../../b3-ol-map.component';
-import { Point } from 'ol/geom';
-import { transform } from 'ol/proj';
 import { Style, Fill, Stroke } from 'ol/style';
 import CircleStyle from 'ol/style/Circle';
+import GeoJSON from 'ol/format/GeoJSON';
 
 @Component({
   selector: 'b3-control-search',
@@ -20,7 +19,7 @@ import CircleStyle from 'ol/style/Circle';
 export class SearchComponent implements OnInit {
 
   @Input() placeholder: string;
-  @Input() url: string;
+  @Input() url: string = "https://gisservices.isu.gov.tr/arcgis/rest/services/Altyapilar/Poi/MapServer/0/query";
   @Input() dataProjection: string;
 
   result$: Observable<any[]>;
@@ -44,7 +43,7 @@ export class SearchComponent implements OnInit {
       image: new CircleStyle({
         radius: 8,
         fill: new Fill({
-          color: '#E57583'
+          color: '#ed2f47'
         }),
         stroke: new Stroke({
           color: '#fff',
@@ -64,11 +63,21 @@ export class SearchComponent implements OnInit {
       debounceTime(300),
       distinctUntilChanged(),    
       tap(()=> this.isLoading.next(true)),  
-      //switchMap((searchTerm:string) => this.httpClient.get<any[]>(`${this.url}${searchTerm}`))
-      switchMap((searchTerm: string) => of(this.tempReulsts).pipe(delay(3000), tap(()=>this.isLoading.next(false))))
+      switchMap((searchTerm:string) => this.sendHttpRequest(searchTerm))
+      //switchMap((searchTerm: string) => of(this.tempReulsts).pipe(delay(3000), tap(()=>this.isLoading.next(false))))
     );
   }
 
+  private sendHttpRequest(searchTerm: string): Observable<any[]> {
+    const options = { params: new HttpParams()
+      .set('where', `poi_id='${searchTerm}'`) 
+      .set('f', 'geojson')
+      .set('outsr', this.mapComponent.map.getView().getProjection().getCode().split(':')[1])
+    };
+
+    return this.httpClient.get<any[]>(`${this.url}`, options).pipe(tap(()=>this.isLoading.next(false)));
+  }
+  
   search(searchTerm: string) {
     this.tempReulsts = this.tempData.filter(e => e.name.toLowerCase() == searchTerm.toLowerCase());
 
@@ -76,12 +85,14 @@ export class SearchComponent implements OnInit {
   }
 
   zoom(item: any) {
-    let position = transform([item.x, item.y], this.dataProjection, this.mapComponent.map.getView().getProjection())
-
-    this.mapComponent.map.getView().setCenter(position);
+    let format = new GeoJSON();
+    let position = format.readFeature(item);
+    //let position = transform([item.x, item.y], this.dataProjection, this.mapComponent.map.getView().getProjection())
+console.log(position)
+    this.mapComponent.map.getView().setCenter(position.getGeometry().getExtent());
 
     this.positionFeature.setGeometry(
-      new Point(position)
+      position.getGeometry()
     );
   }
 
