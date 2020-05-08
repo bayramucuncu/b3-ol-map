@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, ViewEncapsulation, ɵConsole } from '@angular/core';
-import { Subject, Observable, from, of, BehaviorSubject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap, map, delay, tap } from 'rxjs/operators';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Subject, Observable, BehaviorSubject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import VectorLayer from 'ol/layer/Vector';
 import { Feature } from 'ol';
