@@ -1,9 +1,20 @@
 <div class="b3-search">
     <input type="text" [placeholder]="placeholder" (keyup)="search($event.target.value)">
     <div class="result" *ngIf="(result$ | async) as result">
-            <ul>
-                <li *ngFor="let item of result.features" (click)="zoom(item)">{{item | json}}</li>
+            <ul [ngClass]="{ 'hidden-ul': isHidden }">
+                <li *ngFor="let item of result.features" (click)="zoom(item)">
+                    <div class="content">
+                        <div class="first-line">
+                            <div class="poi-tipi">{{item.properties.poi_tipi}}</div>
+                            <div class="poi-id">{{item.properties.poi_id}}</div>
+                        </div>                        
+                        <div class="poi-adi">{{item.properties.poi_adi}}</div>
+                    </div>
+                </li>
             </ul>
+            <div class="toggle" *ngIf="result.features && result.features.length>0">
+                <button type="button" (click)="toggle()"><i class="arrow" [ngClass]="{ 'down': isHidden, 'up': !isHidden }"></i></button>
+            </div>
     </div>
     <div class="load-container" *ngIf="(isLoading | async)">        
         <div class="loader"></div>

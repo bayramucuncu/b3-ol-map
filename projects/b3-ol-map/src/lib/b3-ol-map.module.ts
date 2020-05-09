@@ -204,7 +204,10 @@ import { SearchComponent } from './controls/search/search.component';
     DataViewComponent,
     LayerViewControlComponent,
     LayerViewNodeComponent,
-    MeasureComponent
+    MeasureComponent,
+    RotateComponent,
+    GeolocationComponent,
+    SearchComponent
   ]
 })
 export class B3OlMapModule { }

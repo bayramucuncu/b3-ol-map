@@ -1,0 +1,8 @@
+.search {
+    position: absolute;
+    width: 400px;
+    top: .6em;
+    left: 50%;
+    z-index: 3;
+    transform: translate(-50%, 0);
+}

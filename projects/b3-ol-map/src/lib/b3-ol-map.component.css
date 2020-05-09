@@ -120,6 +120,34 @@
     background-size: 22px 22px;
 }
 
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
 /* iPhone 6, 7, & 8 in portrait  */
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
     .b3-ol-map-panel-body {

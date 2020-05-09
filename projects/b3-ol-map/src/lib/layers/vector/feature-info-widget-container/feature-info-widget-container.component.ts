@@ -33,7 +33,6 @@ export class FeatureInfoWidgetContainerComponent implements OnInit, IDynamicComp
       if (e.selected.length === 0 && e.deselected.length > 0)
         this.onPopupClose();
     })
-
   }
 
   ngOnInit() {
@@ -67,10 +66,6 @@ export class FeatureInfoWidgetContainerComponent implements OnInit, IDynamicComp
   }
 
   private injectComponent() {
-    
-    // if (!this.widgetData)
-    //   return;
-
     let componentType = (this.widgetData && this.widgetData.infoComponentType) || "FeatureInfoWidgetComponent";
 
     const componentFactory = this.getComponentFactory(componentType, this.componentFactoryResolver);

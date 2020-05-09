@@ -22,11 +22,23 @@
 
 .b3-search .result {
     width: 100%;
-    overflow: auto;
+    align-items: center;
     margin-top: 2px;
+
 }
 
-.b3-search .load-container{
+.b3-search .result .toggle {
+    display: flex;
+    justify-content: center;
+}
+
+.b3-search .result .toggle button {
+    border: none;
+    width: 40px;
+    align-items: center;
+}
+
+.b3-search .load-container {
     border: 1px solid rgb(69, 134, 180);
     background-color: rgba(69, 134, 180, 0.3);
     margin-top: 2px;
@@ -40,13 +52,20 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
+
+    overflow: auto;
+    max-height: 300px;
 }
+
+.b3-search .hidden-ul {
+    display: none !important;
+}
+
 
 .b3-search li {
     cursor: pointer;
     border: 1px solid #ddd;
     margin-top: -1px;
-    /* Prevent double borders */
     background-color: #f6f6f6;
     padding: 11px;
     text-decoration: none;
@@ -56,7 +75,26 @@
 }
 
 .b3-search li:hover {
-    background-color: #eee;
+    background-color: #e4edf5;
+}
+
+.b3-search li .content {}
+
+.b3-search li .content .first-line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.b3-search li .content .poi-tipi {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.b3-search li .content .poi-id {
+    font-size: 12px;
+    line-height: 10px;
+    font-weight: bold;
 }
 
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
@@ -70,8 +108,8 @@
         background-position: 8px 6px;
     }
 
-    .b3-search .result {
-        max-height: 300px;
+    .b3-search ul {
+        max-height: 220px;
     }
 }
 
