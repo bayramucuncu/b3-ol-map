@@ -97,6 +97,22 @@
     font-weight: bold;
 }
 
+@media only screen and (min-device-width : 320px) and (max-device-width : 568px) {
+    .b3-search {
+        width: 60vw;
+        transform: translate(-50%, 0);
+    }
+
+    .b3-search input[type=text] {
+        padding: 8px 20px 8px 40px;
+        background-position: 8px 6px;
+    }
+
+    .b3-search ul {
+        max-height: 180px;
+    }
+}
+
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
     .b3-search {
         width: 70vw;
@@ -109,7 +125,7 @@
     }
 
     .b3-search ul {
-        max-height: 220px;
+        max-height: 200px;
     }
 }
 
