@@ -66,8 +66,6 @@ import { MeasureComponent } from './controls/measure/measure.component';
 import { LayerViewNodeComponent } from './controls/layer-view/layerviewnode.component';
 import { RotateComponent } from './controls/rotate/rotate.component';
 import { GeolocationComponent } from './controls/geolocation/geolocation.component';
-import { SearchComponent } from './controls/search/search.component';
-
 
 @NgModule({
   declarations: [
@@ -134,8 +132,7 @@ import { SearchComponent } from './controls/search/search.component';
     LayerViewNodeComponent,
     MeasureComponent,
     RotateComponent,
-    GeolocationComponent,
-    SearchComponent
+    GeolocationComponent
   ],
   imports: [
     CommonModule,
@@ -206,8 +203,7 @@ import { SearchComponent } from './controls/search/search.component';
     LayerViewNodeComponent,
     MeasureComponent,
     RotateComponent,
-    GeolocationComponent,
-    SearchComponent
+    GeolocationComponent
   ]
 })
 export class B3OlMapModule { }
