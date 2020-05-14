@@ -19,10 +19,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   map: Map;
 
   selectInteraction = new Select({
-    condition: click,
-    filter: (feature: Feature, layer: Layer) => {
-      return layer && !(layer.getSource() instanceof Cluster);
-    }
+    condition: click
   })
 
   controls: Control[] = [];
