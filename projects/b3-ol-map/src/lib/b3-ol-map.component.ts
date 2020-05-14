@@ -2,8 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewIn
 import { Map, MapBrowserEvent} from 'ol';
 import { Control } from 'ol/control';
 import { Interaction } from 'ol/interaction';
-import { click } from 'ol/events/condition.js';
-import Select from 'ol/interaction/Select.js';
 
 @Component({
   selector: 'b3-ol-map',

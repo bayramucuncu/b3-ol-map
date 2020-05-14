@@ -1,13 +1,13 @@
 import { Component, OnInit, ComponentRef, ViewChild, Input, ComponentFactoryResolver, ElementRef, Type, AfterViewInit } from '@angular/core';
 import Overlay from 'ol/Overlay';
 import Feature from 'ol/Feature';
+import { Select } from 'ol/interaction';
+import { click } from 'ol/events/condition.js';
+import OverlayPositioning from 'ol/OverlayPositioning';
 import { WidgetHostDirective } from './widget-host.directive';
 import { MapComponent } from '../../../b3-ol-map.component';
 import { VectorComponent } from '../vector.component';
 import { IDynamicComponent } from '../../../dynamic-component.contract';
-import OverlayPositioning from 'ol/OverlayPositioning';
-import { Select } from 'ol/interaction';
-import { click } from 'ol/events/condition.js';
 
 @Component({
   selector: 'b3-feature-info-widget-container',
@@ -28,19 +28,15 @@ export class FeatureInfoWidgetContainerComponent implements OnInit, IDynamicComp
 
     let selectInteractions = mapComponent.map.getInteractions().getArray().filter(s => s instanceof Select);
 
-    this.selectInteraction = selectInteractions.length > 0 ? <Select>selectInteractions[0] :  new Select({ condition: click });
+    this.selectInteraction = selectInteractions.length > 0 ? <Select>selectInteractions[0] : new Select({ condition: click });
 
-     selectInteractions.length === 0 && mapComponent.map.addInteraction(this.selectInteraction);
-    
-    console.log(selectInteractions) 
-    console.log(this.selectInteraction) 
+    selectInteractions.length === 0 && mapComponent.map.addInteraction(this.selectInteraction);
 
     this.selectInteraction.on("select", (e) => {
       e.selected.forEach((feature: Feature) => {
-        if (this.selectInteraction.getLayer(feature) === this.layerComponent.layer)
-          this.overlay.setPosition(e.mapBrowserEvent.coordinate);
-        else
-          this.overlay.setPosition(undefined);
+        this.selectInteraction.getLayer(feature) === this.layerComponent.layer
+          ? this.overlay.setPosition(e.mapBrowserEvent.coordinate)
+          : this.overlay.setPosition(undefined);
       })
 
       if (e.selected.length === 0 && e.deselected.length > 0)
