@@ -1,10 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewInit, SimpleChanges, HostListener, OnChanges, ViewEncapsulation } from '@angular/core';
-import { Map, MapBrowserEvent, View } from 'ol';
+import { Map, MapBrowserEvent} from 'ol';
 import { Control } from 'ol/control';
 import { Interaction } from 'ol/interaction';
-import { Feature } from 'ol';
-import { Layer } from 'ol/layer';
-import { Cluster } from 'ol/source';
 import { click } from 'ol/events/condition.js';
 import Select from 'ol/interaction/Select.js';
 
@@ -18,12 +15,8 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
 
   map: Map;
 
-  selectInteraction = new Select({
-    condition: click
-  })
-
   controls: Control[] = [];
-  interactions: Interaction[] = [this.selectInteraction];
+  interactions: Interaction[] = [];
 
   @Input() width: string = '100%';
   @Input() height: string = '100%';
@@ -34,7 +27,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   @HostListener('window:resize') onWindowResize() {
     this.map.updateSize();
   }
-
 
   constructor(private element: ElementRef) {
     this.outClick = new EventEmitter<MapBrowserEvent>();

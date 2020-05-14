@@ -6,6 +6,8 @@ import { MapComponent } from '../../../b3-ol-map.component';
 import { VectorComponent } from '../vector.component';
 import { IDynamicComponent } from '../../../dynamic-component.contract';
 import OverlayPositioning from 'ol/OverlayPositioning';
+import { Select } from 'ol/interaction';
+import { click } from 'ol/events/condition.js';
 
 @Component({
   selector: 'b3-feature-info-widget-container',
@@ -16,16 +18,26 @@ export class FeatureInfoWidgetContainerComponent implements OnInit, IDynamicComp
 
   private featureInfoComponent: ComponentRef<any>;
   private overlay: Overlay;
+  private selectInteraction: Select;
 
   @ViewChild(WidgetHostDirective, { static: true }) widgetHostDirective: WidgetHostDirective;
 
   @Input() widgetData: any;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, public element: ElementRef, private layerComponent: VectorComponent, private mapComponent: MapComponent) {
+
+    let selectInteractions = mapComponent.map.getInteractions().getArray().filter(s => s instanceof Select);
+
+    this.selectInteraction = selectInteractions.length > 0 ? <Select>selectInteractions[0] :  new Select({ condition: click });
+
+     selectInteractions.length === 0 && mapComponent.map.addInteraction(this.selectInteraction);
     
-    this.mapComponent.selectInteraction.on("select", (e) => {
+    console.log(selectInteractions) 
+    console.log(this.selectInteraction) 
+
+    this.selectInteraction.on("select", (e) => {
       e.selected.forEach((feature: Feature) => {
-        if (this.mapComponent.selectInteraction.getLayer(feature) === this.layerComponent.layer)
+        if (this.selectInteraction.getLayer(feature) === this.layerComponent.layer)
           this.overlay.setPosition(e.mapBrowserEvent.coordinate);
         else
           this.overlay.setPosition(undefined);
@@ -44,7 +56,7 @@ export class FeatureInfoWidgetContainerComponent implements OnInit, IDynamicComp
     this.overlay = new Overlay({
       element: this.element.nativeElement.children[0],
       autoPan: true,
-      positioning:OverlayPositioning.BOTTOM_CENTER,
+      positioning: OverlayPositioning.BOTTOM_CENTER,
       autoPanAnimation: {
         duration: 250
       }
@@ -52,7 +64,7 @@ export class FeatureInfoWidgetContainerComponent implements OnInit, IDynamicComp
 
     this.mapComponent.map.addOverlay(this.overlay);
   }
-  
+
   getComponentType(): string {
     return this.constructor.name;
   }
@@ -64,7 +76,7 @@ export class FeatureInfoWidgetContainerComponent implements OnInit, IDynamicComp
 
   onPopupClose(): void {
     this.overlay.setPosition(undefined);
-    this.mapComponent.selectInteraction.getFeatures().clear();
+    this.selectInteraction.getFeatures().clear();
   }
 
   private injectComponent() {
@@ -78,7 +90,7 @@ export class FeatureInfoWidgetContainerComponent implements OnInit, IDynamicComp
 
     this.featureInfoComponent = viewContainerRef.createComponent(componentFactory);
 
-    this.featureInfoComponent.instance && (this.featureInfoComponent.instance.selectInteraction = this.mapComponent.selectInteraction);
+    this.featureInfoComponent.instance && (this.featureInfoComponent.instance.selectInteraction = this.selectInteraction);
 
     this.featureInfoComponent.changeDetectorRef.detectChanges();
   }
