@@ -5,6 +5,7 @@ import { WidgetHostDirective } from './widget-host.directive';
 import { MapComponent } from '../../../b3-ol-map.component';
 import { VectorComponent } from '../vector.component';
 import { IDynamicComponent } from '../../../dynamic-component.contract';
+import OverlayPositioning from 'ol/OverlayPositioning';
 
 @Component({
   selector: 'b3-feature-info-widget-container',
@@ -43,6 +44,7 @@ export class FeatureInfoWidgetContainerComponent implements OnInit, IDynamicComp
     this.overlay = new Overlay({
       element: this.element.nativeElement.children[0],
       autoPan: true,
+      positioning:OverlayPositioning.BOTTOM_CENTER,
       autoPanAnimation: {
         duration: 250
       }
