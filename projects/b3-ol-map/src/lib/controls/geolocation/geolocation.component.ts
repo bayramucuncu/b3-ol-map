@@ -62,6 +62,10 @@ export class GeolocationComponent implements OnInit {
         new Point(position)
       );
     })
+
+    this.geolocation.on("error", evt => {
+      console.error(evt);
+    })
   }
 
   toggleTrace() {

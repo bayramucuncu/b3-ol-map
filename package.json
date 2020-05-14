@@ -8,6 +8,7 @@
     "build-lib": "ng build b3-ol-map",
     "build-lib-watch": "ng build b3-ol-map --watch",
     "build-lib-prod": "ng build b3-ol-map --prod=true",
+    "build-app-prod": "ng build --base-href=b3-map --prod=true",
     "npm-pack-lib": "cd dist/b3-ol-map && npm pack",
     "test": "ng test",
     "lint": "ng lint",
