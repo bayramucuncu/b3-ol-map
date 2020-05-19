@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
   map: any;
 
   // todo: layerService for manage layers
-  // todo: guid generator for ids
 
   constructor(private activatedRoute: ActivatedRoute) {
 

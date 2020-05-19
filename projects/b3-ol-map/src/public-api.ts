@@ -13,3 +13,4 @@ export * from './lib/layers/index';
 export * from './lib/projection/index';
 export * from './lib/sources/index';
 export * from './lib/view/index';
+export * from './lib/helper';
