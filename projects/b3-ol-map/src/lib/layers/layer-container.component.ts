@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import BaseLayer from 'ol/layer/Base';
+import { LayerContainerService } from './layer-container.service';
+import { Observable } from 'rxjs';
+import { UuidGenerator } from '../helper';
 
 @Component({
   selector: 'b3-layer-container',
@@ -14,18 +17,22 @@ export class LayerContainerComponent implements OnInit {
 
   @Output() outLayerCreate: EventEmitter<BaseLayer>;
 
-  constructor() {
+  layerContainerService: LayerContainerService;
+
+  layer$: Observable<any[]>;
+
+  constructor(layerContainerService: LayerContainerService, private uuidGenerator: UuidGenerator) {
+    this.layerContainerService = layerContainerService;
     this.outLayerCreate = new EventEmitter<BaseLayer>();
   }
 
   ngOnInit() {
-    !this.layers && (this.layers = this.getDefaultLayers());
-    
-    if (this.layers) {
-      this.layers = this.layers.sort((a, b) => a.order > b.order ? 1 : -1);
-    } else {
-      this.layers = this.getDefaultLayers();
-    }
+
+    this.layer$ = this.layerContainerService.layers$;
+
+    this.layers = (this.layers && this.layers.length > 0) ? this.layers : this.getDefaultLayers()
+
+    this.layerContainerService.addLayers(this.layers);
 
     !this.showControl && (this.showControl = false);
     !this.controlTitle && (this.controlTitle = "Layers");
@@ -37,7 +44,7 @@ export class LayerContainerComponent implements OnInit {
 
   private getDefaultLayers(): any[] {
     return [
-      { id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", order: 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
+      { id: this.uuidGenerator.uuidv4() , order: 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
     ]
   }
 

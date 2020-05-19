@@ -1,9 +1,10 @@
 import { Component, Output, EventEmitter, ViewEncapsulation, Input, OnInit } from '@angular/core';
 import { GeoJSON, EsriJSON, TopoJSON, WKT } from 'ol/format';
 import { Vector as VectorSource } from 'ol/source';
-import { Vector as LayerVector } from 'ol/layer';
 import { Feature } from 'ol';
 import { MapComponent } from '../../b3-ol-map.component';
+import { LayerContainerService } from '../../layers/layer-container.service';
+import { UuidGenerator } from '../../helper';
 
 export class MapData {
     srid: string;
@@ -35,7 +36,7 @@ export class DataViewComponent implements OnInit {
 
     @Output() outDataViewFeatureAdd: EventEmitter<Feature[]> = new EventEmitter<Feature[]>();
 
-    constructor(private mapComponentControl: MapComponent) {
+    constructor(private mapComponentControl: MapComponent, private uuidGenerator: UuidGenerator, private layerContainerService: LayerContainerService) {
 
     }
 
@@ -51,13 +52,13 @@ export class DataViewComponent implements OnInit {
         "WKT"
     ];
 
-    private getDefaultProjections(): any{
+    private getDefaultProjections(): any {
         return [
-          { code: "EPSG:4326" },
-          { code: "EPSG:3857" },
-          { code: "EPSG:5254" }
+            { code: "EPSG:4326" },
+            { code: "EPSG:3857" },
+            { code: "EPSG:5254" }
         ];
-      }
+    }
 
     private getFeatures() {
         let features: any[];
@@ -100,13 +101,20 @@ export class DataViewComponent implements OnInit {
             features: features
         });
 
-        let layer = new LayerVector({
-            source: source,
-        });
+        let layer = {
+            "id": this.uuidGenerator.uuidv4(),
+            "order": null,
+            "type": "vector",
+            "name": this.model.name || "Data Layer",
+            "showOnLayerView": true,
+            "isBase": false,
+            "sourceSettings": {
+                "type": "feature",
+                "features": features
+            }
+        }
 
-        layer.set("name", this.model.name || "Data Layer");
-
-        this.mapComponentControl.map.addLayer(layer);
+        this.layerContainerService.addLayer(layer);
 
         this.mapComponentControl.map.getView().fit(source.getExtent(), { size: this.mapComponentControl.map.getSize() });
 
