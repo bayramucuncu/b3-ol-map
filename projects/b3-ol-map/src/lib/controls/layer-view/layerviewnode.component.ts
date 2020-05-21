@@ -49,17 +49,20 @@ export class LayerViewNodeComponent {
     let source = this.nodes.find(s => s.label == sourceLabel);
     let target = this.nodes.find(s => s.label == targetLabel);
 
-    let sourceIndex = {...source}.order;
-    let targetIndex = {...target}.order;
-    
-    source.layer.setZIndex(targetIndex);
-    target.layer.setZIndex(sourceIndex);
+    if(source.layer.get("isBase") === target.layer.get("isBase")){
+      let sourceIndex = {...source}.order;
+      let targetIndex = {...target}.order;
+      
+      source.layer.setZIndex(targetIndex);
+      target.layer.setZIndex(sourceIndex);
 
-    source.order = targetIndex;
-    target.order = sourceIndex;
+      source.order = targetIndex;
+      target.order = sourceIndex;
 
-    source.layer.set("order", targetIndex);
-    target.layer.set("order", sourceIndex);
+      source.layer.set("order", targetIndex);
+      target.layer.set("order", sourceIndex);
+    }
+
   }
 
   onRangeMouseDown(event:any){

@@ -45,9 +45,10 @@ export class AppComponent implements OnInit {
       ],
       layers: [
         { id: "51c65b72-bc59-4a4f-9b86-ac8309728f1c", "order": 1, type: "tile", showOnLayerView: true, name: "Open Street Map", isBase: true, layerSettings: { "visible": true }, sourceSettings: { type: "osm" } },
-        //{ "id": "51c55bd2-bc59-4a4f-9b86-ac8309788f1c", "order": 25, "type": "heatmap", "name": "Points Heatmap Geojson", "isBase": false, "layerSettings": { "minResolution": 0.2, "maxResolution": 150, "visible": true,  "blur": 15, "radius": 7 }, "sourceSettings": { "type": "geojson", "url":"/assets/points.json", "dataProjection": "EPSG:5254",  "featureProjection":"EPSG:3857" } },
+        { "id": "51c55bd2-bc59-4a4f-9b86-ac8309788f1c", "order": 25, "type": "heatmap", "name": "Points Heatmap Geojson", "isBase": false, "layerSettings": { "minResolution": 0.2, "maxResolution": 150, "visible": true,  "blur": 15, "radius": 7 }, "sourceSettings": { "type": "geojson", "url":"/assets/points.json", "dataProjection": "EPSG:5254",  "featureProjection":"EPSG:3857" } },
         { "id": "41c55bd2-bc19-4a4f-9b86-ac8309728f1c", "order": 10, "type": "vector", "name": "Points Geojson", "isBase": false, "layerSettings": { "minResolution": 0.2, "maxResolution": 20, "visible": true }, "sourceSettings": { "type": "geojson", "url":"assets/points.json", "dataProjection":"EPSG:5254", "featureProjection":"EPSG:3857" }, "styleSettings":  { "viewType": "unique", "viewOptions": { "image": { "type": "circle", "options": { "radius":6, "fill": { "color": "rgba(57,  157, 204, 0.7)" }, "stroke": { "color": "rgba(60, 204, 157, 0.9)", "width": 2,"lineCap": "round", "lineJoin": "round","lineDash": null,"lineDashOffset": 0, "miterLimit":10 } } }, "text": { "fill": {"color": "#000" }, "stroke": { "color": "#fff" }, "font": "12px sans-serif", "maxResolution": 4, "propertyName": "objectid" } } } },
-     
+        { "id": "50c25bd2-bc59-4a4f-9b86-ac8309728f1c", "order": 3, "type": "tile", "name": "Uydu 2018", "isBase": true, "layerSettings": { "minResolution": "0.14", "maxResolution": "200" }, "sourceSettings": { "type": "tilewmts", "url": "https://tileservices.kocaeli.bel.tr/geoserver/gwc/service/wmts", "layer": "kbb:hybrid_v2_group", "matrixSet": "EPSG:900913" } },
+
       ],
       controls: [
         { "id": "399fe7da-0edc-4021-8811-0e0a786f7547", "name": "fullscreen", "title": "Full Screen Control", "settings": { "tipLabel": "Full Screen" } },
