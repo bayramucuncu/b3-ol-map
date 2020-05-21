@@ -1,8 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit, ViewEncapsulation } from '@angular/core';
-import { LayerNode } from './layer-node';
-import { CollectionEvent } from 'ol/Collection';
 import BaseLayer from 'ol/layer/Base';
-import { MapComponent } from '../../b3-ol-map.component';
+import { LayerContainerService } from '../../layers/layer-container.service';
 
 @Component({
     selector: 'b3-layer-view-control',
@@ -16,60 +14,41 @@ export class LayerViewControlComponent implements OnInit {
 
     @Output() outLayerDelete: EventEmitter<BaseLayer> = new EventEmitter<BaseLayer>();
 
-    nodes: LayerNode[] = [];
+    layers: any[] = [];
+
     visibility: boolean;
 
-    ngOnInit(): void {
-        this.mapComponent.map.getLayers().on("add", (event: CollectionEvent<BaseLayer>) => {
-
-            let layerOrders = this.mapComponent.map.getLayers().getArray().filter(layer => layer.get("order")).map((o) => <number>o.get("order"));
-
-            let maxOrder = (Math.max(...layerOrders) || this.mapComponent.map.getLayers().getArray().length) + 1;
-
-            let order = event.element.get("order")
-                ? event.element.get("order")
-                : maxOrder;
-
-            if (!event.element.get("order")) {
-                event.element.set("order", maxOrder);
-            }
-
-            let name = event.element.get("name")
-                ? event.element.get("name")
-                : "New Layer - " + order;
-
-            let showOnLayerView = event.element.get("showOnLayerView") !== false;
-
-            if (showOnLayerView) {
-                this.nodes.push(new LayerNode(
-                    name,
-                    order,
-                    [],
-                    event.element,
-                    false
-                ));
-            }
-        });
-
-        this.mapComponent.map.getLayers().on("remove", (event: CollectionEvent<BaseLayer>) => {
-            this.nodes = this.nodes.filter(s => s.layer !== event.element);
+    constructor(private layerContainerService: LayerContainerService) {
+        layerContainerService.layers$.subscribe(items => {
+            let sortedLayers = this.sortLayers(items);// layerservice
+            this.addLayers(sortedLayers); // items changed, so issue occured.
         });
     }
 
-    constructor(private mapComponent: MapComponent) {
+    private addLayers(items: any[]) {
+        items.forEach((item: any) => {
+            let found = this.layers.find((f: any) => f.id === item.id);
+            !found && this.layers.push(item);
+        });
     }
+
+    private sortLayers(items: any[]) {
+        // todo: if order not set ??
+
+        let baseLayers = items.filter(a => a.isBase).sort((a, b) => a.order - b.order);
+        let otherLayers = items.filter(a => !a.isBase).sort((a, b) => a.order - b.order);
+
+       return [...baseLayers, ...otherLayers];
+    }
+
+    ngOnInit(): void { }
 
     toggle() {
         this.visibility = !this.visibility;
     }
 
-    getNodes(): LayerNode[] {
-        return this.nodes.sort((a, b) => a.order > b.order ? 1 : -1);
-    }
-
-    onLayerDeleted(layer: BaseLayer) {
-        this.mapComponent.map.removeLayer(layer);
-
+    onLayerDeleted(layer: any) {
+        this.layerContainerService.removeLayer(layer);
         this.outLayerDelete.emit(layer);
     }
 }

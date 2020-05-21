@@ -1,75 +1,83 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { LayerNode } from './layer-node';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import BaseLayer from 'ol/layer/Base';
+import { MapComponent } from '../../b3-ol-map.component';
 
 @Component({
   selector: 'b3-layer-view-node',
   styleUrls: ["./layerview.control.component.css"],
   templateUrl: "./layerviewnode.component.html",
 })
-export class LayerViewNodeComponent {
-  @Input() nodes: LayerNode[];
+export class LayerViewNodeComponent implements OnInit {
+
+  @Input() layer: any;
+
   @Output() outLayerDelete: EventEmitter<BaseLayer> = new EventEmitter<BaseLayer>();
 
-  constructor(){
+  isSettingsOpen: boolean = false;
+
+  constructor(private mapComponent: MapComponent) { }
+
+  ngOnInit(): void {
+    if (this.layer && this.layer.layerSettings) {
+      !this.layer.layerSettings.visible && (this.layer.layerSettings.visible = true);
+      !this.layer.layerSettings.opacity && (this.layer.layerSettings.opacity = 1);
+    }else{
+      this.layer.layerSettings = {
+        visible: true,
+        opacity: 1
+      }
+    }
   }
 
-  getOpacity(node: LayerNode) {
-    return node.layer.getOpacity() * 100;
+  private getMapLayer(id: any) {
+    return this.mapComponent.map.getLayers().getArray().find((item: any) => item.get("id") === id);
   }
 
-  onCheckChanged(node: LayerNode) {
-    let visibility = node.layer.getVisible();
+  onCheckChanged(layer: any) {
+    this.layer.layerSettings.visible = !this.layer.layerSettings.visible;
 
-    node.layer.setVisible(!visibility);
+    this.getMapLayer(layer.id).setVisible(this.layer.layerSettings.visible);
   }
 
-  isChecked(node: LayerNode) {
-    return node.layer.getVisible();
+  onRangeChanged(layer: any) {
+    this.getMapLayer(layer.id).setOpacity(this.layer.layerSettings.opacity)
   }
 
-  onRangeChanged(node: LayerNode, opacity: number) {
-    node.layer.setOpacity(opacity / 100);
+  toggleSettings() {
+    this.isSettingsOpen = !this.isSettingsOpen;
   }
 
-  toggleSettings(node: any){
-    node.isSettingsOpen = !node.isSettingsOpen;
+  isLoading(layer: any) {
+    return this.getMapLayer(layer.id) && this.getMapLayer(layer.id).get("isLoading");
   }
 
-  isLoading(node: LayerNode) {
-    return node.layer.get("isLoading");
+  delete(layer: any) {
+    this.outLayerDelete.emit(layer);
   }
 
-  delete(node: LayerNode){
-    this.outLayerDelete.emit(node.layer);    
-  }
+  dropTask(targetId: any, sourceId: any) {
 
-  dropTask(targetLabel: string, sourceLabel: string) {
+    let sourceLayer: any = this.getMapLayer(sourceId);
+    let targetLayer: any = this.getMapLayer(targetId);
 
-    let source = this.nodes.find(s => s.label == sourceLabel);
-    let target = this.nodes.find(s => s.label == targetLabel);
+    if (sourceLayer.get("isBase") === targetLayer.get("isBase")) {
+      let sourceOrder = sourceLayer.get("order");
+      let targetOrder = targetLayer.get("order");
 
-    if(source.layer.get("isBase") === target.layer.get("isBase")){
-      let sourceIndex = {...source}.order;
-      let targetIndex = {...target}.order;
-      
-      source.layer.setZIndex(targetIndex);
-      target.layer.setZIndex(sourceIndex);
+      sourceLayer.setZIndex(targetOrder);
+      targetLayer.setZIndex(sourceOrder);
 
-      source.order = targetIndex;
-      target.order = sourceIndex;
-
-      source.layer.set("order", targetIndex);
-      target.layer.set("order", sourceIndex);
+      sourceLayer.set("order", targetOrder);
+      targetLayer.set("order", sourceOrder);
     }
 
   }
 
-  onRangeMouseDown(event:any){
+  onRangeMouseDown(event: any) {
     event.target.parentElement.draggable = false;
   }
 
-  onRangeMouseUp(event:any){
+  onRangeMouseUp(event: any) {
     event.target.parentElement.draggable = true;
   }
 }

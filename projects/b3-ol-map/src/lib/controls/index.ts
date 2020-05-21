@@ -8,6 +8,5 @@ export * from './zoom-slider/zoom-slider.component';
 export * from './zoom-to-extent/zoom-to-extent.component';
 export * from './data-view/dataview.control.component';
 export * from './measure/measure.component';
-export * from './layer-view/layer-node';
 export * from './layer-view/layerview.control.component';
 export * from './layer-view/layerviewnode.component';

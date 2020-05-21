@@ -1,26 +1,26 @@
-<div class="b3-layer-line" *ngFor="let node of nodes"
+<div class="b3-layer-line"
     b3Draggable 
     b3DraggableDropZone 
     draggableType="layer" 
     dropAcceptType="layer" 
-    [draggableData]="node.label"
-    (outDropDraggable)="dropTask(node.label, $event)">
-        <i [ngClass]="{'b3-layer-checked-icon': isChecked(node), 'b3-layer-unchecked-icon': !isChecked(node)}"
-            (click)="onCheckChanged(node)" 
+    [draggableData]="layer.id"
+    (outDropDraggable)="dropTask(layer.id, $event)">
+        <i [ngClass]="{'b3-layer-checked-icon': layer.layerSettings.visible, 'b3-layer-unchecked-icon': !layer.layerSettings.visible}"
+            (click)="onCheckChanged(layer)" 
             (mousedown)="onRangeMouseDown($event)" 
             (mouseup)="onRangeMouseUp($event)"></i>
         <label class="b3-layer-label"
             (mousedown)="onRangeMouseUp($event)"
-            (mouseup)="onRangeMouseDown($event)">{{ (node.label.length > 10 && node.isSettingsOpen) ? (node.label | slice:0:5) + "..." : node.label }}</label>
-        <input *ngIf="node.isSettingsOpen" 
+            (mouseup)="onRangeMouseDown($event)">{{ (layer.name.length > 10 && isSettingsOpen) ? (layer.name | slice:0:5) + "..." : layer.name }}</label>
+        <input *ngIf="isSettingsOpen" 
             type="range" 
             min="0" 
-            max="100" 
-            [value]="getOpacity(node)"
+            max="1" 
+            step=".1"
+            [(ngModel)]="layer.layerSettings.opacity"
             (mousedown)="onRangeMouseDown($event)" 
             (mouseup)="onRangeMouseUp($event)"
-            (input)="onRangeChanged(node, $event.target.value)">
-        <i class="b3-layer-remove-icon" (click)="delete(node)" *ngIf="node.isSettingsOpen"></i>
-        <i class="b3-layer-settings-icon " [ngClass]="{'spinner': isLoading(node)}" (click)="toggleSettings(node)"></i>
-        <!-- <b3-layer-view-node [nodes]="node.children"></b3-layer-view-node> -->
+            (input)="onRangeChanged(layer)">
+        <i class="b3-layer-remove-icon" (click)="delete(layer)" *ngIf="isSettingsOpen"></i>
+        <i class="b3-layer-settings-icon " [ngClass]="{'spinner': isLoading(layer)}" (click)="toggleSettings(layer)"></i>
 </div>

@@ -9,8 +9,8 @@
             <span>{{title}}</span>  <i class="b3-panel-close-icon" (click)="toggle()"></i>
         </div>
         <div class="b3-ol-map-panel-body">
-            <b3-layer-view-node 
-                [nodes]="getNodes()" 
+            <b3-layer-view-node *ngFor="let layer of layers"
+                [layer]="layer"
                 (outLayerDelete)="onLayerDeleted($event)"></b3-layer-view-node>
         </div>
      </div>
