@@ -22,5 +22,5 @@
             (mouseup)="onRangeMouseUp($event)"
             (input)="onRangeChanged(layer)">
         <i class="b3-layer-remove-icon" (click)="delete(layer)" *ngIf="isSettingsOpen"></i>
-        <i class="b3-layer-settings-icon " [ngClass]="{'spinner': isLoading(layer)}" (click)="toggleSettings(layer)"></i>
+        <i class="b3-layer-settings-icon " [ngClass]="{'spinner': isLoading(layer)}" (click)="toggleSettings()"></i>
 </div>
