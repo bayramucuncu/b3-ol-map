@@ -11,7 +11,9 @@
         <div class="b3-ol-map-panel-body">
             <b3-layer-view-node *ngFor="let layer of layers"
                 [layer]="layer"
+                (outLayerOrderChange)="onLayerOrderChanged($event)"
                 (outLayerDelete)="onLayerDeleted($event)"></b3-layer-view-node>
+                <!-- <ul><li *ngFor="let layer of layers">{{layer.name}}</li></ul> -->
         </div>
      </div>
 </div>

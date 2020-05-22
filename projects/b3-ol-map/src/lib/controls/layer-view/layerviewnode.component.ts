@@ -12,6 +12,7 @@ export class LayerViewNodeComponent implements OnInit {
   @Input() layer: any;
 
   @Output() outLayerDelete: EventEmitter<BaseLayer> = new EventEmitter<BaseLayer>();
+  @Output() outLayerOrderChange: EventEmitter<any> = new EventEmitter<any>();
 
   isSettingsOpen: boolean = false;
 
@@ -45,20 +46,30 @@ export class LayerViewNodeComponent implements OnInit {
     this.outLayerDelete.emit(layer);
   }
 
-  dropTask(targetId: any, sourceId: any) {
+  onDrop(target: any, source: any) {
 
-    let sourceLayer: any = this.getMapLayer(sourceId);
-    let targetLayer: any = this.getMapLayer(targetId);
+    let sourceMapLayer: any = this.getMapLayer(source.id);
+    let targetMapLayer: any = this.getMapLayer(target.id);
+console.log({...source})
+console.log({...target})
+    if (sourceMapLayer.get("isBase") === targetMapLayer.get("isBase")) {
+      let sourceOrder = {...source}.order;
+      let targetOrder = {...target}.order;
 
-    if (sourceLayer.get("isBase") === targetLayer.get("isBase")) {
-      let sourceOrder = sourceLayer.get("order");
-      let targetOrder = targetLayer.get("order");
+      
+      // source.order = targetOrder;
+      // target.order = sourceOrder;
+      
+      sourceMapLayer.setZIndex(targetOrder);
+      targetMapLayer.setZIndex(sourceOrder);
 
-      sourceLayer.setZIndex(targetOrder);
-      targetLayer.setZIndex(sourceOrder);
+      sourceMapLayer.set("order", targetOrder);
+      targetMapLayer.set("order", sourceOrder);
 
-      sourceLayer.set("order", targetOrder);
-      targetLayer.set("order", sourceOrder);
+      this.outLayerOrderChange.emit({
+        targetLayer: target,
+        sourceLayer: source
+      });
     }
 
   }

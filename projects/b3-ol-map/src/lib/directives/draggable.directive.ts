@@ -20,7 +20,7 @@ export class DraggableDirective {
     @HostListener('dragstart', ['$event']) 
     dragStart(event: DragEvent) {
         event.dataTransfer.effectAllowed = 'move';
-        event.dataTransfer.setData('label', this.draggableData);
+        event.dataTransfer.setData('drag-data', JSON.stringify(this.draggableData));
         event.dataTransfer.setData(`draggable-type:${this.draggableType}`, '');
 
         this.dragging = true;

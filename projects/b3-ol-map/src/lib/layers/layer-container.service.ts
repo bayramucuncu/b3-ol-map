@@ -10,7 +10,9 @@ export class LayerContainerService {
 
   layers$ = this.layersBehaviour.asObservable();
 
-  constructor() { }
+  constructor() {
+
+   }
 
   addLayer(layer: any) {
     if (!layer) return;
@@ -18,9 +20,8 @@ export class LayerContainerService {
     this.setOrderProperty(layer);
     this.setVisibilityProperty(layer);
     this.setOpacityProperty(layer);
-    this.setIsBaseProperty(layer);
 
-    const sortedLayers = [...this.layersBehaviour.value, layer].sort((a, b) => a.order - b.order);
+    let sortedLayers = [...this.layersBehaviour.value, layer]//.sort((a, b) => a.id - b.id);
     this.layersBehaviour.next(sortedLayers);
   }
   
@@ -48,7 +49,4 @@ export class LayerContainerService {
     layer.layerSettings.opacity = layer.layerSettings.opacity || 1;
   }
 
-  private setIsBaseProperty(layer: any) {
-    layer.isBase = layer.isBase || false;
-  }
 }

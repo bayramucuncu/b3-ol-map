@@ -45,10 +45,10 @@ export class DraggableDropZoneDirective {
   @HostListener('drop', ['$event'])
   drop(event: DragEvent) {
       if (this.typeIsAccepted(event)) {
-          const data = event.dataTransfer.getData('label');
+          const data = event.dataTransfer.getData('drag-data');
           this.over = false;
           this.dragEnterCount = 0;
-          this.outDropDraggable.next(data);
+          this.outDropDraggable.next(JSON.parse(data));
       }
   }
 }
