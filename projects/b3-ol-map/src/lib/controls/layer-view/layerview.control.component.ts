@@ -19,26 +19,7 @@ export class LayerViewControlComponent implements OnInit {
     visibility: boolean;
 
     constructor(private layerContainerService: LayerContainerService) {
-        layerContainerService.layers$.subscribe(items => {
-            let sortedLayers = this.sortLayers(items);// layerservice
-            this.addLayers(sortedLayers); // items changed, so issue occured.
-        });
-    }
-
-    private addLayers(items: any[]) {
-        items.forEach((item: any) => {
-            let found = this.layers.find((f: any) => f.id === item.id);
-            !found && this.layers.push(item);
-        });
-    }
-
-    private sortLayers(items: any[]) {
-        // todo: if order not set ??
-
-        let baseLayers = items.filter(a => a.isBase).sort((a, b) => a.order - b.order);
-        let otherLayers = items.filter(a => !a.isBase).sort((a, b) => a.order - b.order);
-
-       return [...baseLayers, ...otherLayers];
+        layerContainerService.layers$.subscribe(items => this.layers = items);
     }
 
     ngOnInit(): void { }

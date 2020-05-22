@@ -17,17 +17,7 @@ export class LayerViewNodeComponent implements OnInit {
 
   constructor(private mapComponent: MapComponent) { }
 
-  ngOnInit(): void {
-    if (this.layer && this.layer.layerSettings) {
-      !this.layer.layerSettings.visible && (this.layer.layerSettings.visible = true);
-      !this.layer.layerSettings.opacity && (this.layer.layerSettings.opacity = 1);
-    }else{
-      this.layer.layerSettings = {
-        visible: true,
-        opacity: 1
-      }
-    }
-  }
+  ngOnInit(): void { }
 
   private getMapLayer(id: any) {
     return this.mapComponent.map.getLayers().getArray().find((item: any) => item.get("id") === id);

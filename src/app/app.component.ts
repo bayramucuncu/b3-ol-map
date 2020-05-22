@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { transform } from 'ol/proj';
 
@@ -11,8 +11,6 @@ export class AppComponent implements OnInit {
 
   title = 'b3-ol-map';
   map: any;
-
-  // todo: layerService for manage layers
 
   constructor(private activatedRoute: ActivatedRoute) {
 
