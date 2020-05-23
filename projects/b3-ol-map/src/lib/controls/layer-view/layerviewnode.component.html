@@ -11,7 +11,7 @@
             (mouseup)="onRangeMouseUp($event)"></i>
         <label class="b3-layer-label"
             (mousedown)="onRangeMouseUp($event)"
-            (mouseup)="onRangeMouseDown($event)">{{layer.order}} {{ (layer.name.length > 10 && isSettingsOpen) ? (layer.name | slice:0:5) + "..." : layer.name }}</label>
+            (mouseup)="onRangeMouseDown($event)">{{ (layer.name.length > 10 && isSettingsOpen) ? (layer.name | slice:0:5) + "..." : layer.name }}</label>
         <input *ngIf="isSettingsOpen" 
             type="range" 
             min="0" 

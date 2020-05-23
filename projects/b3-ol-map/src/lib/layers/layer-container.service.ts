@@ -10,9 +10,7 @@ export class LayerContainerService {
 
   layers$ = this.layersBehaviour.asObservable();
 
-  constructor() {
-
-  }
+  constructor() { }
 
   addLayer(layer: any) {
     if (!layer) return;
