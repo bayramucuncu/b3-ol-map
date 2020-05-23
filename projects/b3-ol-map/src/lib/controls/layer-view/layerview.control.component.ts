@@ -24,11 +24,7 @@ export class LayerViewControlComponent implements OnInit {
         });
     }
 
-    ngOnInit(): void {
-        // setTimeout(() => {
-        //     this.layers.sort((a, b) => a.name - b.name)
-        // }, 3000);
-    }
+    ngOnInit(): void { }
 
     toggle() {
         this.visibility = !this.visibility;
@@ -40,15 +36,14 @@ export class LayerViewControlComponent implements OnInit {
     }
 
     onLayerOrderChanged(event: any) {
-        
-        let sourceOrder = {...this.layers.find(f => f.id === event.sourceLayer.id)}.order;
-        let targetOrder = {...this.layers.find(f => f.id === event.targetLayer.id)}.order;
+        const sourceLayer = this.layers.find(f => f.id === event.sourceLayer.id);
+        const targetLayer = this.layers.find(f => f.id === event.targetLayer.id);
 
-        console.log(sourceOrder)
-        console.log(targetOrder)
+        let sourceOrder = {...sourceLayer}.order;
+        let targetOrder = {...targetLayer}.order;
         
-        this.layers.find(f => f.id === event.targetLayer.id).order = sourceOrder;
-        this.layers.find(f => f.id === event.sourceLayer.id).order = targetOrder;
+        targetLayer.order = sourceOrder;
+        sourceLayer.order = targetOrder;
 
         this.layers.sort((a, b) => a.order - b.order)
     }

@@ -50,21 +50,13 @@ export class LayerViewNodeComponent implements OnInit {
 
     let sourceMapLayer: any = this.getMapLayer(source.id);
     let targetMapLayer: any = this.getMapLayer(target.id);
-console.log({...source})
-console.log({...target})
+
     if (sourceMapLayer.get("isBase") === targetMapLayer.get("isBase")) {
       let sourceOrder = {...source}.order;
       let targetOrder = {...target}.order;
 
-      
-      // source.order = targetOrder;
-      // target.order = sourceOrder;
-      
       sourceMapLayer.setZIndex(targetOrder);
       targetMapLayer.setZIndex(sourceOrder);
-
-      sourceMapLayer.set("order", targetOrder);
-      targetMapLayer.set("order", sourceOrder);
 
       this.outLayerOrderChange.emit({
         targetLayer: target,

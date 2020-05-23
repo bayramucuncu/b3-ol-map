@@ -12,7 +12,7 @@ export class LayerContainerService {
 
   constructor() {
 
-   }
+  }
 
   addLayer(layer: any) {
     if (!layer) return;
@@ -21,10 +21,9 @@ export class LayerContainerService {
     this.setVisibilityProperty(layer);
     this.setOpacityProperty(layer);
 
-    let sortedLayers = [...this.layersBehaviour.value, layer]//.sort((a, b) => a.id - b.id);
-    this.layersBehaviour.next(sortedLayers);
+    this.layersBehaviour.next([...this.layersBehaviour.value, layer]);
   }
-  
+
   addLayers(layers: any[]) {
     if (!layers) return;
 
@@ -36,10 +35,10 @@ export class LayerContainerService {
   }
 
   private setOrderProperty(layer: any) {
-    !layer.order && (layer.order = Math.max(...this.layersBehaviour.value.map(s => s.order)));
+    !layer.order && (layer.order = Math.max(...this.layersBehaviour.value.map(s => s.order)) + 1);
   }
 
-  private setVisibilityProperty(layer: any){
+  private setVisibilityProperty(layer: any) {
     layer.layerSettings = layer.layerSettings || {};
     layer.layerSettings.visible = layer.layerSettings.visible || true;
   }
