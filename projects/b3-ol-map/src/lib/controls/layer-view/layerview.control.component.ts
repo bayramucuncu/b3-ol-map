@@ -39,9 +39,9 @@ export class LayerViewControlComponent implements OnInit {
         const sourceLayer = this.layers.find(f => f.id === event.sourceLayer.id);
         const targetLayer = this.layers.find(f => f.id === event.targetLayer.id);
 
-        let sourceOrder = {...sourceLayer}.order;
-        let targetOrder = {...targetLayer}.order;
-        
+        let sourceOrder = { ...sourceLayer }.order;
+        let targetOrder = { ...targetLayer }.order;
+
         targetLayer.order = sourceOrder;
         sourceLayer.order = targetOrder;
 

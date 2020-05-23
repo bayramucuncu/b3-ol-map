@@ -38,7 +38,7 @@ export class LayerContainerService {
 
   private setVisibilityProperty(layer: any) {
     layer.layerSettings = layer.layerSettings || {};
-    layer.layerSettings.visible = layer.layerSettings.visible || true;
+    layer.layerSettings.visible = (layer.layerSettings.visible != null || layer.layerSettings.visible != undefined) ? layer.layerSettings.visible : true;
   }
 
   private setOpacityProperty(layer: any) {

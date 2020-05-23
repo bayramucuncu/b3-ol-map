@@ -5,10 +5,17 @@
     dropAcceptType="layer" 
     [draggableData]="layer"
     (outDropDraggable)="onDrop(layer, $event)">
-        <i [ngClass]="{'b3-layer-checked-icon': layer.layerSettings.visible, 'b3-layer-unchecked-icon': !layer.layerSettings.visible}"
-            (click)="onCheckChanged(layer)" 
-            (mousedown)="onRangeMouseDown($event)" 
-            (mouseup)="onRangeMouseUp($event)"></i>
+        <input *ngIf="layer.isBase" type="radio" name="layer" class="b3-layer-check b3-layer-radio"
+            [checked]="layer.layerSettings.visible"
+            [value]="layer.id"
+            (click)="onBasemapToggle(layer)"
+            (mousedown)="onRangeMouseDown($event)"
+            (mouseup)="onRangeMouseUp($event)">
+        <input *ngIf="!layer.isBase" type="checkbox" class="b3-layer-check b3-layer-checkbox"
+            [checked]="layer.layerSettings.visible"
+            (click)="onLayerToggle(layer)"
+            (mousedown)="onRangeMouseDown($event)"
+            (mouseup)="onRangeMouseUp($event)">
         <label class="b3-layer-label"
             (mousedown)="onRangeMouseUp($event)"
             (mouseup)="onRangeMouseDown($event)">{{ (layer.name.length > 10 && isSettingsOpen) ? (layer.name | slice:0:5) + "..." : layer.name }}</label>
