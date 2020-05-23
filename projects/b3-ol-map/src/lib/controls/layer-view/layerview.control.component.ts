@@ -15,13 +15,12 @@ export class LayerViewControlComponent implements OnInit {
     @Output() outLayerDelete: EventEmitter<BaseLayer> = new EventEmitter<BaseLayer>();
 
     layers: any[];
-
     visibility: boolean;
 
     constructor(private layerContainerService: LayerContainerService) {
         layerContainerService.layers$.subscribe(items => {
-            this.layers = items.sort((a, b) => a.order - b.order);
-        });
+            this.layers = items.sort((a, b) =>  (b.isBase - a.isBase) || (b.order - a.order));
+        })
     }
 
     ngOnInit(): void { }
@@ -45,6 +44,6 @@ export class LayerViewControlComponent implements OnInit {
         targetLayer.order = sourceOrder;
         sourceLayer.order = targetOrder;
 
-        this.layers.sort((a, b) => a.order - b.order)
+        this.layers.sort((a, b) => (b.isBase - a.isBase) || (b.order - a.order))
     }
 }
