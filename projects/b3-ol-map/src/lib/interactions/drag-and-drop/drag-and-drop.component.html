@@ -1,0 +1,14 @@
+<div class="b3-modal" *ngIf="isModalOpen">
+    <div class="b3-modal-content">
+        <span class="b3-modal-close" (click)="isModalOpen=false">&times;</span>
+        <div>{{featuresToImport.length}} feature, select your data projection:
+            <select [(ngModel)]="selectedProjection">
+                <option *ngFor="let item of projections" [ngValue]="item.code" selected>
+                    {{item.code}}
+                </option>
+            </select>
+        </div>
+        <p></p>
+        <button (click)="okModal()" class="ok-btn">OK</button>
+    </div>
+</div>
