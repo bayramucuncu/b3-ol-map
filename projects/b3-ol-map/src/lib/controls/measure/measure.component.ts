@@ -1,11 +1,11 @@
-import { Component, Output, EventEmitter, OnInit, Input, Renderer2, ViewEncapsulation } from '@angular/core';
-import { Vector as VectorSource } from 'ol/source';
-import { Draw } from 'ol/interaction';
-import { Style, Fill, Stroke, Circle } from 'ol/style';
-import GeometryType from 'ol/geom/GeometryType';
-import { MapComponent } from '../../b3-ol-map.component';
+import { Component, Output, EventEmitter, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Vector } from 'ol/layer';
+import { Draw } from 'ol/interaction';
 import CircleStyle from 'ol/style/Circle';
+import GeometryType from 'ol/geom/GeometryType';
+import { Vector as VectorSource } from 'ol/source';
+import { Style, Fill, Stroke, Circle } from 'ol/style';
+import { MapComponent } from '../../b3-ol-map.component';
 
 @Component({
     selector: 'b3-measure',
@@ -49,7 +49,7 @@ export class MeasureComponent implements OnInit {
     @Output() outMeasureCreate: EventEmitter<any>;
     @Output() outMeasureRemove: EventEmitter<any>;
 
-    constructor(private mapComponent: MapComponent, private renderer: Renderer2) {
+    constructor(private mapComponent: MapComponent) {
         this.source = new VectorSource();
         this.outMeasureCreate = new EventEmitter<any>();
         this.outMeasureRemove = new EventEmitter<any>();
