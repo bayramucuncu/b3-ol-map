@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit, ViewEncapsulation } from '@angular/core';
 import BaseLayer from 'ol/layer/Base';
-import { LayerContainerService } from '../../layers/layer-container.service';
+import { LayerContainerService } from '../layer-container.service';
 
 @Component({
     selector: 'b3-layer-view-control',

@@ -61,9 +61,9 @@ import { ControlContainerComponent } from './controls/control-container.componen
 import { DraggableDirective } from './directives/draggable.directive';
 import { DraggableDropZoneDirective } from './directives/draggable-drop-zone.directive';
 import { DataViewComponent } from './controls/data-view/dataview.control.component';
-import { LayerViewControlComponent } from './controls/layer-view/layerview.control.component';
+import { LayerViewControlComponent } from './layers/layer-view-control/layerview.control.component';
 import { MeasureComponent } from './controls/measure/measure.component';
-import { LayerViewNodeComponent } from './controls/layer-view/layerviewnode.component';
+import { LayerViewNodeComponent } from './layers/layer-view-control/layerviewnode.component';
 import { RotateComponent } from './controls/rotate/rotate.component';
 import { GeolocationComponent } from './controls/geolocation/geolocation.component';
 

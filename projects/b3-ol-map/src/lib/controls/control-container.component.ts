@@ -17,13 +17,15 @@ export class ControlContainerComponent implements OnInit {
 
   constructor() {
     this.outDataViewFeatureAdd = new EventEmitter<Feature[]>();
-    this.outLayerDelete =  new EventEmitter<BaseLayer>();
+    this.outLayerDelete = new EventEmitter<BaseLayer>();
     this.outMeasureCreate = new EventEmitter<any>();
     this.outMeasureRemove = new EventEmitter<any>();
   }
 
   ngOnInit() {
     !this.controls && (this.controls = this.getDefaultControls());
+
+    this.controls.forEach((item: any) => item.panelVisibility = false);
   }
 
   private getDefaultControls(): any[] {
@@ -32,19 +34,19 @@ export class ControlContainerComponent implements OnInit {
     ]
   }
 
-  onDataViewFeatureAded($event: any){
+  onDataViewFeatureAded($event: any) {
     this.outDataViewFeatureAdd.emit($event);
   }
 
-  onLayerDeleted($event: any){
+  onLayerDeleted($event: any) {
     this.outLayerDelete.emit($event);
   }
 
-  onMeasureCreated($event: any){
+  onMeasureCreated($event: any) {
     this.outMeasureCreate.emit($event);
   }
 
-  onMeasureRemoved($event: any){
+  onMeasureRemoved($event: any) {
     this.outMeasureRemove.emit($event);
   }
 }
