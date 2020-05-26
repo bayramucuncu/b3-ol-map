@@ -1,0 +1,24 @@
+<div class="b3-mouse-position">
+    <div class="b3-mouse-position-item">
+        <button type="button" class="settings-button" (click)="toggleSettingsMode()">
+            <i class="icon"></i>
+        </button>
+    </div>
+    <div class="b3-mouse-position-item" *ngIf="isSettingsMode">
+        <label>{{widgetData.widgetSettings.projectionLabel}} </label>
+        <select [(ngModel)]="selectedProjection">
+            <option *ngFor="let item of widgetData.widgetSettings.projections" [ngValue]="item">
+                {{item.code}}
+            </option>
+        </select>
+        <label>{{widgetData.widgetSettings.precisionLabel}} </label>
+        <select [(ngModel)]="selectedPrecision">
+            <option *ngFor="let item of widgetData.widgetSettings.precisions" [ngValue]="item">
+                {{item.code}}
+            </option>
+        </select>
+    </div>
+    <div class="b3-mouse-position-item">
+        <div class="b3-mouse-position-value">{{coordinate}}</div>
+    </div>
+</div>

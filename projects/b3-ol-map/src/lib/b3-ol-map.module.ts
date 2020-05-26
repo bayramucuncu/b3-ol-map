@@ -52,7 +52,6 @@ import { FeatureInfoWidgetComponent } from './layers/vector/feature-info-widget/
 import { WidgetHostDirective } from './helper/widget-host.directive';
 import { VectorStyleComponent } from './layers/vector/vector-style/vector-style.component';
 import { FullScreenComponent } from './controls/full-screen/full-screen.component';
-import { MousePositionComponent } from './controls/mouse-position/mouse-position.component';
 import { ScaleLineComponent } from './controls/scale-line/scale-line.component';
 import { ZoomComponent } from './controls/zoom/zoom.component';
 import { ZoomSliderComponent } from './controls/zoom-slider/zoom-slider.component';
@@ -68,6 +67,7 @@ import { DataInsertWidgetComponent } from './widgets/data-insert-widget/data-ins
 import { WidgetContainerComponent } from './widgets/widget-container.component';
 import { WidgetComponent } from './widgets/widget.component';
 import { MeasureWidgetComponent } from './widgets/measure-widget/measure-widget.component';
+import { MousePositionWidgetComponent } from './widgets/mouse-position-widget/mouse-position-widget.component';
 
 @NgModule({
   declarations: [
@@ -121,7 +121,6 @@ import { MeasureWidgetComponent } from './widgets/measure-widget/measure-widget.
     WidgetHostDirective,
     VectorStyleComponent,
     FullScreenComponent,
-    MousePositionComponent,
     ScaleLineComponent,
     ZoomComponent,
     ZoomSliderComponent,
@@ -136,7 +135,8 @@ import { MeasureWidgetComponent } from './widgets/measure-widget/measure-widget.
     DataInsertWidgetComponent,
     WidgetContainerComponent,
     WidgetComponent,
-    MeasureWidgetComponent
+    MeasureWidgetComponent,
+    MousePositionWidgetComponent
   ],
   imports: [
     CommonModule,
@@ -146,7 +146,8 @@ import { MeasureWidgetComponent } from './widgets/measure-widget/measure-widget.
   entryComponents:[
     FeatureInfoWidgetComponent,
     DataInsertWidgetComponent,
-    MeasureWidgetComponent
+    MeasureWidgetComponent,
+    MousePositionWidgetComponent
   ],
   exports: [
     MapComponent, 
@@ -198,7 +199,6 @@ import { MeasureWidgetComponent } from './widgets/measure-widget/measure-widget.
     WidgetHostDirective,
     VectorStyleComponent,
     FullScreenComponent,
-    MousePositionComponent,
     ScaleLineComponent,
     ZoomComponent,
     ZoomSliderComponent,

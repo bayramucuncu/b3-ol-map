@@ -13,13 +13,7 @@
       [units]="item.settings.units"
       [bar]="item.settings.bar"
       [steps]="item.settings.steps"
-      [target]="item.settings.target"></b3-control-scale-line>    
-    <b3-control-mouse-position *ngIf="item.name === 'mouseposition'" 
-      [precision]="item.settings.precision"
-      [precisionLabel]="item.settings.precisionLabel"
-      [projection]="item.settings.projection"
-      [projectionLabel]="item.settings.projectionLabel"
-      [projections]="item.settings.projections"></b3-control-mouse-position>
+      [target]="item.settings.target"></b3-control-scale-line>
     <b3-control-zoom *ngIf="item.name === 'zoom'" 
       [className]="item.settings.className"
       [duration]="item.settings.duration" 

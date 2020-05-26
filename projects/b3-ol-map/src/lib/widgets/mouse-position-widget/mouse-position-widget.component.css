@@ -63,7 +63,7 @@
     background-color: #f1f1f1;
 }
 
-.b3-mouse-position-item form label {
+.b3-mouse-position-item label {
     margin: 0px 2px;
     user-select: none;
     -moz-user-select: none;
