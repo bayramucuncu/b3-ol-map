@@ -4,7 +4,7 @@ import Feature from 'ol/Feature';
 import { Select } from 'ol/interaction';
 import { click } from 'ol/events/condition.js';
 import OverlayPositioning from 'ol/OverlayPositioning';
-import { WidgetHostDirective } from './widget-host.directive';
+import { WidgetHostDirective } from '../../../helper/widget-host.directive';
 import { MapComponent } from '../../../b3-ol-map.component';
 import { VectorComponent } from '../vector.component';
 import { IDynamicComponent } from '../../../dynamic-component.contract';

@@ -1,0 +1,45 @@
+<div class="b3-data-insert ol-unselectable ol-control">
+    <button type="button" [title]="widgetData.widgetSettings.title" (click)="toggle()">
+        <i class="icon"></i>
+    </button>
+</div>
+
+<div class="b3-ol-map-panel-wrapper" *ngIf="visibility">
+    <div class="b3-ol-map-panel-container">
+        <div class="b3-ol-map-panel-header">
+            <span>{{widgetData.widgetSettings.title}}</span>
+            <i class="b3-panel-close-icon" (click)="toggle()"></i>
+        </div>
+        <div class="b3-ol-map-panel-body b3-ol-map-data-insert-container">
+            <form autocomplete="off">
+                <div class="row">
+                    <div class="col-100">
+                        <select [(ngModel)]="model.srid" id="srid" name="srid" required>
+                            <option *ngFor="let projection of widgetData.widgetSettings.projections" [value]="projection.code">{{projection.code}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-100">
+                        <select [(ngModel)]="model.format" id="format" name="format" required>
+                            <option *ngFor="let format of formats" [value]="format">{{format}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-100">
+                        <textarea [(ngModel)]="model.data" id="data" name="data" placeholder="Write data.." required></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-75">
+                        <input [(ngModel)]="model.name" name="name" type="text" placeholder="Layer name">
+                    </div>
+                    <div class="col-25">
+                        <input (click)="addToLayer()" type="submit" value="Add Layer">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

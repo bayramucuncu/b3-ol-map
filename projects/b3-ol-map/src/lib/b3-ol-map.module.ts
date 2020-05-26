@@ -49,7 +49,7 @@ import { EsrijsonComponent } from './sources/esrijson/esrijson.component';
 import { WfsComponent } from './sources/wfs/wfs.component';
 import { FeatureInfoWidgetContainerComponent } from './layers/vector/feature-info-widget-container/feature-info-widget-container.component';
 import { FeatureInfoWidgetComponent } from './layers/vector/feature-info-widget/feature-info-widget.component';
-import { WidgetHostDirective } from './layers/vector/feature-info-widget-container/widget-host.directive';
+import { WidgetHostDirective } from './helper/widget-host.directive';
 import { VectorStyleComponent } from './layers/vector/vector-style/vector-style.component';
 import { FullScreenComponent } from './controls/full-screen/full-screen.component';
 import { MousePositionComponent } from './controls/mouse-position/mouse-position.component';
@@ -66,6 +66,9 @@ import { MeasureComponent } from './controls/measure/measure.component';
 import { LayerViewNodeComponent } from './layers/layer-view-control/layerviewnode.component';
 import { RotateComponent } from './controls/rotate/rotate.component';
 import { GeolocationComponent } from './controls/geolocation/geolocation.component';
+import { DataInsertWidgetComponent } from './widgets/data-insert-widget/data-insert-widget.component';
+import { WidgetContainerComponent } from './widgets/widget-container.component';
+import { WidgetComponent } from './widgets/widget.component';
 
 @NgModule({
   declarations: [
@@ -132,7 +135,10 @@ import { GeolocationComponent } from './controls/geolocation/geolocation.compone
     LayerViewNodeComponent,
     MeasureComponent,
     RotateComponent,
-    GeolocationComponent
+    GeolocationComponent,
+    DataInsertWidgetComponent,
+    WidgetContainerComponent,
+    WidgetComponent
   ],
   imports: [
     CommonModule,
@@ -140,7 +146,8 @@ import { GeolocationComponent } from './controls/geolocation/geolocation.compone
     HttpClientModule
   ],
   entryComponents:[
-    FeatureInfoWidgetComponent
+    FeatureInfoWidgetComponent,
+    DataInsertWidgetComponent
   ],
   exports: [
     MapComponent, 
@@ -203,7 +210,9 @@ import { GeolocationComponent } from './controls/geolocation/geolocation.compone
     LayerViewNodeComponent,
     MeasureComponent,
     RotateComponent,
-    GeolocationComponent
+    GeolocationComponent,
+    DataInsertWidgetComponent,
+    WidgetContainerComponent
   ]
 })
 export class B3OlMapModule { }

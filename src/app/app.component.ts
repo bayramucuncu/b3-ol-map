@@ -53,10 +53,16 @@ export class AppComponent implements OnInit {
         { "id": "399fe7d2-0edc-4021-8811-0e0a786f7547", "name": "zoomslider", "title": "Zoom Slider Control", "settings": { "className": "ol-zoomslider", "duration": 200 } },
         { "id": "399fe7d3-0edc-4021-8811-0e0a786f7547", "name": "zoomtoextent", "title": "Zoom To Extent Control", "settings": { "className": "ol-zoom-extent", "label": "E", "target": null, "tipLabel": "Fit to extent", "extent": [3301963.330562, 4966093.77113,3338023.328904, 4985574.459890] } },
         { "id": "111fe7d3-0edc-4021-8811-0e0a786f7547", "name": "rotate", "title": "Rotate COntrol", "settings": { "className": "ol-rotate", "label": "⇧", "target": null, "tipLabel": "Reset rotation", "duration": 250, "autoHide": true } },
-        { "id": "99f1c025-8c66-488e-881c-247a492951c7", "name": "mouseposition", "title": "MousePositionControl", "settings": { "precision":"6", "precisionLabel": "Precision", "projection": "EPSG:3857", "projectionLabel": "Projection" }},
-        { "id": "97f1c024-8c67-488e-881c-247a492951c7", "name": "dataview", "title": "Data" },
         { "id": "45f1c024-8c67-488e-881c-247a492951c7", "name": "geolocation", "title": "Geolocation" },
+        { "id": "99f1c025-8c66-488e-881c-247a492951c7", "name": "mouseposition", "title": "MousePositionControl", "settings": { "precision":"6", "precisionLabel": "Precision", "projection": "EPSG:3857", "projectionLabel": "Projection" }},
+        //{ "id": "97f1c024-8c67-488e-881c-247a492951c7", "name": "dataview", "title": "Data" },
         { "id": "12f1c024-8c67-488e-881c-247a492951c7", "name": "measure", "title": "Measure", "settings": { "title": "Measure", "lengthLabel": "Length", "areaLabel": "Area", "typeLabel": "Measure Types", "resultLabel": "Result" } },
+      ],
+      widgets:[
+        {"id": "9376830d-98c4-4c3e-b154-79da2c46360c", "widgetComponent": "DataInsertWidgetComponent", "widgetSettings": { "title": "Data", "position": { "top": "3.2em", "left": "0.5em" } }},
+        // {"id": "9d00981d-9823-4318-a237-d52fc8a858b3", "widgetComponent": "MeasureWidgetComponent", "name": "Measure"},
+        // {"id": "ec745037-c5d9-4672-967b-6761cf6e0d37", "widgetComponent": "MousePositionWidgetComponent", "name": ""},
+        // {"id": "d9f27131-7de2-41a7-b9ca-85a66487d25e", "widgetComponent": "SearchWidgetComponent", "name": ""}
       ]
     }
   }

@@ -24,8 +24,6 @@ export class ControlContainerComponent implements OnInit {
 
   ngOnInit() {
     !this.controls && (this.controls = this.getDefaultControls());
-
-    this.controls.forEach((item: any) => item.panelVisibility = false);
   }
 
   private getDefaultControls(): any[] {
