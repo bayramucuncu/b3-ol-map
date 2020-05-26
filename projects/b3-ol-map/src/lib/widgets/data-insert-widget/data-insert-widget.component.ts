@@ -52,7 +52,7 @@ export class DataInsertWidgetComponent implements OnInit, WidgetAggregator {
   }
 
   constructor(private mapComponentControl: MapComponent, private uuidGenerator: UuidGenerator, private layerContainerService: LayerContainerService) { 
-    
+
   }
 
   ngOnInit(): void {
@@ -62,9 +62,8 @@ export class DataInsertWidgetComponent implements OnInit, WidgetAggregator {
   }
 
   private getFeatures() {
-    let features: any[] = [];
 
-    let readOptions: any = {
+    const readOptions: any = {
       dataProjection: this.model.srid,
       featureProjection: this.mapComponentControl.map.getView().getProjection().getCode()
     };
@@ -72,26 +71,21 @@ export class DataInsertWidgetComponent implements OnInit, WidgetAggregator {
     try {
       switch (this.model.format) {
         case "GeoJSON":
-          features = new GeoJSON().readFeatures(JSON.parse(this.model.data), readOptions);
-          break;
+          return new GeoJSON().readFeatures(JSON.parse(this.model.data), readOptions);
         case "EsriJSON":
-          features = new EsriJSON().readFeatures(JSON.parse(this.model.data), readOptions);
-          break;
+          return new EsriJSON().readFeatures(JSON.parse(this.model.data), readOptions);
         case "TopoJSON":
-          features = new TopoJSON().readFeatures(JSON.parse(this.model.data), readOptions);
-          break;
+          return new TopoJSON().readFeatures(JSON.parse(this.model.data), readOptions);
         case "WKT":
-          features = new WKT().readFeatures(this.model.data, readOptions);
-          break;
+          return new WKT().readFeatures(this.model.data, readOptions);
         default:
           console.error("Unknown format for data-view component.");
-          break;
+          return [];
       }
     } catch (error) {
       console.error(error);
+      return [];
     }
-
-    return features;
   }
 
   toggle(): void {

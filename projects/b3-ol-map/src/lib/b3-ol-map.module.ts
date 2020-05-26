@@ -60,9 +60,7 @@ import { ZoomToExtentComponent } from './controls/zoom-to-extent/zoom-to-extent.
 import { ControlContainerComponent } from './controls/control-container.component';
 import { DraggableDirective } from './directives/draggable.directive';
 import { DraggableDropZoneDirective } from './directives/draggable-drop-zone.directive';
-import { DataViewComponent } from './controls/data-view/dataview.control.component';
 import { LayerViewControlComponent } from './layers/layer-view-control/layerview.control.component';
-import { MeasureComponent } from './controls/measure/measure.component';
 import { LayerViewNodeComponent } from './layers/layer-view-control/layerviewnode.component';
 import { RotateComponent } from './controls/rotate/rotate.component';
 import { GeolocationComponent } from './controls/geolocation/geolocation.component';
@@ -131,10 +129,8 @@ import { MeasureWidgetComponent } from './widgets/measure-widget/measure-widget.
     ControlContainerComponent,
     DraggableDirective,
     DraggableDropZoneDirective,
-    DataViewComponent,
     LayerViewControlComponent,
     LayerViewNodeComponent,
-    MeasureComponent,
     RotateComponent,
     GeolocationComponent,
     DataInsertWidgetComponent,
@@ -208,10 +204,8 @@ import { MeasureWidgetComponent } from './widgets/measure-widget/measure-widget.
     ZoomSliderComponent,
     ZoomToExtentComponent,
     ControlContainerComponent,
-    DataViewComponent,
     LayerViewControlComponent,
     LayerViewNodeComponent,
-    MeasureComponent,
     RotateComponent,
     GeolocationComponent,
     DataInsertWidgetComponent,
