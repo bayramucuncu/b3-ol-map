@@ -14,10 +14,10 @@ export class MapData {
   name: string;
 
   constructor(srid: string, format: string, data: string, name: string) {
-      this.srid = srid;
-      this.format = format;
-      this.data = data;
-      this.name = name;
+    this.srid = srid;
+    this.format = format;
+    this.data = data;
+    this.name = name;
   }
 }
 
@@ -26,7 +26,7 @@ export class MapData {
   templateUrl: './data-insert-widget.component.html',
   styleUrls: ['./data-insert-widget.component.css']
 })
-export class DataInsertWidgetComponent implements OnInit , WidgetAggregator {
+export class DataInsertWidgetComponent implements OnInit, WidgetAggregator {
 
   @Input() widgetData: any = {};
   @Output() outDataViewFeatureAdd: EventEmitter<Feature[]> = new EventEmitter<Feature[]>();
@@ -34,91 +34,95 @@ export class DataInsertWidgetComponent implements OnInit , WidgetAggregator {
   visibility: boolean;
   model: MapData;
   formats: any[] = [
-      "GeoJSON",
-      "EsriJSON",
-      "TopoJSON",
-      "WKT"
+    "GeoJSON",
+    "EsriJSON",
+    "TopoJSON",
+    "WKT"
   ];
 
-  constructor(private mapComponentControl: MapComponent, private uuidGenerator: UuidGenerator, private layerContainerService: LayerContainerService) {
+  private defaultWidgetData: any = {
+    widgetSettings: {
+      title: "Data",
+      projections: [
+        { code: "EPSG:4326" },
+        { code: "EPSG:3857" },
+        { code: "EPSG:5254" }
+      ]
+    }
+  }
 
+  constructor(private mapComponentControl: MapComponent, private uuidGenerator: UuidGenerator, private layerContainerService: LayerContainerService) { 
+    
   }
 
   ngOnInit(): void {
-      !this.widgetData.widgetSettings.title && (this.widgetData.widgetSettings.title = "Data");
-      !this.widgetData.widgetSettings.projections && (this.widgetData.widgetSettings.projections = this.getDefaultProjections());
-  }
+    this.widgetData = this.widgetData || this.defaultWidgetData;
 
-  private getDefaultProjections(): any {
-      return [
-          { code: "EPSG:4326" },
-          { code: "EPSG:3857" },
-          { code: "EPSG:5254" }
-      ];
+    this.widgetData.widgetSettings = { ...this.defaultWidgetData.widgetSettings, ...this.widgetData.widgetSettings }
   }
 
   private getFeatures() {
-      let features: any[] = [];
+    let features: any[] = [];
 
-      let readOptions: any = {
-          dataProjection: this.model.srid,
-          featureProjection: this.mapComponentControl.map.getView().getProjection().getCode()
-      };
+    let readOptions: any = {
+      dataProjection: this.model.srid,
+      featureProjection: this.mapComponentControl.map.getView().getProjection().getCode()
+    };
 
-      try {
-        switch (this.model.format) {
-            case "GeoJSON":
-                features = new GeoJSON().readFeatures(JSON.parse(this.model.data), readOptions);
-                break;
-            case "EsriJSON":
-                features = new EsriJSON().readFeatures(JSON.parse(this.model.data), readOptions);
-                break;
-            case "TopoJSON":
-                features = new TopoJSON().readFeatures(JSON.parse(this.model.data), readOptions);
-                break;
-            case "WKT":
-                features = new WKT().readFeatures(this.model.data, readOptions);
-                break;
-            default:
-                console.error("Unknown format for data-view component.");
-                break;
-        }
-      } catch (error) {
-        console.error(error);        
+    try {
+      switch (this.model.format) {
+        case "GeoJSON":
+          features = new GeoJSON().readFeatures(JSON.parse(this.model.data), readOptions);
+          break;
+        case "EsriJSON":
+          features = new EsriJSON().readFeatures(JSON.parse(this.model.data), readOptions);
+          break;
+        case "TopoJSON":
+          features = new TopoJSON().readFeatures(JSON.parse(this.model.data), readOptions);
+          break;
+        case "WKT":
+          features = new WKT().readFeatures(this.model.data, readOptions);
+          break;
+        default:
+          console.error("Unknown format for data-view component.");
+          break;
       }
+    } catch (error) {
+      console.error(error);
+    }
 
-      return features;
+    return features;
   }
 
   toggle(): void {
-      this.visibility = !this.visibility;
-      this.model = new MapData(this.widgetData.widgetSettings.projections[0].code, this.formats[0], "", "");
+    this.visibility = !this.visibility;
+    this.model = new MapData(this.widgetData.widgetSettings.projections[0].code, this.formats[0], "", "");
   }
 
   addToLayer(): void {
-      let features = this.getFeatures();
+    let features = this.getFeatures();
 
-      let source = new VectorSource({
-          features: features
-      });
+    let source = new VectorSource({
+      features: features
+    });
 
-      let layer = {
-          "id": this.uuidGenerator.uuidv4(),
-          "order": null,
-          "type": "vector",
-          "name": this.model.name || "Data Layer",
-          "showOnLayerView": true,
-          "isBase": false,
-          "sourceSettings": {
-              "type": "feature",
-              "features": features
-          }
+    let layer = {
+      "id": this.uuidGenerator.uuidv4(),
+      "order": null,
+      "type": "vector",
+      "name": this.model.name || "Data Layer",
+      "showOnLayerView": true,
+      "isBase": false,
+      "sourceSettings": {
+        "type": "feature",
+        "features": features
       }
+    }
 
-      this.layerContainerService.addLayer(layer);
+    this.layerContainerService.addLayer(layer);
 
-      this.mapComponentControl.map.getView().fit(source.getExtent(), { size: this.mapComponentControl.map.getSize() });
+    this.mapComponentControl.map.getView().fit(source.getExtent(), { size: this.mapComponentControl.map.getSize() });
 
-      this.outDataViewFeatureAdd.emit(features);
+    this.outDataViewFeatureAdd.emit(features);
   }
 }

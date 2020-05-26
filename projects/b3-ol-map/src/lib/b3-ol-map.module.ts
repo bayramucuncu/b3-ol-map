@@ -69,6 +69,7 @@ import { GeolocationComponent } from './controls/geolocation/geolocation.compone
 import { DataInsertWidgetComponent } from './widgets/data-insert-widget/data-insert-widget.component';
 import { WidgetContainerComponent } from './widgets/widget-container.component';
 import { WidgetComponent } from './widgets/widget.component';
+import { MeasureWidgetComponent } from './widgets/measure-widget/measure-widget.component';
 
 @NgModule({
   declarations: [
@@ -138,7 +139,8 @@ import { WidgetComponent } from './widgets/widget.component';
     GeolocationComponent,
     DataInsertWidgetComponent,
     WidgetContainerComponent,
-    WidgetComponent
+    WidgetComponent,
+    MeasureWidgetComponent
   ],
   imports: [
     CommonModule,
@@ -147,7 +149,8 @@ import { WidgetComponent } from './widgets/widget.component';
   ],
   entryComponents:[
     FeatureInfoWidgetComponent,
-    DataInsertWidgetComponent
+    DataInsertWidgetComponent,
+    MeasureWidgetComponent
   ],
   exports: [
     MapComponent, 
@@ -212,6 +215,7 @@ import { WidgetComponent } from './widgets/widget.component';
     RotateComponent,
     GeolocationComponent,
     DataInsertWidgetComponent,
+    MeasureWidgetComponent,
     WidgetContainerComponent
   ]
 })

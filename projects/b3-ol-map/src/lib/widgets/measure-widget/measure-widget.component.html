@@ -1,0 +1,35 @@
+<div class="b3-measure ol-unselectable ol-control">
+    <button type="button" [title]="widgetData.widgetSettings.title" (click)="toggle()">
+        <i class="icon"></i>
+    </button>
+</div>
+<div class="b3-ol-map-panel-wrapper" *ngIf="visibility">
+    <div class="b3-ol-map-panel-container">
+        <div class="b3-ol-map-panel-header">
+            <span>{{widgetData.widgetSettings.title}}</span>
+            <i class="b3-panel-close-icon" (click)="toggle()"></i>
+        </div>
+        <div class="b3-ol-map-panel-body b3-measure-control">
+            <h3>{{widgetData.widgetSettings.typeLabel}}</h3>
+            <form autocomplete="off">
+                <div class="measure-line">
+                    <label>
+                        <input (input)="select('LineString')" [ngModel]="measureType" type="radio" value="LineString"
+                            name="measureType">
+                        {{ widgetData.widgetSettings.lengthLabel }}
+                    </label>
+                </div>
+                <div class="measure-line">
+                    <label>
+                        <input (input)="select('Polygon')" [ngModel]="measureType" type="radio" value="Polygon"
+                            name="measureType">
+                        {{ widgetData.widgetSettings.areaLabel }}
+                    </label>
+                </div>
+            </form>
+
+            <h3>{{widgetData.widgetSettings.resultLabel}}</h3>
+            <p><samp>{{result ? result : 'n/a'}}<sup>{{ (result && isPolygon()) ? '2' : '' }}</sup></samp></p>
+        </div>
+    </div>
+</div>
