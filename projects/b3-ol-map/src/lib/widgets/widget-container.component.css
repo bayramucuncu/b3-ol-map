@@ -1,0 +1,16 @@
+.b3-right-menu{
+    /* position: absolute; */
+    top: 3.2em;
+    right: .5em;
+    z-index: 6;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.b3-right-menu li{
+    margin:0;
+    padding: 0;
+    text-indent: 0;
+    list-style-type: 0;
+}

@@ -1,6 +1,6 @@
-<ng-container *ngFor="let item of widgets">
-    <b3-widget [widgetData]="item"></b3-widget>
-    <!-- right-menu-widget -->
-    <!-- left-menu-widget -->
-    <!-- free-widget -->
-</ng-container>
+<b3-widget  *ngFor="let item of freeItems" [widgetData]="item"></b3-widget>
+<ul class="b3-right-menu">
+    <li *ngFor="let item of rightMenuItems">
+        <b3-widget [widgetData]="item"></b3-widget>
+    </li>
+</ul>

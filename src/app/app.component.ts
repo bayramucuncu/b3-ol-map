@@ -56,12 +56,10 @@ export class AppComponent implements OnInit {
         { "id": "45f1c024-8c67-488e-881c-247a492951c7", "name": "geolocation", "title": "Geolocation" },
       ],
       widgets:[
-        {"id": "9376830d-98c4-4c3e-b154-79da2c46360c", "widgetComponent": "DataInsertWidgetComponent", "widgetSettings": { "title": "Data" }},
-        {"id": "4566830d-98c4-4c3e-b154-79da2c46360c", "widgetComponent": "MeasureWidgetComponent", "widgetSettings": { "title": "Measure", "lengthLabel": "Length", "areaLabel": "Area", "typeLabel": "Measure Types", "resultLabel": "Result" }},
-        {"id": "1236830d-98c4-4c3e-b154-79da2c46360c", "widgetComponent": "MousePositionWidgetComponent", "widgetSettings": { "precision":"6", "precisionLabel": "Precision", "projection": "EPSG:3857", "projectionLabel": "Projection" }},
+        {"id": "9376830d-98c4-4c3e-b154-79da2c46360c", "container": "rightMenu", "widgetComponent": "DataInsertWidgetComponent", "widgetSettings": { "title": "Data" }},
+        {"id": "4566830d-98c4-4c3e-b154-79da2c46360c", "container": "rightMenu", "widgetComponent": "MeasureWidgetComponent", "widgetSettings": { "title": "Measure", "lengthLabel": "Length", "areaLabel": "Area", "typeLabel": "Measure Types", "resultLabel": "Result" }},
+        {"id": "1236830d-98c4-4c3e-b154-79da2c46360c", "container": "none", "widgetComponent": "MousePositionWidgetComponent", "widgetSettings": { "precision":"6", "precisionLabel": "Precision", "projection": "EPSG:3857", "projectionLabel": "Projection" }},
         // {"id": "7376830d-98c4-4c3e-b154-79da2c46360c", "widgetComponent": "SearchComponent", "widgetSettings": { "title": "Data", "position": { "top": "3.2em", "left": "0.5em" } }},
-        // {"id": "9d00981d-9823-4318-a237-d52fc8a858b3", "widgetComponent": "MeasureWidgetComponent", "name": "Measure"},
-        // {"id": "ec745037-c5d9-4672-967b-6761cf6e0d37", "widgetComponent": "MousePositionWidgetComponent", "name": ""},
         // {"id": "d9f27131-7de2-41a7-b9ca-85a66487d25e", "widgetComponent": "SearchWidgetComponent", "name": ""}
       ]
     }
