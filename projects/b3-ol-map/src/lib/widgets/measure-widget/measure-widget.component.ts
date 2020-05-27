@@ -1,24 +1,25 @@
 import { Component, Output, EventEmitter, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { Vector } from 'ol/layer';
-import { Draw } from 'ol/interaction';
+import { Vector, Heatmap } from 'ol/layer';
+import { Draw, Snap } from 'ol/interaction';
 import CircleStyle from 'ol/style/Circle';
 import GeometryType from 'ol/geom/GeometryType';
 import { Vector as VectorSource } from 'ol/source';
 import { Style, Fill, Stroke, Circle } from 'ol/style';
 import { MapComponent } from '../../b3-ol-map.component';
 import { WidgetAggregator } from '../widget-aggregator';
+import { Collection, Feature } from 'ol';
 
 @Component({
     selector: 'b3-measure-widget',
     templateUrl: './measure-widget.component.html',
     styleUrls: ['./measure-widget.component.css'],
-    encapsulation:ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None
 })
 export class MeasureWidgetComponent implements OnInit, WidgetAggregator {
 
     visibility: boolean;
     result: string;
-    measureType: GeometryType = GeometryType.POLYGON;
+    measureType: GeometryType = GeometryType.LINE_STRING;
     source = new VectorSource;
     vectorLayer = new Vector({
         source: new VectorSource(),
@@ -38,6 +39,8 @@ export class MeasureWidgetComponent implements OnInit, WidgetAggregator {
             })
         })
     });
+
+    snap: Snap;
 
     private measuringTool: Draw;
     private defaultWidgetData: any = {
@@ -74,8 +77,13 @@ export class MeasureWidgetComponent implements OnInit, WidgetAggregator {
 
     private enableMeasuringTool() {
         this.mapComponent.map.removeInteraction(this.measuringTool);
+        this.mapComponent.map.removeInteraction(this.snap);
         this.result = undefined;
         this.vectorLayer.getSource().clear();
+
+        this.snap = new Snap({
+            features: this.getFeatures()
+        });
 
         this.measuringTool = new Draw({
             type: this.measureType,
@@ -121,6 +129,20 @@ export class MeasureWidgetComponent implements OnInit, WidgetAggregator {
         });
 
         this.mapComponent.map.addInteraction(this.measuringTool);
+        this.mapComponent.map.addInteraction(this.snap);
+    }
+
+    private getFeatures(): Collection<Feature> {
+        let collection = new Collection([], {
+            unique: true
+        });
+
+        this.mapComponent.map.getLayers().getArray().forEach((item: any) => {
+            if ((item instanceof Vector) && !(item instanceof Heatmap))
+                collection.getArray().push(...item.getSource().getFeatures())
+        })
+
+        return collection;
     }
 
     isPolygon() {
@@ -130,8 +152,14 @@ export class MeasureWidgetComponent implements OnInit, WidgetAggregator {
     toggle(): void {
         this.visibility = !this.visibility;
 
-        this.visibility ? this.mapComponent.map.addLayer(this.vectorLayer) : this.mapComponent.map.removeLayer(this.vectorLayer);
-        this.visibility ? this.enableMeasuringTool() : this.mapComponent.map.removeInteraction(this.measuringTool);
+        if (this.visibility) {
+            this.mapComponent.map.addLayer(this.vectorLayer);
+            this.enableMeasuringTool();
+        } else {
+            this.mapComponent.map.removeLayer(this.vectorLayer);
+            this.mapComponent.map.removeInteraction(this.measuringTool);
+            this.mapComponent.map.removeInteraction(this.snap);
+        }
     }
 
     select(value: any) {
