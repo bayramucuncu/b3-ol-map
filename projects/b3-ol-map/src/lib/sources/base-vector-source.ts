@@ -1,6 +1,7 @@
 import { Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProjectionLike } from 'ol/proj';
+import Feature from 'ol/Feature';
 
 export abstract class BaseVectorSource {
     @Input() url: string;
@@ -9,21 +10,26 @@ export abstract class BaseVectorSource {
 
     httpOptions: any;
 
-    constructor(private http: HttpClient) {       
+    constructor(private http: HttpClient) {
     }
 
     protected loader(layer: any) {
         return (extent: any, resolution: any, projection: any) => {
 
             layer.set("isLoading", true);
-            layer.getSource().clear();
+
+            let source = layer.getSource();
 
             let url = this.configureUrl(extent, resolution, projection);
+
             this.http.get(url, this.httpOptions).subscribe(
                 (response: any) => {
                     layer.set("isLoading", false);
-                    layer.getSource().addFeatures(
-                        layer.getSource().getFormat().readFeatures(response, {
+
+                    source.clear()
+
+                    source.addFeatures(
+                        source.getFormat().readFeatures(response, {
                             dataProjection: this.dataProjection,
                             featureProjection: this.featureProjection,
                         })
@@ -31,12 +37,13 @@ export abstract class BaseVectorSource {
                 },
                 (error: any) => {
                     layer.set("isLoading", false);
+                    console.error(error);
                 }
             );
         }
     }
 
-    protected configureUrl(extent: any, resolution: any, projection: any){
+    protected configureUrl(extent: any, resolution: any, projection: any) {
         return this.url;
     }
 }
@@ -57,20 +64,23 @@ export class EsrijsonResponseAcceptedSource extends BaseVectorSource {
     httpOptions: any = {
         responseType: 'json'
     };
-
+   
     @Input() inSR: string;
     @Input() outSR: string;
     @Input() fields: string;
 
-    configureUrl(extent: any, resolution: any, projection: any){
-        let uri = this.url.concat('?f=json')
-        .concat('&returnGeometry=true')
-        .concat('&spatialRel=esriSpatialRelIntersects')
-        .concat('&geometry=' + encodeURIComponent('{"xmin":' + extent[0] + ',"ymin":' + extent[1] + ',"xmax":' + extent[2] + ',"ymax":' + extent[3] + ',"spatialReference":{"wkid":' + (this.inSR || "3857") + '}}'))
-        .concat('&geometryType=esriGeometryEnvelope')
-        .concat('&inSR=' + (this.inSR || "3857"))
-        .concat('&outSR=' + (this.outSR || "3857"))
-        .concat('&outFields=' + (this.fields || "*"));
+    configureUrl(extent: any, resolution: any, projection: any) {
+
+        let srid = projection.getCode().split(":")[1];
+        let uri = this.url.concat("?")
+            .concat(`f=json`)
+            .concat('&returnGeometry=true')
+            .concat('&spatialRel=esriSpatialRelIntersects')
+            .concat('&geometry=' + encodeURIComponent('{"xmin":' + extent[0] + ',"ymin":' + extent[1] + ',"xmax":' + extent[2] + ',"ymax":' + extent[3] + ',"spatialReference":{"wkid":' + (this.inSR || "3857") + '}}'))
+            .concat('&geometryType=esriGeometryEnvelope')
+            .concat('&inSR=' + (this.inSR || srid))
+            .concat('&outSR=' + (this.outSR || srid))
+            .concat('&outFields=' + (this.fields || "*"));
 
         return uri;
     }
@@ -85,14 +95,14 @@ export class WfsResponseAcceptedSource extends BaseVectorSource {
     @Input() version: string;
     @Input() typename: string;
 
-    configureUrl(extent: any, resolution: any, projection: any){
+    configureUrl(extent: any, resolution: any, projection: any) {
         let uri = this.url.concat('?service=WFS')
-        .concat('&request=GetFeature')
-        .concat('&outputFormat=application/json')
-        .concat('&version=' + this.version)
-        .concat('&typename=' + this.typename)
-        .concat('&srsname=' + projection.getCode())
-        .concat('&bbox=' + extent.join(',') + ',' + projection.getCode());
+            .concat('&request=GetFeature')
+            .concat('&outputFormat=application/json')
+            .concat('&version=' + this.version)
+            .concat('&typename=' + this.typename)
+            .concat('&srsname=' + projection.getCode())
+            .concat('&bbox=' + extent.join(',') + ',' + projection.getCode());
 
         return uri;
     }

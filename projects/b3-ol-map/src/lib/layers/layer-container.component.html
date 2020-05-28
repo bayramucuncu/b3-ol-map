@@ -134,6 +134,9 @@
     <b3-source-geojson *ngIf="item.sourceSettings.type === 'geojson'" [url]="item.sourceSettings.url"
       [dataProjection]="item.sourceSettings.dataProjection" [featureProjection]="item.sourceSettings.featureProjection"
       [geometryName]="item.sourceSettings.geometryName"></b3-source-geojson>
+    <b3-source-esrijson *ngIf="item.sourceSettings.type === 'esrijson'" [url]="item.sourceSettings.url"
+      [inSR]="item.sourceSettings.inSR" [outSR]="item.sourceSettings.outSR" [fields]="item.sourceSettings.fields">
+    </b3-source-esrijson>
   </b3-layer-heatmap>
 </ng-container>
   
