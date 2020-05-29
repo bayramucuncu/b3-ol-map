@@ -56,10 +56,10 @@ export class AppComponent implements OnInit {
         { "id": "111fe7d3-0edc-4021-8811-0e0a786f7547", "name": "rotate", "title": "Rotate Control", "settings": { "className": "ol-rotate", "label": "⇧", "target": null, "tipLabel": "Reset rotation", "duration": 250, "autoHide": true } },
         { "id": "45f1c024-8c67-488e-881c-247a492951c7", "name": "geolocation", "title": "Geolocation" },
       ],
-      widgets:[
-        {"id": "9376830d-98c4-4c3e-b154-79da2c46360c", "name": "DataInsert Widget Component", "settings": { "component": "DataInsertWidgetComponent", "container": "rightMenu", "title": "Data" }},
-        {"id": "4566830d-98c4-4c3e-b154-79da2c46360c", "name": "Measure Widget Component", "settings": { "component": "MeasureWidgetComponent", "container": "rightMenu", "title": "Measure", "lengthLabel": "Length", "areaLabel": "Area", "typeLabel": "Measure Types", "resultLabel": "Result" }},
-        {"id": "1236830d-98c4-4c3e-b154-79da2c46360c", "name": "Mouse Position WidgetComponent", "settings": { "component": "MousePositionWidgetComponent", "container": "none", "precision":"6", "precisionLabel": "Precision", "projection": "EPSG:3857", "projectionLabel": "Projection" }},
+      extensions:[
+        {"id": "9376830d-98c4-4c3e-b154-79da2c46360c", "name": "DataInsert Extension Component", "settings": { "component": "DataInsertExtensionComponent", "container": "rightMenu", "title": "Data" }},
+        {"id": "4566830d-98c4-4c3e-b154-79da2c46360c", "name": "Measure Extension Component", "settings": { "component": "MeasureExtensionComponent", "container": "rightMenu", "title": "Measure", "lengthLabel": "Length", "areaLabel": "Area", "typeLabel": "Measure Types", "resultLabel": "Result" }},
+        {"id": "1236830d-98c4-4c3e-b154-79da2c46360c", "name": "Mouse Extension WidgetComponent", "settings": { "component": "MousePositionExtensionComponent", "container": "none", "precision":"6", "precisionLabel": "Precision", "projection": "EPSG:3857", "projectionLabel": "Projection" }},
         // {"id": "7376830d-98c4-4c3e-b154-79da2c46360c", "widgetComponent": "SearchComponent", "widgetSettings": { "title": "Data", "position": { "top": "3.2em", "left": "0.5em" } }},
       ]
     }

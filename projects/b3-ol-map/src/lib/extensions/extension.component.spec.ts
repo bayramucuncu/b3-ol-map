@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MeasureWidgetComponent } from './measure-widget.component';
+import { ExtensionComponent } from './extension.component';
 
-describe('MeasureWidgetComponent', () => {
-  let component: MeasureWidgetComponent;
-  let fixture: ComponentFixture<MeasureWidgetComponent>;
+describe('ExtensionComponent', () => {
+  let component: ExtensionComponent;
+  let fixture: ComponentFixture<ExtensionComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MeasureWidgetComponent ]
+      declarations: [ ExtensionComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MeasureWidgetComponent);
+    fixture = TestBed.createComponent(ExtensionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

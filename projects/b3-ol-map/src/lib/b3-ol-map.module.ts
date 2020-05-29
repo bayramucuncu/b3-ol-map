@@ -50,6 +50,7 @@ import { WfsComponent } from './sources/wfs/wfs.component';
 import { FeatureInfoWidgetContainerComponent } from './layers/vector/feature-info-widget-container/feature-info-widget-container.component';
 import { FeatureInfoWidgetComponent } from './layers/vector/feature-info-widget/feature-info-widget.component';
 import { WidgetHostDirective } from './helper/widget-host.directive';
+import { ComponentHostDirective } from './helper/component-host.directive';
 import { VectorStyleComponent } from './layers/vector/vector-style/vector-style.component';
 import { FullScreenComponent } from './controls/full-screen/full-screen.component';
 import { ScaleLineComponent } from './controls/scale-line/scale-line.component';
@@ -63,11 +64,11 @@ import { LayerViewControlComponent } from './layers/layer-view-control/layerview
 import { LayerViewNodeComponent } from './layers/layer-view-control/layerviewnode.component';
 import { RotateComponent } from './controls/rotate/rotate.component';
 import { GeolocationComponent } from './controls/geolocation/geolocation.component';
-import { DataInsertWidgetComponent } from './widgets/data-insert-widget/data-insert-widget.component';
-import { WidgetContainerComponent } from './widgets/widget-container.component';
-import { WidgetComponent } from './widgets/widget.component';
-import { MeasureWidgetComponent } from './widgets/measure-widget/measure-widget.component';
-import { MousePositionWidgetComponent } from './widgets/mouse-position-widget/mouse-position-widget.component';
+import { DataInsertExtensionComponent } from './extensions/data-insert-extension/data-insert-extension.component';
+import { ExtensionContainerComponent } from './extensions/extension-container.component';
+import { ExtensionComponent } from './extensions/extension.component';
+import { MeasureExtensionComponent } from './extensions/measure-extension/measure-extension.component';
+import { MousePositionExtensionComponent } from './extensions/mouse-position-extension/mouse-position-extension.component';
 
 @NgModule({
   declarations: [
@@ -119,6 +120,7 @@ import { MousePositionWidgetComponent } from './widgets/mouse-position-widget/mo
     FeatureInfoWidgetContainerComponent,
     FeatureInfoWidgetComponent,
     WidgetHostDirective,
+    ComponentHostDirective,
     VectorStyleComponent,
     FullScreenComponent,
     ScaleLineComponent,
@@ -132,11 +134,11 @@ import { MousePositionWidgetComponent } from './widgets/mouse-position-widget/mo
     LayerViewNodeComponent,
     RotateComponent,
     GeolocationComponent,
-    DataInsertWidgetComponent,
-    WidgetContainerComponent,
-    WidgetComponent,
-    MeasureWidgetComponent,
-    MousePositionWidgetComponent
+    DataInsertExtensionComponent,
+    ExtensionContainerComponent,
+    ExtensionComponent,
+    MeasureExtensionComponent,
+    MousePositionExtensionComponent
   ],
   imports: [
     CommonModule,
@@ -145,9 +147,9 @@ import { MousePositionWidgetComponent } from './widgets/mouse-position-widget/mo
   ],
   entryComponents:[
     FeatureInfoWidgetComponent,
-    DataInsertWidgetComponent,
-    MeasureWidgetComponent,
-    MousePositionWidgetComponent
+    DataInsertExtensionComponent,
+    MeasureExtensionComponent,
+    MousePositionExtensionComponent
   ],
   exports: [
     MapComponent, 
@@ -197,6 +199,7 @@ import { MousePositionWidgetComponent } from './widgets/mouse-position-widget/mo
     FeatureInfoWidgetContainerComponent,
     FeatureInfoWidgetComponent,
     WidgetHostDirective,
+    ComponentHostDirective,
     VectorStyleComponent,
     FullScreenComponent,
     ScaleLineComponent,
@@ -208,9 +211,9 @@ import { MousePositionWidgetComponent } from './widgets/mouse-position-widget/mo
     LayerViewNodeComponent,
     RotateComponent,
     GeolocationComponent,
-    DataInsertWidgetComponent,
-    MeasureWidgetComponent,
-    WidgetContainerComponent
+    DataInsertExtensionComponent,
+    MeasureExtensionComponent,
+    ExtensionContainerComponent
   ]
 })
 export class B3OlMapModule { }

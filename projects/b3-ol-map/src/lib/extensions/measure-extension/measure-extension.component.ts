@@ -6,16 +6,16 @@ import GeometryType from 'ol/geom/GeometryType';
 import { Vector as VectorSource } from 'ol/source';
 import { Style, Fill, Stroke, Circle } from 'ol/style';
 import { MapComponent } from '../../b3-ol-map.component';
-import { WidgetAggregator } from '../widget-aggregator';
+import { ExtensionAggregator } from '../extension-aggregator';
 import { Collection, Feature } from 'ol';
 
 @Component({
-    selector: 'b3-measure-widget',
-    templateUrl: './measure-widget.component.html',
-    styleUrls: ['./measure-widget.component.css'],
+    selector: 'b3-measure-extension',
+    templateUrl: './measure-extension.component.html',
+    styleUrls: ['./measure-extension.component.css'],
     encapsulation: ViewEncapsulation.None
 })
-export class MeasureWidgetComponent implements OnInit, WidgetAggregator {
+export class MeasureExtensionComponent implements OnInit, ExtensionAggregator {
 
     visibility: boolean;
     result: string;
@@ -53,7 +53,7 @@ export class MeasureWidgetComponent implements OnInit, WidgetAggregator {
         }
     }
 
-    @Input() widgetData: any;
+    @Input() componentData: any;
 
     @Input() lengthLabel: string;
     @Input() areaLabel: string;
@@ -70,9 +70,9 @@ export class MeasureWidgetComponent implements OnInit, WidgetAggregator {
     }
 
     ngOnInit() {
-        this.widgetData = this.widgetData || this.defaultWidgetData;
+        this.componentData = this.componentData || this.defaultWidgetData;
 
-        this.widgetData.settings = { ...this.defaultWidgetData.settings, ...this.widgetData.settings }
+        this.componentData.settings = { ...this.defaultWidgetData.settings, ...this.componentData.settings }
     }
 
     private enableMeasuringTool() {

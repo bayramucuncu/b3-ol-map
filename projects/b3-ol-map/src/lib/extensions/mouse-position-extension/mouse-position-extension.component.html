@@ -5,15 +5,15 @@
         </button>
     </div>
     <div class="b3-mouse-position-item" *ngIf="isSettingsMode">
-        <label>{{widgetData.settings.projectionLabel}} </label>
+        <label>{{componentData.settings.projectionLabel}} </label>
         <select [(ngModel)]="selectedProjection">
-            <option *ngFor="let item of widgetData.settings.projections" [ngValue]="item">
+            <option *ngFor="let item of componentData.settings.projections" [ngValue]="item">
                 {{item.code}}
             </option>
         </select>
-        <label>{{widgetData.settings.precisionLabel}} </label>
+        <label>{{componentData.settings.precisionLabel}} </label>
         <select [(ngModel)]="selectedPrecision">
-            <option *ngFor="let item of widgetData.settings.precisions" [ngValue]="item">
+            <option *ngFor="let item of componentData.settings.precisions" [ngValue]="item">
                 {{item.code}}
             </option>
         </select>

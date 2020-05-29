@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DataInsertWidgetComponent } from './data-insert-widget.component';
+import { ExtensionContainerComponent } from './extension-container.component';
 
-describe('DataInsertWidgetComponent', () => {
-  let component: DataInsertWidgetComponent;
-  let fixture: ComponentFixture<DataInsertWidgetComponent>;
+describe('ExtensionContainerComponent', () => {
+  let component: ExtensionContainerComponent;
+  let fixture: ComponentFixture<ExtensionContainerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DataInsertWidgetComponent ]
+      declarations: [ ExtensionContainerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DataInsertWidgetComponent);
+    fixture = TestBed.createComponent(ExtensionContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

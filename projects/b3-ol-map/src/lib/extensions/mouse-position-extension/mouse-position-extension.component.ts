@@ -2,20 +2,20 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { transform } from 'ol/proj';
 import { createStringXY } from 'ol/coordinate';
 import { MapBrowserEvent } from 'ol';
-import { WidgetAggregator } from '../widget-aggregator';
+import { ExtensionAggregator } from '../extension-aggregator';
 import { MapComponent } from '../../b3-ol-map.component';
 import Projection from 'ol/proj/Projection';
 
 
 @Component({
-  selector: 'b3-mouse-position-widget',
-  templateUrl: './mouse-position-widget.component.html',
-  styleUrls: ['./mouse-position-widget.component.css'],
+  selector: 'b3-mouse-position-extension',
+  templateUrl: './mouse-position-extension.component.html',
+  styleUrls: ['./mouse-position-extension.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class MousePositionWidgetComponent implements OnInit, WidgetAggregator {
+export class MousePositionExtensionComponent implements OnInit, ExtensionAggregator {
 
-  @Input() widgetData: any;
+  @Input() componentData: any;
 
   private defaultWidgetData: any = {
     settings: {
@@ -45,12 +45,12 @@ export class MousePositionWidgetComponent implements OnInit, WidgetAggregator {
   }
 
   ngOnInit() {
-    this.widgetData = this.widgetData || this.defaultWidgetData;
+    this.componentData = this.componentData || this.defaultWidgetData;
 
-    this.widgetData.settings = { ...this.defaultWidgetData.settings, ...this.widgetData.settings }
+    this.componentData.settings = { ...this.defaultWidgetData.settings, ...this.componentData.settings }
 
-    this.selectedProjection = this.widgetData.settings.projections.find((f: any) => f.code === this.widgetData.settings.projection);
-    this.selectedPrecision = this.widgetData.settings.precisions.find((f: any) => f.code == this.widgetData.settings.precision);
+    this.selectedProjection = this.componentData.settings.projections.find((f: any) => f.code === this.componentData.settings.projection);
+    this.selectedPrecision = this.componentData.settings.precisions.find((f: any) => f.code == this.componentData.settings.precision);
 
     this.coordinate = this.formatCoordinate(this.transformCoordinate(this.mapComponent.map.getView().getCenter()));
   }

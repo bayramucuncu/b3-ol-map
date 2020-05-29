@@ -3,7 +3,7 @@ import Feature from 'ol/Feature';
 import VectorSource from 'ol/source/Vector';
 import { GeoJSON, EsriJSON, TopoJSON, WKT } from 'ol/format';
 import { UuidGenerator } from '../../helper';
-import { WidgetAggregator } from '../widget-aggregator';
+import { ExtensionAggregator } from '../extension-aggregator';
 import { MapComponent } from '../../b3-ol-map.component';
 import { LayerContainerService } from '../../layers/layer-container.service';
 
@@ -22,13 +22,13 @@ export class MapData {
 }
 
 @Component({
-  selector: 'b3-data-insert-widget',
-  templateUrl: './data-insert-widget.component.html',
-  styleUrls: ['./data-insert-widget.component.css']
+  selector: 'b3-data-insert-extension',
+  templateUrl: './data-insert-extension.component.html',
+  styleUrls: ['./data-insert-extension.component.css']
 })
-export class DataInsertWidgetComponent implements OnInit, WidgetAggregator {
+export class DataInsertExtensionComponent implements OnInit, ExtensionAggregator {
 
-  @Input() widgetData: any = {};
+  @Input() componentData: any = {};
   @Output() outDataViewFeatureAdd: EventEmitter<Feature[]> = new EventEmitter<Feature[]>();
 
   visibility: boolean;
@@ -56,9 +56,9 @@ export class DataInsertWidgetComponent implements OnInit, WidgetAggregator {
   }
 
   ngOnInit(): void {
-    this.widgetData = this.widgetData || this.defaultWidgetData;
+    this.componentData = this.componentData || this.defaultWidgetData;
 
-    this.widgetData.settings = { ...this.defaultWidgetData.settings, ...this.widgetData.settings }
+    this.componentData.settings = { ...this.defaultWidgetData.settings, ...this.componentData.settings }
   }
 
   private getFeatures() {
@@ -90,7 +90,7 @@ export class DataInsertWidgetComponent implements OnInit, WidgetAggregator {
 
   toggle(): void {
     this.visibility = !this.visibility;
-    this.model = new MapData(this.widgetData.settings.projections[0].code, this.formats[0], "", "");
+    this.model = new MapData(this.componentData.settings.projections[0].code, this.formats[0], "", "");
   }
 
   addToLayer(): void {

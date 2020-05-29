@@ -1,5 +1,5 @@
 <div class="b3-data-insert ol-unselectable ol-control">
-    <button type="button" [title]="widgetData.settings.title" (click)="toggle()">
+    <button type="button" [title]="componentData.settings.title" (click)="toggle()">
         <i class="icon"></i>
     </button>
 </div>
@@ -7,7 +7,7 @@
 <div class="b3-ol-map-panel-wrapper" *ngIf="visibility">
     <div class="b3-ol-map-panel-container">
         <div class="b3-ol-map-panel-header">
-            <span>{{widgetData.settings.title}}</span>
+            <span>{{componentData.settings.title}}</span>
             <i class="b3-panel-close-icon" (click)="toggle()"></i>
         </div>
         <div class="b3-ol-map-panel-body b3-ol-map-data-insert-container">
@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-100">
                         <select [(ngModel)]="model.srid" id="srid" name="srid" required>
-                            <option *ngFor="let projection of widgetData.settings.projections" [value]="projection.code">{{projection.code}}</option>
+                            <option *ngFor="let projection of componentData.settings.projections" [value]="projection.code">{{projection.code}}</option>
                         </select>
                     </div>
                 </div>

@@ -1,34 +1,34 @@
 <div class="b3-measure ol-unselectable ol-control">
-    <button type="button" [title]="widgetData.settings.title" (click)="toggle()">
+    <button type="button" [title]="componentData.settings.title" (click)="toggle()">
         <i class="icon"></i>
     </button>
 </div>
 <div class="b3-ol-map-panel-wrapper" *ngIf="visibility">
     <div class="b3-ol-map-panel-container">
         <div class="b3-ol-map-panel-header">
-            <span>{{widgetData.settings.title}}</span>
+            <span>{{componentData.settings.title}}</span>
             <i class="b3-panel-close-icon" (click)="toggle()"></i>
         </div>
         <div class="b3-ol-map-panel-body b3-measure-control">
-            <h3>{{widgetData.settings.typeLabel}}</h3>
+            <h3>{{componentData.settings.typeLabel}}</h3>
             <form autocomplete="off">
                 <div class="measure-line">
                     <label>
                         <input (input)="select('LineString')" [ngModel]="measureType" type="radio" value="LineString"
                             name="measureType">
-                        {{ widgetData.settings.lengthLabel }}
+                        {{ componentData.settings.lengthLabel }}
                     </label>
                 </div>
                 <div class="measure-line">
                     <label>
                         <input (input)="select('Polygon')" [ngModel]="measureType" type="radio" value="Polygon"
                             name="measureType">
-                        {{ widgetData.settings.areaLabel }}
+                        {{ componentData.settings.areaLabel }}
                     </label>
                 </div>
             </form>
 
-            <h3>{{widgetData.settings.resultLabel}}</h3>
+            <h3>{{componentData.settings.resultLabel}}</h3>
             <p><samp>{{result ? result : 'n/a'}}<sup>{{ (result && isPolygon()) ? '2' : '' }}</sup></samp></p>
         </div>
     </div>
