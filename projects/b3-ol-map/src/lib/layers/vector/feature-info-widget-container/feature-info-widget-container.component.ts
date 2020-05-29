@@ -4,7 +4,7 @@ import Feature from 'ol/Feature';
 import { Select } from 'ol/interaction';
 import { click } from 'ol/events/condition.js';
 import OverlayPositioning from 'ol/OverlayPositioning';
-import { WidgetHostDirective } from '../../../helper/widget-host.directive';
+import { ComponentHostDirective } from '../../../helper/component-host.directive';
 import { MapComponent } from '../../../b3-ol-map.component';
 import { VectorComponent } from '../vector.component';
 import { IDynamicComponent } from '../../../dynamic-component.contract';
@@ -20,9 +20,9 @@ export class FeatureInfoWidgetContainerComponent implements OnInit, IDynamicComp
   private overlay: Overlay;
   private selectInteraction: Select;
 
-  @ViewChild(WidgetHostDirective, { static: true }) widgetHostDirective: WidgetHostDirective;
+  @ViewChild(ComponentHostDirective, { static: true }) componentHostDirective: ComponentHostDirective;
 
-  @Input() widgetData: any;
+  @Input() componentData: any;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver, public element: ElementRef, private layerComponent: VectorComponent, private mapComponent: MapComponent) {
 
@@ -76,11 +76,11 @@ export class FeatureInfoWidgetContainerComponent implements OnInit, IDynamicComp
   }
 
   private injectComponent() {
-    let componentType = (this.widgetData && this.widgetData.infoComponentType) || "FeatureInfoWidgetComponent";
+    let componentType = (this.componentData && this.componentData.infoComponentType) || "FeatureInfoWidgetComponent";
 
     const componentFactory = this.getComponentFactory(componentType, this.componentFactoryResolver);
 
-    const viewContainerRef = this.widgetHostDirective.viewContainerRef;
+    const viewContainerRef = this.componentHostDirective.viewContainerRef;
 
     viewContainerRef.clear();
 

@@ -75,7 +75,7 @@
     [visible]="item.layerSettings && item.layerSettings.visible"
     [zIndex]="item.layerSettings && item.layerSettings.zIndex" (outLayerCreate)="onLayerCreated($event)">
     <b3-vector-style *ngIf="item.styleSettings" [options]="item.styleSettings"></b3-vector-style>
-    <b3-feature-info-widget-container [widgetData]="item.infoWindowSettings"></b3-feature-info-widget-container>
+    <b3-feature-info-widget-container [componentData]="item.infoWindowSettings"></b3-feature-info-widget-container>
     <b3-source-cluster-container *ngIf="item.sourceSettings.type === 'cluster'"
       [distance]="item.sourceSettings.distance">
       <b3-source-cluster [url]="item.sourceSettings.url" [overlaps]="item.sourceSettings.overlaps"

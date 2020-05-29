@@ -49,7 +49,6 @@ import { EsrijsonComponent } from './sources/esrijson/esrijson.component';
 import { WfsComponent } from './sources/wfs/wfs.component';
 import { FeatureInfoWidgetContainerComponent } from './layers/vector/feature-info-widget-container/feature-info-widget-container.component';
 import { FeatureInfoWidgetComponent } from './layers/vector/feature-info-widget/feature-info-widget.component';
-import { WidgetHostDirective } from './helper/widget-host.directive';
 import { ComponentHostDirective } from './helper/component-host.directive';
 import { VectorStyleComponent } from './layers/vector/vector-style/vector-style.component';
 import { FullScreenComponent } from './controls/full-screen/full-screen.component';
@@ -119,7 +118,6 @@ import { MousePositionExtensionComponent } from './extensions/mouse-position-ext
     WfsComponent,
     FeatureInfoWidgetContainerComponent,
     FeatureInfoWidgetComponent,
-    WidgetHostDirective,
     ComponentHostDirective,
     VectorStyleComponent,
     FullScreenComponent,
@@ -198,7 +196,6 @@ import { MousePositionExtensionComponent } from './extensions/mouse-position-ext
     WfsComponent,
     FeatureInfoWidgetContainerComponent,
     FeatureInfoWidgetComponent,
-    WidgetHostDirective,
     ComponentHostDirective,
     VectorStyleComponent,
     FullScreenComponent,
