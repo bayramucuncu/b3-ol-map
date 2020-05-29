@@ -1,6 +1,6 @@
 {
   "name": "b3-ol-map",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "This is an Angular map application libraray. Used map library is Openlayers 6.x",
   "author": {
     "name": "Bayram Üçüncü",
