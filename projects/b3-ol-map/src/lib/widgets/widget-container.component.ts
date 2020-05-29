@@ -18,7 +18,7 @@ export class WidgetContainerComponent implements OnInit {
   ngOnInit() {
     !this.widgets && (this.widgets = []);
 
-    this.rightMenuItems = this.widgets.filter((f: any) => f.container === "rightMenu")
-    this.freeItems = this.widgets.filter((f: any) => f.container === "none")
+    this.rightMenuItems = this.widgets.filter((f: any) => f.settings.container === "rightMenu")
+    this.freeItems = this.widgets.filter((f: any) => f.settings.container === "none")
   }
 }
