@@ -7,14 +7,13 @@ import OverlayPositioning from 'ol/OverlayPositioning';
 import { ComponentHostDirective } from '../../../helper/component-host.directive';
 import { MapComponent } from '../../../b3-ol-map.component';
 import { VectorComponent } from '../vector.component';
-import { IDynamicComponent } from '../../../dynamic-component.contract';
 
 @Component({
   selector: 'b3-feature-info-widget-container',
   templateUrl: './feature-info-widget-container.component.html',
   styleUrls: ['./feature-info-widget-container.component.css']
 })
-export class FeatureInfoWidgetContainerComponent implements OnInit, IDynamicComponent, AfterViewInit {
+export class FeatureInfoWidgetContainerComponent implements OnInit, AfterViewInit {
 
   private featureInfoComponent: ComponentRef<any>;
   private overlay: Overlay;
@@ -59,10 +58,6 @@ export class FeatureInfoWidgetContainerComponent implements OnInit, IDynamicComp
     });
 
     this.mapComponent.map.addOverlay(this.overlay);
-  }
-
-  getComponentType(): string {
-    return this.constructor.name;
   }
 
   ngOnDestroy() {
