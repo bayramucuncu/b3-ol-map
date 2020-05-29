@@ -18,7 +18,7 @@ export class MousePositionWidgetComponent implements OnInit, WidgetAggregator {
   @Input() widgetData: any;
 
   private defaultWidgetData: any = {
-    widgetSettings: {
+    settings: {
       precision: 6,
       precisions: [...Array(11).keys()].map((n: number) => { return { code: n } }),
       precisionLabel: "Precision",
@@ -47,10 +47,10 @@ export class MousePositionWidgetComponent implements OnInit, WidgetAggregator {
   ngOnInit() {
     this.widgetData = this.widgetData || this.defaultWidgetData;
 
-    this.widgetData.widgetSettings = { ...this.defaultWidgetData.widgetSettings, ...this.widgetData.widgetSettings }
+    this.widgetData.settings = { ...this.defaultWidgetData.settings, ...this.widgetData.settings }
 
-    this.selectedProjection = this.widgetData.widgetSettings.projections.find((f: any) => f.code === this.widgetData.widgetSettings.projection);
-    this.selectedPrecision = this.widgetData.widgetSettings.precisions.find((f: any) => f.code == this.widgetData.widgetSettings.precision);
+    this.selectedProjection = this.widgetData.settings.projections.find((f: any) => f.code === this.widgetData.settings.projection);
+    this.selectedPrecision = this.widgetData.settings.precisions.find((f: any) => f.code == this.widgetData.settings.precision);
 
     this.coordinate = this.formatCoordinate(this.transformCoordinate(this.mapComponent.map.getView().getCenter()));
   }

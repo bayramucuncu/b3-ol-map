@@ -41,7 +41,7 @@ export class DataInsertWidgetComponent implements OnInit, WidgetAggregator {
   ];
 
   private defaultWidgetData: any = {
-    widgetSettings: {
+    settings: {
       title: "Data",
       projections: [
         { code: "EPSG:4326" },
@@ -58,7 +58,7 @@ export class DataInsertWidgetComponent implements OnInit, WidgetAggregator {
   ngOnInit(): void {
     this.widgetData = this.widgetData || this.defaultWidgetData;
 
-    this.widgetData.widgetSettings = { ...this.defaultWidgetData.widgetSettings, ...this.widgetData.widgetSettings }
+    this.widgetData.settings = { ...this.defaultWidgetData.settings, ...this.widgetData.settings }
   }
 
   private getFeatures() {
@@ -90,7 +90,7 @@ export class DataInsertWidgetComponent implements OnInit, WidgetAggregator {
 
   toggle(): void {
     this.visibility = !this.visibility;
-    this.model = new MapData(this.widgetData.widgetSettings.projections[0].code, this.formats[0], "", "");
+    this.model = new MapData(this.widgetData.settings.projections[0].code, this.formats[0], "", "");
   }
 
   addToLayer(): void {

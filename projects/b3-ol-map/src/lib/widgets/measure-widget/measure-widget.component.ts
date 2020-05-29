@@ -44,7 +44,7 @@ export class MeasureWidgetComponent implements OnInit, WidgetAggregator {
 
     private measuringTool: Draw;
     private defaultWidgetData: any = {
-        widgetSettings: {
+        settings: {
             title: "Measure",
             lengthLabel: "Length",
             areaLabel: "Area",
@@ -72,7 +72,7 @@ export class MeasureWidgetComponent implements OnInit, WidgetAggregator {
     ngOnInit() {
         this.widgetData = this.widgetData || this.defaultWidgetData;
 
-        this.widgetData.widgetSettings = { ...this.defaultWidgetData.widgetSettings, ...this.widgetData.widgetSettings }
+        this.widgetData.settings = { ...this.defaultWidgetData.settings, ...this.widgetData.settings }
     }
 
     private enableMeasuringTool() {

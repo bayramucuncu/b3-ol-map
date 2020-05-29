@@ -15,12 +15,12 @@ export class WidgetComponent implements OnInit {
   constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
-    this.widgetData.widgetComponent && this.injectComponent()
+    this.widgetData.settings.component && this.injectComponent()
   }
 
   private injectComponent() {
     try {
-      const componentFactory = this.getComponentFactory(this.widgetData.widgetComponent, this.componentFactoryResolver);
+      const componentFactory = this.getComponentFactory(this.widgetData.settings.component, this.componentFactoryResolver);
 
       const viewContainerRef = this.widgetHostDirective.viewContainerRef;
       viewContainerRef.clear();
