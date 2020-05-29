@@ -158,8 +158,8 @@
     position: relative;
     background-color: #2980B9;
     color: #fff;
-    height: 20px;
-    width: 20px;
+    height: 21px;
+    width: 21px;
     border: 0;
     cursor: pointer;
     margin-right: 7px;
@@ -168,10 +168,6 @@
 
 .b3-layer-check:checked::before {
     position: absolute;
-    font: 17px/1 'Open Sans', sans-serif;
-    left: 6px;
-    content: '\02143';
-    transform: rotate(40deg);
 }
 
 .b3-layer-check:hover {
@@ -186,6 +182,20 @@
     border-radius: 50px;
 }
 
+.b3-layer-radio:checked::before {
+    left: 4px;
+    top: -15px;
+    content: '\2022';
+    font: 36px 'Open Sans', sans-serif;
+}
+
 .b3-layer-checkbox {
     border-radius: 5px;
+}
+
+.b3-layer-checkbox:checked::before {
+    font: 17px/1 'Open Sans', sans-serif;
+    content: '\02143';
+    left: 6px;
+    transform: rotate(40deg);
 }
