@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Vector } from 'ol/source';
 import { XmlResponseAcceptedSource } from '../base-vector-source';
-import { ProjectionLike } from 'ol/proj';
 import { VectorComponent } from '../../layers/vector/vector.component';
 import { HttpClient } from '@angular/common/http';
 import { GPX } from 'ol/format';
@@ -13,10 +12,6 @@ import { GPX } from 'ol/format';
 })
 export class GpxComponent extends XmlResponseAcceptedSource implements OnInit {
   source: Vector;
-
-  @Input() url: string;
-  @Input() dataProjection: ProjectionLike;
-  @Input() featureProjection: ProjectionLike;
 
   constructor(http: HttpClient, private layerComponent: VectorComponent) {
       super(http)

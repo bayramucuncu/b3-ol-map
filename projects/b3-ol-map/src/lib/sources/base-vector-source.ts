@@ -1,7 +1,6 @@
 import { Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProjectionLike } from 'ol/proj';
-import Feature from 'ol/Feature';
 
 export abstract class BaseVectorSource {
     @Input() url: string;
@@ -26,12 +25,12 @@ export abstract class BaseVectorSource {
                 (response: any) => {
                     layer.set("isLoading", false);
 
-                    source.clear()
+                    source.clear();
 
                     source.addFeatures(
                         source.getFormat().readFeatures(response, {
-                            dataProjection: this.dataProjection,
-                            featureProjection: this.featureProjection,
+                            dataProjection: this.dataProjection || projection,
+                            featureProjection: this.featureProjection || projection,
                         })
                     );
                 },

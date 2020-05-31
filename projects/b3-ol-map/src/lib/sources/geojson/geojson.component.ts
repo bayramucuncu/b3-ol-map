@@ -5,41 +5,43 @@ import { HttpClient } from '@angular/common/http';
 import { GeojsonResponseAcceptedSource } from '../base-vector-source';
 import { VectorComponent } from '../../layers/vector/vector.component';
 import { HeatmapComponent } from '../../layers/heatmap/heatmap.component';
+import { MapComponent } from '../../b3-ol-map.component';
 
 @Component({
-  selector: 'b3-source-geojson',
-  templateUrl: './geojson.component.html',
-  styleUrls: ['./geojson.component.css']
+    selector: 'b3-source-geojson',
+    templateUrl: './geojson.component.html',
+    styleUrls: ['./geojson.component.css']
 })
-export class GeojsonComponent  extends GeojsonResponseAcceptedSource implements OnInit {
+export class GeojsonComponent extends GeojsonResponseAcceptedSource implements OnInit {
 
-  source: Vector;
+    source: Vector;
 
-  @Input() geometryName: string;
+    @Input() geometryName: string;
 
-  constructor(http: HttpClient, 
-      @Optional() private layerComponent?: VectorComponent, 
-      @Optional() private heatmapLayerComponent?: HeatmapComponent) 
-  {
-      super(http);
-  }
+    constructor(http: HttpClient, private mapComponent: MapComponent,
+        @Optional() private layerComponent?: VectorComponent,
+        @Optional() private heatmapLayerComponent?: HeatmapComponent) {
+        super(http);
+    }
 
-  ngOnInit(): void {
-      let format = new GeoJSON({
-          dataProjection: this.dataProjection,
-          featureProjection: this.featureProjection,
-          geometryName: this.geometryName
-      });
+    ngOnInit(): void {
+        const layer = this.layerComponent
+            ? this.layerComponent.layer
+            : this.heatmapLayerComponent.layer;
 
-      let layer = this.layerComponent
-          ? this.layerComponent.layer
-          : this.heatmapLayerComponent.layer;
+        const projection = this.mapComponent.map.getView().getProjection();
 
-      this.source = new Vector({
-          format: format,
-          loader: this.loader(layer)
-      });
+        const format = new GeoJSON({
+            dataProjection: this.dataProjection || projection,
+            featureProjection: this.featureProjection || projection,
+            geometryName: this.geometryName
+        });
 
-      layer.setSource(this.source);
-  }
+        this.source = new Vector({
+            format: format,
+            loader: this.loader(layer)
+        });
+        
+        layer.setSource(this.source);
+    }
 }

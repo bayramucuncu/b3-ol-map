@@ -4,6 +4,7 @@ import { ProjectionLike } from 'ol/proj';
 import { Extent } from 'ol/extent';
 import { WKT } from 'ol/format';
 import { VectorComponent } from '../../layers/vector/vector.component';
+import { MapComponent } from '../../b3-ol-map.component';
 
 @Component({
   selector: 'b3-source-wkt',
@@ -18,16 +19,18 @@ export class WktComponent implements OnInit {
   @Input() featureProjection: ProjectionLike;
   @Input() extent: Extent;
 
-  constructor(private layerComponent: VectorComponent) {
+  constructor(private layerComponent: VectorComponent, private mapComponent: MapComponent) {
   }
 
   ngOnInit(): void {
       
       this.source = new Vector();
+      
+      const projection = this.mapComponent.map.getView().getProjection();
 
-      let features = new WKT().readFeatures(this.wkt, {
-          dataProjection: this.dataProjection,
-          featureProjection: this.featureProjection,
+      const features = new WKT().readFeatures(this.wkt, {
+          dataProjection: this.dataProjection || projection,
+          featureProjection: this.featureProjection || projection,
           extent: this.extent
       });
 

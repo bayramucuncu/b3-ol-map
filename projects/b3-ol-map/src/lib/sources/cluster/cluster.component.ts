@@ -72,8 +72,8 @@ export class ClusterComponent implements OnInit {
                   (response: any) => {
                       this.layerComponent.layer.set("isLoading", false);
                       this.source.addFeatures(format.readFeatures(response, {
-                          dataProjection: this.dataProjection,
-                          featureProjection: this.featureProjection
+                          dataProjection: this.dataProjection || projection,
+                          featureProjection: this.featureProjection || projection
                       }));
                   },
                   (error: any) => {
