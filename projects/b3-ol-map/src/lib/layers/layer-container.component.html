@@ -106,8 +106,15 @@
     </b3-source-owner>
     <b3-source-signalr *ngIf="item.sourceSettings.type === 'signalrgeojson'" [url]="item.sourceSettings.url"
       [reconnectInterval]="item.sourceSettings.reconnectInterval" [removeInterval]="item.sourceSettings.removeInterval"
-      [dataProjection]="item.sourceSettings.dataProjection" [featureProjection]="item.sourceSettings.featureProjection">
+      [dataProjection]="item.sourceSettings.dataProjection" 
+      [featureProjection]="item.sourceSettings.featureProjection">
     </b3-source-signalr>
+    <b3-source-socketio *ngIf="item.sourceSettings.type === 'socketiogeojson'"
+      [url]="item.sourceSettings.url"
+      [removeInterval]="item.sourceSettings.removeInterval"
+      [dataProjection]="item.sourceSettings.dataProjection" 
+      [featureProjection]="item.sourceSettings.featureProjection"
+      [emitName]="item.sourceSettings.emitName"></b3-source-socketio>
     <b3-source-topojson *ngIf="item.sourceSettings.type === 'topojson'" [url]="item.sourceSettings.url"
       [layers]="item.sourceSettings.layers" [layerName]="item.sourceSettings.layerName"
       [dataProjection]="item.sourceSettings.dataProjection" [featureProjection]="item.sourceSettings.featureProjection">

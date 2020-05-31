@@ -41,7 +41,7 @@ export class GeojsonComponent extends GeojsonResponseAcceptedSource implements O
             format: format,
             loader: this.loader(layer)
         });
-        
+    
         layer.setSource(this.source);
     }
 }

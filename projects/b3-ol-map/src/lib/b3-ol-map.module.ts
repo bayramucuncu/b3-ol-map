@@ -68,6 +68,7 @@ import { ExtensionContainerComponent } from './extensions/extension-container.co
 import { ExtensionComponent } from './extensions/extension.component';
 import { MeasureExtensionComponent } from './extensions/measure-extension/measure-extension.component';
 import { MousePositionExtensionComponent } from './extensions/mouse-position-extension/mouse-position-extension.component';
+import { SocketioComponent } from './sources/socketio/socketio.component';
 
 @NgModule({
   declarations: [
@@ -136,7 +137,8 @@ import { MousePositionExtensionComponent } from './extensions/mouse-position-ext
     ExtensionContainerComponent,
     ExtensionComponent,
     MeasureExtensionComponent,
-    MousePositionExtensionComponent
+    MousePositionExtensionComponent,
+    SocketioComponent
   ],
   imports: [
     CommonModule,

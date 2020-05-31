@@ -1,6 +1,6 @@
 {
   "name": "b3-ol-map",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "This is an Angular map application libraray. Used map library is Openlayers 6.x",
   "author": {
     "name": "Bayram Üçüncü",
@@ -27,7 +27,8 @@
     "@angular/core": "^8.2.14",
     "@aspnet/signalr": "^1.1.4",
     "ol": "^6.1.1",
-    "proj4": "^2.5.0"
+    "proj4": "^2.5.0",
+    "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
     "@types/ol": "^6.1.0",
@@ -38,6 +39,8 @@
     "@types/ol": "^6.1.0",
     "@types/proj4": "^2.5.0",
     "ol": "^6.1.1",
-    "proj4": "^2.5.0"
+    "proj4": "^2.5.0",
+    "@types/socket.io-client": "^1.4.33",
+    "socket.io-client": "^2.3.0"
   }
 }

@@ -10,7 +10,9 @@
     "@aspnet/signalr",
     "@types/ol",
     "@types/proj4",
+    "@types/socket.io-client",
     "ol",
-    "proj4"
+    "proj4",
+    "socket.io-client"
   ]
 }
