@@ -28,6 +28,8 @@ export class ExtensionComponent implements OnInit {
       const component = viewContainerRef.createComponent(componentFactory);
       (<ExtensionAggregator>component.instance).componentData = this.componentData;
       
+      component.changeDetectorRef.detectChanges();
+      
     } catch (error) {
       console.error(error)
     }
