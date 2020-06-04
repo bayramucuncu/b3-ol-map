@@ -28,7 +28,9 @@
     transform: translate(-50%, -50%);
 }
 
-
+.b3-ol-map-data-insert-container{
+    height: 100%;
+}
 .b3-ol-map-data-insert-container form {
     padding: 10px;
 }
@@ -44,7 +46,7 @@
 }
 
 .b3-ol-map-data-insert-container textarea {
-    height: calc(100vh - 230px);
+    height: 500px;
 }
 
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {

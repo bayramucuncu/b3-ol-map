@@ -12,7 +12,6 @@ import { Interaction } from 'ol/interaction';
 export class MapComponent implements OnInit, AfterViewInit, OnChanges {
 
   map: Map;
-
   controls: Control[] = [];
   interactions: Interaction[] = [];
 
@@ -52,7 +51,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
     this.map && this.map.updateSize();
   }
 
-  constructor(private element: ElementRef) {
+  constructor() {
     this.outClick = new EventEmitter<MapBrowserEvent>();
     this.outMoveend = new EventEmitter<MapBrowserEvent>();
   }
