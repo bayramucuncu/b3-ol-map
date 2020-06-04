@@ -8,6 +8,7 @@ export * from './lib/b3-ol-map.module';
 
 export * from './lib/index';
 export * from './lib/controls/index';
+export * from './lib/extensions/index';
 export * from './lib/interactions/index';
 export * from './lib/layers/index';
 export * from './lib/projection/index';

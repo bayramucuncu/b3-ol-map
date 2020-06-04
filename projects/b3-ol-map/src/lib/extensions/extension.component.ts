@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ComponentFactoryResolver, Type } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ComponentFactoryResolver, Type, ComponentRef, AfterContentInit } from '@angular/core';
 import { ExtensionAggregator } from './extension-aggregator';
 import { ComponentHostDirective } from '../helper/component-host.directive';
 
@@ -8,6 +8,8 @@ import { ComponentHostDirective } from '../helper/component-host.directive';
 })
 export class ExtensionComponent implements OnInit {
 
+  componentRef: ComponentRef<any>;
+
   @Input() componentData: any;
 
   @ViewChild(ComponentHostDirective, { static: true }) componentHostDirective: ComponentHostDirective;
@@ -15,7 +17,11 @@ export class ExtensionComponent implements OnInit {
   constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
-    this.componentData.settings.component && this.injectComponent()
+    this.componentData.settings.component && this.injectComponent();
+  }
+
+  ngOnDestroy() {
+    this.componentRef.destroy();
   }
 
   private injectComponent() {
@@ -25,10 +31,10 @@ export class ExtensionComponent implements OnInit {
       const viewContainerRef = this.componentHostDirective.viewContainerRef;
       viewContainerRef.clear();
 
-      const component = viewContainerRef.createComponent(componentFactory);
-      (<ExtensionAggregator>component.instance).componentData = this.componentData;
+      this.componentRef = viewContainerRef.createComponent(componentFactory);
+      (<ExtensionAggregator>this.componentRef.instance).componentData = this.componentData;
       
-      component.changeDetectorRef.detectChanges();
+      this.componentRef.changeDetectorRef.detectChanges();
       
     } catch (error) {
       console.error(error)
@@ -42,4 +48,6 @@ export class ExtensionComponent implements OnInit {
 
     return resolver.resolveComponentFactory(factoryClass);
   }
+
+  
 }
