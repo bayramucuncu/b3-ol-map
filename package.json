@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open --port=4201",
+    "start": "ng serve --open --port=4201 && npm run build-lib-watch",
     "build": "ng build",
     "build-lib": "ng build b3-ol-map",
     "build-lib-watch": "ng build b3-ol-map --watch",

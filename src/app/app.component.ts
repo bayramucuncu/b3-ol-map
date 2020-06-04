@@ -67,6 +67,11 @@ export class AppComponent implements OnInit {
   
   ngOnInit(): void {
    
+    // setTimeout(() => {
+    //   this.map.settings.width = "50%";
+    //   this.map.settings.height = "50%";
+    // }, 1500);
+
     // const ounter = interval(1000);
 
     // ounter.subscribe( t => {

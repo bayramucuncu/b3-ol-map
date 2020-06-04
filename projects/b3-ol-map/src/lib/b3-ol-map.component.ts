@@ -1,12 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewInit, SimpleChanges, HostListener, OnChanges, ViewEncapsulation } from '@angular/core';
-import { Map, MapBrowserEvent} from 'ol';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewInit, SimpleChanges, HostListener, OnChanges, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Map, MapBrowserEvent } from 'ol';
 import { Control } from 'ol/control';
 import { Interaction } from 'ol/interaction';
 
 @Component({
   selector: 'b3-ol-map',
   templateUrl: 'b3-ol-map.component.html',
-  styleUrls: [ 'b3-ol-map.component.css' ],
+  styleUrls: ['b3-ol-map.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class MapComponent implements OnInit, AfterViewInit, OnChanges {
@@ -16,14 +16,40 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   controls: Control[] = [];
   interactions: Interaction[] = [];
 
-  @Input() width: string = '100%';
-  @Input() height: string = '100%';
+  @ViewChild("map", { static: true }) mapDiv: ElementRef;
+
+  private _width: string = '100%';
+  private _height: string = '100%';
+
+  get width(): string {
+    return this._width;
+  }
+
+  @Input() set width(value: string) {
+    this._width = value;
+
+    this.mapDiv.nativeElement.style.width = value;
+
+    this.map && this.map.updateSize();
+  }
+
+  get height(): string {
+    return this._height;
+  }
+  
+  @Input() set height(value: string) {
+    this._height = value;
+
+    this.mapDiv.nativeElement.style.height = value;
+
+    this.map && this.map.updateSize();
+  }
 
   @Output() outClick: EventEmitter<MapBrowserEvent>;
   @Output() outMoveend: EventEmitter<MapBrowserEvent>;
-  
-  @HostListener('window:resize') onWindowResize() {
-    this.map.updateSize();
+
+  @HostListener('window:resize', ["$event"]) onWindowResize(event) {
+    this.map && this.map.updateSize();
   }
 
   constructor(private element: ElementRef) {
@@ -39,7 +65,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
       keyboardEventTarget: document
     });
 
-    this.map.setTarget(this.element.nativeElement.firstElementChild);
+    this.map.setTarget(this.mapDiv.nativeElement);
 
     this.map.on('click', (event: MapBrowserEvent) => this.outClick.emit(event));
     this.map.on('moveend', (event: MapBrowserEvent) => this.outMoveend.emit(event));
