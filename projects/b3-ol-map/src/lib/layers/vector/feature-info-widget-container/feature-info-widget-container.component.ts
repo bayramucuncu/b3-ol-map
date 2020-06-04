@@ -71,19 +71,23 @@ export class FeatureInfoWidgetContainerComponent implements OnInit, AfterViewIni
   }
 
   private injectComponent() {
-    let componentType = (this.componentData && this.componentData.infoComponentType) || "FeatureInfoWidgetComponent";
+    try {
+      let componentType = (this.componentData && this.componentData.infoComponentType) || "FeatureInfoWidgetComponent";
 
-    const componentFactory = this.getComponentFactory(componentType, this.componentFactoryResolver);
+      const componentFactory = this.getComponentFactory(componentType, this.componentFactoryResolver);
 
-    const viewContainerRef = this.componentHostDirective.viewContainerRef;
+      const viewContainerRef = this.componentHostDirective.viewContainerRef;
 
-    viewContainerRef.clear();
+      viewContainerRef.clear();
 
-    this.featureInfoComponent = viewContainerRef.createComponent(componentFactory);
+      this.featureInfoComponent = viewContainerRef.createComponent(componentFactory);
 
-    this.featureInfoComponent.instance && (this.featureInfoComponent.instance.selectInteraction = this.selectInteraction);
+      this.featureInfoComponent.instance && (this.featureInfoComponent.instance.selectInteraction = this.selectInteraction);
 
-    this.featureInfoComponent.changeDetectorRef.detectChanges();
+      this.featureInfoComponent.changeDetectorRef.detectChanges();
+    } catch (error) {
+      console.error()
+    }
   }
 
   private getComponentFactory(name: string, resolver: ComponentFactoryResolver) {

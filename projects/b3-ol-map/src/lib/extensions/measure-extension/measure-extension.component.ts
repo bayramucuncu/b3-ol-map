@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input, ViewEncapsulation, ChangeDetectorRef } from '@angular/core';
 import { Vector, Heatmap } from 'ol/layer';
 import { Draw, Snap } from 'ol/interaction';
 import CircleStyle from 'ol/style/Circle';
@@ -63,7 +63,7 @@ export class MeasureExtensionComponent implements OnInit, ExtensionAggregator {
     @Output() outMeasureCreate: EventEmitter<any>;
     @Output() outMeasureRemove: EventEmitter<any>;
 
-    constructor(private mapComponent: MapComponent) {
+    constructor(private mapComponent: MapComponent, private ref: ChangeDetectorRef) {
         this.source = new VectorSource();
         this.outMeasureCreate = new EventEmitter<any>();
         this.outMeasureRemove = new EventEmitter<any>();
@@ -125,6 +125,7 @@ export class MeasureExtensionComponent implements OnInit, ExtensionAggregator {
                     : measurement.toFixed(2) + ' m';
 
                 this.result = measurementFormatted;
+                this.ref.detectChanges();
             });
         });
 

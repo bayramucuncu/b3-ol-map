@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, ChangeDetectorRef, NgZone } from '@angular/core';
 import { transform } from 'ol/proj';
 import { createStringXY } from 'ol/coordinate';
 import { MapBrowserEvent } from 'ol';
@@ -39,12 +39,12 @@ export class MousePositionExtensionComponent implements OnInit, ExtensionAggrega
   public selectedProjection: any;
   public selectedPrecision: any;
 
-  constructor(private mapComponent: MapComponent) {
-    this.mapComponent.map.on("click", this.onMapClicked());
+  constructor(private mapComponent: MapComponent, private ref: ChangeDetectorRef) {
     this.isSettingsMode = false;
   }
 
   ngOnInit() {
+    this.mapComponent.map.on("click", this.onMapClicked());
     this.componentData = this.componentData || this.defaultWidgetData;
 
     this.componentData.settings = { ...this.defaultWidgetData.settings, ...this.componentData.settings }
@@ -53,6 +53,7 @@ export class MousePositionExtensionComponent implements OnInit, ExtensionAggrega
     this.selectedPrecision = this.componentData.settings.precisions.find((f: any) => f.code == this.componentData.settings.precision);
 
     this.coordinate = this.formatCoordinate(this.transformCoordinate(this.mapComponent.map.getView().getCenter()));
+
   }
 
   ngOnDestroy() {
@@ -67,7 +68,8 @@ export class MousePositionExtensionComponent implements OnInit, ExtensionAggrega
     return (event: MapBrowserEvent) => {
       let coordinate = this.transformCoordinate(event.coordinate);
       this.coordinate = this.formatCoordinate(coordinate);
-    };
+      this.ref.detectChanges(); // if not set, Coordinate does not change in dynamic components.
+    }
   }
 
   private transformCoordinate(coordinate: any) {
