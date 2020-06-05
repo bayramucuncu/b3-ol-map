@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewInit, SimpleChanges, HostListener, OnChanges, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewInit, SimpleChanges, 
+          HostListener, OnChanges, ViewEncapsulation, ViewChild, NgZone } from '@angular/core';
 import { Map, MapBrowserEvent } from 'ol';
 import { Control } from 'ol/control';
 import { Interaction } from 'ol/interaction';
@@ -26,10 +27,16 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() set width(value: string) {
     this._width = value;
-
+    
     this.mapDiv.nativeElement.style.width = value;
-
-    this.map && this.map.updateSize();
+    // this.ngZone.runOutsideAngular(()=>{
+    //   this.updateMap();
+    // });
+    
+    // this.ngZone.run(()=>{
+    //   this.updateMap();
+    // });
+    this.updateMap();
   }
 
   get height(): string {
@@ -38,22 +45,33 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   
   @Input() set height(value: string) {
     this._height = value;
-
+    
     this.mapDiv.nativeElement.style.height = value;
+    // this.ngZone.runOutsideAngular(()=>{
+    //   this.updateMap();
+    // });
 
-    this.map && this.map.updateSize();
+    // this.ngZone.run(()=>{
+    //   this.updateMap();
+    // });
+    
+    this.updateMap();
   }
 
   @Output() outClick: EventEmitter<MapBrowserEvent>;
   @Output() outMoveend: EventEmitter<MapBrowserEvent>;
 
-  @HostListener('window:resize', ["$event"]) onWindowResize(event) {
-    this.map && this.map.updateSize();
+  @HostListener('window:resize', ["$event"]) onWindowResize(event: any) {
+    this.updateMap();
   }
 
-  constructor() {
+  constructor(private ngZone: NgZone) {
     this.outClick = new EventEmitter<MapBrowserEvent>();
     this.outMoveend = new EventEmitter<MapBrowserEvent>();
+  }
+
+  private updateMap(){
+    this.map && this.map.updateSize();
   }
 
   ngOnInit() {
