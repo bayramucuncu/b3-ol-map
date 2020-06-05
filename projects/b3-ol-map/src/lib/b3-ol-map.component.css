@@ -88,7 +88,7 @@
 /* b3-ol-map panel wrapper */
 .b3-ol-map-panel-wrapper {
     width: 370px;
-    height: calc(100% - 1.2em);
+    height: calc(97%);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     right: 3.2em;
     z-index: 10;

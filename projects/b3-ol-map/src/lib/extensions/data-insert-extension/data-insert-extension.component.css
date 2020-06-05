@@ -32,7 +32,7 @@
     height: 100%;
 }
 .b3-ol-map-data-insert-container form {
-    padding: 10px;
+    padding: 10px !important;
 }
 
 .b3-ol-map-data-insert-container input[type=text],

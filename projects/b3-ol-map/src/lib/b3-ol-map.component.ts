@@ -27,15 +27,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
 
   @Input() set width(value: string) {
     this._width = value;
-    
     this.mapDiv.nativeElement.style.width = value;
-    // this.ngZone.runOutsideAngular(()=>{
-    //   this.updateMap();
-    // });
-    
-    // this.ngZone.run(()=>{
-    //   this.updateMap();
-    // });
     this.updateMap();
   }
 
@@ -45,16 +37,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   
   @Input() set height(value: string) {
     this._height = value;
-    
     this.mapDiv.nativeElement.style.height = value;
-    // this.ngZone.runOutsideAngular(()=>{
-    //   this.updateMap();
-    // });
-
-    // this.ngZone.run(()=>{
-    //   this.updateMap();
-    // });
-    
     this.updateMap();
   }
 
