@@ -29,26 +29,29 @@
 }
 
 .b3-ol-map-data-insert-container{
-    height: 100%;
+    height: calc(100% - 46px);
+
 }
 .b3-ol-map-data-insert-container form {
     padding: 10px !important;
-    height: calc(100% - 180px);
+    height: calc(100% - 20px);
 }
 
 .b3-ol-map-data-insert-container input[type=text],
 .b3-ol-map-data-insert-container select,
 .b3-ol-map-data-insert-container textarea {
     width: 100%;
-    padding: 10px;
+    height: 39px;
+    padding: 6px;
     border: 1px solid #ccc;
     resize: vertical;
     box-sizing: border-box;
     margin-bottom: 8px;
+    height: 39px;
 }
 
 .b3-ol-map-data-insert-container textarea {
-    height: calc(100% - 39px);
+    height: calc(100% - 190px);
 }
 
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
@@ -65,7 +68,8 @@
 .b3-ol-map-data-insert-container input[type=submit] {
     background-color: #2980B9;
     color: white;
-    padding: 11px 8px;
+    padding: 7px;
+    height: 37px;
     border: none;
     cursor: pointer;
     float: right;

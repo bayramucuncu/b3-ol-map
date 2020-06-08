@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnDestroy } from '@angular/core';
 import BaseLayer from 'ol/layer/Base';
 import { LayerContainerService } from './layer-container.service';
 import { Observable } from 'rxjs';
@@ -9,7 +9,7 @@ import { UuidGenerator } from '../helper';
   templateUrl: './layer-container.component.html',
   styleUrls: ['./layer-container.component.css']
 })
-export class LayerContainerComponent implements OnInit {
+export class LayerContainerComponent implements OnInit, OnDestroy {
 
   @Input() layers: any[];
   @Input() showControl: boolean;
@@ -18,7 +18,6 @@ export class LayerContainerComponent implements OnInit {
   @Output() outLayerCreate: EventEmitter<BaseLayer>;
 
   layerContainerService: LayerContainerService;
-
   layer$: Observable<any[]>;
 
   constructor(layerContainerService: LayerContainerService, private uuidGenerator: UuidGenerator) {
@@ -27,15 +26,18 @@ export class LayerContainerComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.layer$ = this.layerContainerService.layers$;
-
+    
     this.layers = (this.layers && this.layers.length > 0) ? this.layers : this.getDefaultLayers()
-
+    
     this.layerContainerService.addLayers(this.layers);
-
+    
     !this.showControl && (this.showControl = false);
     !this.controlTitle && (this.controlTitle = "Layers");
+  }
+  
+  ngOnDestroy(): void {
+    this.layerContainerService.removeAllLayers();
   }
 
   onLayerCreated($event: any): void {

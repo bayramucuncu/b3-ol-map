@@ -109,15 +109,17 @@
     background: #2980B9;
     margin: 0;
     padding: 8px 10px;
-    font-size: 20px;
-    font-weight: normal;
     color: white;
     user-select: none;
 }
+.b3-ol-map-panel-header span{
+    font-size: 20px;
+    font-weight: normal;
+}
 
 .b3-ol-map-panel-body {
-    max-height: calc(100% - 39px);
-    /* b3-layer-container.height-header.height */
+    height: calc(100% - 46px);/* b3-layer-container.height-header.height */
+    width: 100%;    
     overflow: auto;
 }
 

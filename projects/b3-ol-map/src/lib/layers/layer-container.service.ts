@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
 export class LayerContainerService {
 
   private layersBehaviour: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
@@ -30,6 +30,10 @@ export class LayerContainerService {
 
   removeLayer(layer: any) {
     this.layersBehaviour.next([...this.layersBehaviour.value.filter(item => item !== layer)]);
+  }
+
+  removeAllLayers(){
+    this.layersBehaviour.next([]);
   }
 
   private setOrderProperty(layer: any) {
