@@ -1,4 +1,4 @@
-<div style="width: 80%; height: 600px; margin: auto;position: relative;">
+<div style="width: 90%; height: 600px; margin: auto;position: relative;">
     <b3-ol-map [width]="map.settings.width" [height]="map.settings.height">
         <b3-view [zoom]="map.view.zoom" [center]="map.view.center" [projection]="map.view.projection" [minZoom] ="map.view.minZoom" [maxZoom] ="map.view.maxZoom" ></b3-view>
         <b3-layer-container [layers]="map.layers" (outLayerCreate)="onLayerCreated($event)" [showControl]="true" [controlTitle]="'Layers'"></b3-layer-container>

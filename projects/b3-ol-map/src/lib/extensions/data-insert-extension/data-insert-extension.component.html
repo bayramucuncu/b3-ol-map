@@ -12,33 +12,16 @@
         </div>
         <div class="b3-ol-map-panel-body b3-ol-map-data-insert-container">
             <form autocomplete="off">
-                <div class="row">
-                    <div class="col-100">
-                        <select [(ngModel)]="model.srid" id="srid" name="srid" required>
-                            <option *ngFor="let projection of componentData.settings.projections" [value]="projection.code">{{projection.code}}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-100">
-                        <select [(ngModel)]="model.format" id="format" name="format" required>
-                            <option *ngFor="let format of formats" [value]="format">{{format}}</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-100">
-                        <textarea [(ngModel)]="model.data" id="data" name="data" placeholder="Write data.." required></textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-75">
-                        <input [(ngModel)]="model.name" name="name" type="text" placeholder="Layer name">
-                    </div>
-                    <div class="col-25">
-                        <input (click)="addToLayer()" type="submit" value="Add Layer">
-                    </div>
-                </div>
+                <select [(ngModel)]="model.srid" id="srid" name="srid" required>
+                    <option *ngFor="let projection of componentData.settings.projections" [value]="projection.code">
+                        {{projection.code}}</option>
+                </select>
+                <select [(ngModel)]="model.format" id="format" name="format" required>
+                    <option *ngFor="let format of formats" [value]="format">{{format}}</option>
+                </select>
+                <textarea [(ngModel)]="model.data" id="data" name="data" placeholder="Write data.." required></textarea>
+                <input [(ngModel)]="model.name" name="name" type="text" placeholder="Layer name">
+                <input (click)="addToLayer()" type="submit" value="Add Layer">
             </form>
         </div>
     </div>

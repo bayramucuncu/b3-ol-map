@@ -116,7 +116,7 @@
 }
 
 .b3-ol-map-panel-body {
-    max-height: calc(100% - 40px);
+    max-height: calc(100% - 39px);
     /* b3-layer-container.height-header.height */
     overflow: auto;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import Feature from 'ol/Feature';
 import VectorSource from 'ol/source/Vector';
 import { GeoJSON, EsriJSON, TopoJSON, WKT } from 'ol/format';
@@ -24,7 +24,8 @@ export class MapData {
 @Component({
   selector: 'b3-data-insert-extension',
   templateUrl: './data-insert-extension.component.html',
-  styleUrls: ['./data-insert-extension.component.css']
+  styleUrls: ['./data-insert-extension.component.css'],
+  encapsulation:ViewEncapsulation.None
 })
 export class DataInsertExtensionComponent implements OnInit, ExtensionAggregator {
 
@@ -94,6 +95,10 @@ export class DataInsertExtensionComponent implements OnInit, ExtensionAggregator
   }
 
   addToLayer(): void {
+
+    if(!this.model.data)
+      return;
+
     let features = this.getFeatures();
 
     let source = new VectorSource({

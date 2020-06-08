@@ -33,6 +33,7 @@
 }
 .b3-ol-map-data-insert-container form {
     padding: 10px !important;
+    height: calc(100% - 180px);
 }
 
 .b3-ol-map-data-insert-container input[type=text],
@@ -43,10 +44,11 @@
     border: 1px solid #ccc;
     resize: vertical;
     box-sizing: border-box;
+    margin-bottom: 8px;
 }
 
 .b3-ol-map-data-insert-container textarea {
-    height: 500px;
+    height: calc(100% - 39px);
 }
 
 @media only screen and (min-device-width : 375px) and (max-device-width : 667px) {
@@ -72,28 +74,4 @@
 
 .b3-ol-map-data-insert-container input[type=submit]:hover {
     background-color: #1970B7;
-}
-
-.b3-ol-map-data-insert-container .col-25 {
-    float: left;
-    width: 25%;
-    margin-top: 6px;
-}
-
-.b3-ol-map-data-insert-container .col-100 {
-    float: left;
-    width: 100%;
-    margin-top: 6px;
-}
-
-.b3-ol-map-data-insert-container .col-75 {
-    float: left;
-    width: 75%;
-    margin-top: 6px;
-}
-
-.b3-ol-map-data-insert-container .row:after {
-    content: "";
-    display: table;
-    clear: both;
 }
