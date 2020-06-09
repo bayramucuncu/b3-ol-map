@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, NgZone, OnDestroy } from '@angular/core';
 import { MapComponent } from '../../b3-ol-map.component';
 import { Geolocation, Feature } from 'ol';
 import VectorSource from 'ol/source/Vector';
@@ -13,15 +13,15 @@ import CircleStyle from 'ol/style/Circle';
   styleUrls: ['./geolocation.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class GeolocationComponent implements OnInit {
+export class GeolocationComponent implements OnInit, OnDestroy {
 
   private geolocation: Geolocation;
   private positionFeature: Feature = new Feature();
   private vectorLayer: VectorLayer;
-  
+
   isTracing: boolean = false;
 
-  constructor(private mapComponent: MapComponent) {
+  constructor(private mapComponent: MapComponent, private ngZone: NgZone) {
     this.vectorLayer = new VectorLayer({
       source: new VectorSource({
         features: [this.positionFeature]
@@ -42,7 +42,9 @@ export class GeolocationComponent implements OnInit {
     }))
 
     this.vectorLayer.set("name", "Geolocation Position");
+    this.vectorLayer.set("order", 100000000);
   }
+  
 
   ngOnInit() {
     this.geolocation = new Geolocation({
@@ -53,19 +55,29 @@ export class GeolocationComponent implements OnInit {
       }
     });
 
-    this.geolocation.on("change", () => {
-      let position = this.geolocation.getPosition();
+    this.geolocation.on("change", this.ngZone.run(() => this.onChange()));
+    this.geolocation.on("error", this.ngZone.run(() => this.onError()));
+  }
 
-      this.mapComponent.map.getView().setCenter(position);
+  ngOnDestroy(): void {
+    this.geolocation.un("change", this.ngZone.run(() => this.onChange()));
+    this.geolocation.un("error", this.ngZone.run(() => this.onError()));
+  }
 
-      this.positionFeature.setGeometry(
-        new Point(position)
-      );
-    })
-
-    this.geolocation.on("error", evt => {
+  private onError() {
+    return (evt: any) => {
       console.error(evt);
-    })
+    }
+  }
+
+  private onChange() {
+    return () => {
+      let position = this.geolocation.getPosition();
+      this.positionFeature.setGeometry(new Point(position));
+      
+      if(this.mapComponent && this.mapComponent.map)
+        this.mapComponent.map.getView().setCenter(position);
+    }
   }
 
   toggleTrace() {
