@@ -48,7 +48,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
     this.updateMap();
   }
 
-  constructor(private ngZone: NgZone) {
+  constructor() {
     this.outClick = new EventEmitter<MapBrowserEvent>();
     this.outMoveend = new EventEmitter<MapBrowserEvent>();
   }

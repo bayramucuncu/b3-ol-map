@@ -63,7 +63,7 @@ export class MeasureExtensionComponent implements OnInit, ExtensionAggregator {
     @Output() outMeasureCreate: EventEmitter<any>;
     @Output() outMeasureRemove: EventEmitter<any>;
 
-    constructor(private mapComponent: MapComponent, private ref: ChangeDetectorRef) {
+    constructor(private mapComponent: MapComponent) {
         this.source = new VectorSource();
         this.outMeasureCreate = new EventEmitter<any>();
         this.outMeasureRemove = new EventEmitter<any>();
@@ -125,7 +125,6 @@ export class MeasureExtensionComponent implements OnInit, ExtensionAggregator {
                     : measurement.toFixed(2) + ' m';
 
                 this.result = measurementFormatted;
-                this.ref.detectChanges();
             });
         });
 
