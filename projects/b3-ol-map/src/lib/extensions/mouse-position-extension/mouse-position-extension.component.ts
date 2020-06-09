@@ -17,7 +17,7 @@ export class MousePositionExtensionComponent implements OnInit, ExtensionAggrega
 
   @Input() componentData: any;
 
-  private defaultWidgetData: any = {
+  private defaultComponentData: any = {
     settings: {
       precision: 6,
       precisions: [...Array(11).keys()].map((n: number) => { return { code: n } }),
@@ -45,9 +45,9 @@ export class MousePositionExtensionComponent implements OnInit, ExtensionAggrega
 
   ngOnInit() {
     this.mapComponent.map.on("click", this.ngZone.run(() => this.onMapClicked()));
-    this.componentData = this.componentData || this.defaultWidgetData;
+    this.componentData = this.componentData || this.defaultComponentData;
 
-    this.componentData.settings = { ...this.defaultWidgetData.settings, ...this.componentData.settings }
+    this.componentData.settings = { ...this.defaultComponentData.settings, ...this.componentData.settings }
 
     this.selectedProjection = this.componentData.settings.projections.find((f: any) => f.code === this.componentData.settings.projection);
     this.selectedPrecision = this.componentData.settings.precisions.find((f: any) => f.code == this.componentData.settings.precision);

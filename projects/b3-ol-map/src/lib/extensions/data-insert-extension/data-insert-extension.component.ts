@@ -41,7 +41,7 @@ export class DataInsertExtensionComponent implements OnInit, ExtensionAggregator
     "WKT"
   ];
 
-  private defaultWidgetData: any = {
+  private defaultComponentData: any = {
     settings: {
       title: "Data",
       projections: [
@@ -57,9 +57,9 @@ export class DataInsertExtensionComponent implements OnInit, ExtensionAggregator
   }
 
   ngOnInit(): void {
-    this.componentData = this.componentData || this.defaultWidgetData;
+    this.componentData = this.componentData || this.defaultComponentData;
 
-    this.componentData.settings = { ...this.defaultWidgetData.settings, ...this.componentData.settings }
+    this.componentData.settings = { ...this.defaultComponentData.settings, ...this.componentData.settings }
   }
 
   private getFeatures() {

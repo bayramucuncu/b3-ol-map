@@ -43,7 +43,7 @@ export class MeasureExtensionComponent implements OnInit, ExtensionAggregator {
     snap: Snap;
 
     private measuringTool: Draw;
-    private defaultWidgetData: any = {
+    private defaultComponentData: any = {
         settings: {
             title: "Measure",
             lengthLabel: "Length",
@@ -70,9 +70,9 @@ export class MeasureExtensionComponent implements OnInit, ExtensionAggregator {
     }
 
     ngOnInit() {
-        this.componentData = this.componentData || this.defaultWidgetData;
+        this.componentData = this.componentData || this.defaultComponentData;
 
-        this.componentData.settings = { ...this.defaultWidgetData.settings, ...this.componentData.settings }
+        this.componentData.settings = { ...this.defaultComponentData.settings, ...this.componentData.settings }
     }
 
     private enableMeasuringTool() {
