@@ -69,10 +69,8 @@ import { ExtensionComponent } from './extensions/extension.component';
 import { MeasureExtensionComponent } from './extensions/measure-extension/measure-extension.component';
 import { MousePositionExtensionComponent } from './extensions/mouse-position-extension/mouse-position-extension.component';
 import { SocketioComponent } from './sources/socketio/socketio.component';
-import { LayerContainerService } from './layers/layer-container.service';
 
 @NgModule({
-  providers:[{ provide: LayerContainerService, useClass: LayerContainerService, useFactory: LayerContainerService }],
   declarations: [
     MapComponent, 
     LayerTileComponent, 

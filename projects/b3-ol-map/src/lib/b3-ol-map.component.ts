@@ -1,26 +1,28 @@
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef, AfterViewInit, SimpleChanges, 
-          HostListener, OnChanges, ViewEncapsulation, ViewChild, NgZone } from '@angular/core';
+          HostListener, OnChanges, ViewEncapsulation, ViewChild } from '@angular/core';
 import { Map, MapBrowserEvent } from 'ol';
 import { Control } from 'ol/control';
 import { Interaction } from 'ol/interaction';
+import { LayerContainerService } from './layers/layer-container.service';
 
 @Component({
   selector: 'b3-ol-map',
   templateUrl: 'b3-ol-map.component.html',
   styleUrls: ['b3-ol-map.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [LayerContainerService]
 })
 export class MapComponent implements OnInit, AfterViewInit, OnChanges {
-
-  map: Map;
-  controls: Control[] = [];
-  interactions: Interaction[] = [];
 
   @ViewChild("map", { static: true }) mapDiv: ElementRef;
 
   private _width: string = '100%';
   private _height: string = '100%';
-
+  
+  map: Map;
+  controls: Control[] = [];
+  interactions: Interaction[] = [];
+ 
   get width(): string {
     return this._width;
   }
@@ -58,7 +60,6 @@ export class MapComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnInit() {
-
     this.map = new Map({
       controls: this.controls,
       interactions: this.interactions,
