@@ -1,10 +1,11 @@
 import { BehaviorSubject } from 'rxjs';
+import { delay } from "rxjs/operators"
 
 export class LayerContainerService {
 
   private layersBehaviour: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 
-  layers$ = this.layersBehaviour.asObservable();
+  layers$ = this.layersBehaviour.asObservable().pipe(delay(0));
 
   constructor() { }
 
@@ -28,7 +29,7 @@ export class LayerContainerService {
     this.layersBehaviour.next([...this.layersBehaviour.value.filter(item => item !== layer)]);
   }
 
-  removeAllLayers(){
+  removeAllLayers() {
     this.layersBehaviour.next([]);
   }
 

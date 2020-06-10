@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnDestroy } from '@angular/core';
 import BaseLayer from 'ol/layer/Base';
-import { LayerContainerService } from './layer-container.service';
 import { Observable } from 'rxjs';
 import { UuidGenerator } from '../helper';
+import { LayerContainerService } from './layer-container.service';
 
 @Component({
   selector: 'b3-layer-container',
@@ -21,7 +21,7 @@ export class LayerContainerComponent implements OnInit, OnDestroy {
   layer$: Observable<any[]>;
 
   constructor(layerContainerService: LayerContainerService, private uuidGenerator: UuidGenerator) {
-    this.layerContainerService = layerContainerService;
+    this.layerContainerService = layerContainerService; 
     this.outLayerCreate = new EventEmitter<BaseLayer>();
   }
 
