@@ -46,34 +46,6 @@ export class AppComponent implements OnInit {
         // { "id": "51c55bd2-bc59-4a4f-9b86-ac8309788f1c", "order": 25, "type": "heatmap", "name": "Points Heatmap Geojson", "isBase": false, "layerSettings": { "minResolution": 0.2, "maxResolution": 150, "visible": true,  "blur": 15, "radius": 7 }, "sourceSettings": { "type": "geojson", "url":"/assets/points.json", "dataProjection": "EPSG:5254", featureProjection: "EPSG:3857" } },
         { "id": "41c55bd2-bc19-4a4f-9b86-ac8309728f1c", "order": 10, "showOnLayerView": true, "type": "vector", "name": "Points Geojson", "isBase": false, "layerSettings": { "minResolution": 0.2, "maxResolution": 20, "visible": true }, "sourceSettings": { "type": "geojson", "url":"assets/points.json", "dataProjection":"EPSG:5254" }, "styleSettings":  { "viewType": "unique", "viewOptions": { "image": { "type": "circle", "options": { "radius":6, "fill": { "color": "rgba(57,  157, 204, 0.7)" }, "stroke": { "color": "rgba(60, 204, 157, 0.9)", "width": 2,"lineCap": "round", "lineJoin": "round","lineDash": null,"lineDashOffset": 0, "miterLimit":10 } } }, "text": { "fill": {"color": "#000" }, "stroke": { "color": "#fff" }, "font": "12px sans-serif", "maxResolution": 4, "propertyName": "objectid" } } } },
         //{ "id": "23c55bd2-bc19-4a4f-9b86-ac8309728f1c", "order": 9, "type": "vector", "name": "Points Socket", "isBase": false, "layerSettings": { "minResolution": 0.2, "maxResolution": 300, "visible": true }, "sourceSettings": { "type": "socketiogeojson", "url":"http://localhost:3000", "dataProjection":"EPSG:4326", "removeInterval": 5000, "emitName": "featureSent" }, "styleSettings":  { "viewType": "unique", "viewOptions": { "image": { "type": "circle", "options": { "radius":10, "fill": { "color": "rgba(247,  27, 24, 0.9)" }, "stroke": { "color": "rgba(250, 204, 207, 0.9)", "width": 2,"lineCap": "round", "lineJoin": "round","lineDash": null,"lineDashOffset": 0, "miterLimit":10 } } }, "text": { "fill": {"color": "#000" }, "stroke": { "color": "#fff" }, "font": "12px sans-serif", "maxResolution": 4, "propertyName": "objectid" } } } },
-        {
-          id: "41c55bd2-bc19-4a4f-9b86-ac8309728f14",
-          order: null, 
-          type: "vector",
-          name: "TKGM Parsel", 
-          isBase: false, 
-          layerSettings: { 
-            minResolution: 0.2, 
-            maxResolution: 20, 
-            visible: true 
-          }, 
-          sourceSettings: { 
-            type: "wfs", 
-            url: "http://192.168.10.6/tkgm.ows/wfs", 
-            typename: "TKGM:parseller",
-            version: "1.1.0", 
-            dataProjection: "EPSG:3857", 
-            featureProjection: "EPSG:3857",
-            //cqlFilter: "(durum=3 and tapumahalleref=147839 and adano=5103 and parselno=9)"
-          }, 
-          styleSettings: { 
-            viewType: "unique", 
-            viewOptions: { 
-              fill: { "color": "rgba(110, 57, 204, 0.7)" }, 
-              stroke: { "color": "rgba(70,  77, 180,0.9)", "width": 2, "lineCap": "round", "lineJoin": "round", "lineDash": null, "lineDashOffset": 0, "miterLimit": 10 } 
-            } 
-          }
-        }
       ],
       controls: [
         { "id": "399fe7da-0edc-4021-8811-0e0a786f7547", "name": "fullscreen", "title": "Full Screen Control", "settings": { "tipLabel": "Full Screen" } },

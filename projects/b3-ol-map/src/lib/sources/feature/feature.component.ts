@@ -19,9 +19,7 @@ export class FeatureComponent implements OnInit {
 
   ngOnInit(): void {
 
-      this.source = new Vector();
-
-      this.source.addFeatures(this.features);
+      this.source = new Vector({features: this.features});
 
       this.layerComponent.layer.setSource(this.source);
   }
