@@ -93,6 +93,7 @@ export class WfsResponseAcceptedSource extends BaseVectorSource {
     @Input() geometryName: string;
     @Input() version: string;
     @Input() typename: string;
+    @Input() cqlFilter: string;
 
     configureUrl(extent: any, resolution: any, projection: any) {
         let uri = this.url.concat('?service=WFS')
@@ -102,6 +103,8 @@ export class WfsResponseAcceptedSource extends BaseVectorSource {
             .concat('&typename=' + this.typename)
             .concat('&srsname=' + projection.getCode())
             .concat('&bbox=' + extent.join(',') + ',' + projection.getCode());
+        
+        (this.cqlFilter) && (uri = uri.concat('&cql_filter=' + this.cqlFilter));
 
         return uri;
     }
