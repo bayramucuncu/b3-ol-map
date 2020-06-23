@@ -108,7 +108,7 @@ export class ThematicViewFunctionStrategy implements IStyleFunctionStragey {
         if (feature.get("features")) 
             return feature.get("features").length.toString();
 
-        if (!(options.text || options.text.content))
+        if (!options.text || !options.text.content)
             return "";
         
         let text = options.text.content.replace(this.regex, (x: any, y: any) => feature.get(y) !== undefined ? feature.get(y).toString() : y)
