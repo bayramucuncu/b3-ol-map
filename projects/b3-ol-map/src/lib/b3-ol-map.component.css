@@ -88,14 +88,14 @@
 /* b3-ol-map panel wrapper */
 .b3-ol-map-panel-wrapper {
     width: 370px;
-    height: calc(97%);
+    height: calc(100%);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    right: 3.2em;
-    z-index: 10;
-    top: 50%;
+    right: 2.8em;
+    top: 0;
     overflow: auto;
     position: absolute;
-    transform: translate(0, -50%);
+    z-index: 10;
+    /* transform: translate(0, -50%); */
 }
 
 .b3-ol-map-panel-container {
@@ -214,9 +214,9 @@
         /*100% - (wrapper.padding*2 + 1px*2)*/
         height: calc(50vh - 1px);
         bottom: 0;
-        right: 1px;
+        right: -0.45em;
         margin: 0 auto;
-        transform: translate(0, 0);
+        top: calc(50% - -20px);
         overflow: auto;
     }
 }

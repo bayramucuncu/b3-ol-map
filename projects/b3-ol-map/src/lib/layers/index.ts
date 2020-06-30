@@ -16,5 +16,4 @@ export * from './vector/vector-style/feature-label-rotation-strategies/feature-l
 export * from './vector/vector-style/feature-label-rotation-strategies/feature-label-rotation.factory';
 export * from './vector/vector-style/feature-label-rotation-strategies/linestring-label-rotation.calculator';
 export * from './vector/vector-style/feature-label-rotation-strategies/no-label-rotation.calculator';
-export * from './layer-view-control/layerview.control.component';
-export * from './layer-view-control/layerviewnode.component';
+export * from '../extensions/layer-control/layerviewnode.component';

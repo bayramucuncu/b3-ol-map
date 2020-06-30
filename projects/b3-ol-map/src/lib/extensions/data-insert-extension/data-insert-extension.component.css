@@ -1,30 +1,8 @@
-.b3-data-insert {
-    top: 3.2em;
-    right: .5em;
-    z-index: 3;
-}
-
-.b3-data-insert button {
-    font-size: 1.5em;
-}
-
-.b3-data-insert button:hover {
-    cursor: pointer;
-    background-color: rgb(88, 151, 196);
-}
-
-.b3-data-insert img {
-    width: 24px;
-    height: 24px;
-}
-
-.b3-data-insert .icon {
+.b3-data-insert-icon {
     position: absolute;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAApElEQVRIie2VOw7CMBAFZxEUUKflNNyIk+QQnIGOY0UUFEMBQoT8nBiQIpjO3ve8tp5lw9yJ54HqoxARTXk/bf5lijiHzga5J8gTjfAvchZL4eMNOjNoY8otG32CseHPP4OkBmr5ev28UQ55U0PeA1ugUgM4AJv7fC+NwFTbglTXwAlYARdgFxHnVH9N0FMr1KNaTPGnCQb4+lPx/w9qvGtTP8YVraNol+o9ndUAAAAASUVORK5CYII=') no-repeat;
     width: 24px;
     height: 24px;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
 }
 

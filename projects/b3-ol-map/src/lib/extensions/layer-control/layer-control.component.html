@@ -1,12 +1,12 @@
-<div class="b3-layer ol-unselectable ol-control">
-    <button type="button" title="Layers" (click)="toggle()">
-        <i class="icon"></i>
+<div class="menu-item">
+    <button type="button" [title]="componentData.settings.title" (click)="toggle()">
+        <i class="b3-layer-icon"></i>
     </button>
 </div>
 <div class="b3-ol-map-panel-wrapper" *ngIf="visibility">
     <div class="b3-ol-map-panel-container">
         <div class="b3-ol-map-panel-header">
-            <span>{{title}}</span>  <i class="b3-panel-close-icon" (click)="toggle()"></i>
+            <span>{{componentData.settings.title}}</span>  <i class="b3-panel-close-icon" (click)="toggle()"></i>
         </div>
         <div class="b3-ol-map-panel-body">
             <b3-layer-view-node *ngFor="let layer of layers"

@@ -4,7 +4,7 @@ import { MapComponent } from '../../b3-ol-map.component';
 
 @Component({
   selector: 'b3-layer-view-node',
-  styleUrls: ["./layerview.control.component.css"],
+  styleUrls: ["./layer-control.component.css"],
   templateUrl: "./layerviewnode.component.html",
   encapsulation: ViewEncapsulation.None
 })

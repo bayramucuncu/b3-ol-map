@@ -1,16 +1,41 @@
-.b3-right-menu{
-    /* position: absolute; */
-    top: 3.2em;
-    right: .5em;
+.b3-right-menu {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
     z-index: 6;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    height: calc(100% - 3.6em);
+    vertical-align: middle;
 }
 
-.b3-right-menu li{
-    margin:0;
+.b3-right-menu ul, li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.b3-right-menu li {
     padding: 0;
     text-indent: 0;
-    list-style-type: 0;
+    margin-bottom: 3px;
+}
+
+.b3-right-menu .menu-item{
+    font-weight: normal;
+}
+
+.b3-right-menu .menu-item button{
+    background-color: rgb(69, 134, 180);
+    width: 40px;
+    height: 40px;
+    border: none;
+    font-size: 1.5em;
+    border-radius: 2px;
+    border: 3px solid white;
+    color: white;
+    outline: none;
+    cursor: pointer;
+}
+
+.b3-right-menu .menu-item button:hover{
+    background-color: rgb(88, 151, 196);
 }

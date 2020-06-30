@@ -59,8 +59,7 @@ import { ZoomToExtentComponent } from './controls/zoom-to-extent/zoom-to-extent.
 import { ControlContainerComponent } from './controls/control-container.component';
 import { DraggableDirective } from './directives/draggable.directive';
 import { DraggableDropZoneDirective } from './directives/draggable-drop-zone.directive';
-import { LayerViewControlComponent } from './layers/layer-view-control/layerview.control.component';
-import { LayerViewNodeComponent } from './layers/layer-view-control/layerviewnode.component';
+import { LayerViewNodeComponent } from './extensions/layer-control/layerviewnode.component';
 import { RotateComponent } from './controls/rotate/rotate.component';
 import { GeolocationComponent } from './controls/geolocation/geolocation.component';
 import { DataInsertExtensionComponent } from './extensions/data-insert-extension/data-insert-extension.component';
@@ -69,6 +68,7 @@ import { ExtensionComponent } from './extensions/extension.component';
 import { MeasureExtensionComponent } from './extensions/measure-extension/measure-extension.component';
 import { MousePositionExtensionComponent } from './extensions/mouse-position-extension/mouse-position-extension.component';
 import { SocketioComponent } from './sources/socketio/socketio.component';
+import { LayerControlComponent } from './extensions/layer-control/layer-control.component';
 
 @NgModule({
   declarations: [
@@ -129,7 +129,6 @@ import { SocketioComponent } from './sources/socketio/socketio.component';
     ControlContainerComponent,
     DraggableDirective,
     DraggableDropZoneDirective,
-    LayerViewControlComponent,
     LayerViewNodeComponent,
     RotateComponent,
     GeolocationComponent,
@@ -138,7 +137,8 @@ import { SocketioComponent } from './sources/socketio/socketio.component';
     ExtensionComponent,
     MeasureExtensionComponent,
     MousePositionExtensionComponent,
-    SocketioComponent
+    SocketioComponent,
+    LayerControlComponent
   ],
   imports: [
     CommonModule,
@@ -149,7 +149,8 @@ import { SocketioComponent } from './sources/socketio/socketio.component';
     FeatureInfoWidgetComponent,
     DataInsertExtensionComponent,
     MeasureExtensionComponent,
-    MousePositionExtensionComponent
+    MousePositionExtensionComponent,
+    LayerControlComponent
   ],
   exports: [
     MapComponent, 
@@ -206,13 +207,13 @@ import { SocketioComponent } from './sources/socketio/socketio.component';
     ZoomSliderComponent,
     ZoomToExtentComponent,
     ControlContainerComponent,
-    LayerViewControlComponent,
     LayerViewNodeComponent,
     RotateComponent,
     GeolocationComponent,
     DataInsertExtensionComponent,
     MeasureExtensionComponent,
-    ExtensionContainerComponent
+    ExtensionContainerComponent,
+    LayerControlComponent
   ]
 })
 export class B3OlMapModule { }
