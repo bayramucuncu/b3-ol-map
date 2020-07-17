@@ -1,7 +1,7 @@
 <b3-extension  *ngFor="let item of freeItems" [componentData]="item"></b3-extension>
 <div class="b3-right-menu">
-    <ul>
-        <li *ngFor="let item of rightMenuItems">
+    <ul class="lgroup">
+        <li class="litem" *ngFor="let item of rightMenuItems">
             <b3-extension [componentData]="item"></b3-extension>
         </li>
     </ul>
