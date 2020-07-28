@@ -110,11 +110,11 @@ export class ThematicViewFunctionStrategy implements IStyleFunctionStragey {
 
         if (!options.text || !options.text.content)
             return "";
-        
-        let text = options.text.content.replace(this.regex, (x: any, y: any) => feature.get(y) !== undefined ? feature.get(y).toString() : y)
 
         if (options.text && options.text.maxResolution && options.text.maxResolution < resolution)
             return '';
+        
+        let text = options.text.content.replace(this.regex, (x: any, y: any) => feature.get(y) ? feature.get(y).toString() : "")
 
         return text;
     }
