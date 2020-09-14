@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } fro
 import Feature from 'ol/Feature';
 import VectorSource from 'ol/source/Vector';
 import { GeoJSON, EsriJSON, TopoJSON, WKT } from 'ol/format';
-import { UuidGenerator } from '../../helper';
+import { UuidGenerator } from '../../helper/uuid';
 import { ExtensionAggregator } from '../extension-aggregator';
 import { MapComponent } from '../../b3-ol-map.component';
 import { LayerContainerService } from '../../layers/layer-container.service';

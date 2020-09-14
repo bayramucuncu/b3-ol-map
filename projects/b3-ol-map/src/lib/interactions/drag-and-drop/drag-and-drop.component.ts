@@ -4,7 +4,7 @@ import { Geometry } from 'ol/geom';
 import { ProjectionLike } from 'ol/proj';
 import { DragAndDrop } from 'ol/interaction';
 import { GPX, GeoJSON, KML, TopoJSON } from 'ol/format';
-import { UuidGenerator } from '../../helper';
+import { UuidGenerator } from '../../helper/uuid';
 import { MapComponent } from '../../b3-ol-map.component';
 import { BaseInteractionComponent } from '../base-interaction-component';
 import { LayerContainerService } from '../../layers/layer-container.service';

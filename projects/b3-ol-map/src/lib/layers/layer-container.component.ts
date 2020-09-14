@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output, OnDestroy, IterableDiffers, DoCheck, SimpleChanges, OnChanges } from '@angular/core';
 import BaseLayer from 'ol/layer/Base';
 import { Observable } from 'rxjs';
-import { UuidGenerator } from '../helper';
+import { UuidGenerator } from '../helper/uuid';
 import { LayerContainerService } from './layer-container.service';
 
 @Component({

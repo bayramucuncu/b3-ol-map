@@ -1,6 +1,6 @@
 import { Component, OnInit, SkipSelf, Optional } from '@angular/core';
 import { Group } from 'ol/layer'
-import { MapComponent } from '../..';
+import { MapComponent } from '../../b3-ol-map.component';
 import { BaseLayerComponent } from '../base-layer';
 
 
